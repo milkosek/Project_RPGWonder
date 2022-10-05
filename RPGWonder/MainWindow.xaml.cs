@@ -23,7 +23,6 @@ namespace RPGWonder
         public MainWindow()
         {
             InitializeComponent();
-            //aaaa
         }
     }
 }
