@@ -16,5 +16,13 @@ namespace RPGWonder
         {
             InitializeComponent();
         }
+
+        internal Character Character
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

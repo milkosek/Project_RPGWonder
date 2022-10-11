@@ -16,5 +16,37 @@ namespace RPGWonder
         {
             InitializeComponent();
         }
+
+        internal DiceRolls DiceRolls
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Campaign Campaign
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Connection Connection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal VoiceChat VoiceChat
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

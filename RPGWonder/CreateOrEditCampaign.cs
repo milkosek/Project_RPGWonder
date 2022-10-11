@@ -32,5 +32,13 @@ namespace RPGWonder
             {
             }
         }
+
+        public ManageCharacters ManageCharacters
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

@@ -25,11 +25,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="RPGWonder.ManageCharacters" Collapsed="true">
-    <Position X="9" Y="2.5" Width="1.75" />
+    <Position X="9.25" Y="2.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>ManageCharacters.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Character" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="RPGWonder.ManageCampaigns" Collapsed="true">
     <Position X="1.25" Y="2.75" Width="1.75" />
@@ -51,12 +54,13 @@
   <Class Name="RPGWonder.CreateOrEditCampaign" Collapsed="true">
     <Position X="0.5" Y="5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACABEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACABEAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>CreateOrEditCampaign.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="MapEditor" />
       <Property Name="Campaign" />
+      <Property Name="ManageCharacters" />
     </ShowAsAssociation>
   </Class>
   <Class Name="RPGWonder.Entity">
@@ -89,9 +93,15 @@
   <Class Name="RPGWonder.Game" Collapsed="true">
     <Position X="6.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAEAAACAAAQCAAEAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DiceRolls" />
+      <Property Name="Campaign" />
+      <Property Name="Connection" />
+      <Property Name="VoiceChat" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="RPGWonder.MapEditor" Collapsed="true">
     <Position X="3.5" Y="5" Width="1.5" />
@@ -137,6 +147,59 @@
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAAIAAAAAAA=</HashCode>
       <FileName>EntityOnMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Character" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <InheritanceLine Type="RPGWonder.Entity" ManuallyRouted="true">
+      <Path>
+        <Point X="4.75" Y="7" />
+        <Point X="4.75" Y="6.15" />
+        <Point X="8.687" Y="6.15" />
+        <Point X="8.687" Y="5.485" />
+        <Point X="9.51" Y="5.485" Type="JumpStart" />
+        <Point X="9.677" Y="5.485" Type="JumpEnd" />
+        <Point X="10.25" Y="5.485" />
+        <Point X="10.25" Y="4.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABCIAAAhJQCgQIAQwAgEAFgCAEeA0AeYAgAIIEENQA=</HashCode>
+      <FileName>Character.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AttackOrSpell" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.AttackOrSpell" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>AttackOrSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Connection" Collapsed="true">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.VoiceChat" Collapsed="true">
+    <Position X="14.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VoiceChat.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Connection" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.DiceRolls" Collapsed="true">
+    <Position X="11.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DiceRolls.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
