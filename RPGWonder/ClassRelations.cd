@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RPGWonder.Program" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainMenu" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.MainMenu" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgQAACAgAAEEAACAAAACAAgAAACAgAQCAAACAgI=</HashCode>
+      <FileName>MainMenu.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ManageCharacters" />
+      <Property Name="ManageCampaigns" />
+      <Property Name="Settings" />
+      <Property Name="HostSession" />
+      <Property Name="JoinSession" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.ManageCharacters" Collapsed="true">
+    <Position X="9" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManageCharacters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ManageCampaigns" Collapsed="true">
+    <Position X="1.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAEACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManageCampaigns.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CreateOrEditCampaign" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.Settings" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.CreateOrEditCampaign" Collapsed="true">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACABEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreateOrEditCampaign.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MapEditor" />
+      <Property Name="Campaign" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.Entity">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAFAgAAAAAAAAAAAgA=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.HostSession" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HostSession.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Game" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.JoinSession" Collapsed="true">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JoinSession.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Game" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.Game" Collapsed="true">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.MapEditor" Collapsed="true">
+    <Position X="3.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapEditor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Map" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.Campaign">
+    <Position X="1.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAABAAAAAAAAAAAAAAAAABASAAAAAgAAABAgA=</HashCode>
+      <FileName>Campaign.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Entity" />
+      <Property Name="Map" />
+      <Property Name="Asset" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.Asset">
+    <Position X="6" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAgA=</HashCode>
+      <FileName>Asset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Map">
+    <Position X="9.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAQAAAAAgA=</HashCode>
+      <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntityOnMap" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPGWonder.EntityOnMap">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>EntityOnMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

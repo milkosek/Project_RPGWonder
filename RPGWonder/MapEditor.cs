@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class Settings : Form
+    public partial class MapEditor : Form
     {
-        public Settings()
+        public MapEditor()
         {
             InitializeComponent();
+        }
+
+        internal Map Map
+        {
+            get => default;
+            set
+            {
+            }
         }
     }
 }

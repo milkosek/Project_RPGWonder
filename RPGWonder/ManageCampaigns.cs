@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class Settings : Form
+    public partial class ManageCampaigns : Form
     {
-        public Settings()
+        public ManageCampaigns()
         {
             InitializeComponent();
+        }
+
+        public CreateOrEditCampaign CreateOrEditCampaign
+        {
+            get => default;
+            set
+            {
+            }
         }
     }
 }

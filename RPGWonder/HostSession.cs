@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class CreateCharacter : Form
+    public partial class HostSession : Form
     {
-        public CreateCharacter()
+        public HostSession()
         {
             InitializeComponent();
+        }
+
+        public Game Game
+        {
+            get => default;
+            set
+            {
+            }
         }
     }
 }

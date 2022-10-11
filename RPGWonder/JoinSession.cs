@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class CreateCampaign : Form
+    public partial class JoinSession : Form
     {
-        public CreateCampaign()
+        public JoinSession()
         {
             InitializeComponent();
+        }
+
+        public Game Game
+        {
+            get => default;
+            set
+            {
+            }
         }
     }
 }

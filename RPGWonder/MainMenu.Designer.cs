@@ -28,93 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.SettingsButton = new System.Windows.Forms.Button();
+            this.CrtCharButton = new System.Windows.Forms.Button();
+            this.CrtCampaignButton = new System.Windows.Forms.Button();
+            this.HostButton = new System.Windows.Forms.Button();
+            this.JoinButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // ExitButton
             // 
-            this.button1.Location = new System.Drawing.Point(293, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(221, 38);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ExitButton.Location = new System.Drawing.Point(220, 288);
+            this.ExitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(166, 31);
+            this.ExitButton.TabIndex = 0;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // SettingsButton
             // 
-            this.button2.Location = new System.Drawing.Point(293, 294);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(221, 38);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Settings";
-            this.button2.UseVisualStyleBackColor = true;
+            this.SettingsButton.Location = new System.Drawing.Point(220, 239);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(166, 31);
+            this.SettingsButton.TabIndex = 1;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // CrtCharButton
             // 
-            this.button3.Location = new System.Drawing.Point(293, 233);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(221, 38);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Create Character";
-            this.button3.UseVisualStyleBackColor = true;
+            this.CrtCharButton.Location = new System.Drawing.Point(220, 189);
+            this.CrtCharButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CrtCharButton.Name = "CrtCharButton";
+            this.CrtCharButton.Size = new System.Drawing.Size(166, 31);
+            this.CrtCharButton.TabIndex = 2;
+            this.CrtCharButton.Text = "Create Character";
+            this.CrtCharButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // CrtCampaignButton
             // 
-            this.button4.Location = new System.Drawing.Point(293, 171);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(221, 38);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Create Campaign";
-            this.button4.UseVisualStyleBackColor = true;
+            this.CrtCampaignButton.Location = new System.Drawing.Point(220, 139);
+            this.CrtCampaignButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CrtCampaignButton.Name = "CrtCampaignButton";
+            this.CrtCampaignButton.Size = new System.Drawing.Size(166, 31);
+            this.CrtCampaignButton.TabIndex = 3;
+            this.CrtCampaignButton.Text = "Create Campaign";
+            this.CrtCampaignButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // HostButton
             // 
-            this.button5.Location = new System.Drawing.Point(293, 108);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(221, 38);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Host Session";
-            this.button5.UseVisualStyleBackColor = true;
+            this.HostButton.Location = new System.Drawing.Point(220, 88);
+            this.HostButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HostButton.Name = "HostButton";
+            this.HostButton.Size = new System.Drawing.Size(166, 31);
+            this.HostButton.TabIndex = 4;
+            this.HostButton.Text = "Host Session";
+            this.HostButton.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // JoinButton
             // 
-            this.button6.Location = new System.Drawing.Point(293, 44);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(221, 38);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Join Session";
-            this.button6.UseVisualStyleBackColor = true;
+            this.JoinButton.Location = new System.Drawing.Point(220, 36);
+            this.JoinButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.JoinButton.Name = "JoinButton";
+            this.JoinButton.Size = new System.Drawing.Size(166, 31);
+            this.JoinButton.TabIndex = 5;
+            this.JoinButton.Text = "Join Session";
+            this.JoinButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.JoinButton);
+            this.Controls.Add(this.HostButton);
+            this.Controls.Add(this.CrtCampaignButton);
+            this.Controls.Add(this.CrtCharButton);
+            this.Controls.Add(this.SettingsButton);
+            this.Controls.Add(this.ExitButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "MainMenu";
+            this.Text = "RPGWonder";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button CrtCharButton;
+        private System.Windows.Forms.Button CrtCampaignButton;
+        private System.Windows.Forms.Button HostButton;
+        private System.Windows.Forms.Button JoinButton;
     }
 }
 

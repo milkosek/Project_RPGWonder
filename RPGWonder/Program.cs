@@ -8,6 +8,14 @@ namespace RPGWonder
 {
     internal static class Program
     {
+        public static MainMenu MainMenu
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

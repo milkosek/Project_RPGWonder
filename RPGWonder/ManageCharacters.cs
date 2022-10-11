@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class Settings : Form
+    public partial class ManageCharacters : Form
     {
-        public Settings()
+        public ManageCharacters()
         {
             InitializeComponent();
         }
