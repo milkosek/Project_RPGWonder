@@ -26,6 +26,13 @@ namespace RPGWonder
         {
             Application.Exit();
         }
+        
+        private void HandleGotoCampaign(object sender, System.EventArgs e)
+        {
+            ManageCampaigns newWindow = new ManageCampaigns();
+            this.Hide();
+            newWindow.Show();
+        }
 
         #region Windows Form Designer generated code
 
@@ -42,7 +49,6 @@ namespace RPGWonder
             this.CrtCampaignButton = new System.Windows.Forms.Button();
             this.HostButton = new System.Windows.Forms.Button();
             this.JoinButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitButton
@@ -85,6 +91,7 @@ namespace RPGWonder
             this.CrtCampaignButton.TabIndex = 3;
             this.CrtCampaignButton.Text = "Create Campaign";
             this.CrtCampaignButton.UseVisualStyleBackColor = true;
+            this.CrtCampaignButton.Click += new System.EventHandler(this.HandleGotoCampaign);
             // 
             // HostButton
             // 
@@ -106,22 +113,11 @@ namespace RPGWonder
             this.JoinButton.Text = "Join Session";
             this.JoinButton.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.JoinButton);
             this.Controls.Add(this.HostButton);
             this.Controls.Add(this.CrtCampaignButton);
@@ -145,7 +141,6 @@ namespace RPGWonder
         private System.Windows.Forms.Button CrtCampaignButton;
         private System.Windows.Forms.Button HostButton;
         private System.Windows.Forms.Button JoinButton;
-        private Button button1;
     }
 }
 
