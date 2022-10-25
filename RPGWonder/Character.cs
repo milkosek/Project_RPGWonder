@@ -36,7 +36,7 @@ namespace RPGWonder
         private string otherProficienciesAndLanguages;
         private List<int> money;
         private List<Entity> entities;
-        private list<AttackOrSpell> attacksAndSpells;
+        private List<AttackOrSpell> attacksAndSpells;
         private int saveStrength;
         private int saveDexterity;
         private int saveConstitution;

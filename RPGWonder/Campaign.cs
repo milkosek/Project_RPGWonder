@@ -9,11 +9,11 @@ namespace RPGWonder
     class Campaign
     {
         private long id;
-        private list<Character> characters;
-        private list<Entity> entities;
-        private list<Map> maps;
+        private List<Character> characters;
+        private List<Entity> entities;
+        private List<Map> maps;
         private int currentMap;
-        private list<Asset> assets;
+        private List<Asset> assets;
 
         internal Entity Entity
         {

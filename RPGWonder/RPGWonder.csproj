@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>RPGWonder.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,11 +49,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateCampaign.cs">
+    <Compile Include="Asset.cs" />
+    <Compile Include="AttackOrSpell.cs" />
+    <Compile Include="Campaign.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="CreateOrEditCampaign.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateCampaign.Designer.cs">
-      <DependentUpon>CreateCampaign.cs</DependentUpon>
+    <Compile Include="CreateOrEditCampaign.Designer.cs">
+      <DependentUpon>CreateOrEditCampaign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiceRolls.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="EntityOnMap.cs" />
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HostSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HostSession.Designer.cs">
+      <DependentUpon>HostSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JoinSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JoinSession.Designer.cs">
+      <DependentUpon>JoinSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCampaigns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCampaigns.Designer.cs">
+      <DependentUpon>ManageCampaigns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCharacters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCharacters.Designer.cs">
+      <DependentUpon>ManageCharacters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map.cs" />
+    <Compile Include="MapEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapEditor.Designer.cs">
+      <DependentUpon>MapEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
@@ -64,19 +112,14 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateCharacter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateCharacter.Designer.cs">
-      <DependentUpon>CreateCharacter.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CreateCampaign.resx">
-      <DependentUpon>CreateCampaign.cs</DependentUpon>
+    <Compile Include="VoiceChat.cs" />
+    <EmbeddedResource Include="ManageCampaigns.resx">
+      <DependentUpon>ManageCampaigns.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCharacter.resx">
-      <DependentUpon>CreateCharacter.cs</DependentUpon>
+    <EmbeddedResource Include="ManageCharacters.resx">
+      <DependentUpon>ManageCharacters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -105,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RPGWonder.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
