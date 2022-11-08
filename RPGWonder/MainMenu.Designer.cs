@@ -31,31 +31,31 @@ namespace RPGWonder
         {
             ManageCampaigns manageCampaignsWindow = new ManageCampaigns();
             this.Hide();
-            newWindow.Show();
+            manageCampaignsWindow.Show();
         }
         private void HandleGotoCharacterManager(object sender, System.EventArgs e)
         {
             ManageCharacters manageCharacterWindow = new ManageCharacters();
             this.Hide();
-            newWindow.Show();
+            manageCharacterWindow.Show();
         }
         private void HandleGotoJoinSession(object sender, System.EventArgs e)
         {
             JoinSession joinSessionWindow = new JoinSession();
             this.Hide();
-            newWindow.Show();
+            joinSessionWindow.Show();
         }
         private void HandleGotoHostSession(object sender, System.EventArgs e)
         {
             HostSession hostSessionWindow = new HostSession();
             this.Hide();
-            newWindow.Show();
+            hostSessionWindow.Show();
         }
         private void HandleGotoSettings(object sender, System.EventArgs e)
         {
             Settings settingsWindow = new Settings();
             this.Hide();
-            newWindow.Show();
+            settingsWindow.Show();
         }
 
         #region Windows Form Designer generated code
