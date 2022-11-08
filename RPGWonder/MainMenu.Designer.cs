@@ -27,11 +27,35 @@ namespace RPGWonder
             Application.Exit();
         }
         
-        private void HandleGotoCampaign(object sender, System.EventArgs e)
+        private void HandleGotoCampaignManager(object sender, System.EventArgs e)
         {
-            ManageCampaigns newWindow = new ManageCampaigns();
+            ManageCampaigns manageCampaignsWindow = new ManageCampaigns();
             this.Hide();
-            newWindow.Show();
+            manageCampaignsWindow.Show();
+        }
+        private void HandleGotoCharacterManager(object sender, System.EventArgs e)
+        {
+            ManageCharacters manageCharacterWindow = new ManageCharacters();
+            this.Hide();
+            manageCharacterWindow.Show();
+        }
+        private void HandleGotoJoinSession(object sender, System.EventArgs e)
+        {
+            JoinSession joinSessionWindow = new JoinSession();
+            this.Hide();
+            joinSessionWindow.Show();
+        }
+        private void HandleGotoHostSession(object sender, System.EventArgs e)
+        {
+            HostSession hostSessionWindow = new HostSession();
+            this.Hide();
+            hostSessionWindow.Show();
+        }
+        private void HandleGotoSettings(object sender, System.EventArgs e)
+        {
+            Settings settingsWindow = new Settings();
+            this.Hide();
+            settingsWindow.Show();
         }
 
         #region Windows Form Designer generated code
@@ -71,6 +95,7 @@ namespace RPGWonder
             this.SettingsButton.TabIndex = 1;
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.HandleGotoSettings);
             // 
             // CrtCharButton
             // 
@@ -81,6 +106,7 @@ namespace RPGWonder
             this.CrtCharButton.TabIndex = 2;
             this.CrtCharButton.Text = "Create Character";
             this.CrtCharButton.UseVisualStyleBackColor = true;
+            this.CrtCharButton.Click += new System.EventHandler(this.HandleGotoCharacterManager);
             // 
             // CrtCampaignButton
             // 
@@ -91,7 +117,7 @@ namespace RPGWonder
             this.CrtCampaignButton.TabIndex = 3;
             this.CrtCampaignButton.Text = "Create Campaign";
             this.CrtCampaignButton.UseVisualStyleBackColor = true;
-            this.CrtCampaignButton.Click += new System.EventHandler(this.HandleGotoCampaign);
+            this.CrtCampaignButton.Click += new System.EventHandler(this.HandleGotoCampaignManager);
             // 
             // HostButton
             // 
@@ -102,6 +128,7 @@ namespace RPGWonder
             this.HostButton.TabIndex = 4;
             this.HostButton.Text = "Host Session";
             this.HostButton.UseVisualStyleBackColor = true;
+            this.HostButton.Click += new System.EventHandler(this.HandleGotoHostSession);
             // 
             // JoinButton
             // 
@@ -112,6 +139,7 @@ namespace RPGWonder
             this.JoinButton.TabIndex = 5;
             this.JoinButton.Text = "Join Session";
             this.JoinButton.UseVisualStyleBackColor = true;
+            this.JoinButton.Click += new System.EventHandler(this.HandleGotoJoinSession);
             // 
             // MainMenu
             // 
