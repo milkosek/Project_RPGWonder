@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>RPGWonder.ico</ApplicationIcon>
+    <ApplicationIcon>src\RPGWonder.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,93 +49,94 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asset.cs" />
-    <Compile Include="AttackOrSpell.cs" />
-    <Compile Include="Campaign.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="Connection.cs" />
-    <Compile Include="CreateCampaignPopup.cs">
+    <Compile Include="src\Asset.cs" />
+    <Compile Include="src\AttackOrSpell.cs" />
+    <Compile Include="src\Campaign.cs" />
+    <Compile Include="src\Character.cs" />
+    <Compile Include="src\Connection.cs" />
+    <Compile Include="src\CreateCampaignPopup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateCampaignPopup.Designer.cs">
+    <Compile Include="src\CreateCampaignPopup.Designer.cs">
       <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateOrEditCampaign.cs">
+    <Compile Include="src\CreateOrEditCampaign.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateOrEditCampaign.Designer.cs">
+    <Compile Include="src\CreateOrEditCampaign.Designer.cs">
       <DependentUpon>CreateOrEditCampaign.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiceRolls.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="EntityOnMap.cs" />
-    <Compile Include="Game.cs">
+    <Compile Include="src\DiceRolls.cs" />
+    <Compile Include="src\Entity.cs" />
+    <Compile Include="src\EntityOnMap.cs" />
+    <Compile Include="src\Game.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Game.Designer.cs">
+    <Compile Include="src\Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
-    <Compile Include="HostSession.cs">
+    <Compile Include="src\HostSession.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HostSession.Designer.cs">
+    <Compile Include="src\HostSession.Designer.cs">
       <DependentUpon>HostSession.cs</DependentUpon>
     </Compile>
-    <Compile Include="JoinSession.cs">
+    <Compile Include="src\JoinSession.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JoinSession.Designer.cs">
+    <Compile Include="src\JoinSession.Designer.cs">
       <DependentUpon>JoinSession.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageCampaigns.cs">
+    <Compile Include="src\ManageCampaigns.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageCampaigns.Designer.cs">
+    <Compile Include="src\ManageCampaigns.Designer.cs">
       <DependentUpon>ManageCampaigns.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageCharacters.cs">
+    <Compile Include="src\ManageCharacters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageCharacters.Designer.cs">
+    <Compile Include="src\ManageCharacters.Designer.cs">
       <DependentUpon>ManageCharacters.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map.cs" />
-    <Compile Include="MapEditor.cs">
+    <Compile Include="src\Map.cs" />
+    <Compile Include="src\MapEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MapEditor.Designer.cs">
+    <Compile Include="src\MapEditor.Designer.cs">
       <DependentUpon>MapEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs">
+    <Compile Include="src\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="src\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
+    <Compile Include="src\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
+    <Compile Include="src\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VoiceChat.cs" />
-    <EmbeddedResource Include="CreateCampaignPopup.resx">
+    <Compile Include="src\VoiceChat.cs" />
+    <EmbeddedResource Include="src\CreateCampaignPopup.resx">
       <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
-    <EmbeddedResource Include="JoinSession.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\JoinSession.resx">
       <DependentUpon>JoinSession.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageCampaigns.resx">
+    <EmbeddedResource Include="src\ManageCampaigns.resx">
       <DependentUpon>ManageCampaigns.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageCharacters.resx">
+    <EmbeddedResource Include="src\ManageCharacters.resx">
       <DependentUpon>ManageCharacters.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
+    <EmbeddedResource Include="src\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
+    <EmbeddedResource Include="src\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -158,10 +159,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="src\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RPGWonder.ico" />
+    <Content Include="src\RPGWonder.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
