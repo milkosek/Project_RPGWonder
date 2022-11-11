@@ -58,19 +58,47 @@ namespace RPGWonder
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainMenu_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void JoinButton_Click(object sender, EventArgs e)
+        {     
+            JoinSession joinSessionWindow = new JoinSession();
+            joinSessionWindow.Show();
+        }
 
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            Settings settingsWindow = new Settings();
+            this.Hide();
+            settingsWindow.Show();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void HostButton_Click(object sender, EventArgs e)
+        {
+            HostSession hostSessionWindow = new HostSession();
+            hostSessionWindow.Show();
+        }
+
+        private void CrtCampaignButton_Click(object sender, EventArgs e)
+        {
+            ManageCampaigns manageCampaignsWindow = new ManageCampaigns();
+            this.Hide();
+            manageCampaignsWindow.Show();
+        }
+
+        private void CrtCharButton_Click(object sender, EventArgs e)
+        {
+            ManageCharacters manageCharacterWindow = new ManageCharacters();
+            this.Hide();
+            manageCharacterWindow.Show();
         }
     }
 }

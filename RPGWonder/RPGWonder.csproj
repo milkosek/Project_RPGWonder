@@ -115,6 +115,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VoiceChat.cs" />
+    <EmbeddedResource Include="JoinSession.resx">
+      <DependentUpon>JoinSession.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageCampaigns.resx">
       <DependentUpon>ManageCampaigns.cs</DependentUpon>
     </EmbeddedResource>
