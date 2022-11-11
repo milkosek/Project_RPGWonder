@@ -123,6 +123,8 @@
     <Compile Include="VoiceChat.cs" />
     <EmbeddedResource Include="CreateCampaignPopup.resx">
       <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
+    <EmbeddedResource Include="JoinSession.resx">
+      <DependentUpon>JoinSession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageCampaigns.resx">
       <DependentUpon>ManageCampaigns.cs</DependentUpon>

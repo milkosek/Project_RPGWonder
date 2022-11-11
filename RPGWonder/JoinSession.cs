@@ -24,5 +24,17 @@ namespace RPGWonder
             {
             }
         }
+
+        private void JoinSession_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JoinGameButton_Click(object sender, EventArgs e)
+        {
+            Game gameWindow = new Game();
+            this.Close();
+            gameWindow.Show();
+        }
     }
 }
