@@ -118,6 +118,182 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ExitButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 354</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ExitButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="ExitButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 38</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ExitButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ExitButton.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="&gt;&gt;ExitButton.Name" xml:space="preserve">
+    <value>ExitButton</value>
+  </data>
+  <data name="&gt;&gt;ExitButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExitButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ExitButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="SettingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 294</value>
+  </data>
+  <data name="SettingsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="SettingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 38</value>
+  </data>
+  <data name="SettingsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="SettingsButton.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;SettingsButton.Name" xml:space="preserve">
+    <value>SettingsButton</value>
+  </data>
+  <data name="&gt;&gt;SettingsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SettingsButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SettingsButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ManageCharsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 233</value>
+  </data>
+  <data name="ManageCharsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="ManageCharsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 38</value>
+  </data>
+  <data name="ManageCharsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ManageCharsButton.Text" xml:space="preserve">
+    <value>Manage Characters</value>
+  </data>
+  <data name="&gt;&gt;ManageCharsButton.Name" xml:space="preserve">
+    <value>ManageCharsButton</value>
+  </data>
+  <data name="&gt;&gt;ManageCharsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ManageCharsButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ManageCharsButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ManageCampaignsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 171</value>
+  </data>
+  <data name="ManageCampaignsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="ManageCampaignsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 38</value>
+  </data>
+  <data name="ManageCampaignsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="ManageCampaignsButton.Text" xml:space="preserve">
+    <value>Manage Campaigns</value>
+  </data>
+  <data name="&gt;&gt;ManageCampaignsButton.Name" xml:space="preserve">
+    <value>ManageCampaignsButton</value>
+  </data>
+  <data name="&gt;&gt;ManageCampaignsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ManageCampaignsButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ManageCampaignsButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="HostButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 108</value>
+  </data>
+  <data name="HostButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="HostButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 38</value>
+  </data>
+  <data name="HostButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="HostButton.Text" xml:space="preserve">
+    <value>Host Session</value>
+  </data>
+  <data name="&gt;&gt;HostButton.Name" xml:space="preserve">
+    <value>HostButton</value>
+  </data>
+  <data name="&gt;&gt;HostButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HostButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;HostButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="JoinButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 44</value>
+  </data>
+  <data name="JoinButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="JoinButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 38</value>
+  </data>
+  <data name="JoinButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="JoinButton.Text" xml:space="preserve">
+    <value>Join Session</value>
+  </data>
+  <data name="&gt;&gt;JoinButton.Name" xml:space="preserve">
+    <value>JoinButton</value>
+  </data>
+  <data name="&gt;&gt;JoinButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;JoinButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;JoinButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEANzcQAAEABAAkCAAAFgAAACgAAAA3AAAAbgAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -157,5 +333,17 @@
         /gD/gAAAAAP+AP/AAAAAB/4A/+AAAAAP/gD/8AAAAB/+AP/8AAAAf/4A//8AAAH//gD//+AAD//+AP//
         /AB///4A
 </value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>RPGWonder</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainMenu</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

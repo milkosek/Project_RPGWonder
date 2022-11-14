@@ -39,28 +39,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCampaigns));
             this.CrtNewCampaignButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CrtNewCampaignButton
             // 
-            this.CrtNewCampaignButton.Location = new System.Drawing.Point(433, 226);
+            resources.ApplyResources(this.CrtNewCampaignButton, "CrtNewCampaignButton");
             this.CrtNewCampaignButton.Name = "CrtNewCampaignButton";
-            this.CrtNewCampaignButton.Size = new System.Drawing.Size(218, 30);
-            this.CrtNewCampaignButton.TabIndex = 0;
-            this.CrtNewCampaignButton.Text = "Create New Campaign";
             this.CrtNewCampaignButton.UseVisualStyleBackColor = true;
             this.CrtNewCampaignButton.Click += new System.EventHandler(this.HandleCreateCampaign);
             // 
             // ManageCampaigns
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.CrtNewCampaignButton);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ManageCampaigns";
-            this.Text = "RPGWonder";
             this.Load += new System.EventHandler(this.ManageCampaigns_Load);
             this.ResumeLayout(false);
 
