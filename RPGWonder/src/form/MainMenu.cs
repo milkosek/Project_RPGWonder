@@ -5,9 +5,11 @@ namespace RPGWonder
 {
     public partial class MainMenu : Form
     {
+        public static MainMenu instance;
         public MainMenu()
         {
             InitializeComponent();
+            instance = this;
         }
 
         public Game Game
@@ -72,7 +74,6 @@ namespace RPGWonder
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             Settings settingsWindow = new Settings();
-            this.Hide();
             settingsWindow.Show();
         }
 
@@ -90,14 +91,12 @@ namespace RPGWonder
         private void CrtCampaignButton_Click(object sender, EventArgs e)
         {
             ManageCampaigns manageCampaignsWindow = new ManageCampaigns();
-            this.Hide();
             manageCampaignsWindow.Show();
         }
 
         private void CrtCharButton_Click(object sender, EventArgs e)
         {
             ManageCharacters manageCharacterWindow = new ManageCharacters();
-            this.Hide();
             manageCharacterWindow.Show();
         }
     }
