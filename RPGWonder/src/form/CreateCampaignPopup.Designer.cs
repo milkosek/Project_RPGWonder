@@ -30,6 +30,7 @@ namespace RPGWonder
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateCampaignPopup));
             this.CreateCapaignPopupAcceptButton = new System.Windows.Forms.Button();
             this.CreateCampaignPopupTextBox = new System.Windows.Forms.TextBox();
             this.CreateCapaignPopupCancelButton = new System.Windows.Forms.Button();
@@ -38,52 +39,38 @@ namespace RPGWonder
             // 
             // CreateCapaignPopupAcceptButton
             // 
-            this.CreateCapaignPopupAcceptButton.Location = new System.Drawing.Point(79, 97);
+            resources.ApplyResources(this.CreateCapaignPopupAcceptButton, "CreateCapaignPopupAcceptButton");
             this.CreateCapaignPopupAcceptButton.Name = "CreateCapaignPopupAcceptButton";
-            this.CreateCapaignPopupAcceptButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateCapaignPopupAcceptButton.TabIndex = 1;
-            this.CreateCapaignPopupAcceptButton.Text = "Ok";
             this.CreateCapaignPopupAcceptButton.UseVisualStyleBackColor = true;
             this.CreateCapaignPopupAcceptButton.Click += new System.EventHandler(this.CreateCapaignPopupAcceptButton_Click);
             // 
             // CreateCampaignPopupTextBox
             // 
-            this.CreateCampaignPopupTextBox.Location = new System.Drawing.Point(160, 38);
+            resources.ApplyResources(this.CreateCampaignPopupTextBox, "CreateCampaignPopupTextBox");
             this.CreateCampaignPopupTextBox.Name = "CreateCampaignPopupTextBox";
-            this.CreateCampaignPopupTextBox.Size = new System.Drawing.Size(137, 22);
-            this.CreateCampaignPopupTextBox.TabIndex = 0;
             this.CreateCampaignPopupTextBox.TextChanged += new System.EventHandler(this.CreateCampaignPopupTextBox_TextChanged);
             // 
             // CreateCapaignPopupCancelButton
             // 
-            this.CreateCapaignPopupCancelButton.Location = new System.Drawing.Point(160, 97);
+            resources.ApplyResources(this.CreateCapaignPopupCancelButton, "CreateCapaignPopupCancelButton");
             this.CreateCapaignPopupCancelButton.Name = "CreateCapaignPopupCancelButton";
-            this.CreateCapaignPopupCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateCapaignPopupCancelButton.TabIndex = 3;
-            this.CreateCapaignPopupCancelButton.Text = "Cancel";
             this.CreateCapaignPopupCancelButton.UseVisualStyleBackColor = true;
             this.CreateCapaignPopupCancelButton.Click += new System.EventHandler(this.CreateCapaignPopupCancelButton_Click);
             // 
             // CreateCampaignPopupNameLabel
             // 
-            this.CreateCampaignPopupNameLabel.AutoSize = true;
-            this.CreateCampaignPopupNameLabel.Location = new System.Drawing.Point(45, 41);
+            resources.ApplyResources(this.CreateCampaignPopupNameLabel, "CreateCampaignPopupNameLabel");
             this.CreateCampaignPopupNameLabel.Name = "CreateCampaignPopupNameLabel";
-            this.CreateCampaignPopupNameLabel.Size = new System.Drawing.Size(109, 16);
-            this.CreateCampaignPopupNameLabel.TabIndex = 2;
-            this.CreateCampaignPopupNameLabel.Text = "Campaign name:";
             // 
             // CreateCampaignPopup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 163);
             this.Controls.Add(this.CreateCapaignPopupCancelButton);
             this.Controls.Add(this.CreateCampaignPopupNameLabel);
             this.Controls.Add(this.CreateCapaignPopupAcceptButton);
             this.Controls.Add(this.CreateCampaignPopupTextBox);
             this.Name = "CreateCampaignPopup";
-            this.Text = "CreateCampaignPopup";
             this.ResumeLayout(false);
             this.PerformLayout();
 
