@@ -26,11 +26,6 @@ namespace RPGWonder
             {
                 DiceDict.Add(dice[iter + 1], dice[iter]);
             }
-
-            foreach (KeyValuePair<int, int> kvp in DiceDict)
-            {
-                Debug.WriteLine("k {0} n {1}", kvp.Key, kvp.Value);
-            }
         }
 
         /// <summary>
@@ -66,35 +61,39 @@ namespace RPGWonder
         }
 
         /// <summary>
-        /// <c>AddDie</c> function increases the number of k sided dice in <c>DiceDict</c> by 1.
+        /// <c>AddDie</c> function increases the number of d sided dice in <c>DiceDict</c> by 1.
         /// </summary>
-        /// <param name="k">Number of faces on a die.</param>
-        public void AddDie(int k)
+        /// <param name="d">Number of faces on a die.</param>
+        public void AddDie(int d)
         {
-            if (k > 0)
+            if (d > 0)
             {
-                if (DiceDict.ContainsKey(k))
+                if (DiceDict.ContainsKey(d))
                 {
-                    DiceDict[k]++;
+                    DiceDict[d]++;
                 }
                 else
                 {
-                    DiceDict.Add(k, 1);
+                    DiceDict.Add(d, 1);
                 }
             }
         }
 
         /// <summary>
-        /// <c>AddDie</c> function decreases the number of k sided dice in <c>DiceDict</c> by 1.
+        /// <c>AddDie</c> function decreases the number of d sided dice in <c>DiceDict</c> by 1.
         /// </summary>
-        /// <param name="k">Number of faces on a die.</param>
-        public void SubDie(int k)
+        /// <param name="d">Number of faces on a die.</param>
+        public void SubDie(int d)
         {
-            if (DiceDict.ContainsKey(k))
+            if (DiceDict.ContainsKey(d))
             {
-                if (DiceDict[k] > 0)
+                if (DiceDict[d] == 1)
                 {
-                    DiceDict[k]--;
+                    DiceDict.Remove(d);
+                }
+                else if (DiceDict[d] > 0)
+                {
+                    DiceDict[d]--;
                 }
             }
         }
@@ -104,7 +103,7 @@ namespace RPGWonder
         /// </summary>
         /// <returns>
         /// A <c>string</c> representing all dice, in a form: 
-        /// "{number od dice}k{faces of dice}" separated by spaces.
+        /// "{number od dice}d{faces of dice}" separated by spaces.
         /// </returns>
         public String StringDie()
         {
@@ -112,27 +111,27 @@ namespace RPGWonder
 
             foreach (KeyValuePair<int, int> die in DiceDict)
             {
-                dieStr += String.Format(" {0}k{1}", die.Value, die.Key);
+                dieStr += String.Format(" {0}d{1}", die.Value, die.Key);
             }
 
             return dieStr;
         }
 
         /// <summary>
-        /// <c>QuickRoll</c> function rolls <c>n</c> <c>k</c>-sided dice. 
+        /// <c>QuickRoll</c> function rolls <c>n</c> <c>d</c>-sided dice. 
         /// </summary>
         /// <param name="n">Number of faces on a die.</param>
-        /// <param name="k">Number of faces on a die.</param>
+        /// <param name="d">Number of faces on a die.</param>
         /// <returns>
         /// Sum of rolls as an <c>Int</c>.
         /// </returns>
-        public int QuickRoll(int n, int k)
+        public int QuickRoll(int n, int d)
         {
             int TempSum = 0;
 
             for (int i = 0; i < n; i++)
             {
-                TempSum += Randomizer.Next(1, k + 1);
+                TempSum += Randomizer.Next(1, d + 1);
             }
             return TempSum;
         }
