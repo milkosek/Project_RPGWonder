@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using RPGWonder.src.form;
 
 namespace RPGWonder
 {
@@ -97,6 +98,12 @@ namespace RPGWonder
         private void CrtCharButton_Click(object sender, EventArgs e)
         {
             ManageCharacters manageCharacterWindow = new ManageCharacters();
+            manageCharacterWindow.Show();
+        }
+
+        private void TempDiceRollMenu_Click(object sender, EventArgs e)
+        {
+            DiceDisplay manageCharacterWindow = new DiceDisplay();
             manageCharacterWindow.Show();
         }
     }
