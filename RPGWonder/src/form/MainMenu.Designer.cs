@@ -38,7 +38,6 @@ namespace RPGWonder
             this.ManageCampaignsButton = new System.Windows.Forms.Button();
             this.HostButton = new System.Windows.Forms.Button();
             this.JoinButton = new System.Windows.Forms.Button();
-            this.tempDiceDisplayButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitButton
@@ -83,22 +82,10 @@ namespace RPGWonder
             this.JoinButton.UseVisualStyleBackColor = true;
             this.JoinButton.Click += new System.EventHandler(this.JoinButton_Click);
             // 
-            // tempDiceDisplayButton
-            // 
-            this.tempDiceDisplayButton.Location = new System.Drawing.Point(620, 233);
-            this.tempDiceDisplayButton.Name = "tempDiceDisplayButton";
-            this.tempDiceDisplayButton.Size = new System.Drawing.Size(118, 38);
-            this.tempDiceDisplayButton.TabIndex = 6;
-            this.tempDiceDisplayButton.Text = "tempDiceDisplayButton";
-            this.tempDiceDisplayButton.UseVisualStyleBackColor = true;
-            this.tempDiceDisplayButton.Click += new System.EventHandler(this.DiceDisplay_Click);
-            // 
             // MainMenu
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tempDiceDisplayButton);
             this.Controls.Add(this.JoinButton);
             this.Controls.Add(this.HostButton);
             this.Controls.Add(this.ManageCampaignsButton);
@@ -119,7 +106,6 @@ namespace RPGWonder
         private System.Windows.Forms.Button ManageCampaignsButton;
         private System.Windows.Forms.Button HostButton;
         private System.Windows.Forms.Button JoinButton;
-        private Button tempDiceDisplayButton;
     }
 }
 
