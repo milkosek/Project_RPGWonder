@@ -36,7 +36,7 @@ namespace RPGWonder
         private string featuresAndTraits;
         private string otherProficienciesAndLanguages;
         private List<int> money;
-        private List<Entity> entities;
+        private List<Entity> items;
         private List<AttackOrSpell> attacksAndSpells;
         private int saveStrength;
         private int saveDexterity;
@@ -69,6 +69,8 @@ namespace RPGWonder
         private string eyes;
         private string skin;
         private string hair;
+        private string alliesAndOrgs;
+
 
         internal AttackOrSpell AttackOrSpell
         {
