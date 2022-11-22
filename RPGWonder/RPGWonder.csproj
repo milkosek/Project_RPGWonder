@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -132,6 +147,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
+    <EmbeddedResource Include="src\form\Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\HostSession.resx">
+      <DependentUpon>HostSession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\JoinSession.resx">
       <DependentUpon>JoinSession.cs</DependentUpon>
@@ -141,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\ManageCharacters.resx">
       <DependentUpon>ManageCharacters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\MapEditor.resx">
+      <DependentUpon>MapEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -156,7 +179,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -171,8 +196,19 @@
     <None Include="src\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\RPGWonder.ico" />
+    <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

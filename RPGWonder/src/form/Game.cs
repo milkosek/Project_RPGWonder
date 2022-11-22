@@ -48,5 +48,10 @@ namespace RPGWonder
             {
             }
         }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+            MainMenu.instance.Hide();
+        }
     }
 }

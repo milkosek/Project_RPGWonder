@@ -24,5 +24,12 @@ namespace RPGWonder
             {
             }
         }
+
+        private void hostSessionButton_Click(object sender, EventArgs e)
+        {
+            Game gameWindow = new Game();
+            this.Close();
+            gameWindow.Show();
+        }
     }
 }

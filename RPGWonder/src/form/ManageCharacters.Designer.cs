@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCharacters));
             this.SuspendLayout();
             // 
-            // CreateCharacter
+            // ManageCharacters
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "CreateCharacter";
-            this.Text = "RPGWonder";
+            this.Name = "ManageCharacters";
             this.ResumeLayout(false);
 
         }
