@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using RPGWonder.src.form;
 
 namespace RPGWonder
 {
@@ -99,6 +100,13 @@ namespace RPGWonder
             ManageCharacters manageCharacterWindow = new ManageCharacters();
             this.Hide();
             manageCharacterWindow.Show();
+        }
+
+        private void DiceDisplay_Click(object sender, EventArgs e)
+        {
+            DiceDisplay diceDisplay = new DiceDisplay();
+            this.Hide();
+            diceDisplay.Show();
         }
     }
 }

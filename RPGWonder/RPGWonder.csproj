@@ -69,6 +69,12 @@
     <Compile Include="src\dataclass\DiceRolls.cs" />
     <Compile Include="src\dataclass\Entity.cs" />
     <Compile Include="src\dataclass\EntityOnMap.cs" />
+    <Compile Include="src\form\DiceDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\DiceDisplay.Designer.cs">
+      <DependentUpon>DiceDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\form\Game.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="src\VoiceChat.cs" />
     <EmbeddedResource Include="src\form\CreateCampaignPopup.resx">
       <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\DiceDisplay.resx">
+      <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\JoinSession.resx">
       <DependentUpon>JoinSession.cs</DependentUpon>
