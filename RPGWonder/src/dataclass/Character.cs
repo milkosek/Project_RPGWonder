@@ -8,6 +8,7 @@ namespace RPGWonder
 {
     class Character : Entity
     {
+        private string characterName;
         private string characterClass;
         private int level;
         private string background;
@@ -62,6 +63,12 @@ namespace RPGWonder
         private bool stealthDEX;
         private bool survivalWIS;
         private int passiveWisdomPerception;
+        private string age;
+        private string height;
+        private string weight;
+        private string eyes;
+        private string skin;
+        private string hair;
 
         internal AttackOrSpell AttackOrSpell
         {
