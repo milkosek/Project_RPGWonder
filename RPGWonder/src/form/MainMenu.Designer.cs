@@ -38,6 +38,7 @@ namespace RPGWonder
             this.ManageCampaignsButton = new System.Windows.Forms.Button();
             this.HostButton = new System.Windows.Forms.Button();
             this.JoinButton = new System.Windows.Forms.Button();
+            this.TempDiceRollMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ExitButton
@@ -82,10 +83,18 @@ namespace RPGWonder
             this.JoinButton.UseVisualStyleBackColor = true;
             this.JoinButton.Click += new System.EventHandler(this.JoinButton_Click);
             // 
+            // TempDiceRollMenu
+            // 
+            resources.ApplyResources(this.TempDiceRollMenu, "TempDiceRollMenu");
+            this.TempDiceRollMenu.Name = "TempDiceRollMenu";
+            this.TempDiceRollMenu.UseVisualStyleBackColor = true;
+            this.TempDiceRollMenu.Click += new System.EventHandler(this.TempDiceRollMenu_Click);
+            // 
             // MainMenu
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TempDiceRollMenu);
             this.Controls.Add(this.JoinButton);
             this.Controls.Add(this.HostButton);
             this.Controls.Add(this.ManageCampaignsButton);
@@ -106,6 +115,7 @@ namespace RPGWonder
         private System.Windows.Forms.Button ManageCampaignsButton;
         private System.Windows.Forms.Button HostButton;
         private System.Windows.Forms.Button JoinButton;
+        private Button TempDiceRollMenu;
     }
 }
 
