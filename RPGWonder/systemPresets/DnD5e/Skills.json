@@ -1,0 +1,18 @@
+{
+  "Acrobatics": {
+    "name": "Acrobatics",
+    "stat": "DEX"
+  },
+  "AnimalHandling": {
+    "name": "Animal Handling",
+    "stat": "WIS"
+  },
+  "Arcana": {
+    "name": "Arcana",
+    "stat": "INT"
+  },
+  "Athletics": {
+    "name": "Athletics",
+    "stat": "STR"
+  }
+}

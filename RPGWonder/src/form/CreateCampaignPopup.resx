@@ -130,10 +130,6 @@
   <data name="&gt;&gt;CreateCampaignPopupNameLabel.Name" xml:space="preserve">
     <value>CreateCampaignPopupNameLabel</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CreateCampaignPopupNameLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;CreateCapaignPopupAcceptButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -146,8 +142,12 @@
   <data name="CreateCapaignPopupCancelButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 97</value>
   </data>
-  <data name="CreateCapaignPopupAcceptButton.Text" xml:space="preserve">
-    <value>Ok</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CreateCampaignPopupTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CreateCampaignPopupNameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;CreateCampaignPopupTextBox.Name" xml:space="preserve">
     <value>CreateCampaignPopupTextBox</value>
@@ -161,6 +161,9 @@
   <data name="&gt;&gt;CreateCampaignPopupTextBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;CreateCampaignPopupTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CreateCampaignPopup</value>
   </data>
@@ -169,9 +172,6 @@
   </data>
   <data name="CreateCapaignPopupCancelButton.Text" xml:space="preserve">
     <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;CreateCampaignPopupNameLabel.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CreateCampaignPopup</value>
@@ -185,11 +185,11 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>325, 163</value>
   </data>
+  <data name="CreateCapaignPopupAcceptButton.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
-  </data>
-  <data name="CreateCampaignPopupTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="CreateCapaignPopupCancelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -218,14 +218,14 @@
   <data name="&gt;&gt;CreateCampaignPopupNameLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;CreateCampaignPopupTextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="CreateCampaignPopupNameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;CreateCapaignPopupCancelButton.Name" xml:space="preserve">
     <value>CreateCapaignPopupCancelButton</value>
   </data>
-  <data name="CreateCampaignPopupNameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;CreateCampaignPopupNameLabel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;CreateCapaignPopupAcceptButton.ZOrder" xml:space="preserve">
     <value>2</value>

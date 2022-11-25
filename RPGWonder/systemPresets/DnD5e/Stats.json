@@ -1,0 +1,32 @@
+{
+  "STR": {
+    "name": "Strength",
+    "min-val": "3",
+    "max-val": "30"
+  },
+  "DEX": {
+    "name": "Dexterity",
+    "min-val": "3",
+    "max-val": "30"
+  },
+  "CON": {
+    "name": "Constitution",
+    "min-val": "3",
+    "max-val": "30"
+  },
+  "INT": {
+    "name": "Intelligence",
+    "min-val": "3",
+    "max-val": "30"
+  },
+  "WIS": {
+    "name": "Wisdom",
+    "min-val": "3",
+    "max-val": "30"
+  },
+  "CHA": {
+    "name": "Charisma",
+    "min-val": "3",
+    "max-val": "30"
+  }
+}

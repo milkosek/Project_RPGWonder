@@ -117,13 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>en</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CrtNewCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 143</value>
+  </data>
+  <data name="CrtNewCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 102</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CrtNewCharacterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CrtNewCharacterButton.Text" xml:space="preserve">
+    <value>Create New Character</value>
+  </data>
+  <data name="&gt;&gt;CrtNewCharacterButton.Name" xml:space="preserve">
+    <value>CrtNewCharacterButton</value>
+  </data>
+  <data name="&gt;&gt;CrtNewCharacterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CrtNewCharacterButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CrtNewCharacterButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="EditCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 251</value>
+  </data>
+  <data name="EditCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 102</value>
+  </data>
+  <data name="EditCharacterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="EditCharacterButton.Text" xml:space="preserve">
+    <value>Edit Existing Character</value>
+  </data>
+  <data name="&gt;&gt;EditCharacterButton.Name" xml:space="preserve">
+    <value>EditCharacterButton</value>
+  </data>
+  <data name="&gt;&gt;EditCharacterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditCharacterButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;EditCharacterButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
   </data>

@@ -51,6 +51,9 @@
     <ApplicationIcon>src\asset\RPGWonder.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +67,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="systemPresets\DnD5e\Alignments.json" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\common\Common.cs" />
+    <Compile Include="src\utils\Utils.cs" />
+    <None Include="systemPresets\DnD5e\Backgrounds.json" />
+    <None Include="systemPresets\DnD5e\Classes.json" />
+    <None Include="systemPresets\DnD5e\Defines.json" />
+    <None Include="systemPresets\DnD5e\Genders.json" />
+    <None Include="systemPresets\DnD5e\Proficiencies.json" />
+    <None Include="systemPresets\DnD5e\RacialIncreases.json" />
+    <None Include="systemPresets\DnD5e\Races.json" />
+    <Compile Include="src\form\CreateOrEditCharacter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\CreateOrEditCharacter.Designer.cs">
+      <DependentUpon>CreateOrEditCharacter.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\dataclass\Asset.cs" />
     <Compile Include="src\dataclass\AttackOrSpell.cs" />
     <Compile Include="src\dataclass\Campaign.cs" />
@@ -81,7 +106,7 @@
     <Compile Include="src\form\CreateOrEditCampaign.Designer.cs">
       <DependentUpon>CreateOrEditCampaign.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\dataclass\DiceRolls.cs" />
+    <Compile Include="src\DiceRolls.cs" />
     <Compile Include="src\dataclass\Entity.cs" />
     <Compile Include="src\dataclass\EntityOnMap.cs" />
     <Compile Include="src\form\DiceDisplay.cs">
@@ -148,6 +173,12 @@
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\form\CreateOrEditCampaign.resx">
+      <DependentUpon>CreateOrEditCampaign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\CreateOrEditCharacter.resx">
+      <DependentUpon>CreateOrEditCharacter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +200,9 @@
     <EmbeddedResource Include="src\form\ManageCampaigns.resx">
       <DependentUpon>ManageCampaigns.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\form\ManageCharacters.en.resx">
+      <DependentUpon>ManageCharacters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\ManageCharacters.resx">
       <DependentUpon>ManageCharacters.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,14 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -201,11 +230,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="systemPresets\DnD5e\Skills.json" />
+    <None Include="systemPresets\DnD5e\Stats.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\asset\Die.png" />
     <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +251,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

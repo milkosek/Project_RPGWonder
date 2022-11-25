@@ -43,10 +43,10 @@ namespace RPGWonder
                 {
                     Directory.CreateDirectory(path);
                     Directory.CreateDirectory(path + "/Characters");
-                    Directory.CreateDirectory(path + "/Entities");
                     Directory.CreateDirectory(path + "/Maps");
                     Directory.CreateDirectory(path + "/Assets");
-                    string message = "Campaign created successfully!";
+                    ManageCampaigns.instance.Reload();
+                    string message = "Campaign created successfully!\n\nYou can now edit your campaign by double-clicking it on the list.";
                     MessageBox.Show(message);
                     Close();
                 }
