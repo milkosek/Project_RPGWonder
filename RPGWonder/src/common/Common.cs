@@ -6,34 +6,73 @@ namespace RPGWonder.src.common
 {
     public sealed class Common
     {
-        private static readonly Common instance = new Common();
-        private Common() { }
+        private static Common instance = null;
+
+        Common(
+                Dictionary<string, string> races,
+                Dictionary<string, string> classnames,
+                Dictionary<string, string> backgrounds,
+                Dictionary<string, string> genders,
+                Dictionary<string, string> alignments,
+                Dictionary<string, string> defines,
+                Dictionary<string, string> proficiencies,
+                Dictionary<string, Dictionary<string, string>> stats,
+                Dictionary<string, Dictionary<string, string>> racialIncreases,
+                Dictionary<string, Dictionary<string, string>> skills
+            )
+        {
+            Races = races;
+            Classnames = classnames;
+            Backgrounds = backgrounds;
+            Genders = genders;
+            Alignments = alignments;
+            Defines = defines;
+            Proficiencies = proficiencies;
+            Stats = stats;
+            RacialIncreases = racialIncreases;
+            Skills = skills;
+        }
+        public Dictionary<string, string> Races;
+        public Dictionary<string, string> Classnames;
+        public Dictionary<string, string> Backgrounds;
+        public Dictionary<string, string> Genders;
+        public Dictionary<string, string> Alignments;
+        public Dictionary<string, string> Defines;
+        public Dictionary<string, string> Proficiencies;
+        public Dictionary<string, Dictionary<string, string>> Stats;
+        public Dictionary<string, Dictionary<string, string>> RacialIncreases;
+        public Dictionary<string, Dictionary<string, string>> Skills;
         public static Common Instance
         {
             get
             {
+                if (instance == null)
+                {
+                    instance = new Common(
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Races.json"),
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json"),
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Backgrounds.json"),
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Genders.json"),
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Alignments.json"),
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Defines.json"),
+                            Utils.parseJSON<Dictionary<string, string>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Proficiencies.json"),
+                            Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Stats.json"),
+                            Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\RacialIncreases.json"),
+                            Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json")
+                        );
+                }
                 return instance;
             }
         }
-        public Dictionary<string, string> Races = Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Races.json") ;
-        public Dictionary<string, string> Classnames = Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json");
-        public Dictionary<string, string> Backgrounds = Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Backgrounds.json");
-        public Dictionary<string, string> Genders = Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Genders.json");
-        public Dictionary<string, string> Alignments = Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Alignments.json");
-        public Dictionary<string, string> Defines =Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Defines.json");
-        public Dictionary<string, string> Proficiencies = Utils.parseJSON<Dictionary<string, string>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Proficiencies.json");
-        public Dictionary<string, Dictionary<string, string>> Stats = Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Stats.json");
-        public Dictionary<string, Dictionary<string, string>> RacialIncreases = Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\RacialIncreases.json");
-        public Dictionary<string, Dictionary<string, string>> Skills = Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
-            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json");
     }
 }

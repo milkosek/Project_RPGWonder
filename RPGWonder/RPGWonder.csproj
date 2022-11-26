@@ -74,6 +74,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <Compile Include="src\utils\Utils.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />

@@ -1,8 +1,5 @@
-﻿using System;
+﻿using RPGWonder.src.safedict;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPGWonder
 {
@@ -15,7 +12,7 @@ namespace RPGWonder
         private int level;
         private string background;
         private string alignment;
-        private Dictionary<string, int> stats = new Dictionary<string, int>();
+        private Safedict<string, int> stats = new Safedict<string, int>();
         private int proficiencyBonus;
         private int armourClass;
         private int initiative;
@@ -40,7 +37,7 @@ namespace RPGWonder
         private int saveIntelligence;
         private int saveWisdom;
         private int saveCharisma;
-        private Dictionary<string, string> skills = new Dictionary<string, string>();
+        private Safedict<string, string> skills = new Safedict<string, string>();
         private int passiveWisdomPerception;
         private string age;
         private string height;
@@ -87,8 +84,8 @@ namespace RPGWonder
         public string Hair { get => hair; set => hair = value; }
         public string Race { get => race; set => race = value; }
         public string Gender { get => gender; set => gender = value; }
-        public Dictionary<string, string> Skills { get => skills; set => skills = value; }
-        public Dictionary<string, int> Stats { get => stats; set => stats = value; }
+        public Safedict<string, string> Skills { get => skills; set => skills = value; }
+        public Safedict<string, int> Stats { get => stats; set => stats = value; }
 
         internal AttackOrSpell AttackOrSpell
         {

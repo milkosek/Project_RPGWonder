@@ -25,11 +25,10 @@ namespace RPGWonder
             InitializeComponent();
             instance = this;
         }
-
         private void CreateOrEditCharacter_Load(object sender, EventArgs e)
         {
             initCharacter(CreatedCharacter);
-            for (int i = 0; i < Common.Instance.Races.Count ; i++)
+            for (int i = 0; i < Common.Instance.Races.Count; i++)
             {
                 raceCcomboBox.Items.Add(Common.Instance.Races.Values.ToList()[i]);
             }
@@ -112,32 +111,18 @@ namespace RPGWonder
             for (int i = 0; i < Common.Instance.Stats.Count; i++)
             {
                 string TAG = Common.Instance.Stats.Keys.ToList()[0];
-                try
-                {
-                    createdCharacter.Stats.Add(TAG, 0);
-                }
-                catch
-                {
-                    createdCharacter.Stats[TAG] = 0;
-                }
+                createdCharacter.Stats.Set(TAG, 0);
             }
             for (int i = 0; i < Common.Instance.Skills.Count; i++)
             {
                 string TAG = Common.Instance.Skills.Keys.ToList()[0];
-                try
-                {
-                    createdCharacter.Skills.Add(TAG, "+0");
-                }
-                catch
-                {
-                    createdCharacter.Skills[TAG] = "+0";
-                }
+                createdCharacter.Skills.Set(TAG, "+0");
             }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (race == -1 || classname == -1 || name == "" || background == -1 || 
+            if (race == -1 || classname == -1 || name == "" || background == -1 ||
                 gender == -1 || alignment == -1 || level < 1 || level > 20)
             {
                 string message = "Please fill all boxes.";
@@ -169,7 +154,7 @@ namespace RPGWonder
         }
         private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gender = genderComboBox.SelectedIndex; 
+            gender = genderComboBox.SelectedIndex;
         }
         private void alignmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -189,7 +174,7 @@ namespace RPGWonder
             nameTextBox.Hide();
             basicInfoTableLayout.Hide();
             nextButton.Hide();
-            characterNameLabel.Text = CreatedCharacter.CharacterName +"\t Lv" + CreatedCharacter.Level + " " +
+            characterNameLabel.Text = CreatedCharacter.CharacterName + "\t Lv" + CreatedCharacter.Level + " " +
                 Common.Instance.Races[CreatedCharacter.Race] + " " + Common.Instance.Classnames[CreatedCharacter.CharacterClass];
             characterNameLabel.Show();
             statsTableLayoutPanel.Show();
@@ -234,11 +219,11 @@ namespace RPGWonder
                 if (statValue < (int)(numericUpDown.Minimum)) statValue = (int)(numericUpDown.Minimum);
                 if (statValue > (int)(numericUpDown.Maximum)) statValue = (int)(numericUpDown.Maximum);
                 numericUpDown.Value = statValue;
-                CreatedCharacter.Stats[TAG] = statValue;
+                CreatedCharacter.Stats.Set(TAG, statValue);
             }
         }
 
-        private void handleRecalcProfiencies(object sender, System.EventArgs e)
+        private void handleRecalcProfiencies(object sender, EventArgs e)
         {
             updateProficiencies();
         }
@@ -251,18 +236,11 @@ namespace RPGWonder
                 Label label = (Label)Controls.Find("proficiency" + Common.Instance.Stats.Keys.ToList()[i] + "label", true)[0];
                 for (int j = Common.Instance.Proficiencies.Count - 1; j >= 0; j--)
                 {
-                    try
+                    if (int.Parse(Common.Instance.Proficiencies.Keys.ToList()[j]) <= CreatedCharacter.Stats.Get(TAG))
                     {
-                        if (int.Parse(Common.Instance.Proficiencies.Keys.ToList()[j]) <= CreatedCharacter.Stats[TAG])
-                        {
-                            string prof = Common.Instance.Proficiencies.Values.ToList()[j];
-                            CreatedCharacter.Skills[TAG] = prof;
-                            label.Text = prof;
-                            break;
-                        }
-                    }
-                    catch (KeyNotFoundException)
-                    {
+                        string prof = Common.Instance.Proficiencies.Values.ToList()[j];
+                        CreatedCharacter.Skills.Set(TAG, prof);
+                        label.Text = prof;
                         break;
                     }
                 }
@@ -271,13 +249,13 @@ namespace RPGWonder
             {
                 string TAG = Common.Instance.Skills.Keys.ToList()[i];
                 Label label = (Label)Controls.Find("skill" + TAG + "label", true)[0];
-                label.Text = CreatedCharacter.Skills[TAG] + Common.Instance.Skills[TAG]["name"] + " (" + Common.Instance.Skills[TAG]["stat"] + ")";
+                label.Text = CreatedCharacter.Skills.Get(TAG) + " " + Common.Instance.Skills[TAG]["name"] + " (" + Common.Instance.Skills[TAG]["stat"] + ")";
             }
         }
 
         private void personalityTextBox_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void rerollButton_Click(object sender, EventArgs e)
