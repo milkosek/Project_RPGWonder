@@ -59,14 +59,5 @@ namespace RPGWonder.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AppGlobalResource.
-        /// </summary>
-        internal static string Deployment_Type {
-            get {
-                return ResourceManager.GetString("Deployment Type", resourceCulture);
-            }
-        }
     }
 }

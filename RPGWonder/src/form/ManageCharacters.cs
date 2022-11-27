@@ -24,5 +24,11 @@ namespace RPGWonder
             {
             }
         }
+
+        private void CrtNewCharacterButton_Click(object sender, EventArgs e)
+        {
+            CreateOrEditCharacter createOrEditCharacter = new CreateOrEditCharacter();
+            createOrEditCharacter.Show();
+        }
     }
 }

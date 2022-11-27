@@ -1,0 +1,62 @@
+{
+  "MountainDwarfSTR": {
+    "race": "MountainDwarf",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "HalfOrcSTR": {
+    "race": "HalfOrc",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "BlackDragonSTR": {
+    "race": "BlackDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "BrassDragonSTR": {
+    "race": "BrassDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "BlueDragonSTR": {
+    "race": "BlueDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "CopperDragonSTR": {
+    "race": "CopperDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "GoldDragonSTR": {
+    "race": "GoldDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "GreenDragonSTR": {
+    "race": "GreenDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "RedDragonSTR": {
+    "race": "RedDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "SilverDragonSTR": {
+    "race": "SilverDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "WhiteDragonSTR": {
+    "race": "WhiteDragon",
+    "stat": "STR",
+    "bonus": "2"
+  },
+  "HumanSTR": {
+    "race": "Human",
+    "stat": "STR",
+    "bonus": "1"
+  }
+}

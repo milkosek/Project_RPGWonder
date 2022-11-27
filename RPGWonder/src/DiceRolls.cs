@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPGWonder
 {
@@ -134,6 +130,11 @@ namespace RPGWonder
                 TempSum += Randomizer.Next(1, d + 1);
             }
             return TempSum;
+        }
+
+        public void Clear()
+        {
+            DiceDict.Clear();
         }
     }
 
