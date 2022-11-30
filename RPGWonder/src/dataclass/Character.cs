@@ -7,14 +7,14 @@ namespace RPGWonder
     {
         private string race;
         private string gender;
-        private string characterName;
         private string characterClass;
         private int level;
         private string background;
         private string alignment;
         private Safedict<string, int> stats = new Safedict<string, int>();
         private int proficiencyBonus;
-        private int armourClass;
+        private int armorClass;
+        private int initiativeModifier;
         private int initiative;
         private int speed;
         private int currentHitPoints;
@@ -28,15 +28,10 @@ namespace RPGWonder
         private int deathSavesSuccess;
         private string featuresAndTraits;
         private string otherProficienciesAndLanguages;
-        private List<int> money;
-        private List<Entity> items;
-        private List<AttackOrSpell> attacksAndSpells;
-        private int saveStrength;
-        private int saveDexterity;
-        private int saveConstitution;
-        private int saveIntelligence;
-        private int saveWisdom;
-        private int saveCharisma;
+        private Safedict<string, int> money = new Safedict<string, int>();
+        private List<int> items = new List<int>();
+        private List<int> attacksAndSpells = new List<int>();
+        private Safedict<string, string> saves = new Safedict<string, string>();
         private Safedict<string, string> skills = new Safedict<string, string>();
         private int passiveWisdomPerception;
         private string age;
@@ -54,7 +49,7 @@ namespace RPGWonder
         public string Background { get => background; set => background = value; }
         public string Alignment { get => alignment; set => alignment = value; }
         public int ProficiencyBonus { get => proficiencyBonus; set => proficiencyBonus = value; }
-        public int ArmourClass { get => armourClass; set => armourClass = value; }
+        public int ArmorClass { get => armorClass; set => armorClass = value; }
         public int Initiative { get => initiative; set => initiative = value; }
         public int Speed { get => speed; set => speed = value; }
         public int CurrentHitPoints { get => currentHitPoints; set => currentHitPoints = value; }
@@ -68,14 +63,7 @@ namespace RPGWonder
         public int DeathSavesSuccess { get => deathSavesSuccess; set => deathSavesSuccess = value; }
         public string FeaturesAndTraits { get => featuresAndTraits; set => featuresAndTraits = value; }
         public string OtherProficienciesAndLanguages { get => otherProficienciesAndLanguages; set => otherProficienciesAndLanguages = value; }
-        public List<int> Money { get => money; set => money = value; }
-        public int SaveStrength { get => saveStrength; set => saveStrength = value; }
-        public int SaveDexterity { get => saveDexterity; set => saveDexterity = value; }
-        public int SaveConstitution { get => saveConstitution; set => saveConstitution = value; }
-        public int SaveIntelligence { get => saveIntelligence; set => saveIntelligence = value; }
-        public int SaveWisdom { get => saveWisdom; set => saveWisdom = value; }
-        public int SaveCharisma { get => saveCharisma; set => saveCharisma = value; }
-        public string CharacterName { get => characterName; set => characterName = value; }
+        public Safedict<string, int> Money { get => money; set => money = value; }
         public string Age { get => age; set => age = value; }
         public string Height { get => height; set => height = value; }
         public string Weight { get => weight; set => weight = value; }
@@ -86,16 +74,10 @@ namespace RPGWonder
         public string Gender { get => gender; set => gender = value; }
         public Safedict<string, string> Skills { get => skills; set => skills = value; }
         public Safedict<string, int> Stats { get => stats; set => stats = value; }
-
-        internal AttackOrSpell AttackOrSpell
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal List<Entity> Items { get => items; set => items = value; }
-        internal List<AttackOrSpell> AttacksAndSpells { get => attacksAndSpells; set => attacksAndSpells = value; }
+        public Safedict<string, string> Saves { get => saves; set => saves = value; }
+        public string AlliesAndOrgs { get => alliesAndOrgs; set => alliesAndOrgs = value; }
+        public int InitiativeModifier { get => initiativeModifier; set => initiativeModifier = value; }
+        internal List<int> Items { get => items; set => items = value; }
+        internal List<int> AttacksAndSpells { get => attacksAndSpells; set => attacksAndSpells = value; }
     }
 }

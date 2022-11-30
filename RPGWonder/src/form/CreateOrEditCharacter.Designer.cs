@@ -57,6 +57,7 @@
             this.statsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rerollButton = new System.Windows.Forms.Button();
             this.skillsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.saveButton = new System.Windows.Forms.Button();
             this.basicInfoTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.levelBox)).BeginInit();
             this.SuspendLayout();
@@ -323,7 +324,6 @@
             this.personalityTextBox.Name = "personalityTextBox";
             this.personalityTextBox.Size = new System.Drawing.Size(213, 27);
             this.personalityTextBox.TabIndex = 18;
-            this.personalityTextBox.TextChanged += new System.EventHandler(this.personalityTextBox_TextChanged);
             // 
             // idealLabel
             // 
@@ -344,7 +344,7 @@
             this.nextButton.TabIndex = 16;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = false;
-            this.nextButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // characterNameLabel
             // 
@@ -485,21 +485,33 @@
             // skillsTableLayoutPanel
             // 
             this.skillsTableLayoutPanel.ColumnCount = 1;
-            this.skillsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.skillsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.skillsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.skillsTableLayoutPanel.Location = new System.Drawing.Point(190, 115);
             this.skillsTableLayoutPanel.Name = "skillsTableLayoutPanel";
             this.skillsTableLayoutPanel.RowCount = 1;
             this.skillsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.skillsTableLayoutPanel.Size = new System.Drawing.Size(152, 462);
+            this.skillsTableLayoutPanel.Size = new System.Drawing.Size(175, 462);
             this.skillsTableLayoutPanel.TabIndex = 20;
             this.skillsTableLayoutPanel.Visible = false;
+            // 
+            // saveButton
+            // 
+            this.saveButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.saveButton.Location = new System.Drawing.Point(12, 583);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(772, 44);
+            this.saveButton.TabIndex = 21;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Visible = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // CreateOrEditCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 639);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.skillsTableLayoutPanel);
             this.Controls.Add(this.rerollButton);
             this.Controls.Add(this.statsTableLayoutPanel);
@@ -548,5 +560,6 @@
         private System.Windows.Forms.TableLayoutPanel statsTableLayoutPanel;
         private System.Windows.Forms.Button rerollButton;
         private System.Windows.Forms.TableLayoutPanel skillsTableLayoutPanel;
+        private System.Windows.Forms.Button saveButton;
     }
 }
