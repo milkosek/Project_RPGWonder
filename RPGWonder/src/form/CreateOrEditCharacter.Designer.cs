@@ -37,12 +37,12 @@
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.alignmentComboBox = new System.Windows.Forms.ComboBox();
             this.basicInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.flawLabel = new System.Windows.Forms.Label();
-            this.bondLabel = new System.Windows.Forms.Label();
-            this.personalityLabel = new System.Windows.Forms.Label();
-            this.bondTextBox = new System.Windows.Forms.TextBox();
-            this.flawTextBox = new System.Windows.Forms.TextBox();
-            this.idealTextBox = new System.Windows.Forms.TextBox();
+            this.flawsLabel = new System.Windows.Forms.Label();
+            this.bondsLabel = new System.Windows.Forms.Label();
+            this.personalityTraitsLabel = new System.Windows.Forms.Label();
+            this.bondsTextBox = new System.Windows.Forms.TextBox();
+            this.flawsTextBox = new System.Windows.Forms.TextBox();
+            this.ideaslTextBox = new System.Windows.Forms.TextBox();
             this.levelLabel = new System.Windows.Forms.Label();
             this.genderLabel = new System.Windows.Forms.Label();
             this.backgroundLabel = new System.Windows.Forms.Label();
@@ -50,8 +50,8 @@
             this.raceLabel = new System.Windows.Forms.Label();
             this.levelBox = new System.Windows.Forms.NumericUpDown();
             this.alignmentLabel = new System.Windows.Forms.Label();
-            this.personalityTextBox = new System.Windows.Forms.TextBox();
-            this.idealLabel = new System.Windows.Forms.Label();
+            this.personalityTraitsTextBox = new System.Windows.Forms.TextBox();
+            this.idealsLabel = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
             this.characterNameLabel = new System.Windows.Forms.Label();
             this.statsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -143,12 +143,12 @@
             this.basicInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.basicInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.basicInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.basicInfoTableLayout.Controls.Add(this.flawLabel, 2, 4);
-            this.basicInfoTableLayout.Controls.Add(this.bondLabel, 0, 4);
-            this.basicInfoTableLayout.Controls.Add(this.personalityLabel, 0, 3);
-            this.basicInfoTableLayout.Controls.Add(this.bondTextBox, 1, 4);
-            this.basicInfoTableLayout.Controls.Add(this.flawTextBox, 3, 4);
-            this.basicInfoTableLayout.Controls.Add(this.idealTextBox, 3, 3);
+            this.basicInfoTableLayout.Controls.Add(this.flawsLabel, 2, 4);
+            this.basicInfoTableLayout.Controls.Add(this.bondsLabel, 0, 4);
+            this.basicInfoTableLayout.Controls.Add(this.personalityTraitsLabel, 0, 3);
+            this.basicInfoTableLayout.Controls.Add(this.bondsTextBox, 1, 4);
+            this.basicInfoTableLayout.Controls.Add(this.flawsTextBox, 3, 4);
+            this.basicInfoTableLayout.Controls.Add(this.ideaslTextBox, 3, 3);
             this.basicInfoTableLayout.Controls.Add(this.levelLabel, 2, 1);
             this.basicInfoTableLayout.Controls.Add(this.genderLabel, 2, 0);
             this.basicInfoTableLayout.Controls.Add(this.backgroundLabel, 0, 2);
@@ -161,8 +161,8 @@
             this.basicInfoTableLayout.Controls.Add(this.levelBox, 3, 1);
             this.basicInfoTableLayout.Controls.Add(this.alignmentLabel, 2, 2);
             this.basicInfoTableLayout.Controls.Add(this.backgroundComboBox, 1, 2);
-            this.basicInfoTableLayout.Controls.Add(this.personalityTextBox, 1, 3);
-            this.basicInfoTableLayout.Controls.Add(this.idealLabel, 2, 3);
+            this.basicInfoTableLayout.Controls.Add(this.personalityTraitsTextBox, 1, 3);
+            this.basicInfoTableLayout.Controls.Add(this.idealsLabel, 2, 3);
             this.basicInfoTableLayout.Location = new System.Drawing.Point(79, 107);
             this.basicInfoTableLayout.Name = "basicInfoTableLayout";
             this.basicInfoTableLayout.RowCount = 5;
@@ -176,60 +176,60 @@
             // 
             // flawLabel
             // 
-            this.flawLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.flawLabel.AutoSize = true;
-            this.flawLabel.Location = new System.Drawing.Point(369, 398);
-            this.flawLabel.Name = "flawLabel";
-            this.flawLabel.Size = new System.Drawing.Size(35, 16);
-            this.flawLabel.TabIndex = 18;
-            this.flawLabel.Text = "Flaw";
+            this.flawsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flawsLabel.AutoSize = true;
+            this.flawsLabel.Location = new System.Drawing.Point(369, 398);
+            this.flawsLabel.Name = "flawLabel";
+            this.flawsLabel.Size = new System.Drawing.Size(35, 16);
+            this.flawsLabel.TabIndex = 18;
+            this.flawsLabel.Text = "Flaw";
             // 
             // bondLabel
             // 
-            this.bondLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.bondLabel.AutoSize = true;
-            this.bondLabel.Location = new System.Drawing.Point(52, 398);
-            this.bondLabel.Name = "bondLabel";
-            this.bondLabel.Size = new System.Drawing.Size(39, 16);
-            this.bondLabel.TabIndex = 18;
-            this.bondLabel.Text = "Bond";
+            this.bondsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bondsLabel.AutoSize = true;
+            this.bondsLabel.Location = new System.Drawing.Point(52, 398);
+            this.bondsLabel.Name = "bondLabel";
+            this.bondsLabel.Size = new System.Drawing.Size(39, 16);
+            this.bondsLabel.TabIndex = 18;
+            this.bondsLabel.Text = "Bond";
             // 
             // personalityLabel
             // 
-            this.personalityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.personalityLabel.AutoSize = true;
-            this.personalityLabel.Location = new System.Drawing.Point(14, 299);
-            this.personalityLabel.Name = "personalityLabel";
-            this.personalityLabel.Size = new System.Drawing.Size(77, 32);
-            this.personalityLabel.TabIndex = 18;
-            this.personalityLabel.Text = "Personality Traits";
+            this.personalityTraitsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.personalityTraitsLabel.AutoSize = true;
+            this.personalityTraitsLabel.Location = new System.Drawing.Point(14, 299);
+            this.personalityTraitsLabel.Name = "personalityLabel";
+            this.personalityTraitsLabel.Size = new System.Drawing.Size(77, 32);
+            this.personalityTraitsLabel.TabIndex = 18;
+            this.personalityTraitsLabel.Text = "Personality Traits";
             // 
             // bondTextBox
             // 
-            this.bondTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bondTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bondTextBox.Location = new System.Drawing.Point(97, 392);
-            this.bondTextBox.Name = "bondTextBox";
-            this.bondTextBox.Size = new System.Drawing.Size(213, 27);
-            this.bondTextBox.TabIndex = 19;
+            this.bondsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bondsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bondsTextBox.Location = new System.Drawing.Point(97, 392);
+            this.bondsTextBox.Name = "bondTextBox";
+            this.bondsTextBox.Size = new System.Drawing.Size(213, 27);
+            this.bondsTextBox.TabIndex = 19;
             // 
             // flawTextBox
             // 
-            this.flawTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.flawTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.flawTextBox.Location = new System.Drawing.Point(411, 392);
-            this.flawTextBox.Name = "flawTextBox";
-            this.flawTextBox.Size = new System.Drawing.Size(213, 27);
-            this.flawTextBox.TabIndex = 19;
+            this.flawsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flawsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.flawsTextBox.Location = new System.Drawing.Point(411, 392);
+            this.flawsTextBox.Name = "flawTextBox";
+            this.flawsTextBox.Size = new System.Drawing.Size(213, 27);
+            this.flawsTextBox.TabIndex = 19;
             // 
             // idealTextBox
             // 
-            this.idealTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.idealTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.idealTextBox.Location = new System.Drawing.Point(411, 301);
-            this.idealTextBox.Name = "idealTextBox";
-            this.idealTextBox.Size = new System.Drawing.Size(213, 27);
-            this.idealTextBox.TabIndex = 19;
+            this.ideaslTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ideaslTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ideaslTextBox.Location = new System.Drawing.Point(411, 301);
+            this.ideaslTextBox.Name = "idealTextBox";
+            this.ideaslTextBox.Size = new System.Drawing.Size(213, 27);
+            this.ideaslTextBox.TabIndex = 19;
             // 
             // levelLabel
             // 
@@ -318,22 +318,22 @@
             // 
             // personalityTextBox
             // 
-            this.personalityTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.personalityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.personalityTextBox.Location = new System.Drawing.Point(97, 301);
-            this.personalityTextBox.Name = "personalityTextBox";
-            this.personalityTextBox.Size = new System.Drawing.Size(213, 27);
-            this.personalityTextBox.TabIndex = 18;
+            this.personalityTraitsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.personalityTraitsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.personalityTraitsTextBox.Location = new System.Drawing.Point(97, 301);
+            this.personalityTraitsTextBox.Name = "personalityTextBox";
+            this.personalityTraitsTextBox.Size = new System.Drawing.Size(213, 27);
+            this.personalityTraitsTextBox.TabIndex = 18;
             // 
             // idealLabel
             // 
-            this.idealLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.idealLabel.AutoSize = true;
-            this.idealLabel.Location = new System.Drawing.Point(367, 307);
-            this.idealLabel.Name = "idealLabel";
-            this.idealLabel.Size = new System.Drawing.Size(37, 16);
-            this.idealLabel.TabIndex = 18;
-            this.idealLabel.Text = "Ideal";
+            this.idealsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.idealsLabel.AutoSize = true;
+            this.idealsLabel.Location = new System.Drawing.Point(367, 307);
+            this.idealsLabel.Name = "idealLabel";
+            this.idealsLabel.Size = new System.Drawing.Size(37, 16);
+            this.idealsLabel.TabIndex = 18;
+            this.idealsLabel.Text = "Ideal";
             // 
             // nextButton
             // 
@@ -548,14 +548,14 @@
         private System.Windows.Forms.Label raceLabel;
         private System.Windows.Forms.Label alignmentLabel;
         private System.Windows.Forms.Button nextButton;
-        private System.Windows.Forms.Label flawLabel;
-        private System.Windows.Forms.Label bondLabel;
-        private System.Windows.Forms.Label personalityLabel;
-        private System.Windows.Forms.TextBox bondTextBox;
-        private System.Windows.Forms.TextBox flawTextBox;
-        private System.Windows.Forms.TextBox idealTextBox;
-        private System.Windows.Forms.TextBox personalityTextBox;
-        private System.Windows.Forms.Label idealLabel;
+        private System.Windows.Forms.Label flawsLabel;
+        private System.Windows.Forms.Label bondsLabel;
+        private System.Windows.Forms.Label personalityTraitsLabel;
+        private System.Windows.Forms.TextBox bondsTextBox;
+        private System.Windows.Forms.TextBox flawsTextBox;
+        private System.Windows.Forms.TextBox ideaslTextBox;
+        private System.Windows.Forms.TextBox personalityTraitsTextBox;
+        private System.Windows.Forms.Label idealsLabel;
         private System.Windows.Forms.Label characterNameLabel;
         private System.Windows.Forms.TableLayoutPanel statsTableLayoutPanel;
         private System.Windows.Forms.Button rerollButton;

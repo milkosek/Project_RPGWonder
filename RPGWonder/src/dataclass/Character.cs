@@ -1,83 +1,248 @@
-﻿using RPGWonder.src.safedict;
+﻿using Newtonsoft.Json;
+using RPGWonder.src.safedict;
+using RPGWonder.src.utils;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace RPGWonder
 {
     class Character : Entity
     {
-        private string race;
-        private string gender;
-        private string characterClass;
-        private int level;
-        private string background;
-        private string alignment;
-        private Safedict<string, int> stats = new Safedict<string, int>();
-        private int proficiencyBonus;
-        private int armorClass;
-        private int initiativeModifier;
-        private int initiative;
-        private int speed;
-        private int currentHitPoints;
-        private int temporaryHitPoints;
-        private string personalityTraits;
-        private string ideals;
-        private string bonds;
-        private string flaws;
-        private int hitDice;
-        private int deathSavesFail;
-        private int deathSavesSuccess;
-        private string featuresAndTraits;
-        private string otherProficienciesAndLanguages;
-        private Safedict<string, int> money = new Safedict<string, int>();
-        private List<int> items = new List<int>();
-        private List<int> attacksAndSpells = new List<int>();
-        private Safedict<string, string> saves = new Safedict<string, string>();
-        private Safedict<string, string> skills = new Safedict<string, string>();
-        private int passiveWisdomPerception;
-        private string age;
-        private string height;
-        private string weight;
-        private string eyes;
-        private string skin;
-        private string hair;
-        private string alliesAndOrgs;
-
-
-        public int PassiveWisdomPerception { get => passiveWisdomPerception; set => passiveWisdomPerception = value; }
-        public string CharacterClass { get => characterClass; set => characterClass = value; }
-        public int Level { get => level; set => level = value; }
-        public string Background { get => background; set => background = value; }
-        public string Alignment { get => alignment; set => alignment = value; }
-        public int ProficiencyBonus { get => proficiencyBonus; set => proficiencyBonus = value; }
-        public int ArmorClass { get => armorClass; set => armorClass = value; }
-        public int Initiative { get => initiative; set => initiative = value; }
-        public int Speed { get => speed; set => speed = value; }
-        public int CurrentHitPoints { get => currentHitPoints; set => currentHitPoints = value; }
-        public int TemporaryHitPoints { get => temporaryHitPoints; set => temporaryHitPoints = value; }
-        public string PersonalityTraits { get => personalityTraits; set => personalityTraits = value; }
-        public string Ideals { get => ideals; set => ideals = value; }
-        public string Bonds { get => bonds; set => bonds = value; }
-        public string Flaws { get => flaws; set => flaws = value; }
-        public int HitDice { get => hitDice; set => hitDice = value; }
-        public int DeathSavesFail { get => deathSavesFail; set => deathSavesFail = value; }
-        public int DeathSavesSuccess { get => deathSavesSuccess; set => deathSavesSuccess = value; }
-        public string FeaturesAndTraits { get => featuresAndTraits; set => featuresAndTraits = value; }
-        public string OtherProficienciesAndLanguages { get => otherProficienciesAndLanguages; set => otherProficienciesAndLanguages = value; }
-        public Safedict<string, int> Money { get => money; set => money = value; }
-        public string Age { get => age; set => age = value; }
-        public string Height { get => height; set => height = value; }
-        public string Weight { get => weight; set => weight = value; }
-        public string Eyes { get => eyes; set => eyes = value; }
-        public string Skin { get => skin; set => skin = value; }
-        public string Hair { get => hair; set => hair = value; }
-        public string Race { get => race; set => race = value; }
-        public string Gender { get => gender; set => gender = value; }
-        public Safedict<string, string> Skills { get => skills; set => skills = value; }
-        public Safedict<string, int> Stats { get => stats; set => stats = value; }
-        public Safedict<string, string> Saves { get => saves; set => saves = value; }
-        public string AlliesAndOrgs { get => alliesAndOrgs; set => alliesAndOrgs = value; }
-        public int InitiativeModifier { get => initiativeModifier; set => initiativeModifier = value; }
-        internal List<int> Items { get => items; set => items = value; }
-        internal List<int> AttacksAndSpells { get => attacksAndSpells; set => attacksAndSpells = value; }
+        public string Race;
+        public string Gender;
+        public string CharacterClass;
+        public int Level;
+        public int Experience;
+        public string Background;
+        public string Alignment;
+        public Safedict<string, int> Stats = new Safedict<string, int>();
+        public int ProficiencyBonus;
+        public int ArmorClass;
+        public int InitiativeModifier;
+        public int Initiative;
+        public int Speed;
+        public string Size;
+        public int CurrentHitPoints;
+        public int TemporaryHitPoints;
+        public string PersonalityTraits;
+        public string Ideals;
+        public string Bonds;
+        public string Flaws;
+        public int HitDice;
+        public int DeathSavesFail;
+        public int DeathSavesSuccess;
+        public string FeaturesAndTraits;
+        public string OtherProficienciesAndLanguages;
+        public Safedict<string, int> Money = new Safedict<string, int>();
+        public List<int> Items = new List<int>();
+        public List<int> AttacksAndSpells = new List<int>();
+        public Safedict<string, string> Saves = new Safedict<string, string>();
+        public Safedict<string, string> Skills = new Safedict<string, string>();
+        public int PassiveWisdomPerception;
+        public string Age;
+        public string AlliesAndOrgs;
+        public Character() { }
+        public Character(string race, string gender, string characterClass, int level, int experience, string background, string alignment, Safedict<string, int> stats, int proficiencyBonus, int armorClass, int initiativeModifier, int initiative, int speed, string size, int currentHitPoints, int temporaryHitPoints, string personalityTraits, string ideals, string bonds, string flaws, int hitDice, int deathSavesFail, int deathSavesSuccess, string featuresAndTraits, string otherProficienciesAndLanguages, Safedict<string, int> money, List<int> items, List<int> attacksAndSpells, Safedict<string, string> saves, Safedict<string, string> skills, int passiveWisdomPerception, string age, string alliesAndOrgs)
+        {
+            Race = race;
+            Gender = gender;
+            CharacterClass = characterClass;
+            Level = level;
+            Experience = experience;
+            Background = background;
+            Alignment = alignment;
+            Stats = stats;
+            ProficiencyBonus = proficiencyBonus;
+            ArmorClass = armorClass;
+            InitiativeModifier = initiativeModifier;
+            Initiative = initiative;
+            Speed = speed;
+            Size = size;
+            CurrentHitPoints = currentHitPoints;
+            TemporaryHitPoints = temporaryHitPoints;
+            PersonalityTraits = personalityTraits;
+            Ideals = ideals;
+            Bonds = bonds;
+            Flaws = flaws;
+            HitDice = hitDice;
+            DeathSavesFail = deathSavesFail;
+            DeathSavesSuccess = deathSavesSuccess;
+            FeaturesAndTraits = featuresAndTraits;
+            OtherProficienciesAndLanguages = otherProficienciesAndLanguages;
+            Money = money;
+            Items = items;
+            AttacksAndSpells = attacksAndSpells;
+            Saves = saves;
+            Skills = skills;
+            PassiveWisdomPerception = passiveWisdomPerception;
+            Age = age;
+            AlliesAndOrgs = alliesAndOrgs;
+        }
+        public void SaveToJSON()
+        {
+            StringBuilder sb;
+            StringWriter sw;
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            if (!File.Exists(path + "\\Counter.json"))
+            {
+                File.Create(path + "\\Counter.json").Close();
+                sb = new StringBuilder();
+                sw = new StringWriter(sb);
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    writer.Formatting = Formatting.Indented;
+                    writer.WriteStartObject();
+                    writer.WritePropertyName("max-id");
+                    writer.WriteValue(0);
+                    writer.WriteEnd();
+                }
+                File.WriteAllText(path + "\\Counter.json", sb.ToString());
+            }
+            Dictionary<string, string> Counter = Utils.parseJSON<Dictionary<string, string>>(path + "\\Counter.json");
+            int maxId = int.Parse(Counter["max-id"]);
+            File.Create(path + "\\" + maxId + ".json").Close();
+            sb = new StringBuilder();
+            sw = new StringWriter(sb);
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.WriteStartObject();
+                writer.WritePropertyName("id");
+                writer.WriteValue(maxId);
+                writer.WritePropertyName("name");
+                writer.WriteValue(Name);
+                writer.WritePropertyName("type");
+                writer.WriteValue(Type);
+                writer.WritePropertyName("description");
+                writer.WriteValue(Description);
+                writer.WritePropertyName("src");
+                writer.WriteValue(Src);
+                writer.WritePropertyName("race");
+                writer.WriteValue(Race);
+                writer.WritePropertyName("gender");
+                writer.WriteValue(Gender);
+                writer.WritePropertyName("characterClass");
+                writer.WriteValue(CharacterClass);
+                writer.WritePropertyName("level");
+                writer.WriteValue(Level);
+                writer.WritePropertyName("experience");
+                writer.WriteValue(Experience);
+                writer.WritePropertyName("background");
+                writer.WriteValue(Background);
+                writer.WritePropertyName("alignment");
+                writer.WriteValue(Alignment);
+                writer.WritePropertyName("stats");
+                writer.WriteStartObject();
+                for (int i = 0; i < Stats.Count; i++)
+                {
+                    string TAG = Stats.Keys.ToList()[i];
+                    writer.WritePropertyName(TAG);
+                    writer.WriteValue(Stats[TAG]);
+                }
+                writer.WriteEnd();
+                writer.WritePropertyName("proficiencyBonus");
+                writer.WriteValue(ProficiencyBonus);
+                writer.WritePropertyName("armorClass");
+                writer.WriteValue(ArmorClass);
+                writer.WritePropertyName("initiative");
+                writer.WriteValue(Initiative);
+                writer.WritePropertyName("initiative-modifier");
+                writer.WriteValue(InitiativeModifier);
+                writer.WritePropertyName("speed");
+                writer.WriteValue(Speed);
+                writer.WritePropertyName("size");
+                writer.WriteValue(Size);
+                writer.WritePropertyName("currentHitPoints");
+                writer.WriteValue(CurrentHitPoints);
+                writer.WritePropertyName("temporaryHitPoints");
+                writer.WriteValue(TemporaryHitPoints);
+                writer.WritePropertyName("personalityTraits");
+                writer.WriteValue(PersonalityTraits);
+                writer.WritePropertyName("ideals");
+                writer.WriteValue(Ideals);
+                writer.WritePropertyName("bonds");
+                writer.WriteValue(Bonds);
+                writer.WritePropertyName("flaws");
+                writer.WriteValue(Flaws);
+                writer.WritePropertyName("hitDice");
+                writer.WriteValue(HitDice);
+                writer.WritePropertyName("deathSavesFail");
+                writer.WriteValue(DeathSavesFail);
+                writer.WritePropertyName("deathSavesSuccess");
+                writer.WriteValue(DeathSavesSuccess);
+                writer.WritePropertyName("featuresAndTraits");
+                writer.WriteValue(FeaturesAndTraits);
+                writer.WritePropertyName("otherProficienciesAndLanguages");
+                writer.WriteValue(OtherProficienciesAndLanguages);
+                writer.WritePropertyName("money");
+                writer.WriteStartObject();
+                for (int i = 0; i < Money.Count; i++)
+                {
+                    string TAG = Money.Keys.ToList()[i];
+                    writer.WritePropertyName(TAG);
+                    writer.WriteValue(Money[TAG]);
+                }
+                writer.WriteEnd();
+                writer.WritePropertyName("items");
+                writer.WriteStartObject();
+                for (int i = 0; i < Items.Count; i++)
+                {
+                    int TAG = Items[i];
+                    writer.WritePropertyName(TAG.ToString());
+                }
+                writer.WriteEnd();
+                writer.WritePropertyName("attacksAndSpells");
+                writer.WriteStartObject();
+                for (int i = 0; i < AttacksAndSpells.Count; i++)
+                {
+                    int TAG = AttacksAndSpells[i];
+                    writer.WritePropertyName(TAG.ToString());
+                }
+                writer.WriteEnd();
+                writer.WritePropertyName("saves");
+                writer.WriteStartObject();
+                for (int i = 0; i < Saves.Count; i++)
+                {
+                    string TAG = Saves.Keys.ToList()[i];
+                    writer.WritePropertyName(TAG);
+                    writer.WriteValue(Saves[TAG]);
+                }
+                writer.WriteEnd();
+                writer.WritePropertyName("skills");
+                writer.WriteStartObject();
+                for (int i = 0; i < Skills.Count; i++)
+                {
+                    string TAG = Skills.Keys.ToList()[i];
+                    writer.WritePropertyName(TAG);
+                    writer.WriteValue(Skills[TAG]);
+                }
+                writer.WriteEnd();
+                writer.WritePropertyName("passiveWisdomPerception");
+                writer.WriteValue(PassiveWisdomPerception);
+                writer.WritePropertyName("age");
+                writer.WriteValue(Age);
+                writer.WritePropertyName("alliesAndOrgs");
+                writer.WriteValue(AlliesAndOrgs);
+                writer.WriteEnd();
+            }
+            File.WriteAllText(path + "\\" + maxId + ".json", sb.ToString());
+            sb = new StringBuilder();
+            sw = new StringWriter(sb);
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.WriteStartObject();
+                writer.WritePropertyName("max-id");
+                writer.WriteValue(maxId + 1);
+                writer.WriteEnd();
+            }
+            File.WriteAllText(path + "\\Counter.json", sb.ToString());
+        }
     }
 }

@@ -1,24 +1,112 @@
 ﻿{
-    "Human": "Human",
-    "HillDwarf": "Hill Dwarf",
-    "MountainDwarf": "Mountain Dwarf",
-    "HighElf": "High Elf",
-    "WoodElf": "Wood Elf",
-    "DarkElf": "Dark Elf",
-    "HalfElf": "Half-Elf",
-    "LightfootHalfling": "Lightfoot Halfling",
-    "StoutHalfling": "Stout Halfling",
-    "BlackDragon": "Dragonborn (Black Dragon)",
-    "BlueDragon": "Dragonborn (Blue Dragon)",
-    "BrassDragon": "Dragonborn (Brass Dragon)",
-    "CopperDragon": "Dragonborn (Copper Dragon)",
-    "GoldDragon": "Dragonborn (Gold Dragon)",
-    "GreenDragon": "Dragonborn (Green Dragon)",
-    "RedDragon": "Dragonborn (Red Dragon)",
-    "SilverDragon": "Dragonborn (Silver Dragon)",
-    "WhiteDragon": "Dragonborn (White Dragon)",
-    "ForestGnome": "Forest Gnome",
-    "RockGnome": "Rock Gnome",
-    "HalfOrc": "Half-Orc",
-    "Tiefling": "Tiefling"
+  "Human": {
+    "name": "Human",
+    "speed": "30",
+    "size": "medium"
+  },
+  "HillDwarf": {
+    "name": "Hill Dwarf",
+    "speed": "25",
+    "size": "medium"
+  },
+  "MountainDwarf": {
+    "name": "Mountain Dwarf",
+    "speed": "25",
+    "size": "medium"
+  },
+  "HighElf": {
+    "name": "High Elf",
+    "speed": "30",
+    "size": "medium"
+  },
+  "WoodElf": {
+    "name": "Wood Elf",
+    "speed": "30",
+    "size": "medium"
+  },
+  "DarkElf": {
+    "name": "Dark Elf",
+    "speed": "30",
+    "size": "medium"
+  },
+  "HalfElf": {
+    "name": "Half-Elf",
+    "speed": "30",
+    "size": "medium"
+  },
+  "LightfootHalfling": {
+    "name": "Lightfoot Halfling",
+    "speed": "25",
+    "size": "small"
+  },
+  "StoutHalfling": {
+    "name": "Stout Halfling",
+    "speed": "25",
+    "size": "small"
+  },
+  "BlackDragon": {
+    "name": "Dragonborn (Black Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "BlueDragon": {
+    "name": "Dragonborn (Blue Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "BrassDragon": {
+    "name": "Dragonborn (Brass Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "CopperDragon": {
+    "name": "Dragonborn (Copper Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "GoldDragon": {
+    "name": "Dragonborn (Gold Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "GreenDragon": {
+    "name": "Dragonborn (Green Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "RedDragon": {
+    "name": "Dragonborn (Red Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "SilverDragon": {
+    "name": "Dragonborn (Silver Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "WhiteDragon": {
+    "name": "Dragonborn (White Dragon)",
+    "speed": "30",
+    "size": "medium"
+  },
+  "ForestGnome": {
+    "name": "Forest Gnome",
+    "speed": "25",
+    "size": "small"
+  },
+  "RockGnome": {
+    "name": "Rock Gnome",
+    "speed": "25",
+    "size": "small"
+  },
+  "HalfOrc": {
+    "name": "Half-Orc",
+    "speed": "30",
+    "size": "medium"
+  },
+  "Tiefling": {
+    "name": "Tiefling",
+    "speed": "30",
+    "size": "medium"
+  }
 }

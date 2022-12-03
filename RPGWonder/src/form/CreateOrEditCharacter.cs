@@ -3,7 +3,6 @@ using RPGWonder.src.common;
 using RPGWonder.src.utils;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -35,11 +34,12 @@ namespace RPGWonder
             initCharacter(CreatedCharacter);
             for (int i = 0; i < Common.Instance.Races.Count; i++)
             {
-                raceCcomboBox.Items.Add(Common.Instance.Races.Values.ToList()[i]);
+                string TAG = Common.Instance.Races.Keys.ToList()[i];
+                raceCcomboBox.Items.Add(Common.Instance.Races[TAG]["name"]);
             }
-            for (int i = 0; i < Common.Instance.Classnames.Count; i++)
+            for (int i = 0; i < Common.Instance.Classes.Count; i++)
             {
-                classComboBox.Items.Add(Common.Instance.Classnames.Values.ToList()[i]);
+                classComboBox.Items.Add(Common.Instance.Classes.Values.ToList()[i]);
             }
             for (int i = 0; i < Common.Instance.Backgrounds.Count; i++)
             {
@@ -139,12 +139,18 @@ namespace RPGWonder
                 return;
             }
             CreatedCharacter.Race = Common.Instance.Races.Keys.ToList()[race];
-            CreatedCharacter.CharacterClass = Common.Instance.Classnames.Keys.ToList()[classname];
+            CreatedCharacter.Speed = int.Parse(Common.Instance.Races[CreatedCharacter.Race]["speed"]);
+            CreatedCharacter.Size = Common.Instance.Races[CreatedCharacter.Race]["size"];
+            CreatedCharacter.CharacterClass = Common.Instance.Classes.Keys.ToList()[classname];
             CreatedCharacter.Name = name;
             CreatedCharacter.Background = Common.Instance.Backgrounds.Keys.ToList()[background];
             CreatedCharacter.Gender = Common.Instance.Genders.Keys.ToList()[gender];
             CreatedCharacter.Level = level;
             CreatedCharacter.Alignment = Common.Instance.Alignments.Keys.ToList()[alignment];
+            CreatedCharacter.PersonalityTraits = personalityTraitsTextBox.Text;
+            CreatedCharacter.Ideals = ideaslTextBox.Text;
+            CreatedCharacter.Bonds = bondsTextBox.Text;
+            CreatedCharacter.Flaws = flawsTextBox.Text;
             swapToPage2();
             rollStats();
         }
@@ -171,6 +177,7 @@ namespace RPGWonder
         private void levelBox_ValueChanged(object sender, EventArgs e)
         {
             level = (int)levelBox.Value;
+            CreatedCharacter.Experience = int.Parse(Common.Instance.Levels[level.ToString()]["exp"]);
         }
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -183,7 +190,7 @@ namespace RPGWonder
             basicInfoTableLayout.Hide();
             nextButton.Hide();
             characterNameLabel.Text = CreatedCharacter.Name + "\t Lv" + CreatedCharacter.Level + " " +
-                Common.Instance.Races[CreatedCharacter.Race] + " " + Common.Instance.Classnames[CreatedCharacter.CharacterClass];
+                Common.Instance.Races[CreatedCharacter.Race] + " " + Common.Instance.Classes[CreatedCharacter.CharacterClass];
             characterNameLabel.Show();
             statsTableLayoutPanel.Show();
             rerollButton.Show();
@@ -276,171 +283,7 @@ namespace RPGWonder
             CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
             CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
             CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["passive-perception-stat"]));
-            StringBuilder sb;
-            StringWriter sw;
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            if (!File.Exists(path + "\\Counter.json"))
-            {
-                File.Create(path + "\\Counter.json").Close();
-                sb = new StringBuilder();
-                sw = new StringWriter(sb);
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    writer.Formatting = Formatting.Indented;
-                    writer.WriteStartObject();
-                    writer.WritePropertyName("max-id");
-                    writer.WriteValue(0);
-                    writer.WriteEnd();
-                }
-                File.WriteAllText(path + "\\Counter.json", sb.ToString());
-            }
-            Dictionary<string, string> Counter = Utils.parseJSON<Dictionary<string, string>>(path + "\\Counter.json");
-            int maxId = int.Parse(Counter["max-id"]);
-            File.Create(path + "\\" + maxId + ".json").Close();
-            sb = new StringBuilder();
-            sw = new StringWriter(sb);
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                writer.Formatting = Formatting.Indented;
-                writer.WriteStartObject();
-                writer.WritePropertyName("id");
-                writer.WriteValue(maxId);
-                writer.WritePropertyName("name");
-                writer.WriteValue(CreatedCharacter.Name);
-                writer.WritePropertyName("type");
-                writer.WriteValue(CreatedCharacter.Type);
-                writer.WritePropertyName("description");
-                writer.WriteValue(CreatedCharacter.Description);
-                writer.WritePropertyName("src");
-                writer.WriteValue(CreatedCharacter.Src);
-                writer.WritePropertyName("race");
-                writer.WriteValue(CreatedCharacter.Race);
-                writer.WritePropertyName("gender");
-                writer.WriteValue(CreatedCharacter.Gender);
-                writer.WritePropertyName("characterClass");
-                writer.WriteValue(CreatedCharacter.CharacterClass);
-                writer.WritePropertyName("level");
-                writer.WriteValue(CreatedCharacter.Level);
-                writer.WritePropertyName("background");
-                writer.WriteValue(CreatedCharacter.Background);
-                writer.WritePropertyName("alignment");
-                writer.WriteValue(CreatedCharacter.Alignment);
-                writer.WritePropertyName("stats");
-                writer.WriteStartObject();
-                for (int i = 0; i < CreatedCharacter.Stats.Count; i++)
-                {
-                    string TAG = CreatedCharacter.Stats.Keys.ToList()[i];
-                    writer.WritePropertyName(TAG);
-                    writer.WriteValue(CreatedCharacter.Stats[TAG]);
-                }
-                writer.WriteEnd();
-                writer.WritePropertyName("proficiencyBonus");
-                writer.WriteValue(CreatedCharacter.ProficiencyBonus);
-                writer.WritePropertyName("armorClass");
-                writer.WriteValue(CreatedCharacter.ArmorClass);
-                writer.WritePropertyName("initiative");
-                writer.WriteValue(CreatedCharacter.Initiative);
-                writer.WritePropertyName("speed");
-                writer.WriteValue(CreatedCharacter.Speed);
-                writer.WritePropertyName("currentHitPoints");
-                writer.WriteValue(CreatedCharacter.CurrentHitPoints);
-                writer.WritePropertyName("temporaryHitPoints");
-                writer.WriteValue(CreatedCharacter.TemporaryHitPoints);
-                writer.WritePropertyName("personalityTraits");
-                writer.WriteValue(CreatedCharacter.PersonalityTraits);
-                writer.WritePropertyName("ideals");
-                writer.WriteValue(CreatedCharacter.Ideals);
-                writer.WritePropertyName("bonds");
-                writer.WriteValue(CreatedCharacter.Bonds);
-                writer.WritePropertyName("flaws");
-                writer.WriteValue(CreatedCharacter.Flaws);
-                writer.WritePropertyName("hitDice");
-                writer.WriteValue(CreatedCharacter.HitDice);
-                writer.WritePropertyName("deathSavesFail");
-                writer.WriteValue(CreatedCharacter.DeathSavesFail);
-                writer.WritePropertyName("deathSavesSuccess");
-                writer.WriteValue(CreatedCharacter.DeathSavesSuccess);
-                writer.WritePropertyName("featuresAndTraits");
-                writer.WriteValue(CreatedCharacter.FeaturesAndTraits);
-                writer.WritePropertyName("otherProficienciesAndLanguages");
-                writer.WriteValue(CreatedCharacter.OtherProficienciesAndLanguages);
-                writer.WritePropertyName("money");
-                writer.WriteStartObject();
-                for (int i = 0; i < CreatedCharacter.Money.Count; i++)
-                {
-                    string TAG = CreatedCharacter.Money.Keys.ToList()[i];
-                    writer.WritePropertyName(TAG);
-                    writer.WriteValue(CreatedCharacter.Money[TAG]);
-                }
-                writer.WriteEnd();
-                writer.WritePropertyName("items");
-                writer.WriteStartObject();
-                for (int i = 0; i < CreatedCharacter.Items.Count; i++)
-                {
-                    int TAG = CreatedCharacter.Items[i];
-                    writer.WritePropertyName(TAG.ToString());
-                }
-                writer.WriteEnd();
-                writer.WritePropertyName("attacksAndSpells");
-                writer.WriteStartObject();
-                for (int i = 0; i < CreatedCharacter.AttacksAndSpells.Count; i++)
-                {
-                    int TAG = CreatedCharacter.AttacksAndSpells[i];
-                    writer.WritePropertyName(TAG.ToString());
-                }
-                writer.WriteEnd();
-                writer.WritePropertyName("saves");
-                writer.WriteStartObject();
-                for (int i = 0; i < CreatedCharacter.Saves.Count; i++)
-                {
-                    string TAG = CreatedCharacter.Saves.Keys.ToList()[i];
-                    writer.WritePropertyName(TAG);
-                    writer.WriteValue(CreatedCharacter.Saves[TAG]);
-                }
-                writer.WriteEnd();
-                writer.WritePropertyName("skills");
-                writer.WriteStartObject();
-                for (int i = 0; i < CreatedCharacter.Skills.Count; i++)
-                {
-                    string TAG = CreatedCharacter.Skills.Keys.ToList()[i];
-                    writer.WritePropertyName(TAG);
-                    writer.WriteValue(CreatedCharacter.Skills[TAG]);
-                }
-                writer.WriteEnd();
-                writer.WritePropertyName("passiveWisdomPerception");
-                writer.WriteValue(CreatedCharacter.PassiveWisdomPerception);
-                writer.WritePropertyName("age");
-                writer.WriteValue(CreatedCharacter.Age);
-                writer.WritePropertyName("height");
-                writer.WriteValue(CreatedCharacter.Height);
-                writer.WritePropertyName("weight");
-                writer.WriteValue(CreatedCharacter.Weight);
-                writer.WritePropertyName("eyes");
-                writer.WriteValue(CreatedCharacter.Eyes);
-                writer.WritePropertyName("skin");
-                writer.WriteValue(CreatedCharacter.Skin);
-                writer.WritePropertyName("hair");
-                writer.WriteValue(CreatedCharacter.Hair);
-                writer.WritePropertyName("alliesAndOrgs");
-                writer.WriteValue(CreatedCharacter.AlliesAndOrgs);
-                writer.WriteEnd();
-            }
-            File.WriteAllText(path + "\\" + maxId + ".json", sb.ToString());
-            sb = new StringBuilder();
-            sw = new StringWriter(sb);
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                writer.Formatting = Formatting.Indented;
-                writer.WriteStartObject();
-                writer.WritePropertyName("max-id");
-                writer.WriteValue(maxId+1);
-                writer.WriteEnd();
-            }
-            File.WriteAllText(path + "\\Counter.json", sb.ToString());
+            CreatedCharacter.SaveToJSON();
             string message = "Character saved!";
             MessageBox.Show(message);
             Close();

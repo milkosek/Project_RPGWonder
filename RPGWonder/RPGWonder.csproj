@@ -81,6 +81,7 @@
     <None Include="systemPresets\DnD5e\Classes.json" />
     <None Include="systemPresets\DnD5e\Defines.json" />
     <None Include="systemPresets\DnD5e\Genders.json" />
+    <None Include="systemPresets\DnD5e\levels.json" />
     <None Include="systemPresets\DnD5e\Proficiencies.json" />
     <None Include="systemPresets\DnD5e\RacialIncreases.json" />
     <None Include="systemPresets\DnD5e\Races.json" />
