@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using RPGWonder.src.common;
 using RPGWonder.src.utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -31,6 +31,8 @@ namespace RPGWonder
         }
         private void CreateOrEditCharacter_Load(object sender, EventArgs e)
         {
+            CreatedCharacter.LoadFromJSON(0);
+            Debug.WriteLine(CreatedCharacter.Stats["STR"]);
             initCharacter(CreatedCharacter);
             for (int i = 0; i < Common.Instance.Races.Count; i++)
             {

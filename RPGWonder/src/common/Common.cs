@@ -1,7 +1,7 @@
 ﻿using RPGWonder.src.utils;
 using System.Collections.Generic;
 
-namespace RPGWonder.src.common
+namespace RPGWonder
 {
     public sealed class Common
     {

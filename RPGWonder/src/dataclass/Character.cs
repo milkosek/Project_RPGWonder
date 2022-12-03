@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RPGWonder.src.safedict;
 using RPGWonder.src.utils;
 using System.Collections.Generic;
@@ -152,7 +153,7 @@ namespace RPGWonder
                 writer.WriteValue(ArmorClass);
                 writer.WritePropertyName("initiative");
                 writer.WriteValue(Initiative);
-                writer.WritePropertyName("initiative-modifier");
+                writer.WritePropertyName("initiativeModifier");
                 writer.WriteValue(InitiativeModifier);
                 writer.WritePropertyName("speed");
                 writer.WriteValue(Speed);
@@ -243,6 +244,68 @@ namespace RPGWonder
                 writer.WriteEnd();
             }
             File.WriteAllText(path + "\\Counter.json", sb.ToString());
+        }
+        public void LoadFromJSON(int id)
+        {
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters\\" + id + ".json";
+            JObject data = JObject.Parse(File.ReadAllText(path));
+            Race = (string)data["race"];
+            Gender = (string)data["gender"];
+            CharacterClass = (string)data["characterClass"];
+            Level = (int)data["level"];
+            Experience = (int)data["experience"];
+            Background = (string)data["background"];
+            Alignment = (string)data["alignment"];
+            Stats.Clear();
+            foreach (JProperty prop in data["stats"])
+            {
+                Stats.Set(prop.Name, (int)data["stats"][prop.Name]);
+            }
+            ProficiencyBonus = (int)data["proficiencyBonus"];
+            ArmorClass = (int)data["armorClass"];
+            InitiativeModifier = (int)data["initiativeModifier"];
+            Initiative = (int)data["initiative"];
+            Speed = (int)data["speed"];
+            Size = (string)data["size"];
+            CurrentHitPoints = (int)data["currentHitPoints"];
+            TemporaryHitPoints = (int)data["temporaryHitPoints"];
+            PersonalityTraits = (string)data["personalityTraits"];
+            Ideals = (string)data["ideals"];
+            Bonds = (string)data["bonds"];
+            Flaws = (string)data["flaws"];
+            HitDice = (int)data["hitDice"];
+            DeathSavesFail = (int)data["deathSavesFail"];
+            DeathSavesSuccess = (int)data["deathSavesSuccess"];
+            FeaturesAndTraits = (string)data["featuresAndTraits"];
+            OtherProficienciesAndLanguages = (string)data["otherProficienciesAndLanguages"];
+            Money.Clear();
+            foreach (JProperty prop in data["money"])
+            {
+                Money.Set(prop.Name, (int)data["money"][prop.Name]);
+            }
+            Items.Clear();
+            foreach (JProperty prop in data["items"])
+            {
+                Items.Add((int)data["items"][prop.Name]);
+            }
+            AttacksAndSpells.Clear();
+            foreach (JProperty prop in data["attacksAndSpells"])
+            {
+                AttacksAndSpells.Add((int)data["attacksAndSpells"][prop.Name]);
+            }
+            Saves.Clear();
+            foreach (JProperty prop in data["saves"])
+            {
+                Saves.Set(prop.Name, (string)data["saves"][prop.Name]);
+            }
+            Skills.Clear();
+            foreach (JProperty prop in data["skills"])
+            {
+                Skills.Set(prop.Name, (string)data["skills"][prop.Name]);
+            }
+            PassiveWisdomPerception = (int)data["passiveWisdomPerception"];
+            Age = (string)data["age"];
+            AlliesAndOrgs = (string)data["alliesAndOrgs"];
         }
     }
 }

@@ -22,7 +22,7 @@
   "proficiencyBonus": 0,
   "armorClass": 10,
   "initiative": 0,
-  "initiative-modifier": 0,
+  "initiativeModifier": 0,
   "speed": 25,
   "size": "medium",
   "currentHitPoints": 0,
