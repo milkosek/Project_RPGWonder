@@ -106,6 +106,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "CreateOrEditCampaign";
             this.Text = "CreateOrEditCampaign";
+            this.Load += new System.EventHandler(this.CreateOrEditCampaign_Load);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

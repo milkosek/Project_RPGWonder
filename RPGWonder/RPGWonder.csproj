@@ -74,6 +74,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\dataclass\Dataclass.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <Compile Include="src\utils\Utils.cs" />
@@ -81,7 +82,7 @@
     <None Include="systemPresets\DnD5e\Classes.json" />
     <None Include="systemPresets\DnD5e\Defines.json" />
     <None Include="systemPresets\DnD5e\Genders.json" />
-    <None Include="systemPresets\DnD5e\levels.json" />
+    <None Include="systemPresets\DnD5e\Levels.json" />
     <None Include="systemPresets\DnD5e\Proficiencies.json" />
     <None Include="systemPresets\DnD5e\RacialIncreases.json" />
     <None Include="systemPresets\DnD5e\Races.json" />

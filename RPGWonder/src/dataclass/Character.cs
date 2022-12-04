@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RPGWonder.src.safedict;
-using RPGWonder.src.utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +8,9 @@ using System.Text;
 
 namespace RPGWonder
 {
-    class Character : Entity
+    class Character : Dataclass
     {
+        public string Name;
         public string Race;
         public string Gender;
         public string CharacterClass;
@@ -45,54 +45,17 @@ namespace RPGWonder
         public string Age;
         public string AlliesAndOrgs;
         public Character() { }
-        public Character(string race, string gender, string characterClass, int level, int experience, string background, string alignment, Safedict<string, int> stats, int proficiencyBonus, int armorClass, int initiativeModifier, int initiative, int speed, string size, int currentHitPoints, int temporaryHitPoints, string personalityTraits, string ideals, string bonds, string flaws, int hitDice, int deathSavesFail, int deathSavesSuccess, string featuresAndTraits, string otherProficienciesAndLanguages, Safedict<string, int> money, List<int> items, List<int> attacksAndSpells, Safedict<string, string> saves, Safedict<string, string> skills, int passiveWisdomPerception, string age, string alliesAndOrgs)
-        {
-            Race = race;
-            Gender = gender;
-            CharacterClass = characterClass;
-            Level = level;
-            Experience = experience;
-            Background = background;
-            Alignment = alignment;
-            Stats = stats;
-            ProficiencyBonus = proficiencyBonus;
-            ArmorClass = armorClass;
-            InitiativeModifier = initiativeModifier;
-            Initiative = initiative;
-            Speed = speed;
-            Size = size;
-            CurrentHitPoints = currentHitPoints;
-            TemporaryHitPoints = temporaryHitPoints;
-            PersonalityTraits = personalityTraits;
-            Ideals = ideals;
-            Bonds = bonds;
-            Flaws = flaws;
-            HitDice = hitDice;
-            DeathSavesFail = deathSavesFail;
-            DeathSavesSuccess = deathSavesSuccess;
-            FeaturesAndTraits = featuresAndTraits;
-            OtherProficienciesAndLanguages = otherProficienciesAndLanguages;
-            Money = money;
-            Items = items;
-            AttacksAndSpells = attacksAndSpells;
-            Saves = saves;
-            Skills = skills;
-            PassiveWisdomPerception = passiveWisdomPerception;
-            Age = age;
-            AlliesAndOrgs = alliesAndOrgs;
-        }
-        public void SaveToJSON()
+        public void SaveToJSON(string path)
         {
             StringBuilder sb;
             StringWriter sw;
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            if (!File.Exists(path + "\\Counter.json"))
+            if (!File.Exists(path + "\\Characters.json"))
             {
-                File.Create(path + "\\Counter.json").Close();
+                File.Create(path + "\\Characters.json").Close();
                 sb = new StringBuilder();
                 sw = new StringWriter(sb);
                 using (JsonWriter writer = new JsonTextWriter(sw))
@@ -101,13 +64,15 @@ namespace RPGWonder
                     writer.WriteStartObject();
                     writer.WritePropertyName("max-id");
                     writer.WriteValue(0);
+                    writer.WritePropertyName("characters");
+                    writer.WriteStartArray();
+                    writer.WriteEndArray();
                     writer.WriteEnd();
                 }
-                File.WriteAllText(path + "\\Counter.json", sb.ToString());
+                File.WriteAllText(path + "\\Characters.json", sb.ToString());
             }
-            Dictionary<string, string> Counter = Utils.parseJSON<Dictionary<string, string>>(path + "\\Counter.json");
-            int maxId = int.Parse(Counter["max-id"]);
-            File.Create(path + "\\" + maxId + ".json").Close();
+            JObject data = JObject.Parse(File.ReadAllText(path + "\\Characters.json"));
+            long maxId = (long)data["max-id"];
             sb = new StringBuilder();
             sw = new StringWriter(sb);
             using (JsonWriter writer = new JsonTextWriter(sw))
@@ -118,12 +83,6 @@ namespace RPGWonder
                 writer.WriteValue(maxId);
                 writer.WritePropertyName("name");
                 writer.WriteValue(Name);
-                writer.WritePropertyName("type");
-                writer.WriteValue(Type);
-                writer.WritePropertyName("description");
-                writer.WriteValue(Description);
-                writer.WritePropertyName("src");
-                writer.WriteValue(Src);
                 writer.WritePropertyName("race");
                 writer.WriteValue(Race);
                 writer.WritePropertyName("gender");
@@ -232,22 +191,13 @@ namespace RPGWonder
                 writer.WriteValue(AlliesAndOrgs);
                 writer.WriteEnd();
             }
-            File.WriteAllText(path + "\\" + maxId + ".json", sb.ToString());
-            sb = new StringBuilder();
-            sw = new StringWriter(sb);
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                writer.Formatting = Formatting.Indented;
-                writer.WriteStartObject();
-                writer.WritePropertyName("max-id");
-                writer.WriteValue(maxId + 1);
-                writer.WriteEnd();
-            }
-            File.WriteAllText(path + "\\Counter.json", sb.ToString());
+            data["max-id"] = maxId + 1;
+            ((JArray)data["characters"]).Add("\\" + Name + ".json");
+            File.WriteAllText(path + "\\" + Name + ".json", sb.ToString());
+            File.WriteAllText(path + "\\Characters.json", data.ToString());
         }
-        public void LoadFromJSON(int id)
+        public void ReadFromJSON(string path)
         {
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters\\" + id + ".json";
             JObject data = JObject.Parse(File.ReadAllText(path));
             Race = (string)data["race"];
             Gender = (string)data["gender"];

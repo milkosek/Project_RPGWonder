@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using RPGWonder.src.utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,8 +30,6 @@ namespace RPGWonder
         }
         private void CreateOrEditCharacter_Load(object sender, EventArgs e)
         {
-            CreatedCharacter.LoadFromJSON(0);
-            Debug.WriteLine(CreatedCharacter.Stats["STR"]);
             initCharacter(CreatedCharacter);
             for (int i = 0; i < Common.Instance.Races.Count; i++)
             {
@@ -148,6 +145,8 @@ namespace RPGWonder
             CreatedCharacter.Background = Common.Instance.Backgrounds.Keys.ToList()[background];
             CreatedCharacter.Gender = Common.Instance.Genders.Keys.ToList()[gender];
             CreatedCharacter.Level = level;
+            CreatedCharacter.Experience = int.Parse(Common.Instance.Levels[CreatedCharacter.Level.ToString()]["exp"]);
+            CreatedCharacter.ProficiencyBonus = int.Parse(Common.Instance.Levels[CreatedCharacter.Level.ToString()]["bonus"]);
             CreatedCharacter.Alignment = Common.Instance.Alignments.Keys.ToList()[alignment];
             CreatedCharacter.PersonalityTraits = personalityTraitsTextBox.Text;
             CreatedCharacter.Ideals = ideaslTextBox.Text;
@@ -179,7 +178,6 @@ namespace RPGWonder
         private void levelBox_ValueChanged(object sender, EventArgs e)
         {
             level = (int)levelBox.Value;
-            CreatedCharacter.Experience = int.Parse(Common.Instance.Levels[level.ToString()]["exp"]);
         }
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -285,7 +283,7 @@ namespace RPGWonder
             CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
             CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
             CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["passive-perception-stat"]));
-            CreatedCharacter.SaveToJSON();
+            CreatedCharacter.SaveToJSON("..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters");
             string message = "Character saved!";
             MessageBox.Show(message);
             Close();

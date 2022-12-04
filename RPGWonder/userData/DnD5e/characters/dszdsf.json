@@ -1,28 +1,25 @@
 {
-  "id": 2,
-  "name": "sfse",
-  "type": null,
-  "description": null,
-  "src": null,
+  "id": 0,
+  "name": "dszdsf",
   "race": "WoodElf",
   "gender": "Male",
-  "characterClass": "Druid",
+  "characterClass": "Paladin",
   "level": 1,
   "experience": 0,
-  "background": "GuildArtisan",
-  "alignment": "TrueNeutral",
+  "background": "FolkHero",
+  "alignment": "NeutralEvil",
   "stats": {
     "STR": 10,
     "DEX": 15,
-    "CON": 15,
-    "INT": 9,
+    "CON": 9,
+    "INT": 6,
     "WIS": 13,
-    "CHA": 13
+    "CHA": 10
   },
-  "proficiencyBonus": 0,
+  "proficiencyBonus": 2,
   "armorClass": 12,
   "initiative": 0,
-  "initiative-modifier": 2,
+  "initiativeModifier": 2,
   "speed": 30,
   "size": "medium",
   "currentHitPoints": 0,
@@ -42,15 +39,15 @@
   "saves": {
     "STR": "+0",
     "DEX": "+2",
-    "CON": "+2",
-    "INT": "-1",
+    "CON": "-1",
+    "INT": "-2",
     "WIS": "+1",
-    "CHA": "+1"
+    "CHA": "+0"
   },
   "skills": {
     "Acrobatics": "+2",
     "AnimalHandling": "+1",
-    "Arcana": "-1",
+    "Arcana": "-2",
     "Athletics": "+0"
   },
   "passiveWisdomPerception": 11,

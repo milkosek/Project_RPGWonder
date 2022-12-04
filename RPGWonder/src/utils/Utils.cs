@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace RPGWonder.src.utils
+namespace RPGWonder
 {
     public static class Utils
     {
