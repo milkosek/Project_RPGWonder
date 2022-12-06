@@ -1,8 +1,11 @@
-﻿using RPGWonder.src.common;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -30,11 +33,12 @@ namespace RPGWonder
             initCharacter(CreatedCharacter);
             for (int i = 0; i < Common.Instance.Races.Count; i++)
             {
-                raceCcomboBox.Items.Add(Common.Instance.Races.Values.ToList()[i]);
+                string TAG = Common.Instance.Races.Keys.ToList()[i];
+                raceCcomboBox.Items.Add(Common.Instance.Races[TAG]["name"]);
             }
-            for (int i = 0; i < Common.Instance.Classnames.Count; i++)
+            for (int i = 0; i < Common.Instance.Classes.Count; i++)
             {
-                classComboBox.Items.Add(Common.Instance.Classnames.Values.ToList()[i]);
+                classComboBox.Items.Add(Common.Instance.Classes.Values.ToList()[i]);
             }
             for (int i = 0; i < Common.Instance.Backgrounds.Count; i++)
             {
@@ -93,11 +97,15 @@ namespace RPGWonder
             skillsTableLayoutPanel.Width = 250;
             for (int i = 0; i < Common.Instance.Skills.Count; i++)
             {
+                TableLayoutPanel skillLayoutPanel = new TableLayoutPanel();
+                skillLayoutPanel.Size = new Size(200, 30);
                 string TAG = Common.Instance.Skills.Keys.ToList()[i];
                 Label label = new Label();
+                label.Width = 150;
                 label.Name = "skill" + TAG + "label";
-                label.Text = "--";
-                skillsTableLayoutPanel.Controls.Add(label);
+                label.Text = "---";
+                skillLayoutPanel.Controls.Add(label);
+                skillsTableLayoutPanel.Controls.Add(skillLayoutPanel);
             }
             foreach (RowStyle style in skillsTableLayoutPanel.RowStyles)
             {
@@ -120,7 +128,7 @@ namespace RPGWonder
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void nextButton_Click(object sender, EventArgs e)
         {
             if (race == -1 || classname == -1 || name == "" || background == -1 ||
                 gender == -1 || alignment == -1 || level < 1 || level > 20)
@@ -130,15 +138,22 @@ namespace RPGWonder
                 return;
             }
             CreatedCharacter.Race = Common.Instance.Races.Keys.ToList()[race];
-            CreatedCharacter.CharacterClass = Common.Instance.Classnames.Keys.ToList()[classname];
-            CreatedCharacter.CharacterName = name;
+            CreatedCharacter.Speed = int.Parse(Common.Instance.Races[CreatedCharacter.Race]["speed"]);
+            CreatedCharacter.Size = Common.Instance.Races[CreatedCharacter.Race]["size"];
+            CreatedCharacter.CharacterClass = Common.Instance.Classes.Keys.ToList()[classname];
+            CreatedCharacter.Name = name;
             CreatedCharacter.Background = Common.Instance.Backgrounds.Keys.ToList()[background];
             CreatedCharacter.Gender = Common.Instance.Genders.Keys.ToList()[gender];
             CreatedCharacter.Level = level;
+            CreatedCharacter.Experience = int.Parse(Common.Instance.Levels[CreatedCharacter.Level.ToString()]["exp"]);
+            CreatedCharacter.ProficiencyBonus = int.Parse(Common.Instance.Levels[CreatedCharacter.Level.ToString()]["bonus"]);
             CreatedCharacter.Alignment = Common.Instance.Alignments.Keys.ToList()[alignment];
+            CreatedCharacter.PersonalityTraits = personalityTraitsTextBox.Text;
+            CreatedCharacter.Ideals = ideaslTextBox.Text;
+            CreatedCharacter.Bonds = bondsTextBox.Text;
+            CreatedCharacter.Flaws = flawsTextBox.Text;
             swapToPage2();
             rollStats();
-            updateProficiencies();
         }
         private void raceCcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -174,12 +189,13 @@ namespace RPGWonder
             nameTextBox.Hide();
             basicInfoTableLayout.Hide();
             nextButton.Hide();
-            characterNameLabel.Text = CreatedCharacter.CharacterName + "\t Lv" + CreatedCharacter.Level + " " +
-                Common.Instance.Races[CreatedCharacter.Race] + " " + Common.Instance.Classnames[CreatedCharacter.CharacterClass];
+            characterNameLabel.Text = CreatedCharacter.Name + "\t Lv" + CreatedCharacter.Level + " " +
+                Common.Instance.Races[CreatedCharacter.Race] + " " + Common.Instance.Classes[CreatedCharacter.CharacterClass];
             characterNameLabel.Show();
             statsTableLayoutPanel.Show();
             rerollButton.Show();
             skillsTableLayoutPanel.Show();
+            saveButton.Show();
         }
 
         private void rollStats()
@@ -222,12 +238,16 @@ namespace RPGWonder
                 CreatedCharacter.Stats.Set(TAG, statValue);
             }
         }
-
         private void handleRecalcProfiencies(object sender, EventArgs e)
         {
+            for (int i = 0; i < Common.Instance.Stats.Count; i++)
+            {
+                string TAG = Common.Instance.Stats.Keys.ToList()[i];
+                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("stat" + TAG + "numericUpDown", true)[0];
+                CreatedCharacter.Stats.Set(TAG, (int)numericUpDown.Value);
+            }
             updateProficiencies();
         }
-
         private void updateProficiencies()
         {
             for (int i = 0; i < Common.Instance.Stats.Count; i++)
@@ -239,7 +259,7 @@ namespace RPGWonder
                     if (int.Parse(Common.Instance.Proficiencies.Keys.ToList()[j]) <= CreatedCharacter.Stats.Get(TAG))
                     {
                         string prof = Common.Instance.Proficiencies.Values.ToList()[j];
-                        CreatedCharacter.Skills.Set(TAG, prof);
+                        CreatedCharacter.Saves.Set(TAG, prof);
                         label.Text = prof;
                         break;
                     }
@@ -248,19 +268,25 @@ namespace RPGWonder
             for (int i = 0; i < Common.Instance.Skills.Count; i++)
             {
                 string TAG = Common.Instance.Skills.Keys.ToList()[i];
+                string stat = Common.Instance.Skills[TAG]["stat"];
                 Label label = (Label)Controls.Find("skill" + TAG + "label", true)[0];
-                label.Text = CreatedCharacter.Skills.Get(TAG) + " " + Common.Instance.Skills[TAG]["name"] + " (" + Common.Instance.Skills[TAG]["stat"] + ")";
+                label.Text = CreatedCharacter.Saves.Get(stat) + " " + Common.Instance.Skills[TAG]["name"] + " (" + Common.Instance.Skills[TAG]["stat"] + ")";
+                CreatedCharacter.Skills.Set(TAG, CreatedCharacter.Saves.Get(stat));
             }
         }
-
-        private void personalityTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void rerollButton_Click(object sender, EventArgs e)
         {
             rollStats();
+        }
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
+            CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
+            CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["passive-perception-stat"]));
+            CreatedCharacter.SaveToJSON("..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters");
+            string message = "Character saved!";
+            MessageBox.Show(message);
+            Close();
         }
     }
 }

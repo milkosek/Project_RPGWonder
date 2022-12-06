@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,13 +30,29 @@ namespace RPGWonder
 
         private void JoinSession_Load(object sender, EventArgs e)
         {
-
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
+            if (File.Exists(path + "\\Characters.json"))
+            {
+                JObject data = JObject.Parse(File.ReadAllText(path + "\\Characters.json"));
+                JArray characters = (JArray)data["characters"];
+                foreach (JToken characterTAG in characters)
+                {
+                    JObject character = JObject.Parse(File.ReadAllText(path + characterTAG.ToString()));
+                    charactersComboBox.Items.Add((string)character["name"]);
+                }
+            }
+            else
+            {
+                string message = "Characters.json file seems to missing or corrupted.\nCreating a new character should fix this issue.";
+                MessageBox.Show(message);
+                Close();
+            }
         }
 
         private void JoinGameButton_Click(object sender, EventArgs e)
         {
             Game gameWindow = new Game();
-            this.Close();
+            Close();
             gameWindow.Show();
         }
     }

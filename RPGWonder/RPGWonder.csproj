@@ -74,6 +74,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\dataclass\Dataclass.cs" />
     <Compile Include="src\map\HexButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,6 +86,7 @@
     <None Include="systemPresets\DnD5e\Classes.json" />
     <None Include="systemPresets\DnD5e\Defines.json" />
     <None Include="systemPresets\DnD5e\Genders.json" />
+    <None Include="systemPresets\DnD5e\Levels.json" />
     <None Include="systemPresets\DnD5e\Proficiencies.json" />
     <None Include="systemPresets\DnD5e\RacialIncreases.json" />
     <None Include="systemPresets\DnD5e\Races.json" />
@@ -261,6 +263,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="userData\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

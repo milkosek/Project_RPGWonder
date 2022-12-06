@@ -41,8 +41,9 @@
             // JoinGameButton
             // 
             resources.ApplyResources(this.JoinGameButton, "JoinGameButton");
+            this.JoinGameButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.JoinGameButton.Name = "JoinGameButton";
-            this.JoinGameButton.UseVisualStyleBackColor = true;
+            this.JoinGameButton.UseVisualStyleBackColor = false;
             this.JoinGameButton.Click += new System.EventHandler(this.JoinGameButton_Click);
             // 
             // ipAddrInput

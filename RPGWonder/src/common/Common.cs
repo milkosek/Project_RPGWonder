@@ -1,16 +1,14 @@
-﻿using RPGWonder.src.utils;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace RPGWonder.src.common
+namespace RPGWonder
 {
     public sealed class Common
     {
         private static Common instance = null;
 
         Common(
-                Dictionary<string, string> races,
-                Dictionary<string, string> classnames,
+                Dictionary<string, Dictionary<string, string>> races,
+                Dictionary<string, string> classes,
                 Dictionary<string, string> backgrounds,
                 Dictionary<string, string> genders,
                 Dictionary<string, string> alignments,
@@ -18,11 +16,12 @@ namespace RPGWonder.src.common
                 Dictionary<string, string> proficiencies,
                 Dictionary<string, Dictionary<string, string>> stats,
                 Dictionary<string, Dictionary<string, string>> racialIncreases,
-                Dictionary<string, Dictionary<string, string>> skills
+                Dictionary<string, Dictionary<string, string>> skills,
+                Dictionary<string, Dictionary<string, string>> levels
             )
         {
             Races = races;
-            Classnames = classnames;
+            Classes = classes;
             Backgrounds = backgrounds;
             Genders = genders;
             Alignments = alignments;
@@ -31,9 +30,10 @@ namespace RPGWonder.src.common
             Stats = stats;
             RacialIncreases = racialIncreases;
             Skills = skills;
+            Levels = levels;
         }
-        public Dictionary<string, string> Races;
-        public Dictionary<string, string> Classnames;
+        public Dictionary<string, Dictionary<string, string>> Races;
+        public Dictionary<string, string> Classes;
         public Dictionary<string, string> Backgrounds;
         public Dictionary<string, string> Genders;
         public Dictionary<string, string> Alignments;
@@ -42,6 +42,7 @@ namespace RPGWonder.src.common
         public Dictionary<string, Dictionary<string, string>> Stats;
         public Dictionary<string, Dictionary<string, string>> RacialIncreases;
         public Dictionary<string, Dictionary<string, string>> Skills;
+        public Dictionary<string, Dictionary<string, string>> Levels;
         public static Common Instance
         {
             get
@@ -49,7 +50,7 @@ namespace RPGWonder.src.common
                 if (instance == null)
                 {
                     instance = new Common(
-                            Utils.parseJSON<Dictionary<string, string>>
+                            Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
                             ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Races.json"),
                             Utils.parseJSON<Dictionary<string, string>>
                             ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json"),
@@ -68,7 +69,9 @@ namespace RPGWonder.src.common
                             Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
                             ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\RacialIncreases.json"),
                             Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
-                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json")
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json"),
+                            Utils.parseJSON<Dictionary<string, Dictionary<string, string>>>
+                            ("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json")
                         );
                 }
                 return instance;

@@ -47,9 +47,10 @@
             // 
             // hostSessionButton
             // 
+            this.hostSessionButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             resources.ApplyResources(this.hostSessionButton, "hostSessionButton");
             this.hostSessionButton.Name = "hostSessionButton";
-            this.hostSessionButton.UseVisualStyleBackColor = true;
+            this.hostSessionButton.UseVisualStyleBackColor = false;
             this.hostSessionButton.Click += new System.EventHandler(this.hostSessionButton_Click);
             // 
             // HostSession
@@ -60,6 +61,7 @@
             this.Controls.Add(this.selectCampaignLabel);
             this.Controls.Add(this.selectCampaignComboBox);
             this.Name = "HostSession";
+            this.Load += new System.EventHandler(this.HostSession_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

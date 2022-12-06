@@ -3,5 +3,8 @@
   "max-level": "20",
   "stat-dice-rolled": "4",
   "stat-dice-ignored": "1",
-  "stat-dice-faces": "6"
+  "stat-dice-faces": "6",
+  "armor-class-stat": "DEX",
+  "initiative-stat": "DEX",
+  "passive-perception-stat":  "WIS"
 }
