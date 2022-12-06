@@ -1,14 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -39,9 +32,9 @@ namespace RPGWonder
         private void HostSession_Load(object sender, EventArgs e)
         {
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
-            if (File.Exists(path + "\\Campaigns.json"))
+            if (File.Exists(path + "\\00_Campaigns.json"))
             {
-                JObject data = JObject.Parse(File.ReadAllText(path + "\\Campaigns.json"));
+                JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Campaigns.json"));
                 JArray campaigns = (JArray)data["campaigns"];
                 foreach (JToken campaignTAG in campaigns)
                 {
@@ -51,7 +44,7 @@ namespace RPGWonder
             }
             else
             {
-                string message = "Campaigns.json file seems to missing or corrupted.\nCreating a new campaign should fix this issue.";
+                string message = "00_Campaigns.json file seems to missing or corrupted.\nCreating a new campaign should fix this issue.";
                 MessageBox.Show(message);
                 Close();
             }

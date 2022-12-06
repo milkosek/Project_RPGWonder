@@ -53,9 +53,8 @@ namespace RPGWonder
             {
                 Directory.CreateDirectory(path);
             }
-            if (!File.Exists(path + "\\Characters.json"))
+            if (!File.Exists(path + "\\00_Characters.json"))
             {
-                File.Create(path + "\\Characters.json").Close();
                 sb = new StringBuilder();
                 sw = new StringWriter(sb);
                 using (JsonWriter writer = new JsonTextWriter(sw))
@@ -69,9 +68,9 @@ namespace RPGWonder
                     writer.WriteEndArray();
                     writer.WriteEnd();
                 }
-                File.WriteAllText(path + "\\Characters.json", sb.ToString());
+                File.WriteAllText(path + "\\00_Characters.json", sb.ToString());
             }
-            JObject data = JObject.Parse(File.ReadAllText(path + "\\Characters.json"));
+            JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Characters.json"));
             long maxId = (long)data["max-id"];
             sb = new StringBuilder();
             sw = new StringWriter(sb);
@@ -194,7 +193,7 @@ namespace RPGWonder
             data["max-id"] = maxId + 1;
             ((JArray)data["characters"]).Add("\\" + Name + ".json");
             File.WriteAllText(path + "\\" + Name + ".json", sb.ToString());
-            File.WriteAllText(path + "\\Characters.json", data.ToString());
+            File.WriteAllText(path + "\\00_Characters.json", data.ToString());
         }
         public void ReadFromJSON(string path)
         {

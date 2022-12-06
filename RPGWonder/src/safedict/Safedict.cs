@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,11 @@ namespace RPGWonder.src.safedict
             {
                 return this[key];
             }
+        }
+
+        internal string Get(JToken jToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

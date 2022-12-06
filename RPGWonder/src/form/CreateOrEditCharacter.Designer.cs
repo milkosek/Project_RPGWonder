@@ -58,6 +58,7 @@
             this.rerollButton = new System.Windows.Forms.Button();
             this.skillsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.saveButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.basicInfoTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.levelBox)).BeginInit();
             this.SuspendLayout();
@@ -174,60 +175,60 @@
             this.basicInfoTableLayout.Size = new System.Drawing.Size(628, 452);
             this.basicInfoTableLayout.TabIndex = 15;
             // 
-            // flawLabel
+            // flawsLabel
             // 
             this.flawsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.flawsLabel.AutoSize = true;
             this.flawsLabel.Location = new System.Drawing.Point(369, 398);
-            this.flawsLabel.Name = "flawLabel";
+            this.flawsLabel.Name = "flawsLabel";
             this.flawsLabel.Size = new System.Drawing.Size(35, 16);
             this.flawsLabel.TabIndex = 18;
             this.flawsLabel.Text = "Flaw";
             // 
-            // bondLabel
+            // bondsLabel
             // 
             this.bondsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bondsLabel.AutoSize = true;
             this.bondsLabel.Location = new System.Drawing.Point(52, 398);
-            this.bondsLabel.Name = "bondLabel";
+            this.bondsLabel.Name = "bondsLabel";
             this.bondsLabel.Size = new System.Drawing.Size(39, 16);
             this.bondsLabel.TabIndex = 18;
             this.bondsLabel.Text = "Bond";
             // 
-            // personalityLabel
+            // personalityTraitsLabel
             // 
             this.personalityTraitsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.personalityTraitsLabel.AutoSize = true;
             this.personalityTraitsLabel.Location = new System.Drawing.Point(14, 299);
-            this.personalityTraitsLabel.Name = "personalityLabel";
+            this.personalityTraitsLabel.Name = "personalityTraitsLabel";
             this.personalityTraitsLabel.Size = new System.Drawing.Size(77, 32);
             this.personalityTraitsLabel.TabIndex = 18;
             this.personalityTraitsLabel.Text = "Personality Traits";
             // 
-            // bondTextBox
+            // bondsTextBox
             // 
             this.bondsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.bondsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bondsTextBox.Location = new System.Drawing.Point(97, 392);
-            this.bondsTextBox.Name = "bondTextBox";
+            this.bondsTextBox.Name = "bondsTextBox";
             this.bondsTextBox.Size = new System.Drawing.Size(213, 27);
             this.bondsTextBox.TabIndex = 19;
             // 
-            // flawTextBox
+            // flawsTextBox
             // 
             this.flawsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flawsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.flawsTextBox.Location = new System.Drawing.Point(411, 392);
-            this.flawsTextBox.Name = "flawTextBox";
+            this.flawsTextBox.Name = "flawsTextBox";
             this.flawsTextBox.Size = new System.Drawing.Size(213, 27);
             this.flawsTextBox.TabIndex = 19;
             // 
-            // idealTextBox
+            // ideaslTextBox
             // 
             this.ideaslTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ideaslTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ideaslTextBox.Location = new System.Drawing.Point(411, 301);
-            this.ideaslTextBox.Name = "idealTextBox";
+            this.ideaslTextBox.Name = "ideaslTextBox";
             this.ideaslTextBox.Size = new System.Drawing.Size(213, 27);
             this.ideaslTextBox.TabIndex = 19;
             // 
@@ -316,21 +317,21 @@
             this.alignmentLabel.TabIndex = 17;
             this.alignmentLabel.Text = "Alignment";
             // 
-            // personalityTextBox
+            // personalityTraitsTextBox
             // 
             this.personalityTraitsTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.personalityTraitsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.personalityTraitsTextBox.Location = new System.Drawing.Point(97, 301);
-            this.personalityTraitsTextBox.Name = "personalityTextBox";
+            this.personalityTraitsTextBox.Name = "personalityTraitsTextBox";
             this.personalityTraitsTextBox.Size = new System.Drawing.Size(213, 27);
             this.personalityTraitsTextBox.TabIndex = 18;
             // 
-            // idealLabel
+            // idealsLabel
             // 
             this.idealsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.idealsLabel.AutoSize = true;
             this.idealsLabel.Location = new System.Drawing.Point(367, 307);
-            this.idealsLabel.Name = "idealLabel";
+            this.idealsLabel.Name = "idealsLabel";
             this.idealsLabel.Size = new System.Drawing.Size(37, 16);
             this.idealsLabel.TabIndex = 18;
             this.idealsLabel.Text = "Ideal";
@@ -506,11 +507,24 @@
             this.saveButton.Visible = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.backButton.Location = new System.Drawing.Point(728, 9);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(60, 60);
+            this.backButton.TabIndex = 22;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Visible = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // CreateOrEditCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 639);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.skillsTableLayoutPanel);
             this.Controls.Add(this.rerollButton);
@@ -561,5 +575,6 @@
         private System.Windows.Forms.Button rerollButton;
         private System.Windows.Forms.TableLayoutPanel skillsTableLayoutPanel;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button backButton;
     }
 }

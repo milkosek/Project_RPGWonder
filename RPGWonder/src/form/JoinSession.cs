@@ -31,9 +31,9 @@ namespace RPGWonder
         private void JoinSession_Load(object sender, EventArgs e)
         {
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
-            if (File.Exists(path + "\\Characters.json"))
+            if (File.Exists(path + "\\00_Characters.json"))
             {
-                JObject data = JObject.Parse(File.ReadAllText(path + "\\Characters.json"));
+                JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Characters.json"));
                 JArray characters = (JArray)data["characters"];
                 foreach (JToken characterTAG in characters)
                 {
@@ -43,7 +43,7 @@ namespace RPGWonder
             }
             else
             {
-                string message = "Characters.json file seems to missing or corrupted.\nCreating a new character should fix this issue.";
+                string message = "00_Characters.json file seems to missing or corrupted.\nCreating a new character should fix this issue.";
                 MessageBox.Show(message);
                 Close();
             }

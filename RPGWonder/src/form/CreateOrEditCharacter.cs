@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -13,16 +11,15 @@ namespace RPGWonder
     public partial class CreateOrEditCharacter : Form
     {
         public static CreateOrEditCharacter instance;
-        private int race = -1;
-        private int classname = -1;
-        private int background = -1;
-        private int gender = -1;
-        private int alignment = -1;
+        private string race = "";
+        private string classname = "";
+        private string background = "";
+        private string gender = "";
+        private string alignment = "";
         private int level = 1;
         private string name = "";
         private bool bonusAdded = true;
         private Character CreatedCharacter = new Character();
-
         public CreateOrEditCharacter()
         {
             InitializeComponent();
@@ -30,79 +27,82 @@ namespace RPGWonder
         }
         private void CreateOrEditCharacter_Load(object sender, EventArgs e)
         {
-            initCharacter(CreatedCharacter);
-            for (int i = 0; i < Common.Instance.Races.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Races)
             {
-                string TAG = Common.Instance.Races.Keys.ToList()[i];
-                raceCcomboBox.Items.Add(Common.Instance.Races[TAG]["name"]);
+                ComboBoxObject comboBoxObject = new ComboBoxObject(TAG.Key, (string)Common.Instance.Races[TAG.Key]["name"]);
+                raceCcomboBox.Items.Add(comboBoxObject);
             }
-            for (int i = 0; i < Common.Instance.Classes.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Classes)
             {
-                classComboBox.Items.Add(Common.Instance.Classes.Values.ToList()[i]);
+                ComboBoxObject comboBoxObject = new ComboBoxObject(TAG.Key, (string)TAG.Value);
+                classComboBox.Items.Add(comboBoxObject);
             }
-            for (int i = 0; i < Common.Instance.Backgrounds.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Backgrounds)
             {
-                backgroundComboBox.Items.Add(Common.Instance.Backgrounds.Values.ToList()[i]);
+                ComboBoxObject comboBoxObject = new ComboBoxObject(TAG.Key, (string)TAG.Value);
+                backgroundComboBox.Items.Add(comboBoxObject);
             }
-            for (int i = 0; i < Common.Instance.Genders.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Genders)
             {
-                genderComboBox.Items.Add(Common.Instance.Genders.Values.ToList()[i]);
+                ComboBoxObject comboBoxObject = new ComboBoxObject(TAG.Key, (string)TAG.Value);
+                genderComboBox.Items.Add(comboBoxObject);
             }
-            for (int i = 0; i < Common.Instance.Alignments.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Alignments)
             {
-                alignmentComboBox.Items.Add(Common.Instance.Alignments.Values.ToList()[i]);
+                ComboBoxObject comboBoxObject = new ComboBoxObject(TAG.Key, (string)TAG.Value);
+                alignmentComboBox.Items.Add(comboBoxObject);
             }
             statsTableLayoutPanel.RowCount = Common.Instance.Stats.Count;
-            for (int i = 0; i < Common.Instance.Stats.Count; i++)
+            int i = 0;
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Stats)
             {
-                string TAG = Common.Instance.Stats.Keys.ToList()[i];
                 NumericUpDown numericUpDown = new NumericUpDown();
                 TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
                 TableLayoutPanel proficiencyLayoutPanel = new TableLayoutPanel();
                 Label label = new Label();
                 Label proficiency = new Label();
-                numericUpDown.Minimum = int.Parse(Common.Instance.Stats[TAG]["min-val"]);
-                numericUpDown.Maximum = int.Parse(Common.Instance.Stats[TAG]["max-val"]);
-                numericUpDown.Name = "stat" + Common.Instance.Stats.Keys.ToList()[i] + "numericUpDown";
+                numericUpDown.Minimum = (int)Common.Instance.Stats[TAG.Key]["min-val"];
+                numericUpDown.Maximum = (int)Common.Instance.Stats[TAG.Key]["max-val"];
+                numericUpDown.Name = "stat" + TAG.Key + "numericUpDown";
                 numericUpDown.Font = new Font("Microsoft Sans Serif", 19);
                 numericUpDown.Size = new Size(60, 45);
                 numericUpDown.ValueChanged += new EventHandler(handleRecalcProfiencies);
-                label.Text = Common.Instance.Stats[TAG]["name"];
-                label.Name = "stat" + Common.Instance.Stats.Keys.ToList()[i] + "label";
+                label.Text = (string)TAG.Value["name"];
+                label.Name = "stat" + TAG.Key + "label";
                 proficiency.Text = "+0";
-                proficiency.Name = "proficiency" + Common.Instance.Stats.Keys.ToList()[i] + "label";
+                proficiency.Name = "proficiency" + TAG.Key + "label";
                 proficiency.Font = new Font("Microsoft Sans Serif", 14);
                 proficiency.Anchor = AnchorStyles.None;
-                tableLayoutPanel.Name = "stat" + Common.Instance.Stats.Keys.ToList()[i] + "tableLayoutPanel";
+                tableLayoutPanel.Name = "stat" + TAG.Key + "tableLayoutPanel";
                 tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
                 tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
                 tableLayoutPanel.Controls.Add(numericUpDown, 0, 0);
                 tableLayoutPanel.Controls.Add(label, 0, 1);
                 tableLayoutPanel.Size = new Size(80, 55);
-                proficiencyLayoutPanel.Name = "proficiency" + Common.Instance.Stats.Keys.ToList()[i] + "tableLayoutPanel";
+                proficiencyLayoutPanel.Name = "proficiency" + TAG.Key + "tableLayoutPanel";
                 proficiencyLayoutPanel.Controls.Add(proficiency, 0, 0);
                 proficiencyLayoutPanel.Size = new Size(80, 55);
                 statsTableLayoutPanel.Controls.Add(tableLayoutPanel, 0, i);
                 statsTableLayoutPanel.Controls.Add(proficiencyLayoutPanel, 1, i);
+                i++;
             }
             foreach (RowStyle style in statsTableLayoutPanel.RowStyles)
             {
                 style.SizeType = SizeType.Absolute;
                 style.Height = 60;
             }
-            levelBox.Minimum = int.Parse(Common.Instance.Defines["min-level"]);
-            levelBox.Maximum = int.Parse(Common.Instance.Defines["max-level"]);
+            levelBox.Minimum = int.Parse((string)Common.Instance.Defines["min-level"]);
+            levelBox.Maximum = int.Parse((string)Common.Instance.Defines["max-level"]);
             rerollButton.Width = 50;
             rerollButton.Height = 50;
             skillsTableLayoutPanel.Width = 250;
-            for (int i = 0; i < Common.Instance.Skills.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Skills)
             {
                 TableLayoutPanel skillLayoutPanel = new TableLayoutPanel();
                 skillLayoutPanel.Size = new Size(200, 30);
-                string TAG = Common.Instance.Skills.Keys.ToList()[i];
                 Label label = new Label();
                 label.Width = 150;
-                label.Name = "skill" + TAG + "label";
+                label.Name = "skill" + TAG.Key + "label";
                 label.Text = "---";
                 skillLayoutPanel.Controls.Add(label);
                 skillsTableLayoutPanel.Controls.Add(skillLayoutPanel);
@@ -113,41 +113,27 @@ namespace RPGWonder
                 style.Height = 30;
             }
         }
-
-        private void initCharacter(Character createdCharacter)
-        {
-            for (int i = 0; i < Common.Instance.Stats.Count; i++)
-            {
-                string TAG = Common.Instance.Stats.Keys.ToList()[0];
-                createdCharacter.Stats.Set(TAG, 0);
-            }
-            for (int i = 0; i < Common.Instance.Skills.Count; i++)
-            {
-                string TAG = Common.Instance.Skills.Keys.ToList()[0];
-                createdCharacter.Skills.Set(TAG, "+0");
-            }
-        }
-
         private void nextButton_Click(object sender, EventArgs e)
         {
-            if (race == -1 || classname == -1 || name == "" || background == -1 ||
-                gender == -1 || alignment == -1 || level < 1 || level > 20)
+            if (race == "" || classname == "" || name == "" || background == "" ||
+                gender == "" || alignment == "" || 
+                level > (int)Common.Instance.Defines["max-level"] || level < (int)Common.Instance.Defines["min-level"])
             {
                 string message = "Please fill all boxes.";
                 MessageBox.Show(message);
                 return;
             }
-            CreatedCharacter.Race = Common.Instance.Races.Keys.ToList()[race];
-            CreatedCharacter.Speed = int.Parse(Common.Instance.Races[CreatedCharacter.Race]["speed"]);
-            CreatedCharacter.Size = Common.Instance.Races[CreatedCharacter.Race]["size"];
-            CreatedCharacter.CharacterClass = Common.Instance.Classes.Keys.ToList()[classname];
+            CreatedCharacter.Race = race;
+            CreatedCharacter.Speed = (int)Common.Instance.Races[CreatedCharacter.Race]["speed"];
+            CreatedCharacter.Size = (string)Common.Instance.Races[CreatedCharacter.Race]["size"];
+            CreatedCharacter.CharacterClass = classname;
             CreatedCharacter.Name = name;
-            CreatedCharacter.Background = Common.Instance.Backgrounds.Keys.ToList()[background];
-            CreatedCharacter.Gender = Common.Instance.Genders.Keys.ToList()[gender];
+            CreatedCharacter.Background = background;
+            CreatedCharacter.Gender = gender;
             CreatedCharacter.Level = level;
-            CreatedCharacter.Experience = int.Parse(Common.Instance.Levels[CreatedCharacter.Level.ToString()]["exp"]);
-            CreatedCharacter.ProficiencyBonus = int.Parse(Common.Instance.Levels[CreatedCharacter.Level.ToString()]["bonus"]);
-            CreatedCharacter.Alignment = Common.Instance.Alignments.Keys.ToList()[alignment];
+            CreatedCharacter.Experience = (int)Common.Instance.Levels[CreatedCharacter.Level.ToString()]["exp"];
+            CreatedCharacter.ProficiencyBonus = (int)Common.Instance.Levels[CreatedCharacter.Level.ToString()]["bonus"];
+            CreatedCharacter.Alignment = alignment;
             CreatedCharacter.PersonalityTraits = personalityTraitsTextBox.Text;
             CreatedCharacter.Ideals = ideaslTextBox.Text;
             CreatedCharacter.Bonds = bondsTextBox.Text;
@@ -157,23 +143,23 @@ namespace RPGWonder
         }
         private void raceCcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            race = raceCcomboBox.SelectedIndex;
+            race = ((ComboBoxObject)raceCcomboBox.SelectedItem).Key; 
         }
         private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            classname = classComboBox.SelectedIndex;
+            classname = ((ComboBoxObject)classComboBox.SelectedItem).Key;
         }
         private void backgroundComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            background = backgroundComboBox.SelectedIndex;
+            background = ((ComboBoxObject)backgroundComboBox.SelectedItem).Key;
         }
         private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gender = genderComboBox.SelectedIndex;
+            gender = ((ComboBoxObject)genderComboBox.SelectedItem).Key;
         }
         private void alignmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            alignment = alignmentComboBox.SelectedIndex;
+            alignment = ((ComboBoxObject)alignmentComboBox.SelectedItem).Key;
         }
         private void levelBox_ValueChanged(object sender, EventArgs e)
         {
@@ -190,25 +176,37 @@ namespace RPGWonder
             basicInfoTableLayout.Hide();
             nextButton.Hide();
             characterNameLabel.Text = CreatedCharacter.Name + "\t Lv" + CreatedCharacter.Level + " " +
-                Common.Instance.Races[CreatedCharacter.Race] + " " + Common.Instance.Classes[CreatedCharacter.CharacterClass];
+                Common.Instance.Races[CreatedCharacter.Race]["name"] + " " + Common.Instance.Classes[CreatedCharacter.CharacterClass];
             characterNameLabel.Show();
             statsTableLayoutPanel.Show();
             rerollButton.Show();
             skillsTableLayoutPanel.Show();
             saveButton.Show();
+            backButton.Show();
         }
-
+        private void swapToPage1()
+        {
+            nameLabel.Show();
+            nameTextBox.Show();
+            basicInfoTableLayout.Show();
+            nextButton.Show();
+            characterNameLabel.Hide();
+            statsTableLayoutPanel.Hide();
+            rerollButton.Hide();
+            skillsTableLayoutPanel.Hide();
+            saveButton.Hide();
+            backButton.Hide();
+        }
         private void rollStats()
         {
             if (bonusAdded)
             {
-                for (int i = 0; i < Common.Instance.RacialIncreases.Count; i++)
+                foreach (KeyValuePair<string, JToken> TAG in Common.Instance.RacialIncreases)
                 {
-                    string TAG = Common.Instance.RacialIncreases.Keys.ToList()[i];
-                    if (Common.Instance.RacialIncreases[TAG]["race"] == CreatedCharacter.Race)
+                    if ((string)Common.Instance.RacialIncreases[TAG.Key]["race"] == CreatedCharacter.Race)
                     {
-                        string stat = Common.Instance.RacialIncreases[TAG]["stat"];
-                        int bonus = int.Parse(Common.Instance.RacialIncreases[TAG]["bonus"]);
+                        string stat = (string)Common.Instance.RacialIncreases[TAG.Key]["stat"];
+                        int bonus = (int)Common.Instance.RacialIncreases[TAG.Key]["bonus"];
                         NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("stat" + stat + "numericUpDown", true)[0];
                         numericUpDown.Minimum += bonus;
                         bonusAdded = false;
@@ -216,62 +214,58 @@ namespace RPGWonder
                 }
             }
             DiceRolls diceRolls = new DiceRolls();
-            for (int i = 0; i < Common.Instance.Stats.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Stats)
             {
                 diceRolls.Clear();
-                string TAG = Common.Instance.Stats.Keys.ToList()[i];
-                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("stat" + TAG + "numericUpDown", true)[0];
-                for (int j = 0; j < int.Parse(Common.Instance.Defines["stat-dice-rolled"]); j++)
+                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("stat" + TAG.Key + "numericUpDown", true)[0];
+                for (int j = 0; j < int.Parse((string)Common.Instance.Defines["stat-dice-rolled"]); j++)
                 {
-                    diceRolls.AddDie(int.Parse(Common.Instance.Defines["stat-dice-faces"]));
+                    diceRolls.AddDie(int.Parse((string)Common.Instance.Defines["stat-dice-faces"]));
                 }
-                List<int> rolls = diceRolls.Roll()[int.Parse(Common.Instance.Defines["stat-dice-faces"])];
+                List<int> rolls = diceRolls.Roll()[int.Parse((string)Common.Instance.Defines["stat-dice-faces"])];
                 rolls.Sort();
-                for (int j = 0; j < int.Parse(Common.Instance.Defines["stat-dice-ignored"]); j++)
+                for (int j = 0; j < int.Parse((string)Common.Instance.Defines["stat-dice-ignored"]); j++)
                 {
                     rolls.RemoveAt(0);
                 }
-                int statValue = rolls.Sum() + (int)(numericUpDown.Minimum) - int.Parse(Common.Instance.Defines["stat-dice-rolled"]);
+                int statValue = rolls.Sum() + (int)(numericUpDown.Minimum) - int.Parse((string)Common.Instance.Defines["stat-dice-rolled"]);
                 if (statValue < (int)(numericUpDown.Minimum)) statValue = (int)(numericUpDown.Minimum);
                 if (statValue > (int)(numericUpDown.Maximum)) statValue = (int)(numericUpDown.Maximum);
                 numericUpDown.Value = statValue;
-                CreatedCharacter.Stats.Set(TAG, statValue);
+                CreatedCharacter.Stats.Set(TAG.Key, statValue);
             }
         }
         private void handleRecalcProfiencies(object sender, EventArgs e)
         {
-            for (int i = 0; i < Common.Instance.Stats.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Stats)
             {
-                string TAG = Common.Instance.Stats.Keys.ToList()[i];
-                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("stat" + TAG + "numericUpDown", true)[0];
-                CreatedCharacter.Stats.Set(TAG, (int)numericUpDown.Value);
+                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("stat" + TAG.Key + "numericUpDown", true)[0];
+                CreatedCharacter.Stats.Set(TAG.Key, (int)numericUpDown.Value);
             }
             updateProficiencies();
         }
         private void updateProficiencies()
         {
-            for (int i = 0; i < Common.Instance.Stats.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Stats)
             {
-                string TAG = Common.Instance.Stats.Keys.ToList()[i];
-                Label label = (Label)Controls.Find("proficiency" + Common.Instance.Stats.Keys.ToList()[i] + "label", true)[0];
-                for (int j = Common.Instance.Proficiencies.Count - 1; j >= 0; j--)
+                string maxBonus = "+0";
+                Label label = (Label)Controls.Find("proficiency" + TAG.Key + "label", true)[0];
+                foreach (KeyValuePair<string, JToken> TAG2 in Common.Instance.Proficiencies)
                 {
-                    if (int.Parse(Common.Instance.Proficiencies.Keys.ToList()[j]) <= CreatedCharacter.Stats.Get(TAG))
+                    if (int.Parse(TAG2.Key) <= CreatedCharacter.Stats[TAG.Key])
                     {
-                        string prof = Common.Instance.Proficiencies.Values.ToList()[j];
-                        CreatedCharacter.Saves.Set(TAG, prof);
-                        label.Text = prof;
-                        break;
+                        maxBonus = (string)TAG2.Value;
                     }
                 }
+                label.Text = maxBonus;
+                CreatedCharacter.Saves[TAG.Key] = maxBonus;
             }
-            for (int i = 0; i < Common.Instance.Skills.Count; i++)
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Skills)
             {
-                string TAG = Common.Instance.Skills.Keys.ToList()[i];
-                string stat = Common.Instance.Skills[TAG]["stat"];
-                Label label = (Label)Controls.Find("skill" + TAG + "label", true)[0];
-                label.Text = CreatedCharacter.Saves.Get(stat) + " " + Common.Instance.Skills[TAG]["name"] + " (" + Common.Instance.Skills[TAG]["stat"] + ")";
-                CreatedCharacter.Skills.Set(TAG, CreatedCharacter.Saves.Get(stat));
+                string stat = (string)Common.Instance.Skills[TAG.Key]["stat"];
+                Label label = (Label)Controls.Find("skill" + TAG.Key + "label", true)[0];
+                label.Text = CreatedCharacter.Saves.Get(stat) + " " + Common.Instance.Skills[TAG.Key]["name"] + " (" + Common.Instance.Skills[TAG.Key]["stat"] + ")";
+                CreatedCharacter.Skills.Set(TAG.Key, CreatedCharacter.Saves.Get(stat));
             }
         }
         private void rerollButton_Click(object sender, EventArgs e)
@@ -280,13 +274,17 @@ namespace RPGWonder
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
-            CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["armor-class-stat"]));
-            CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves.Get(Common.Instance.Defines["passive-perception-stat"]));
+            CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["armor-class-stat"]]);
+            CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["initiative-stat"]]);
+            CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["passive-perception-stat"]]);
             CreatedCharacter.SaveToJSON("..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters");
             string message = "Character saved!";
             MessageBox.Show(message);
             Close();
+        }
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            swapToPage1();
         }
     }
 }
