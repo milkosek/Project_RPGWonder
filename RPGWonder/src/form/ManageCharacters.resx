@@ -167,6 +167,33 @@
   <data name="&gt;&gt;EditCharacterButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="manageCharactersListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="manageCharactersListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="manageCharactersListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>844, 500</value>
+  </data>
+  <data name="manageCharactersListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="manageCharactersListBox.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;manageCharactersListBox.Name" xml:space="preserve">
+    <value>manageCharactersListBox</value>
+  </data>
+  <data name="&gt;&gt;manageCharactersListBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;manageCharactersListBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;manageCharactersListBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

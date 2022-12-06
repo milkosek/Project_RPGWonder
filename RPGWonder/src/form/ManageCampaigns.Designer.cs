@@ -36,7 +36,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCampaigns));
             this.CrtNewCampaignButton = new System.Windows.Forms.Button();
-            this.ManageCampaignsListBox = new System.Windows.Forms.ListBox();
+            this.manageCampaignsListBox = new System.Windows.Forms.ListBox();
             this.LoadCampaignButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -47,12 +47,12 @@
             this.CrtNewCampaignButton.UseVisualStyleBackColor = true;
             this.CrtNewCampaignButton.Click += new System.EventHandler(this.CrtNewCampaignButton_Click);
             // 
-            // ManageCampaignsListBox
+            // manageCampaignsListBox
             // 
-            this.ManageCampaignsListBox.FormattingEnabled = true;
-            resources.ApplyResources(this.ManageCampaignsListBox, "ManageCampaignsListBox");
-            this.ManageCampaignsListBox.Name = "ManageCampaignsListBox";
-            this.ManageCampaignsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ManageCampaignsListBox_MouseDoubleClick);
+            this.manageCampaignsListBox.FormattingEnabled = true;
+            resources.ApplyResources(this.manageCampaignsListBox, "manageCampaignsListBox");
+            this.manageCampaignsListBox.Name = "manageCampaignsListBox";
+            this.manageCampaignsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ManageCampaignsListBox_MouseDoubleClick);
             // 
             // LoadCampaignButton
             // 
@@ -67,7 +67,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LoadCampaignButton);
             this.Controls.Add(this.CrtNewCampaignButton);
-            this.Controls.Add(this.ManageCampaignsListBox);
+            this.Controls.Add(this.manageCampaignsListBox);
             this.Name = "ManageCampaigns";
             this.Load += new System.EventHandler(this.ManageCampaigns_Load);
             this.ResumeLayout(false);
@@ -77,7 +77,7 @@
         #endregion
 
         private System.Windows.Forms.Button CrtNewCampaignButton;
-        private System.Windows.Forms.ListBox ManageCampaignsListBox;
+        private System.Windows.Forms.ListBox manageCampaignsListBox;
         private System.Windows.Forms.Button LoadCampaignButton;
     }
 }

@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 using System.IO;
 
 namespace RPGWonder
 {
     public sealed class Common
     {
+        /// <summary>
+        /// A singleton instance of the Common class.
+        /// </summary>
         private static Common instance = null;
-
         Common(
                 JObject races,
                 JObject classes,
@@ -45,6 +46,21 @@ namespace RPGWonder
         public JObject RacialIncreases;
         public JObject Skills;
         public JObject Levels;
+
+        /// <summary>
+        /// Private constructor for the Common class.
+        /// </summary>
+        /// <param name="races">A JObject containing information about the races in the game.</param>
+        /// <param name="classes">A JObject containing information about the classes in the game.</param>
+        /// <param name="backgrounds">A JObject containing information about the backgrounds in the game.</param>
+        /// <param name="genders">A JObject containing information about the genders in the game.</param>
+        /// <param name="alignments">A JObject containing information about the alignments in the game.</param>
+        /// <param name="defines">A JObject containing information about the defines in the game.</param>
+        /// <param name="proficiencies">A JObject containing information about the proficiencies in the game.</param>
+        /// <param name="stats">A JObject containing information about the stats in the game.</param>
+        /// <param name="racialIncreases">A JObject containing information about the racial increases in the game.</param>
+        /// <param name="skills">A JObject containing information about the skills in the game.</param>
+        /// <param name="levels">A JObject containing information about the levels in the game.</param>
         public static Common Instance
         {
             get

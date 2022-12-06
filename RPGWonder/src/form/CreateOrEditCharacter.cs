@@ -1,13 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace RPGWonder
 {
+    /// <summary>
+    /// This class represents a form for creating or editing a character in a role-playing game.
+    /// </summary>
     public partial class CreateOrEditCharacter : Form
     {
         public static CreateOrEditCharacter instance;
@@ -20,11 +22,20 @@ namespace RPGWonder
         private string name = "";
         private bool bonusAdded = true;
         private Character CreatedCharacter = new Character();
+        /// <summary>
+        /// Initializes a new instance of the `CreateOrEditCharacter` class.
+        /// </summary>
         public CreateOrEditCharacter()
         {
             InitializeComponent();
             instance = this;
         }
+        /// <summary>
+        /// Populates the form's combo boxes with values from a `Common` instance,
+        /// creates `NumericUpDown` objects, and adds them to a `statsTableLayoutPanel`.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void CreateOrEditCharacter_Load(object sender, EventArgs e)
         {
             foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Races)
@@ -52,7 +63,13 @@ namespace RPGWonder
                 ComboBoxObject comboBoxObject = new ComboBoxObject(TAG.Key, (string)TAG.Value);
                 alignmentComboBox.Items.Add(comboBoxObject);
             }
+            /// <summary>
+            /// Set the `statsTableLayoutPanel`'s row count to the number of stats.
+            /// </summary>
             statsTableLayoutPanel.RowCount = Common.Instance.Stats.Count;
+            /// <summary>
+            /// Iterate over the stats and create a `NumericUpDown` and a `TableLayoutPanel` for each stat.
+            /// </summary>
             int i = 0;
             foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Stats)
             {
@@ -61,6 +78,9 @@ namespace RPGWonder
                 TableLayoutPanel proficiencyLayoutPanel = new TableLayoutPanel();
                 Label label = new Label();
                 Label proficiency = new Label();
+                /// <summary>
+                /// Set the `numericUpDown` object's minimum and maximum values based on the stat's min and max values.
+                /// </summary>
                 numericUpDown.Minimum = (int)Common.Instance.Stats[TAG.Key]["min-val"];
                 numericUpDown.Maximum = (int)Common.Instance.Stats[TAG.Key]["max-val"];
                 numericUpDown.Name = "stat" + TAG.Key + "numericUpDown";
@@ -84,6 +104,9 @@ namespace RPGWonder
                 proficiencyLayoutPanel.Size = new Size(80, 55);
                 statsTableLayoutPanel.Controls.Add(tableLayoutPanel, 0, i);
                 statsTableLayoutPanel.Controls.Add(proficiencyLayoutPanel, 1, i);
+                /// <summary>
+                /// Increment the iterator.
+                /// </summary>
                 i++;
             }
             foreach (RowStyle style in statsTableLayoutPanel.RowStyles)

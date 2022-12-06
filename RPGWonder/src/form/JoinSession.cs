@@ -1,25 +1,26 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RPGWonder
 {
+    /// <summary>
+    /// This class represents a form for joining an existing game session.
+    /// </summary>
     public partial class JoinSession : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the `JoinSession` class.
+        /// </summary>
         public JoinSession()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets or sets the `Game` object associated with this `JoinSession` instance.
+        /// </summary>
         public Game Game
         {
             get => default;
@@ -28,6 +29,12 @@ namespace RPGWonder
             }
         }
 
+        /// <summary>
+        /// This method is called when the `JoinSession` form is loaded. It reads the list of available
+        /// characters from a JSON file and adds them to the `charactersComboBox` control.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void JoinSession_Load(object sender, EventArgs e)
         {
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
@@ -49,6 +56,12 @@ namespace RPGWonder
             }
         }
 
+        /// <summary>
+        /// This method is called when the `JoinGameButton` is clicked. It creates a new `Game` object,
+        /// closes the `JoinSession` form, and shows the `Game` form.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void JoinGameButton_Click(object sender, EventArgs e)
         {
             Game gameWindow = new Game();

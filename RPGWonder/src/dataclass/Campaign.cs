@@ -6,7 +6,10 @@ using System.Text;
 
 namespace RPGWonder
 {
-    class Campaign: Dataclass
+    /// <summary>
+    /// A class representing a campaign
+    /// </summary>
+    class Campaign : Dataclass
     {
         public long Id;
         public string Name; 
@@ -16,8 +19,15 @@ namespace RPGWonder
         public int CurrentMap;
         public List<Asset> Assets;
 
+        /// <summary>
+        /// Initializes a new instance of the Campaign class.
+        /// </summary>
         public Campaign() { }
 
+        /// <summary>
+        /// Reads the campaign data from a JSON file.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
         public void ReadFromJSON(string path)
         {
             JObject data = JObject.Parse(File.ReadAllText(path));
@@ -26,6 +36,10 @@ namespace RPGWonder
             CurrentMap = (int)data["current-map"];
         }
 
+        /// <summary>
+        /// Saves the campaign data to a JSON file.
+        /// </summary>
+        /// <param name="path">The path to the directory where the JSON file should be saved.</param>
         public void SaveToJSON(string path)
         {
             if (!Directory.Exists(path + "\\" + Name))

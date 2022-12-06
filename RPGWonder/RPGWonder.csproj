@@ -78,7 +78,6 @@
     <Compile Include="src\dataclass\Dataclass.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
-    <Compile Include="src\utils\Utils.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />
     <None Include="systemPresets\DnD5e\Classes.json" />
     <None Include="systemPresets\DnD5e\Defines.json" />
@@ -98,12 +97,6 @@
     <Compile Include="src\dataclass\Campaign.cs" />
     <Compile Include="src\dataclass\Character.cs" />
     <Compile Include="src\dataclass\Connection.cs" />
-    <Compile Include="src\form\CreateCampaignPopup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\form\CreateCampaignPopup.Designer.cs">
-      <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\form\CreateOrEditCampaign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,9 +164,6 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
-    <EmbeddedResource Include="src\form\CreateCampaignPopup.resx">
-      <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>

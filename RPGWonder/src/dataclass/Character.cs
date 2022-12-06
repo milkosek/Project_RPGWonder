@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RPGWonder.src.safedict;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +7,9 @@ using System.Text;
 
 namespace RPGWonder
 {
+    /// <summary>
+    /// A class representing a campaign
+    /// </summary>
     class Character : Dataclass
     {
         public string Name;
@@ -44,7 +46,16 @@ namespace RPGWonder
         public int PassiveWisdomPerception;
         public string Age;
         public string AlliesAndOrgs;
+
+        /// <summary>
+        /// Initializes a new instance of the Character class.
+        /// </summary>
         public Character() { }
+
+        /// <summary>
+        /// Saves the campaign data to a JSON file.
+        /// </summary>
+        /// <param name="path">The path to the directory where the JSON file should be saved.</param>
         public void SaveToJSON(string path)
         {
             StringBuilder sb;
@@ -195,6 +206,11 @@ namespace RPGWonder
             File.WriteAllText(path + "\\" + Name + ".json", sb.ToString());
             File.WriteAllText(path + "\\00_Characters.json", data.ToString());
         }
+
+        /// <summary>
+        /// Reads the campaign data from a JSON file.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
         public void ReadFromJSON(string path)
         {
             JObject data = JObject.Parse(File.ReadAllText(path));
