@@ -29,18 +29,38 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
+            this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.coords = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // mapTableLayout
+            // 
+            this.mapTableLayout.BackgroundImage = global::RPGWonder.Properties.Resources.map_placeholder;
+            resources.ApplyResources(this.mapTableLayout, "mapTableLayout");
+            this.mapTableLayout.Name = "mapTableLayout";
+            // 
+            // coords
+            // 
+            resources.ApplyResources(this.coords, "coords");
+            this.coords.Name = "coords";
             // 
             // Game
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.coords);
+            this.Controls.Add(this.mapTableLayout);
             this.Name = "Game";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
             this.Load += new System.EventHandler(this.Game_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+        private System.Windows.Forms.TableLayoutPanel mapTableLayout;
+        private System.Windows.Forms.Label coords;
     }
 }

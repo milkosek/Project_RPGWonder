@@ -74,6 +74,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\map\HexButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\map\MapLoader.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <Compile Include="src\utils\Utils.cs" />
@@ -180,6 +184,9 @@
     <EmbeddedResource Include="src\form\CreateOrEditCharacter.resx">
       <DependentUpon>CreateOrEditCharacter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\form\Game.en.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\asset\Die.png" />
+    <None Include="Resources\map_placeholder.png" />
     <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -253,8 +261,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

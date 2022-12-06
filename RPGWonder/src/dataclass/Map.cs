@@ -12,6 +12,11 @@ namespace RPGWonder
         private Asset asset;
         private System.Collections.Generic.List<RPGWonder.EntityOnMap> entitiesOnMap;
         private List<int> dimensions;
+        private int rows;
+        private int columns;
+
+        public int Rows { get => rows; set => rows = value; }
+        public int Columns { get => columns; set => columns = value; }
 
         internal EntityOnMap EntityOnMap
         {
