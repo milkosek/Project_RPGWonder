@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.IO;
 
 namespace RPGWonder
@@ -17,22 +18,30 @@ namespace RPGWonder
                 JObject alignments,
                 JObject defines,
                 JObject proficiencies,
-                JObject stats,
-                JObject racialIncreases,
+                JObject abilities,
                 JObject skills,
                 JObject levels
             )
         {
+            Debug.WriteLine("Loading races");
             Races = races;
+            Debug.WriteLine("Loading classes");
             Classes = classes;
+            Debug.WriteLine("Loading backgrounds");
             Backgrounds = backgrounds;
+            Debug.WriteLine("Loading genders");
             Genders = genders;
+            Debug.WriteLine("Loading alignments");
             Alignments = alignments;
+            Debug.WriteLine("Loading defines");
             Defines = defines;
+            Debug.WriteLine("Loading proficiencies");
             Proficiencies = proficiencies;
-            Stats = stats;
-            RacialIncreases = racialIncreases;
+            Debug.WriteLine("Loading abilities");
+            Abilities = abilities;
+            Debug.WriteLine("Loading skills");
             Skills = skills;
+            Debug.WriteLine("Loading levels");
             Levels = levels;
         }
         public JObject Races;
@@ -42,8 +51,7 @@ namespace RPGWonder
         public JObject Alignments;
         public JObject Defines;
         public JObject Proficiencies;
-        public JObject Stats;
-        public JObject RacialIncreases;
+        public JObject Abilities;
         public JObject Skills;
         public JObject Levels;
 
@@ -58,7 +66,6 @@ namespace RPGWonder
         /// <param name="defines">A JObject containing information about the defines in the game.</param>
         /// <param name="proficiencies">A JObject containing information about the proficiencies in the game.</param>
         /// <param name="stats">A JObject containing information about the stats in the game.</param>
-        /// <param name="racialIncreases">A JObject containing information about the racial increases in the game.</param>
         /// <param name="skills">A JObject containing information about the skills in the game.</param>
         /// <param name="levels">A JObject containing information about the levels in the game.</param>
         public static Common Instance
@@ -75,8 +82,7 @@ namespace RPGWonder
                             JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Alignments.json")),
                             JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Defines.json")),
                             JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Proficiencies.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Stats.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\RacialIncreases.json")),
+                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Abilities.json")),
                             JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json")),
                             JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json"))
                         );

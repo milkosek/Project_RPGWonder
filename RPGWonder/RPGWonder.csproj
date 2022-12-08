@@ -84,7 +84,6 @@
     <None Include="systemPresets\DnD5e\Genders.json" />
     <None Include="systemPresets\DnD5e\Levels.json" />
     <None Include="systemPresets\DnD5e\Proficiencies.json" />
-    <None Include="systemPresets\DnD5e\RacialIncreases.json" />
     <None Include="systemPresets\DnD5e\Races.json" />
     <Compile Include="src\form\CreateOrEditCharacter.cs">
       <SubType>Form</SubType>
@@ -225,7 +224,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="systemPresets\DnD5e\Skills.json" />
-    <None Include="systemPresets\DnD5e\Stats.json" />
+    <None Include="systemPresets\DnD5e\Abilities.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\App.config" />

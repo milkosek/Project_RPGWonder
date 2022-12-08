@@ -20,7 +20,7 @@ namespace RPGWonder
         public int Experience;
         public string Background;
         public string Alignment;
-        public Safedict<string, int> Stats = new Safedict<string, int>();
+        public Safedict<string, int> Abilities = new Safedict<string, int>();
         public int ProficiencyBonus;
         public int ArmorClass;
         public int InitiativeModifier;
@@ -109,11 +109,11 @@ namespace RPGWonder
                 writer.WriteValue(Alignment);
                 writer.WritePropertyName("stats");
                 writer.WriteStartObject();
-                for (int i = 0; i < Stats.Count; i++)
+                for (int i = 0; i < Abilities.Count; i++)
                 {
-                    string TAG = Stats.Keys.ToList()[i];
+                    string TAG = Abilities.Keys.ToList()[i];
                     writer.WritePropertyName(TAG);
-                    writer.WriteValue(Stats[TAG]);
+                    writer.WriteValue(Abilities[TAG]);
                 }
                 writer.WriteEnd();
                 writer.WritePropertyName("proficiencyBonus");
@@ -221,10 +221,10 @@ namespace RPGWonder
             Experience = (int)data["experience"];
             Background = (string)data["background"];
             Alignment = (string)data["alignment"];
-            Stats.Clear();
+            Abilities.Clear();
             foreach (JProperty prop in data["stats"])
             {
-                Stats.Set(prop.Name, (int)data["stats"][prop.Name]);
+                Abilities.Set(prop.Name, (int)data["stats"][prop.Name]);
             }
             ProficiencyBonus = (int)data["proficiencyBonus"];
             ArmorClass = (int)data["armorClass"];
