@@ -75,7 +75,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\comboBoxObject\ComboBoxObject.cs" />
+    <Compile Include="src\dataclass\ClientTcpConnection.cs" />
     <Compile Include="src\dataclass\Dataclass.cs" />
+    <Compile Include="src\dataclass\HostTcpConnection.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />
