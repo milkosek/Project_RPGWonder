@@ -8,12 +8,5 @@ namespace RPGWonder
 {
     class VoiceChat
     {
-        internal Connection Connection
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

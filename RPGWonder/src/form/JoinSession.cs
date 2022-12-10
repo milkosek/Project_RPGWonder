@@ -21,7 +21,7 @@ namespace RPGWonder
         /// <summary>
         /// Gets or sets the `Game` object associated with this `JoinSession` instance.
         /// </summary>
-        public Game Game
+        public Client Game
         {
             get => default;
             set
@@ -64,7 +64,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void JoinGameButton_Click(object sender, EventArgs e)
         {
-            Game gameWindow = new Game();
+            Client gameWindow = new Client();
             Close();
             gameWindow.Show();
         }

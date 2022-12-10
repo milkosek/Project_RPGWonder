@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace RPGWonder.src.dataclass
+namespace RPGWonder
 {
     internal class ClientTcpConnection
     {
         private static String json; 
 
         private static NetworkStream stream;
-        public static void Connect(String serverAddr)
+        public void Connect(String serverAddr)
         {
             try
             {
@@ -27,21 +23,16 @@ namespace RPGWonder.src.dataclass
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("ArgumentNullException: {0}", e);
+                Debug.WriteLine("ArgumentNullException: {0}", e);
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
+                Debug.WriteLine("SocketException: {0}", e);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception: {0}", e);
+                Debug.WriteLine("Exception: {0}", e);
             }
-        }
-        public static void Main(string[] args)
-        {
-            //string host = "127.0.0.1";
-            //Connect(host);
         }
         private static void Listen()
         {
@@ -52,16 +43,16 @@ namespace RPGWonder.src.dataclass
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     json = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                    Console.WriteLine("Received: {0}", json);
+                    Debug.WriteLine("Received: {0}", json);
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
+                Debug.WriteLine("SocketException: {0}", e);
             }
             catch (IOException e)
             {
-                Console.WriteLine("Exception: {0}", e);
+                Debug.WriteLine("Exception: {0}", e);
             }
             finally
             {
@@ -79,15 +70,15 @@ namespace RPGWonder.src.dataclass
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
             try{
                 stream.Write(msg, 0, msg.Length);
-                Console.WriteLine("Sent: {0}", data);
+                Debug.WriteLine("Sent: {0}", data);
 
             }
             catch (SocketException e){
-                Console.WriteLine("SocketException: {0}", e);
+                Debug.WriteLine("SocketException: {0}", e);
                 stream.Close();
             }
             catch (IOException e){
-                Console.WriteLine("Exception: {0}", e);
+                Debug.WriteLine("Exception: {0}", e);
                 stream.Close();
             }
         }

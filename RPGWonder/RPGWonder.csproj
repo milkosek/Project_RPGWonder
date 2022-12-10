@@ -75,9 +75,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\comboBoxObject\ComboBoxObject.cs" />
-    <Compile Include="src\dataclass\ClientTcpConnection.cs" />
     <Compile Include="src\dataclass\Dataclass.cs" />
-    <Compile Include="src\dataclass\HostTcpConnection.cs" />
+    <Compile Include="src\form\Host.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\Host.Designer.cs">
+      <DependentUpon>Host.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\net\ClientTcpConnection.cs" />
+    <Compile Include="src\net\HostTcpConnection.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />
@@ -97,7 +103,6 @@
     <Compile Include="src\dataclass\AttackOrSpell.cs" />
     <Compile Include="src\dataclass\Campaign.cs" />
     <Compile Include="src\dataclass\Character.cs" />
-    <Compile Include="src\dataclass\Connection.cs" />
     <Compile Include="src\form\CreateOrEditCampaign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,11 +118,11 @@
     <Compile Include="src\form\DiceDisplay.designer.cs">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\form\Game.cs">
+    <Compile Include="src\form\Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\form\Game.Designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
+    <Compile Include="src\form\Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="src\form\HostSession.cs">
       <SubType>Form</SubType>
@@ -174,8 +179,11 @@
     <EmbeddedResource Include="src\form\CreateOrEditCharacter.resx">
       <DependentUpon>CreateOrEditCharacter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\form\Game.resx">
-      <DependentUpon>Game.cs</DependentUpon>
+    <EmbeddedResource Include="src\form\Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\Host.resx">
+      <DependentUpon>Host.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\HostSession.resx">
       <DependentUpon>HostSession.cs</DependentUpon>
