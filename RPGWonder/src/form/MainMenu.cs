@@ -26,7 +26,7 @@ namespace RPGWonder
         /// <summary>
         /// Gets or sets the `Game` object associated with this `MainMenu` instance.
         /// </summary>
-        public Game Game
+        public Client Game
         {
             get => default;
             set
