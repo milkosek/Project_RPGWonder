@@ -75,7 +75,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\comboBoxObject\ComboBoxObject.cs" />
-    <Compile Include="src\dataclass\Dataclass.cs" />
+    <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
       <SubType>Form</SubType>
     </Compile>

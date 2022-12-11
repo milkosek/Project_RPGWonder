@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -11,6 +11,7 @@ namespace RPGWonder
     /// </summary>
     public partial class HostSession : Form
     {
+        private string _campaign = "";
         /// <summary>
         /// Initializes a new instance of the `HostSession` class.
         /// </summary>
@@ -38,7 +39,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void hostSessionButton_Click(object sender, EventArgs e)
         {
-            Host host = new Host();
+            Host host = new Host(_campaign);
             Close();
             host.Show();
             //MainMenu.instance.Hide();
@@ -60,7 +61,8 @@ namespace RPGWonder
                 foreach (JToken campaignTAG in campaigns)
                 {
                     JObject campaign = JObject.Parse(File.ReadAllText(path + campaignTAG.ToString()));
-                    selectCampaignComboBox.Items.Add((string)campaign["name"]);
+                    ComboBoxObject comboBoxObject = new ComboBoxObject(campaignTAG.ToString(), (string)campaign["Name"]);
+                    selectCampaignComboBox.Items.Add(comboBoxObject);
                 }
             }
             else
@@ -69,6 +71,11 @@ namespace RPGWonder
                 MessageBox.Show(message);
                 Close();
             }
+        }
+
+        private void selectCampaignComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _campaign = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Key;
         }
     }
 }

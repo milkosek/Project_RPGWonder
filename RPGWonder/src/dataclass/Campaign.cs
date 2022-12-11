@@ -9,10 +9,10 @@ namespace RPGWonder
     /// <summary>
     /// A class representing a campaign
     /// </summary>
-    class Campaign : Dataclass
+    class Campaign : IDataclass
     {
         public long Id;
-        public string Name; 
+        public string Name;
         public List<Character> Characters;
         public List<Entity> Entities;
         public List<Map> Maps;
@@ -50,7 +50,7 @@ namespace RPGWonder
                 Directory.CreateDirectory(path + "\\" + Name + "\\assets");
                 StringBuilder sb;
                 StringWriter sw;
-                if (!File.Exists(path + "\\00_Campaigns.json"))
+                if (!File.Exists(path + "\\00_Campaigns.recievedString"))
                 {
                     sb = new StringBuilder();
                     sw = new StringWriter(sb);

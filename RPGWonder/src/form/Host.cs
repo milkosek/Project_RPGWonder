@@ -1,20 +1,20 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace RPGWonder
 {
     public partial class Host : Form
     {
         private HostTcpConnection connection;
-        public Host()
+        private string _campaign = "";
+        public Host(string campaign)
         {
             InitializeComponent();
+            _campaign = campaign;
         }
         private void Host_Load(object sender, System.EventArgs e)
         {
-            Debug.WriteLine("aaaa");
             connection = new HostTcpConnection();
-            connection.CreateSession();
+            connection.CreateSession(_campaign);
         }
     }
 }

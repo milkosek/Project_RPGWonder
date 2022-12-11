@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -10,6 +11,7 @@ namespace RPGWonder
     /// </summary>
     public partial class JoinSession : Form
     {
+        private string character = "";
         /// <summary>
         /// Initializes a new instance of the `JoinSession` class.
         /// </summary>
@@ -45,7 +47,8 @@ namespace RPGWonder
                 foreach (JToken characterTAG in characters)
                 {
                     JObject character = JObject.Parse(File.ReadAllText(path + characterTAG.ToString()));
-                    charactersComboBox.Items.Add((string)character["name"]);
+                    ComboBoxObject comboBoxObject = new ComboBoxObject(characterTAG.ToString(), (string)character["Name"]);
+                    charactersComboBox.Items.Add(comboBoxObject);
                 }
             }
             else
@@ -64,9 +67,17 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void JoinGameButton_Click(object sender, EventArgs e)
         {
-            Client gameWindow = new Client();
-            Close();
-            gameWindow.Show();
+            if(character != null)
+            {
+                Client gameWindow = new Client(character);
+                Close();
+                gameWindow.Show();
+            }
+        }
+
+        private void charactersComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
         }
     }
 }

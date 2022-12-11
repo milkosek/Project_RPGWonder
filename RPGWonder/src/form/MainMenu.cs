@@ -1,6 +1,6 @@
-﻿using System;
+﻿using RPGWonder.src.form;
+using System;
 using System.Windows.Forms;
-using RPGWonder.src.form;
 
 namespace RPGWonder
 {
@@ -106,7 +106,7 @@ namespace RPGWonder
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">The event arguments.</param>
         private void JoinButton_Click(object sender, EventArgs e)
-        {     
+        {
             JoinSession joinSessionWindow = new JoinSession();
             joinSessionWindow.Show();
         }

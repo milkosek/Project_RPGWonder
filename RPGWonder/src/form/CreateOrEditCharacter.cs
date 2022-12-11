@@ -136,7 +136,7 @@ namespace RPGWonder
         {
             if (CreatedCharacter.Race == null || CreatedCharacter.CharacterClass == null || CreatedCharacter.Name == "" ||
                 CreatedCharacter.Background == null || CreatedCharacter.Gender == null || CreatedCharacter.Alignment == null ||
-                CreatedCharacter.Level > (int)Common.Instance.Defines["max-level"] || 
+                CreatedCharacter.Level > (int)Common.Instance.Defines["max-level"] ||
                 CreatedCharacter.Level < (int)Common.Instance.Defines["min-level"])
             {
                 string message = "Please fill all boxes.";
@@ -156,7 +156,7 @@ namespace RPGWonder
         }
         private void raceCcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CreatedCharacter.Race = ((ComboBoxObject)raceCcomboBox.SelectedItem).Key; 
+            CreatedCharacter.Race = ((ComboBoxObject)raceCcomboBox.SelectedItem).Key;
         }
         private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
