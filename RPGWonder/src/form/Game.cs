@@ -15,7 +15,6 @@ namespace RPGWonder
     public partial class Game : Form
     {
         private MapLoader mapLoader;
-        private int Clicked = 0;
         private Map map;
 
         public Game()
@@ -24,6 +23,11 @@ namespace RPGWonder
             mapLoader = new MapLoader(this);
             map = new Map() { };
 
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\maps\\Equestria.json";
+
+            map.ReadFromJSON(path);
+
+            coords.Text = map.Name;
         }
 
         internal DiceRolls DiceRolls
