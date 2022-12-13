@@ -4,14 +4,12 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Windows.Forms;
 
 namespace RPGWonder
 {
     internal class HostTcpConnection
     {
         private static string recievedString;
-        private static List<TcpClient> players = new List<TcpClient>();
         private static List<NetworkStream> streams = new List<NetworkStream>();
         private string _campaign = "";
 
@@ -29,7 +27,7 @@ namespace RPGWonder
             {
                 int port = 13000;
                 //for testing I'll leave loopback
-                //IPAddress localAddr = Dns.GetHostEntry(Dns.GetHostName()).AddressList[0];
+                //IPAddress localAddr = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1];
                 IPAddress localAddr = IPAddress.Parse("127.0.0.1");
 
                 server = new TcpListener(localAddr, port);
@@ -42,7 +40,6 @@ namespace RPGWonder
                     NetworkStream stream = client.GetStream();
                     Thread listenThread = new Thread(new ThreadStart(() => Listen(stream, campaign)));
                     listenThread.Start();
-                    players.Add(client);
                     streams.Add(stream);
                 }
             }
