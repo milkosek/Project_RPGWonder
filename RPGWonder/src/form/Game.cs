@@ -14,13 +14,15 @@ namespace RPGWonder
 {
     public partial class Game : Form
     {
-        private MapLoader mapLoader;
+        private MapHandler mapLoader;
         private Map map;
+        private (int x, int y) selectedTile;
+        List<List<Button>> ButtonsList;
 
         public Game()
         {
             InitializeComponent();
-            mapLoader = new MapLoader(this);
+            mapLoader = new MapHandler(this);
             map = new Map() { };
 
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\maps\\Equestria.json";
@@ -66,6 +68,10 @@ namespace RPGWonder
         {
             MainMenu.instance.Hide();
             LoadMap(map.Columns, map.Rows);
+
+            Image myimage = new Bitmap(@"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
+            ButtonsList[5][5].BackgroundImage = myimage;
+            ButtonsList[5][5].Text = "DICE";
         }
 
         private void LoadMap(int Cols, int Rows)
@@ -77,14 +83,34 @@ namespace RPGWonder
 
             mapTableLayout.Size = new Size(1200, 675);
 
-            List<Button> ButtonsList = mapLoader.makeSquareTiles(mapTableLayout, Cols, Rows);
+            ButtonsList = mapLoader.makeSquareTiles(mapTableLayout, Cols, Rows);
+        }
+
+        private void Move(int x1, int y1, int x2, int y2)
+        {
+            Button from = ButtonsList[y1][x1];
+            Button to = ButtonsList[y2][x2];
+
+            if (from.Text != string.Format("{0} {1}", x1, y1))
+            {
+                to.BackgroundImage = from.BackgroundImage;
+                to.Text = from.Text;
+
+                from.BackgroundImage = null;
+                from.Text = string.Format("{0} {1}", x1, y1);
+            }
+
+            selectedTile.x = -1;
         }
 
         public void SetTextForCoords(string myText)
         {
+            selectedTile.x = Int32.Parse(myText.Split(' ')[0]);
+            selectedTile.y = Int32.Parse(myText.Split(' ')[1]);
+
             string tmpString = "";
-            tmpString += "x: " + Int32.Parse(myText) % map.Columns;
-            tmpString += "\ny: " + Int32.Parse(myText) / map.Columns;
+            tmpString += "x: " + selectedTile.x;
+            tmpString += "\ny: " + selectedTile.y;
             coords.Text = tmpString;
         }
 

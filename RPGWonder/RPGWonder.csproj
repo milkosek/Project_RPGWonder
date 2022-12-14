@@ -78,7 +78,7 @@
     <Compile Include="src\map\HexButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\map\MapLoader.cs" />
+    <Compile Include="src\map\MapHandler.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <Compile Include="src\utils\Utils.cs" />
@@ -264,7 +264,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="userData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

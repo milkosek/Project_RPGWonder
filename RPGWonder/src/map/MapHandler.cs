@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,18 @@ using System.Windows.Forms;
 
 namespace RPGWonder.src.map
 {
-    class MapLoader
+    class MapHandler
     {
         private Game game;
 
-        public MapLoader(Game game)
+        public MapHandler(Game game)
         {
             this.game = game;
         }
 
-        public List<Button> makeSquareTiles(TableLayoutPanel layout, int columnCount, int rowCount)
+        public List<List<Button>> makeSquareTiles(TableLayoutPanel layout, int columnCount, int rowCount)
         {
-            List<Button> ButtonsList = new List<Button> {};
+            List<List<Button>> ButtonsMatrix = new List<List<Button>> { };
             
             layout.ColumnCount = columnCount;
             layout.RowCount = rowCount;
@@ -32,6 +33,7 @@ namespace RPGWonder.src.map
                 layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(
                     System.Windows.Forms.SizeType.Percent, 100 / columnCount));
             }
+
             for (int i = 0; i < rowCount; i++)
             {
                 layout.RowStyles.Add(new System.Windows.Forms.RowStyle(
@@ -40,15 +42,17 @@ namespace RPGWonder.src.map
 
             for (int i = 0; i < rowCount; i++)
             {
+                List<Button> rowOfButtons = new List<Button>();
+
                 for (int j = 0; j < columnCount; j++)
                 {
-                    int buttonId = i * columnCount + j;
+                    (int x, int y) buttonId = (j, i);
                     var button = new Button();
                     button.FlatStyle = FlatStyle.Flat;
                     button.BackColor = System.Drawing.Color.Transparent;
 
-                    button.Text = string.Format("{0}", buttonId);
-                    button.Name = string.Format("button_{0}", buttonId);
+                    button.Text = string.Format("{0} {1}", buttonId.x, buttonId.y);
+                    button.Name = string.Format("{0} {1}", buttonId.x, buttonId.y);
 
                     button.Margin = new Padding(0, 0, 0, 0);
 
@@ -56,20 +60,26 @@ namespace RPGWonder.src.map
 
                     button.Dock = DockStyle.Fill;
                     button.Click += new EventHandler(btn_click);
+
+                    button.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+                    button.BackgroundImageLayout = ImageLayout.Stretch;
+
                     layout.Controls.Add(button, j, i);
 
-                    ButtonsList.Add(button);
+                    rowOfButtons.Add(button);
                 }
+
+                ButtonsMatrix.Add(rowOfButtons);
             }
 
-            return ButtonsList;
+            return ButtonsMatrix;
         }
 
         protected void btn_click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
 
-            game.SetTextForCoords(btn.Text);
+            game.SetTextForCoords(btn.Name);
         }
     }
 }
