@@ -41,7 +41,7 @@ namespace RPGWonder
                     listenTcpThread.Start();
                     streams.Add(stream);
 
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                     IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;//intercept client's ip address
                     Thread SendVoiceThread = new Thread(new ThreadStart(() => HostVoiceConnection.Send(ipClient.ToString())));
                     SendVoiceThread.Start();

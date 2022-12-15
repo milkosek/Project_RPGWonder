@@ -200,6 +200,9 @@
     <EmbeddedResource Include="src\form\HostSession.resx">
       <DependentUpon>HostSession.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\form\JoinSession.en.resx">
+      <DependentUpon>JoinSession.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\JoinSession.resx">
       <DependentUpon>JoinSession.cs</DependentUpon>
     </EmbeddedResource>

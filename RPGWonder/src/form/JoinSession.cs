@@ -12,6 +12,7 @@ namespace RPGWonder
     public partial class JoinSession : Form
     {
         private string character = "";
+        private string ipAddr;
         /// <summary>
         /// Initializes a new instance of the `JoinSession` class.
         /// </summary>
@@ -69,7 +70,8 @@ namespace RPGWonder
         {
             if(character != null)
             {
-                Client gameWindow = new Client(character);
+                ipAddr = ipAddrInput.Text;
+                Client gameWindow = new Client(character, ipAddr);
                 Close();
                 gameWindow.Show();
             }
@@ -79,5 +81,6 @@ namespace RPGWonder
         {
             character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
         }
+
     }
 }
