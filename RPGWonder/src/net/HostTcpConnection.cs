@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using RPGWonder.src.net;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -12,35 +14,37 @@ namespace RPGWonder
         private static string recievedString;
         private static List<NetworkStream> streams = new List<NetworkStream>();
         private string _campaign = "";
-
-        public void CreateSession(string campaign)
+        private readonly static int port = 13000;
+        public void CreateSession(string campaign, IPAddress ipAddress)
         {
             _campaign = campaign;
-            Thread acceptNewPlayersThread = new Thread(new ThreadStart(() => AcceptNewPlayers(campaign)));
+            Thread acceptNewPlayersThread = new Thread(new ThreadStart(() => AcceptNewPlayers(campaign, ipAddress)));
             acceptNewPlayersThread.Start();
         }
 
-        private static void AcceptNewPlayers(string campaign)
+        private static void AcceptNewPlayers(string campaign, IPAddress ipAddress)
         {
             TcpListener server = null;
             try
             {
-                int port = 13000;
-                //for testing I'll leave loopback
-                //IPAddress localAddr = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1];
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-
-                server = new TcpListener(localAddr, port);
+                server = new TcpListener(ipAddress, port);
                 server.Start();
+
                 while (true)
                 {
                     Debug.Write("Waiting for a connection... ");
                     TcpClient client = server.AcceptTcpClient();
                     Debug.WriteLine("Connected to:  " + client.ToString());
                     NetworkStream stream = client.GetStream();
-                    Thread listenThread = new Thread(new ThreadStart(() => Listen(stream, campaign)));
-                    listenThread.Start();
+
+                    Thread listenTcpThread = new Thread(new ThreadStart(() => Listen(stream, campaign)));
+                    listenTcpThread.Start();
                     streams.Add(stream);
+
+                    Thread.Sleep(500);
+                    IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;//intercept client's ip address
+                    Thread SendVoiceThread = new Thread(new ThreadStart(() => HostVoiceConnection.Send(ipClient.ToString())));
+                    SendVoiceThread.Start();
                 }
             }
             catch (SocketException e)
@@ -89,8 +93,7 @@ namespace RPGWonder
                         string parentDirectory = Path.GetDirectoryName(path + campaign);
                         File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + character, character_json);
                     }
-                    Thread sendThread = new Thread(new ThreadStart(() => ExecuteSending(recievedString)));
-                    sendThread.Start();
+                    Broadcast(recievedString);
                 }
             }
             catch (SocketException e)
@@ -107,13 +110,19 @@ namespace RPGWonder
                 streams.Remove(stream);
             }
         }
-        public static void Send(string data)
+        public static void Broadcast(string data)
         {
             //creating a new thread, so that it is non-blocking
-            Thread sendThread = new Thread(new ThreadStart(() => ExecuteSending(data)));
+            Thread sendThread = new Thread(new ThreadStart(() => BroadcastThreaded(data)));
             sendThread.Start();
         }
-        private static void ExecuteSending(string data)
+        public static void SendToClient(string data, NetworkStream stream)
+        {
+            //creating a new thread, so that it is non-blocking
+            Thread sendThread = new Thread(new ThreadStart(() => SendToClientThreaded(data, stream)));
+            sendThread.Start();
+        }
+        private static void BroadcastThreaded(string data)
         {
             foreach (NetworkStream stream in streams)
             {
@@ -135,8 +144,7 @@ namespace RPGWonder
                 }
             }
         }
-
-        private static void SendToClient(string data, NetworkStream stream)
+        private static void SendToClientThreaded(string data, NetworkStream stream)
         {
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
             try
