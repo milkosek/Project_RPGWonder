@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace RPGWonder.src.net
 {
+    //TODO: udp closing after losing connection
     internal class ClientVoiceConnection
     {
 

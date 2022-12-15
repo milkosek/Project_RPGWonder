@@ -7,6 +7,8 @@ namespace RPGWonder
 {
     public partial class Client : Form
     {
+        //TODO: Error handling wpisywanego adresu ip
+
         private ClientTcpConnection connection;
         private readonly string _character = "";
         public static Client instance;

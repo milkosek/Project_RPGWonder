@@ -34,15 +34,16 @@ namespace RPGWonder
                 {
                     Debug.Write("Waiting for a connection... ");
                     TcpClient client = server.AcceptTcpClient();
-                    Debug.WriteLine("Connected to:  " + client.ToString());
+
                     NetworkStream stream = client.GetStream();
+                    IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;//intercept client's ip address
+                    Debug.WriteLine("Connected to: "+ ipClient.ToString());
 
                     Thread listenTcpThread = new Thread(new ThreadStart(() => Listen(stream, campaign)));
                     listenTcpThread.Start();
                     streams.Add(stream);
 
                     Thread.Sleep(1000);
-                    IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;//intercept client's ip address
                     Thread SendVoiceThread = new Thread(new ThreadStart(() => HostVoiceConnection.Send(ipClient.ToString())));
                     SendVoiceThread.Start();
                 }
