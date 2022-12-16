@@ -91,11 +91,14 @@
     <Compile Include="src\form\Host.Designer.cs">
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\net\DarrenLeeInterfaces.cs" />
     <Compile Include="src\net\IPAdd.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
     <Compile Include="src\net\ClientVoiceConnection.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
     <Compile Include="src\net\HostVoiceConnection.cs" />
+    <Compile Include="src\net\MyReceiver.cs" />
+    <Compile Include="src\net\MySender.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />
@@ -271,7 +274,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resooources\" />
     <Folder Include="Resources\" />
     <Folder Include="userData\" />
   </ItemGroup>
