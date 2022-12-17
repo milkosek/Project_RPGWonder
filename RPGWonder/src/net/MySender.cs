@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RPGWonder.src.net
 {
-    public class Sender
+    public class VoiceSender
     {
         private WaveInEvent waveIn;
         private UdpClient udpSender;
@@ -18,7 +18,7 @@ namespace RPGWonder.src.net
         private int serveraudioPort;
         private List<string> deviceList;
 
-        public Sender()
+        public VoiceSender()
         {
             this.deviceList = new List<string>();
             this.PopulateInputDevicesList();

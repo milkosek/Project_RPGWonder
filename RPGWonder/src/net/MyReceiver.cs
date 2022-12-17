@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGWonder.src.net
 {
-    public class Receiver
+    public class VoiceReceiver
     {
         private UdpClient listenerAudio;
         private IPEndPoint myEndPoint;
@@ -14,7 +14,7 @@ namespace RPGWonder.src.net
         private BufferedWaveProvider waveProvider;
         private INetworkChatCodec selectedCodec;
 
-        public Receiver() => this.selectedCodec = (INetworkChatCodec)new NarrowBandSpeexCodec();
+        public VoiceReceiver() => this.selectedCodec = (INetworkChatCodec)new NarrowBandSpeexCodec();
 
         public bool Receive(string receiver_ip, int port)
         {
