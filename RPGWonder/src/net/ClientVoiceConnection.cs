@@ -17,16 +17,16 @@ namespace RPGWonder.src.net
         private readonly static int clientSendPort = 13001;//==hostListenPort
         public static void Listen(string ipAddress)
         {
-            VoiceReceiver receiver = new VoiceReceiver();
+            ClientVoiceListener receiver = new ClientVoiceListener();
             receiver.Receive(ipAddress,clientListenPort);
-            //DarrenLee.LiveStream.Audio.VoiceReceiver receiver = new DarrenLee.LiveStream.Audio.VoiceReceiver();
+            //DarrenLee.LiveStream.Audio.ClientVoiceListener receiver = new DarrenLee.LiveStream.Audio.ClientVoiceListener();
             //receiver.Receive(ipAddress, clientListenPort);
         }
         public static void Send(string ipAddress)
         {
-            VoiceSender sender = new VoiceSender();
+            ClientVoiceSender sender = new ClientVoiceSender();
             sender.Send(ipAddress,clientSendPort);
-            //DarrenLee.LiveStream.Audio.VoiceSender sender = new DarrenLee.LiveStream.Audio.VoiceSender();
+            //DarrenLee.LiveStream.Audio.ClientVoiceSender sender = new DarrenLee.LiveStream.Audio.ClientVoiceSender();
            // sender.Send(ipAddress, clientSendPort);
         }
      }

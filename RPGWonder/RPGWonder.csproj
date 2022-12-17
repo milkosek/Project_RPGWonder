@@ -97,8 +97,8 @@
     <Compile Include="src\net\ClientVoiceConnection.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
     <Compile Include="src\net\HostVoiceConnection.cs" />
-    <Compile Include="src\net\MyReceiver.cs" />
-    <Compile Include="src\net\MySender.cs" />
+    <Compile Include="src\net\ClientVoiceListener.cs" />
+    <Compile Include="src\net\ClientVoiceSender.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />

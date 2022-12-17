@@ -15,11 +15,11 @@ namespace RPGWonder.src.net
         private readonly static int hostListenPort = 13001;//==clientSendPort
         private readonly static int hostSendPort = 13002;//==clientListenPort
         public static void Listen(string ipAddress) { 
-            VoiceReceiver receiver = new VoiceReceiver();
+            ClientVoiceListener receiver = new ClientVoiceListener();
             receiver.Receive(ipAddress, hostListenPort);
         }
         public static void Send(string ipAddress) {
-            VoiceSender sender = new VoiceSender();
+            ClientVoiceSender sender = new ClientVoiceSender();
             sender.Send(ipAddress, hostSendPort);
         }
         
