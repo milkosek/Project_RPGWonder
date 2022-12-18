@@ -91,6 +91,8 @@
     <Compile Include="src\form\Host.Designer.cs">
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\net\HostVoiceSender.cs" />
+    <Compile Include="src\net\HostVoiceListener.cs" />
     <Compile Include="src\net\DarrenLeeInterfaces.cs" />
     <Compile Include="src\net\IPAdd.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
