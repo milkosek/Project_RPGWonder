@@ -8,19 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RPGWonder.src.net
-{
-
+{ 
     internal class HostVoiceConnection
     {
+        public static UdpClient udpSender = new UdpClient();
+        public static UdpClient second = new UdpClient();
         private readonly static int hostListenPort = 13001;//==clientSendPort
         private readonly static int hostSendPort = 13002;//==clientListenPort
         public static void Listen(string ipAddress) { 
-            ClientVoiceListener receiver = new ClientVoiceListener();
+            HostVoiceListener receiver = new HostVoiceListener();
             receiver.Receive(ipAddress, hostListenPort);
         }
         public static void Send(string ipAddress) {
-            ClientVoiceSender sender = new ClientVoiceSender();
-            sender.Send(ipAddress, hostSendPort);
+            udpSender.Connect(ipAddress, hostSendPort);
+            second.Connect(ipAddress, hostSendPort + 1);
+            ClientVoiceSender myVoice = new ClientVoiceSender();
+            myVoice.Send(second);
         }
         
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RPGWonder.src.net
@@ -43,8 +44,15 @@ namespace RPGWonder.src.net
                 try
                 {
                     byte[] data = this.listenerAudio.Receive(ref this.myEndPoint);
+
+
                     byte[] buffer = this.selectedCodec.Decode(data, 0, data.Length);
-                    this.waveProvider.AddSamples(buffer, 0, buffer.Length);
+                    Thread ListenVoiceThread = new Thread(() => this.waveProvider.AddSamples(buffer, 0, buffer.Length));
+                    ListenVoiceThread.Start();
+
+                    var a = HostVoiceConnection.udpSender;
+                    Thread SendVoiceThread = new Thread(new ThreadStart(() => HostVoiceSender.Send(a,data)));
+                    SendVoiceThread.Start();
                 }
                 catch (SocketException ex)
                 {

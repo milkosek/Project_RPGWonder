@@ -31,12 +31,11 @@ namespace RPGWonder.src.net
                 this.deviceList.Add(WaveIn.GetCapabilities(devNumber).ProductName);
         }
 
-        public bool Send(string receiver_ip, int port)
+        public bool Send(UdpClient udpGuy)
         {
             try
             {
-                this.serverip = IPAddress.Parse(receiver_ip);
-                this.serveraudioPort = port;
+                udpSender = udpGuy;
                 Task.Factory.StartNew((Action)(() => this.ListenAudio()));
             }
             catch
@@ -48,8 +47,6 @@ namespace RPGWonder.src.net
 
         private void ListenAudio()
         {
-            this.udpSender = new UdpClient();
-            this.udpSender.Connect(this.serverip, this.serveraudioPort);
             this.waveIn = new WaveInEvent();
             this.waveIn.BufferMilliseconds = 50;
             this.waveIn.DeviceNumber = 0;
