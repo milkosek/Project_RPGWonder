@@ -6,28 +6,18 @@ using System.Text;
 
 namespace RPGWonder
 {
-    /// <summary>
-    /// A class representing a campaign
-    /// </summary>
-    class Campaign : IDataclass
+    class Campaign: Dataclass
     {
         public long Id;
-        public string Name;
+        public string Name; 
         public List<Character> Characters;
         public List<Entity> Entities;
         public List<Map> Maps;
         public int CurrentMap;
         public List<Asset> Assets;
 
-        /// <summary>
-        /// Initializes a new instance of the Campaign class.
-        /// </summary>
         public Campaign() { }
 
-        /// <summary>
-        /// Reads the campaign data from a JSON file.
-        /// </summary>
-        /// <param name="path">The path to the JSON file.</param>
         public void ReadFromJSON(string path)
         {
             JObject data = JObject.Parse(File.ReadAllText(path));
@@ -36,10 +26,6 @@ namespace RPGWonder
             CurrentMap = (int)data["current-map"];
         }
 
-        /// <summary>
-        /// Saves the campaign data to a JSON file.
-        /// </summary>
-        /// <param name="path">The path to the directory where the JSON file should be saved.</param>
         public void SaveToJSON(string path)
         {
             if (!Directory.Exists(path + "\\" + Name))
@@ -50,7 +36,7 @@ namespace RPGWonder
                 Directory.CreateDirectory(path + "\\" + Name + "\\assets");
                 StringBuilder sb;
                 StringWriter sw;
-                if (!File.Exists(path + "\\00_Campaigns.recievedString"))
+                if (!File.Exists(path + "\\Campaigns.json"))
                 {
                     sb = new StringBuilder();
                     sw = new StringWriter(sb);
@@ -65,9 +51,9 @@ namespace RPGWonder
                         writer.WriteEndArray();
                         writer.WriteEnd();
                     }
-                    File.WriteAllText(path + "\\00_Campaigns.json", sb.ToString());
+                    File.WriteAllText(path + "\\Campaigns.json", sb.ToString());
                 }
-                JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Campaigns.json"));
+                JObject data = JObject.Parse(File.ReadAllText(path + "\\Campaigns.json"));
                 long maxId = (long)data["max-id"];
                 sb = new StringBuilder();
                 sw = new StringWriter(sb);
@@ -86,7 +72,7 @@ namespace RPGWonder
                 data["max-id"] = maxId + 1;
                 ((JArray)data["campaigns"]).Add("\\" + Name + "\\" + Name + ".json");
                 File.WriteAllText(path + "\\" + Name + "\\" + Name + ".json", sb.ToString());
-                File.WriteAllText(path + "\\00_Campaigns.json", data.ToString());
+                File.WriteAllText(path + "\\Campaigns.json", data.ToString());
             }
         }
     }

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -19,10 +22,6 @@ namespace RPGWonder
         [STAThread]
         static void Main()
         {
-            /// <summary>
-            /// Initialise Common
-            /// </summary>
-            _ = Common.Instance;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenu());

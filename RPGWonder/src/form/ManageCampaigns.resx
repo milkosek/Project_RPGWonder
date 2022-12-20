@@ -147,31 +147,31 @@
   <data name="&gt;&gt;CrtNewCampaignButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="manageCampaignsListBox.ItemHeight" type="System.Int32, mscorlib">
+  <data name="ManageCampaignsListBox.ItemHeight" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="manageCampaignsListBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ManageCampaignsListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
   </data>
-  <data name="manageCampaignsListBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ManageCampaignsListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>844, 500</value>
   </data>
-  <data name="manageCampaignsListBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="ManageCampaignsListBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="manageCampaignsListBox.Visible" type="System.Boolean, mscorlib">
+  <data name="ManageCampaignsListBox.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;manageCampaignsListBox.Name" xml:space="preserve">
-    <value>manageCampaignsListBox</value>
+  <data name="&gt;&gt;ManageCampaignsListBox.Name" xml:space="preserve">
+    <value>ManageCampaignsListBox</value>
   </data>
-  <data name="&gt;&gt;manageCampaignsListBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;ManageCampaignsListBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;manageCampaignsListBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ManageCampaignsListBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;manageCampaignsListBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ManageCampaignsListBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="LoadCampaignButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">

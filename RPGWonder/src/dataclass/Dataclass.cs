@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPGWonder
 {
-    class EntityOnMap : Entity
+    public interface Dataclass
     {
-        private long entityID;
-        private long mapID;
-        private int coordinatex;
-        private int coordinatey;
+        void SaveToJSON(string path);
+        void ReadFromJSON(string path);
     }
 }

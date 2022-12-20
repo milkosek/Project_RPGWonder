@@ -1,11 +1,10 @@
 {
   "min-level": "1",
   "max-level": "20",
-  "ability-dice-rolled": "4",
-  "ability-dice-ignored": "1",
-  "ability-dice-faces": "6",
-  "armor-class-ability": "DEX",
-  "initiative-ability": "DEX",
-  "passive-perception-ability": "WIS",
-  "ability-points-per-level": "2"
+  "stat-dice-rolled": "4",
+  "stat-dice-ignored": "1",
+  "stat-dice-faces": "6",
+  "armor-class-stat": "DEX",
+  "initiative-stat": "DEX",
+  "passive-perception-stat":  "WIS"
 }
