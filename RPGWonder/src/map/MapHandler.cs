@@ -88,6 +88,8 @@ namespace RPGWonder.src.map
             {
                 game.MapTileAction(btn.Name, 1);
             }
+
+            game.ActiveControl = null;
         }
     }
 }

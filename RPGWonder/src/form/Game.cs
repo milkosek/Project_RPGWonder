@@ -17,8 +17,9 @@ namespace RPGWonder
         private MapHandler mapLoader;
         private Map map;
         private (int x, int y) selectedTile;
+        private EntityOnMap selectedEntity;
         List<List<Button>> ButtonsMatrix;
-        List<EntityOnMap> EntityMatrix;
+        Dictionary<string, EntityOnMap> EntityList;
 
         public Game()
         {
@@ -70,9 +71,24 @@ namespace RPGWonder
             MainMenu.instance.Hide();
             LoadMap(map.Columns, map.Rows);
 
-            Image myimage = new Bitmap(@"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
-            ButtonsMatrix[5][5].BackgroundImage = myimage;
-            ButtonsMatrix[5][5].Text = "DICE";
+            EntityOnMap DieEntity1 = new EntityOnMap(0, 0, 5, 5,
+                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
+            DieEntity1.Name = "Dice1";
+
+            EntityOnMap DieEntity2 = new EntityOnMap(0, 0, 8, 8,
+                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
+            DieEntity2.Name = "Dice2";
+
+            EntityOnMap LogoEntity = new EntityOnMap(0, 0, 2, 7,
+                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
+            LogoEntity.Name = "Icon";
+
+            EntityList = new Dictionary<string, EntityOnMap> { };
+            EntityList[DieEntity1.Name] = DieEntity1;
+            EntityList[DieEntity2.Name] = DieEntity2;
+            EntityList[LogoEntity.Name] = LogoEntity;
+
+            UpdateMap();
         }
 
         private void LoadMap(int Cols, int Rows)
@@ -94,20 +110,22 @@ namespace RPGWonder
             Button fromButton = ButtonsMatrix[y1][x1];
             Button toButton = ButtonsMatrix[y2][x2];
 
-            EntityOnMap fromEntity = EntityMatrix[y1][x1];
-            EntityOnMap toEntity = EntityMatrix[y2][x2];
-
-            if (fromButton.Text != string.Format("{0} {1}", x1, y1) && fromButton != toButton)
+            // if a move is valid - not from empty tile and not to the same tile 
+            if (fromButton.Text != string.Format("{0} {1}", x1, y1) &&
+                toButton.Text == string.Format("{0} {1}", x2, y2) &&
+                fromButton != toButton)
             {
-                toButton.BackgroundImage = fromButton.BackgroundImage;
-                toButton.Text = fromButton.Text;
+                selectedEntity.X = x2;
+                selectedEntity.Y = y2;
+
+                UpdateMap();
 
                 fromButton.BackgroundImage = null;
                 fromButton.Text = string.Format("{0} {1}", x1, y1);
-            }
 
-            selectedTile.x = x2;
-            selectedTile.y = y2;
+                selectedTile.x = x2;
+                selectedTile.y = y2;
+            }
         }
 
         // 0 - select
@@ -122,11 +140,6 @@ namespace RPGWonder
                 case 0:
                     selectedTile.x = pressedButtonX;
                     selectedTile.y = pressedButtonY;
-
-                    string tmpString = "";
-                    tmpString += "x: " + selectedTile.x;
-                    tmpString += "\ny: " + selectedTile.y;
-                    coords.Text = tmpString;
                     break;
 
                 case 1:
@@ -134,6 +147,35 @@ namespace RPGWonder
                     break;
             }
 
+            DisplaySelectedInfo();
+        }
+
+        private void DisplaySelectedInfo()
+        {
+            string tmpString = "";
+
+            if (EntityList.ContainsKey(ButtonsMatrix[selectedTile.y][selectedTile.x].Text))
+            {
+                selectedEntity = EntityList[ButtonsMatrix[selectedTile.y][selectedTile.x].Text];
+
+                tmpString += "Name: " + selectedEntity.Name + "\n";
+            }
+
+            tmpString += "x: " + selectedTile.x + "\n";
+            tmpString += "y: " + selectedTile.y;
+            coords.Text = tmpString;
+        }
+
+        private void UpdateMap()
+        {
+            foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
+            {
+                string name = nameEntity.Key;
+                EntityOnMap EOM = nameEntity.Value;
+
+                ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
+                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = EOM.Icon;
+            }
         }
 
         private void Game_FormClosed(object sender, FormClosedEventArgs e)
