@@ -9,6 +9,8 @@ namespace RPGWonder.src.net
 {
     public class HostVoiceListener
     {
+        private int portd;
+        private string host;
         private UdpClient listenerAudio;
         private IPEndPoint myEndPoint;
         private IWavePlayer waveOut;
@@ -21,6 +23,8 @@ namespace RPGWonder.src.net
         {
             try
             {
+                host = receiver_ip;
+                portd = port;
                 this.myEndPoint = new IPEndPoint(IPAddress.Parse(receiver_ip), port);
                 this.listenerAudio = new UdpClient();
                 this.listenerAudio.Client.Bind((EndPoint)this.myEndPoint);
@@ -50,7 +54,8 @@ namespace RPGWonder.src.net
                     Thread ListenVoiceThread = new Thread(() => this.waveProvider.AddSamples(buffer, 0, buffer.Length));
                     ListenVoiceThread.Start();
 
-                    var a = HostVoiceConnection.udpSender;
+                    UdpClient a = new UdpClient();
+                    a.Connect(host,portd+1);
                     Thread SendVoiceThread = new Thread(new ThreadStart(() => HostVoiceSender.Send(a,data)));
                     SendVoiceThread.Start();
                 }

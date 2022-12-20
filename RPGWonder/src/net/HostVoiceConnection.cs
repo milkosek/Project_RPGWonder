@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RPGWonder.src.net
@@ -14,16 +15,20 @@ namespace RPGWonder.src.net
         public static UdpClient udpSender = new UdpClient();
         public static UdpClient second = new UdpClient();
         private readonly static int hostListenPort = 13001;//==clientSendPort
-        private readonly static int hostSendPort = 13002;//==clientListenPort
-        public static void Listen(string ipAddress) { 
+        private readonly static int hostSendPort = 13003;//==clientListenPort
+        public static void Listen(string ipAddress) {
             HostVoiceListener receiver = new HostVoiceListener();
-            receiver.Receive(ipAddress, hostListenPort);
+            HostVoiceListener x = new HostVoiceListener();
+            Thread SendVoiceThread = new Thread(new ThreadStart(() => receiver.Receive(ipAddress, hostListenPort)));
+            SendVoiceThread.Start();
+            x.Receive(ipAddress, hostListenPort + 1);
         }
         public static void Send(string ipAddress) {
-            udpSender.Connect(ipAddress, hostSendPort);
-            second.Connect(ipAddress, hostSendPort + 1);
-            ClientVoiceSender myVoice = new ClientVoiceSender();
-            myVoice.Send(second);
+            UdpClient x = new UdpClient();
+            x.Connect(ipAddress, hostSendPort);
+            ClientVoiceSender sender = new ClientVoiceSender();
+            Thread SendVoiceThread = new Thread(new ThreadStart(() => sender.Send(x)));
+            SendVoiceThread.Start();
         }
         
     }

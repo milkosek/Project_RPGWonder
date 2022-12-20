@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarrenLee.LiveStream.Audio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,7 +15,7 @@ namespace RPGWonder.src.net
     internal class ClientVoiceConnection
     {
 
-        private readonly static int clientListenPort = 13002;//==hostSendPort
+        private readonly static int clientListenPort = 13003;//==hostSendPort
         private readonly static int clientSendPort = 13001;//==hostListenPort
         public static void Listen(string ipAddress)
         {
@@ -22,20 +23,16 @@ namespace RPGWonder.src.net
             ClientVoiceListener x = new ClientVoiceListener();
             Thread SendVoiceThread = new Thread(new ThreadStart(() => receiver.Receive(ipAddress, clientListenPort)));
             SendVoiceThread.Start();
-            x.Receive(ipAddress, clientListenPort + 1);
-            
-            //DarrenLee.LiveStream.Audio.ClientVoiceListener receiver = new DarrenLee.LiveStream.Audio.ClientVoiceListener();
-            //receiver.Receive(ipAddress, clientListenPort);
+            Thread q = new Thread(new ThreadStart(() => x.Receive(ipAddress, clientSendPort+1)));
+            q.Start();
         }
         public static void Send(string ipAddress)
         {
             UdpClient x = new UdpClient();
             x.Connect(ipAddress,clientSendPort);
-
             ClientVoiceSender sender = new ClientVoiceSender();
-            sender.Send(x);
-            //DarrenLee.LiveStream.Audio.ClientVoiceSender sender = new DarrenLee.LiveStream.Audio.ClientVoiceSender();
-           // sender.Send(ipAddress, clientSendPort);
+            Thread SendVoiceThread = new Thread(new ThreadStart(() => sender.Send(x)));
+            SendVoiceThread.Start();
         }
      }
 }
