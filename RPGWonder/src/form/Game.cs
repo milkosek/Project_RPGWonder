@@ -17,7 +17,8 @@ namespace RPGWonder
         private MapHandler mapLoader;
         private Map map;
         private (int x, int y) selectedTile;
-        List<List<Button>> ButtonsList;
+        List<List<Button>> ButtonsMatrix;
+        List<List<EntityOnMap>> EntityMatrix;
 
         public Game()
         {
@@ -70,8 +71,8 @@ namespace RPGWonder
             LoadMap(map.Columns, map.Rows);
 
             Image myimage = new Bitmap(@"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
-            ButtonsList[5][5].BackgroundImage = myimage;
-            ButtonsList[5][5].Text = "DICE";
+            ButtonsMatrix[5][5].BackgroundImage = myimage;
+            ButtonsMatrix[5][5].Text = "DICE";
         }
 
         private void LoadMap(int Cols, int Rows)
@@ -83,15 +84,17 @@ namespace RPGWonder
 
             mapTableLayout.Size = new Size(1200, 675);
 
-            ButtonsList = mapLoader.makeSquareTiles(mapTableLayout, Cols, Rows);
+            ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, Cols, Rows);
         }
 
-        private void Move(int x1, int y1, int x2, int y2)
+        // x1, y1 - from
+        // x2, y2 - to
+        private void MoveOnMap(int x1, int y1, int x2, int y2)
         {
-            Button from = ButtonsList[y1][x1];
-            Button to = ButtonsList[y2][x2];
+            Button from = ButtonsMatrix[y1][x1];
+            Button to = ButtonsMatrix[y2][x2];
 
-            if (from.Text != string.Format("{0} {1}", x1, y1))
+            if (from.Text != string.Format("{0} {1}", x1, y1) && from != to)
             {
                 to.BackgroundImage = from.BackgroundImage;
                 to.Text = from.Text;
@@ -100,18 +103,34 @@ namespace RPGWonder
                 from.Text = string.Format("{0} {1}", x1, y1);
             }
 
-            selectedTile.x = -1;
+            selectedTile.x = x2;
+            selectedTile.y = y2;
         }
 
-        public void SetTextForCoords(string myText)
+        // 0 - select
+        // 1 - move
+        public void MapTileAction(string myText, int actionType)
         {
-            selectedTile.x = Int32.Parse(myText.Split(' ')[0]);
-            selectedTile.y = Int32.Parse(myText.Split(' ')[1]);
+            int pressedButtonX = Int32.Parse(myText.Split(' ')[0]);
+            int pressedButtonY = Int32.Parse(myText.Split(' ')[1]);
 
-            string tmpString = "";
-            tmpString += "x: " + selectedTile.x;
-            tmpString += "\ny: " + selectedTile.y;
-            coords.Text = tmpString;
+            switch (actionType)
+            {
+                case 0:
+                    selectedTile.x = pressedButtonX;
+                    selectedTile.y = pressedButtonY;
+
+                    string tmpString = "";
+                    tmpString += "x: " + selectedTile.x;
+                    tmpString += "\ny: " + selectedTile.y;
+                    coords.Text = tmpString;
+                    break;
+
+                case 1:
+                    MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+                    break;
+            }
+
         }
 
         private void Game_FormClosed(object sender, FormClosedEventArgs e)

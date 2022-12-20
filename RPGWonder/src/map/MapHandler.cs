@@ -49,7 +49,8 @@ namespace RPGWonder.src.map
                     (int x, int y) buttonId = (j, i);
                     var button = new Button();
                     button.FlatStyle = FlatStyle.Flat;
-                    button.BackColor = System.Drawing.Color.Transparent;
+                    button.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, 0, 0, 0);
+                    button.BackColor = Color.Transparent;
 
                     button.Text = string.Format("{0} {1}", buttonId.x, buttonId.y);
                     button.Name = string.Format("{0} {1}", buttonId.x, buttonId.y);
@@ -59,7 +60,7 @@ namespace RPGWonder.src.map
                     button.Height = button.Width;
 
                     button.Dock = DockStyle.Fill;
-                    button.Click += new EventHandler(btn_click);
+                    button.MouseDown += new MouseEventHandler(btn_click);
 
                     button.TextAlign = System.Drawing.ContentAlignment.BottomRight;
                     button.BackgroundImageLayout = ImageLayout.Stretch;
@@ -75,11 +76,18 @@ namespace RPGWonder.src.map
             return ButtonsMatrix;
         }
 
-        protected void btn_click(object sender, EventArgs e)
+        protected void btn_click(object sender, MouseEventArgs e)
         {
             Button btn = (Button)sender;
-
-            game.SetTextForCoords(btn.Name);
+            
+            if (e.Button == MouseButtons.Left)
+            {
+                game.MapTileAction(btn.Name, 0);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                game.MapTileAction(btn.Name, 1);
+            }
         }
     }
 }
