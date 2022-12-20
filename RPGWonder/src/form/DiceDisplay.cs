@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RPGWonder.src.form
@@ -103,8 +96,8 @@ namespace RPGWonder.src.form
         /// </summary>
         private void DiceDisplay_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && 
-                !(addedDieUpDown as Control).Focused && 
+            if (e.KeyCode == Keys.Enter &&
+                !(addedDieUpDown as Control).Focused &&
                 !(subbedDieUpDown as Control).Focused)
             {
                 Roll.PerformClick();

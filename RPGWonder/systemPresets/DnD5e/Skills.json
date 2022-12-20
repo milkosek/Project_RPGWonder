@@ -1,18 +1,18 @@
 {
   "Acrobatics": {
     "name": "Acrobatics",
-    "stat": "DEX"
+    "ability": "DEX"
   },
   "AnimalHandling": {
     "name": "Animal Handling",
-    "stat": "WIS"
+    "ability": "WIS"
   },
   "Arcana": {
     "name": "Arcana",
-    "stat": "INT"
+    "ability": "INT"
   },
   "Athletics": {
     "name": "Athletics",
-    "stat": "STR"
+    "ability": "STR"
   }
 }

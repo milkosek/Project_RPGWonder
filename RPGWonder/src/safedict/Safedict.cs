@@ -1,14 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace RPGWonder.src.safedict
+namespace RPGWonder
 {
-    public class Safedict<type1, type2> : Dictionary<type1, type2>
+    /// <summary>
+    /// A generic dictionary that provides safe methods for setting and retrieving values.
+    /// </summary>
+    /// <typeparam name="T1">The type of the keys in the dictionary.</typeparam>
+    /// <typeparam name="T2">The type of the values in the dictionary.</typeparam>
+    public class Safedict<T1, T2> : Dictionary<T1, T2>
     {
-        public void Set(type1 key, type2 value)
+        /// <summary>
+        /// Sets the value associated with a given key in the dictionary.
+        /// If the key doesn't exist, it adds a new key-value pair to the dictionary.
+        /// Otherwise, it updates the value associated with the existing key.
+        /// </summary>
+        /// <param name="key">The key to set or update.</param>
+        /// <param name="value">The value to associate with the key.</param>
+        public void Set(T1 key, T2 value)
         {
             if (!ContainsKey(key))
             {
@@ -19,7 +27,14 @@ namespace RPGWonder.src.safedict
                 this[key] = value;
             }
         }
-        public type2 Get(type1 key)
+
+        /// <summary>
+        /// Gets the value associated with a given key from the dictionary.
+        /// If the key doesn't exist, it returns the default value for the type.
+        /// </summary>
+        /// <param name="key">The key to look up.</param>
+        /// <returns>The value associated with the key, or the default value if the key doesn't exist.</returns>
+        public T2 Get(T1 key)
         {
             if (!ContainsKey(key))
             {

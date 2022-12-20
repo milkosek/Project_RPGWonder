@@ -51,8 +51,17 @@
     <ApplicationIcon>src\asset\RPGWonder.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DarrenLee.LiveStream">
+      <HintPath>Resources\DarrenLee.LiveStream.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio">
+      <HintPath>Resources\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NSpeex">
+      <HintPath>Resources\NSpeex.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -74,6 +83,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\comboBoxObject\ComboBoxObject.cs" />
+    <Compile Include="src\interface\IDataclass.cs" />
+    <Compile Include="src\form\Host.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\Host.Designer.cs">
+      <DependentUpon>Host.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\net\DarrenLeeInterfaces.cs" />
+    <Compile Include="src\net\IPAdd.cs" />
+    <Compile Include="src\net\ClientTcpConnection.cs" />
+    <Compile Include="src\net\ClientVoiceConnection.cs" />
+    <Compile Include="src\net\HostTcpConnection.cs" />
+    <Compile Include="src\net\HostVoiceConnection.cs" />
+    <Compile Include="src\net\ClientVoiceListener.cs" />
+    <Compile Include="src\net\ClientVoiceSender.cs" />
     <Compile Include="src\dataclass\Dataclass.cs" />
     <Compile Include="src\map\HexButton.cs">
       <SubType>Component</SubType>
@@ -81,14 +106,12 @@
     <Compile Include="src\map\MapHandler.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
-    <Compile Include="src\utils\Utils.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />
     <None Include="systemPresets\DnD5e\Classes.json" />
     <None Include="systemPresets\DnD5e\Defines.json" />
     <None Include="systemPresets\DnD5e\Genders.json" />
     <None Include="systemPresets\DnD5e\Levels.json" />
     <None Include="systemPresets\DnD5e\Proficiencies.json" />
-    <None Include="systemPresets\DnD5e\RacialIncreases.json" />
     <None Include="systemPresets\DnD5e\Races.json" />
     <Compile Include="src\form\CreateOrEditCharacter.cs">
       <SubType>Form</SubType>
@@ -100,13 +123,6 @@
     <Compile Include="src\dataclass\AttackOrSpell.cs" />
     <Compile Include="src\dataclass\Campaign.cs" />
     <Compile Include="src\dataclass\Character.cs" />
-    <Compile Include="src\dataclass\Connection.cs" />
-    <Compile Include="src\form\CreateCampaignPopup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\form\CreateCampaignPopup.Designer.cs">
-      <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\form\CreateOrEditCampaign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,11 +138,11 @@
     <Compile Include="src\form\DiceDisplay.designer.cs">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\form\Game.cs">
+    <Compile Include="src\form\Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\form\Game.Designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
+    <Compile Include="src\form\Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="src\form\HostSession.cs">
       <SubType>Form</SubType>
@@ -174,9 +190,6 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
-    <EmbeddedResource Include="src\form\CreateCampaignPopup.resx">
-      <DependentUpon>CreateCampaignPopup.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,14 +199,17 @@
     <EmbeddedResource Include="src\form\CreateOrEditCharacter.resx">
       <DependentUpon>CreateOrEditCharacter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\form\Game.en.resx">
-      <DependentUpon>Game.cs</DependentUpon>
+    <EmbeddedResource Include="src\form\Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\form\Game.resx">
-      <DependentUpon>Game.cs</DependentUpon>
+    <EmbeddedResource Include="src\form\Host.resx">
+      <DependentUpon>Host.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\HostSession.resx">
       <DependentUpon>HostSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\JoinSession.en.resx">
+      <DependentUpon>JoinSession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\JoinSession.resx">
       <DependentUpon>JoinSession.cs</DependentUpon>
@@ -241,7 +257,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="systemPresets\DnD5e\Skills.json" />
-    <None Include="systemPresets\DnD5e\Stats.json" />
+    <None Include="systemPresets\DnD5e\Abilities.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\App.config" />

@@ -1,6 +1,6 @@
 ﻿namespace RPGWonder
 {
-    partial class Game
+    partial class Client
     {
         /// <summary>
         /// Required designer variable.

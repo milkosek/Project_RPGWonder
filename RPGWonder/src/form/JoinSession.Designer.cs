@@ -61,6 +61,7 @@
             resources.ApplyResources(this.charactersComboBox, "charactersComboBox");
             this.charactersComboBox.FormattingEnabled = true;
             this.charactersComboBox.Name = "charactersComboBox";
+            this.charactersComboBox.SelectedIndexChanged += new System.EventHandler(this.charactersComboBox_SelectedIndexChanged);
             // 
             // charactersLabel
             // 
