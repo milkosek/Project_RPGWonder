@@ -18,7 +18,7 @@ namespace RPGWonder
         private Map map;
         private (int x, int y) selectedTile;
         List<List<Button>> ButtonsMatrix;
-        List<List<EntityOnMap>> EntityMatrix;
+        List<EntityOnMap> EntityMatrix;
 
         public Game()
         {
@@ -91,16 +91,19 @@ namespace RPGWonder
         // x2, y2 - to
         private void MoveOnMap(int x1, int y1, int x2, int y2)
         {
-            Button from = ButtonsMatrix[y1][x1];
-            Button to = ButtonsMatrix[y2][x2];
+            Button fromButton = ButtonsMatrix[y1][x1];
+            Button toButton = ButtonsMatrix[y2][x2];
 
-            if (from.Text != string.Format("{0} {1}", x1, y1) && from != to)
+            EntityOnMap fromEntity = EntityMatrix[y1][x1];
+            EntityOnMap toEntity = EntityMatrix[y2][x2];
+
+            if (fromButton.Text != string.Format("{0} {1}", x1, y1) && fromButton != toButton)
             {
-                to.BackgroundImage = from.BackgroundImage;
-                to.Text = from.Text;
+                toButton.BackgroundImage = fromButton.BackgroundImage;
+                toButton.Text = fromButton.Text;
 
-                from.BackgroundImage = null;
-                from.Text = string.Format("{0} {1}", x1, y1);
+                fromButton.BackgroundImage = null;
+                fromButton.Text = string.Format("{0} {1}", x1, y1);
             }
 
             selectedTile.x = x2;

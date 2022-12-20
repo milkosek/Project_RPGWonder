@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.coords = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mapTableLayout
@@ -45,18 +44,10 @@
             resources.ApplyResources(this.coords, "coords");
             this.coords.Name = "coords";
             // 
-            // button1
-            // 
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Game
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.coords);
             this.Controls.Add(this.mapTableLayout);
             this.Name = "Game";
@@ -71,6 +62,5 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel mapTableLayout;
         private System.Windows.Forms.Label coords;
-        private System.Windows.Forms.Button button1;
     }
 }

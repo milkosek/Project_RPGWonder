@@ -1,6 +1,7 @@
 {
-  "max-id": 1,
+  "max-id": 2,
   "characters": [
-    "\\dszdsf.json"
+    "\\dszdsf.json",
+    "\\ChatGPT.json"
   ]
 }
