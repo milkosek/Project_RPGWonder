@@ -274,6 +274,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DiscordGameSDK\" />
     <Folder Include="Resources\" />
     <Folder Include="userData\" />
   </ItemGroup>
