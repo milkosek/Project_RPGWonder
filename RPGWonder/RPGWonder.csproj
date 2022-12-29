@@ -84,6 +84,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\comboBoxObject\ComboBoxObject.cs" />
+    <Compile Include="src\form\DefaultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
       <SubType>Form</SubType>
@@ -91,14 +94,10 @@
     <Compile Include="src\form\Host.Designer.cs">
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\net\DarrenLeeInterfaces.cs" />
-    <Compile Include="src\net\IPAdd.cs" />
+    <Compile Include="src\net\ClientData.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
-    <Compile Include="src\net\ClientVoiceConnection.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
-    <Compile Include="src\net\HostVoiceConnection.cs" />
-    <Compile Include="src\net\ClientVoiceListener.cs" />
-    <Compile Include="src\net\ClientVoiceSender.cs" />
+    <Compile Include="src\net\IPAdd.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />

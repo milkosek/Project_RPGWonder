@@ -38,33 +38,65 @@
             this.CrtNewCampaignButton = new System.Windows.Forms.Button();
             this.manageCampaignsListBox = new System.Windows.Forms.ListBox();
             this.LoadCampaignButton = new System.Windows.Forms.Button();
+            this.editCampaignButton = new System.Windows.Forms.Button();
+            this.deleteCampaignButton = new System.Windows.Forms.Button();
+            this.createCampaignButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CrtNewCampaignButton
             // 
+            this.CrtNewCampaignButton.BackColor = System.Drawing.Color.SeaGreen;
             resources.ApplyResources(this.CrtNewCampaignButton, "CrtNewCampaignButton");
             this.CrtNewCampaignButton.Name = "CrtNewCampaignButton";
-            this.CrtNewCampaignButton.UseVisualStyleBackColor = true;
+            this.CrtNewCampaignButton.UseVisualStyleBackColor = false;
             this.CrtNewCampaignButton.Click += new System.EventHandler(this.CrtNewCampaignButton_Click);
             // 
             // manageCampaignsListBox
             // 
-            this.manageCampaignsListBox.FormattingEnabled = true;
             resources.ApplyResources(this.manageCampaignsListBox, "manageCampaignsListBox");
+            this.manageCampaignsListBox.FormattingEnabled = true;
             this.manageCampaignsListBox.Name = "manageCampaignsListBox";
-            this.manageCampaignsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ManageCampaignsListBox_MouseDoubleClick);
+            this.manageCampaignsListBox.SelectedIndexChanged += new System.EventHandler(this.manageCampaignsListBox_SelectedIndexChanged);
             // 
             // LoadCampaignButton
             // 
+            this.LoadCampaignButton.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.LoadCampaignButton, "LoadCampaignButton");
             this.LoadCampaignButton.Name = "LoadCampaignButton";
-            this.LoadCampaignButton.UseVisualStyleBackColor = true;
+            this.LoadCampaignButton.UseVisualStyleBackColor = false;
             this.LoadCampaignButton.Click += new System.EventHandler(this.LoadCampaignButton_Click);
+            // 
+            // editCampaignButton
+            // 
+            this.editCampaignButton.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.editCampaignButton, "editCampaignButton");
+            this.editCampaignButton.Name = "editCampaignButton";
+            this.editCampaignButton.UseVisualStyleBackColor = false;
+            this.editCampaignButton.Click += new System.EventHandler(this.editCampaignButton_Click);
+            // 
+            // deleteCampaignButton
+            // 
+            this.deleteCampaignButton.BackColor = System.Drawing.Color.IndianRed;
+            resources.ApplyResources(this.deleteCampaignButton, "deleteCampaignButton");
+            this.deleteCampaignButton.Name = "deleteCampaignButton";
+            this.deleteCampaignButton.UseVisualStyleBackColor = false;
+            this.deleteCampaignButton.Click += new System.EventHandler(this.deleteCampaignButton_Click);
+            // 
+            // createCampaignButton
+            // 
+            this.createCampaignButton.BackColor = System.Drawing.Color.SeaGreen;
+            resources.ApplyResources(this.createCampaignButton, "createCampaignButton");
+            this.createCampaignButton.Name = "createCampaignButton";
+            this.createCampaignButton.UseVisualStyleBackColor = false;
+            this.createCampaignButton.Click += new System.EventHandler(this.createCampaignButton_Click);
             // 
             // ManageCampaigns
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.createCampaignButton);
+            this.Controls.Add(this.deleteCampaignButton);
+            this.Controls.Add(this.editCampaignButton);
             this.Controls.Add(this.LoadCampaignButton);
             this.Controls.Add(this.CrtNewCampaignButton);
             this.Controls.Add(this.manageCampaignsListBox);
@@ -79,5 +111,8 @@
         private System.Windows.Forms.Button CrtNewCampaignButton;
         private System.Windows.Forms.ListBox manageCampaignsListBox;
         private System.Windows.Forms.Button LoadCampaignButton;
+        private System.Windows.Forms.Button editCampaignButton;
+        private System.Windows.Forms.Button deleteCampaignButton;
+        private System.Windows.Forms.Button createCampaignButton;
     }
 }

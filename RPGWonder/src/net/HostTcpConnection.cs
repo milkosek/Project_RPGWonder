@@ -1,9 +1,7 @@
-﻿using RPGWonder.src.net;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -13,8 +11,12 @@ namespace RPGWonder
     {
         private static string recievedString;
         private static List<NetworkStream> streams = new List<NetworkStream>();
+        private static List<ClientData> clients = new List<ClientData>();
         private string _campaign = "";
         private readonly static int port = 13000;
+
+        public List<ClientData> Clients { get => clients; set => clients = value; }
+
         public void CreateSession(string campaign, IPAddress ipAddress)
         {
             _campaign = campaign;
@@ -42,10 +44,6 @@ namespace RPGWonder
                     Thread listenTcpThread = new Thread(new ThreadStart(() => Listen(stream, campaign)));
                     listenTcpThread.Start();
                     streams.Add(stream);
-
-                    Thread.Sleep(1000);
-                    Thread SendVoiceThread = new Thread(new ThreadStart(() => HostVoiceConnection.Send(ipClient.ToString())));
-                    SendVoiceThread.Start();
                 }
             }
             catch (SocketException e)
@@ -87,12 +85,17 @@ namespace RPGWonder
                     }
                     else if (recievedString.Contains("Character|"))
                     {
-                        string character = recievedString.Split('|')[1];
+                        string character_tag = recievedString.Split('|')[1];
                         string character_json = recievedString.Split('|')[2];
                         string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));
                         string campaign_name = campaign.Substring(campaign.LastIndexOf('\\')).Replace("\\", "").Replace(".json", "");
                         string parentDirectory = Path.GetDirectoryName(path + campaign);
-                        File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + character, character_json);
+                        File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + character_tag, character_json);
+                        Character character = new Character();
+                        character.ReadFromJSON(path + "\\" + campaign_name + "\\characters\\" + character_tag);
+                        ClientData clientData = new ClientData(stream, character);
+                        clients.Add(clientData);
+                        Host.instace.Reload();
                     }
                     Broadcast(recievedString);
                 }

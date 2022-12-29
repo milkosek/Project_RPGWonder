@@ -145,16 +145,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CrtNewCampaignButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
+  </data>
+  <data name="manageCampaignsListBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
   </data>
   <data name="manageCampaignsListBox.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>29</value>
   </data>
   <data name="manageCampaignsListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
   </data>
   <data name="manageCampaignsListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>844, 500</value>
+    <value>844, 497</value>
   </data>
   <data name="manageCampaignsListBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -172,7 +175,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;manageCampaignsListBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="LoadCampaignButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -199,6 +202,102 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LoadCampaignButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="editCampaignButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="editCampaignButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="editCampaignButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 317</value>
+  </data>
+  <data name="editCampaignButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 102</value>
+  </data>
+  <data name="editCampaignButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="editCampaignButton.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="editCampaignButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;editCampaignButton.Name" xml:space="preserve">
+    <value>editCampaignButton</value>
+  </data>
+  <data name="&gt;&gt;editCampaignButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editCampaignButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;editCampaignButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="deleteCampaignButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="deleteCampaignButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="deleteCampaignButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 425</value>
+  </data>
+  <data name="deleteCampaignButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 102</value>
+  </data>
+  <data name="deleteCampaignButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="deleteCampaignButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="deleteCampaignButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;deleteCampaignButton.Name" xml:space="preserve">
+    <value>deleteCampaignButton</value>
+  </data>
+  <data name="&gt;&gt;deleteCampaignButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteCampaignButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;deleteCampaignButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="createCampaignButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="createCampaignButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 209</value>
+  </data>
+  <data name="createCampaignButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 102</value>
+  </data>
+  <data name="createCampaignButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="createCampaignButton.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="createCampaignButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;createCampaignButton.Name" xml:space="preserve">
+    <value>createCampaignButton</value>
+  </data>
+  <data name="&gt;&gt;createCampaignButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createCampaignButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;createCampaignButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -220,6 +319,6 @@
     <value>ManageCampaigns</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

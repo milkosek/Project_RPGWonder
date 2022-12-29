@@ -32,6 +32,8 @@
             this.selectCampaignComboBox = new System.Windows.Forms.ComboBox();
             this.selectCampaignLabel = new System.Windows.Forms.Label();
             this.hostSessionButton = new System.Windows.Forms.Button();
+            this.myIPTextBox = new System.Windows.Forms.TextBox();
+            this.myIPLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // selectCampaignComboBox
@@ -54,10 +56,23 @@
             this.hostSessionButton.UseVisualStyleBackColor = false;
             this.hostSessionButton.Click += new System.EventHandler(this.hostSessionButton_Click);
             // 
+            // myIPTextBox
+            // 
+            resources.ApplyResources(this.myIPTextBox, "myIPTextBox");
+            this.myIPTextBox.Name = "myIPTextBox";
+            this.myIPTextBox.ReadOnly = true;
+            // 
+            // myIPLabel
+            // 
+            resources.ApplyResources(this.myIPLabel, "myIPLabel");
+            this.myIPLabel.Name = "myIPLabel";
+            // 
             // HostSession
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.myIPLabel);
+            this.Controls.Add(this.myIPTextBox);
             this.Controls.Add(this.hostSessionButton);
             this.Controls.Add(this.selectCampaignLabel);
             this.Controls.Add(this.selectCampaignComboBox);
@@ -73,5 +88,7 @@
         private System.Windows.Forms.ComboBox selectCampaignComboBox;
         private System.Windows.Forms.Label selectCampaignLabel;
         private System.Windows.Forms.Button hostSessionButton;
+        private System.Windows.Forms.TextBox myIPTextBox;
+        private System.Windows.Forms.Label myIPLabel;
     }
 }

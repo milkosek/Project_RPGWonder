@@ -7,7 +7,7 @@ namespace RPGWonder
     /// <summary>
     /// This class represents the main menu form of the RPGWonder application.
     /// </summary>
-    public partial class MainMenu : Form
+    public partial class MainMenu : DefaultForm
     {
         /// <summary>
         /// The static instance of the `MainMenu` class.
@@ -20,6 +20,8 @@ namespace RPGWonder
         public MainMenu()
         {
             InitializeComponent();
+            SetMotif();
+            SetMotif();
             instance = this;
         }
 

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace RPGWonder.src.form
 {
-    public partial class DiceDisplay : Form
+    public partial class DiceDisplay : DefaultForm
     {
         private DiceRolls Roller = new DiceRolls();
         private Dictionary<int, List<int>> LastRolls = new Dictionary<int, List<int>>();
@@ -15,7 +15,7 @@ namespace RPGWonder.src.form
         public DiceDisplay()
         {
             InitializeComponent();
-
+            SetMotif();
             RollsList.Columns.Add("ID", 0);
             RollsList.Columns.Add("Dice", 40);
             RollsList.Columns.Add("Rolls", 120);

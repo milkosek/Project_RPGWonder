@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class ManageCharacters : Form
+    public partial class ManageCharacters : DefaultForm
     {
         /// <summary>
         /// Constructs a new instance of the `ManageCharacters` class.
@@ -11,6 +11,7 @@ namespace RPGWonder
         public ManageCharacters()
         {
             InitializeComponent();
+            SetMotif();
         }
 
         /// <summary>

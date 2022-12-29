@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -9,7 +10,7 @@ namespace RPGWonder
     /// <summary>
     /// This class represents a form for hosting a new game session.
     /// </summary>
-    public partial class HostSession : Form
+    public partial class HostSession : DefaultForm
     {
         private string _campaign = "";
         /// <summary>
@@ -18,22 +19,12 @@ namespace RPGWonder
         public HostSession()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Gets or sets the `Game` object associated with this `HostSession` instance.
-        /// </summary>
-        public Client Game
-        {
-            get => default;
-            set
-            {
-            }
+            SetMotif();
         }
 
         /// <summary>
         /// This method is called when the `hostSessionButton` is clicked. It creates a new `Game` object,
-        /// closes the `HostSession` form, and shows the `Game` form.
+        /// closes the `HostSession` form, and shows the `Host` form.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">The event arguments.</param>
@@ -54,22 +45,18 @@ namespace RPGWonder
         private void HostSession_Load(object sender, EventArgs e)
         {
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
-            if (File.Exists(path + "\\00_Campaigns.json"))
+            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
+            string[] subdirectoryPaths = Directory.GetDirectories(path);
+
+            foreach (string subdirectoryPath in subdirectoryPaths)
             {
-                JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Campaigns.json"));
-                JArray campaigns = (JArray)data["campaigns"];
-                foreach (JToken campaignTAG in campaigns)
+                string[] filePaths = Directory.GetFiles(subdirectoryPath, "*.json");
+                foreach (string filePath in filePaths)
                 {
-                    JObject campaign = JObject.Parse(File.ReadAllText(path + campaignTAG.ToString()));
-                    ComboBoxObject comboBoxObject = new ComboBoxObject(campaignTAG.ToString(), (string)campaign["Name"]);
+                    JObject campaign = JObject.Parse(File.ReadAllText(filePath));
+                    ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)campaign["Name"]);
                     selectCampaignComboBox.Items.Add(comboBoxObject);
                 }
-            }
-            else
-            {
-                string message = "00_Campaigns.json file seems to missing or corrupted.\nCreating a new campaign should fix this issue.";
-                MessageBox.Show(message);
-                Close();
             }
         }
 

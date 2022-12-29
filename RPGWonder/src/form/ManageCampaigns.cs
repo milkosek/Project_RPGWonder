@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,7 +11,7 @@ namespace RPGWonder
     /// <summary>
     /// A form for managing campaigns
     /// </summary>
-    public partial class ManageCampaigns : Form
+    public partial class ManageCampaigns : DefaultForm
     {
         /// <summary>
         /// An instance of the ManageCampaigns form.
@@ -21,18 +24,13 @@ namespace RPGWonder
         public ManageCampaigns()
         {
             InitializeComponent();
+            SetMotif();
+            editCampaignButton.BackColor = Color.SteelBlue;
+            deleteCampaignButton.BackColor = Color.IndianRed;
+            createCampaignButton.BackColor = Color.SeaGreen;
+            CrtNewCampaignButton.BackColor = Color.SeaGreen;
+            LoadCampaignButton.BackColor = Color.SteelBlue;
             instance = this;
-        }
-
-        /// <summary>
-        /// Gets or sets the CreateOrEditCampaign form.
-        /// </summary>
-        public CreateOrEditCampaign CreateOrEditCampaign
-        {
-            get => default;
-            set
-            {
-            }
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace RPGWonder
         public void Reload()
         {
             manageCampaignsListBox.Items.Clear();
-            string path = "./userdata/Campaigns";
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
             string[] campaigns = new string[0];
             if (Directory.Exists(path))
             {
@@ -53,9 +51,16 @@ namespace RPGWonder
             }
             foreach (string campaign in campaigns)
             {
-                string campaign_name = campaign.Split('\\').Last();
-
-                manageCampaignsListBox.Items.Add(campaign_name);
+                string campaignTAG = campaign.Split('\\').Last();
+                string jsonString = File.ReadAllText(path + "\\" + campaignTAG + "\\" + campaignTAG + ".json");
+                JObject json = JObject.Parse(jsonString);
+                ComboBoxObject comboBoxObject = new ComboBoxObject
+                {
+                    Key = path + "\\" + campaignTAG,
+                    Value = (string)json["Name"]
+                };
+                Debug.WriteLine(path + "\\" + campaignTAG);
+                manageCampaignsListBox.Items.Add(comboBoxObject);
             }
         }
 
@@ -76,20 +81,7 @@ namespace RPGWonder
         /// <param name="e">The event data.</param>
         private void CrtNewCampaignButton_Click(object sender, EventArgs e)
         {
-            CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign();
-            createOrEditCampaign.Show();
-            Hide();
-        }
-
-        /// <summary>
-        /// Handles the MouseDoubleClick event of the ManageCampaignsListBox control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The event data.</param>
-        private void ManageCampaignsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign();
-            createOrEditCampaign.Show();
+            goToCreateNew();
         }
         /// <summary>
         /// Handles the Click event of the LoadCampaignButton button.
@@ -98,9 +90,56 @@ namespace RPGWonder
         /// <param name="e">The event data.</param>
         private void LoadCampaignButton_Click(object sender, EventArgs e)
         {
+            swapToPage2();
+        }
+
+        public void swapToPage2()
+        {
             LoadCampaignButton.Hide();
             CrtNewCampaignButton.Hide();
             manageCampaignsListBox.Show();
+            editCampaignButton.Show();
+            deleteCampaignButton.Show();
+            createCampaignButton.Show();
+        }
+
+        private void editCampaignButton_Click(object sender, EventArgs e)
+        {
+            CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key);
+            createOrEditCampaign.Show();
+            Close();
+        }
+
+        private void manageCampaignsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (manageCampaignsListBox.SelectedItem != null)
+            {
+                editCampaignButton.Enabled = true;
+                deleteCampaignButton.Enabled = true;
+            }
+        }
+
+        private void deleteCampaignButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete the selected item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Directory.Delete(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key, true);
+                Reload();
+            }
+        }
+
+        private void createCampaignButton_Click(object sender, EventArgs e)
+        {
+            goToCreateNew();
+        }
+
+        private void goToCreateNew()
+        {
+            CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign();
+            createOrEditCampaign.Show();
+            Hide();
         }
     }
 }

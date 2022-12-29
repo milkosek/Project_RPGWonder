@@ -11,18 +11,18 @@ namespace RPGWonder
     /// <summary>
     /// This class represents a form for creating or editing a character in a role-playing game.
     /// </summary>
-    public partial class CreateOrEditCharacter : Form
+    public partial class CreateOrEditCharacter : DefaultForm
     {
         public static CreateOrEditCharacter instance;
         private bool bonusAdded = true;
         private Character CreatedCharacter = new Character();
-        Random rnd = new Random();
         /// <summary>
         /// Initializes a new instance of the `CreateOrEditCharacter` class.
         /// </summary>
         public CreateOrEditCharacter()
         {
             InitializeComponent();
+            SetMotif();
             instance = this;
         }
         /// <summary>
@@ -287,7 +287,7 @@ namespace RPGWonder
             CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["armor-class-ability"]]);
             CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["initiative-ability"]]);
             CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["passive-perception-ability"]]);
-            CreatedCharacter.SaveToJSON("..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters");
+            CreatedCharacter.SaveToJSON("..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters", CreatedCharacter.Name);
             string message = "Character saved!";
             MessageBox.Show(message);
             Close();

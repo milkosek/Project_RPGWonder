@@ -84,7 +84,6 @@
             this.CampaignNameTextBox.Name = "CampaignNameTextBox";
             this.CampaignNameTextBox.Size = new System.Drawing.Size(263, 22);
             this.CampaignNameTextBox.TabIndex = 2;
-            this.CampaignNameTextBox.TextChanged += new System.EventHandler(this.CampaignNameTextBox_TextChanged);
             // 
             // label1
             // 

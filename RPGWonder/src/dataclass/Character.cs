@@ -2,9 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-
 namespace RPGWonder
 {
     /// <summary>
@@ -56,29 +53,15 @@ namespace RPGWonder
         /// Saves the campaign data to a JSON file.
         /// </summary>
         /// <param name="path">The path to the directory where the JSON file should be saved.</param>
-        public void SaveToJSON(string path)
+        public void SaveToJSON(string path, string TAG)
         {
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            if (!File.Exists(path + "\\00_Characters.json"))
-            {
-                string json = "{\"max-id\": 0,\"characters\": []}";
-                File.WriteAllText(path + "\\00_Characters.json", json);
-            }
-            JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Characters.json"));
-            long maxId = (long)data["max-id"];
             var serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
-            using (StreamWriter streamWriter = new StreamWriter(path + "\\" + Name + ".json"))
+            using (StreamWriter streamWriter = new StreamWriter(path + "\\" + TAG + ".json"))
             using (JsonWriter writer = new JsonTextWriter(streamWriter))
             {
                 serializer.Serialize(writer, this);
             }
-            data["max-id"] = maxId + 1;
-            ((JArray)data["characters"]).Add("\\" + Name + ".json");
-            File.WriteAllText(path + "\\00_Characters.json", data.ToString());
         }
 
         /// <summary>

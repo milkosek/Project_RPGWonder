@@ -2,11 +2,12 @@
 
 namespace RPGWonder
 {
-    public partial class Settings : Form
+    public partial class Settings : DefaultForm
     {
         public Settings()
         {
             InitializeComponent();
+            SetMotif();
         }
     }
 }
