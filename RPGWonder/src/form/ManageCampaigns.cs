@@ -13,15 +13,23 @@ namespace RPGWonder
     /// </summary>
     public partial class ManageCampaigns : DefaultForm
     {
-        /// <summary>
-        /// An instance of the ManageCampaigns form.
-        /// </summary>
-        public static ManageCampaigns instance;
+        private static ManageCampaigns instance = null;
+        public static ManageCampaigns Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ManageCampaigns();
+                }
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the ManageCampaigns class.
         /// </summary>
-        public ManageCampaigns()
+        private ManageCampaigns()
         {
             InitializeComponent();
             SetMotif();
@@ -39,8 +47,8 @@ namespace RPGWonder
         public void Reload()
         {
             manageCampaignsListBox.Items.Clear();
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
-            string[] campaigns = new string[0];
+            string path = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
+            string[] campaigns;
             if (Directory.Exists(path))
             {
                 campaigns = Directory.GetDirectories(path);
@@ -59,7 +67,6 @@ namespace RPGWonder
                     Key = path + "\\" + campaignTAG,
                     Value = (string)json["Name"]
                 };
-                Debug.WriteLine(path + "\\" + campaignTAG);
                 manageCampaignsListBox.Items.Add(comboBoxObject);
             }
         }
@@ -137,9 +144,18 @@ namespace RPGWonder
 
         private void goToCreateNew()
         {
-            CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign();
-            createOrEditCampaign.Show();
-            Hide();
+            CreateOrEditCampaign.Instance.Show();
+            Close();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

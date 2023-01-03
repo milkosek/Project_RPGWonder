@@ -54,6 +54,9 @@
     <Reference Include="DarrenLee.LiveStream">
       <HintPath>Resources\DarrenLee.LiveStream.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio">
       <HintPath>Resources\NAudio.dll</HintPath>
     </Reference>
@@ -64,7 +67,9 @@
       <HintPath>Resources\NSpeex.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,6 +99,7 @@
     <Compile Include="src\form\Host.Designer.cs">
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\log\Log.cs" />
     <Compile Include="src\net\ClientData.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
@@ -184,6 +190,9 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
+    <EmbeddedResource Include="src\form\DefaultForm.resx">
+      <DependentUpon>DefaultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>

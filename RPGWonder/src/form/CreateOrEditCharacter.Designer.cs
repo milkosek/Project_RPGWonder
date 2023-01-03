@@ -7,19 +7,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -85,7 +72,6 @@
             // raceCcomboBox
             // 
             this.raceCcomboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.raceCcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.raceCcomboBox.FormattingEnabled = true;
             this.raceCcomboBox.Location = new System.Drawing.Point(97, 33);
             this.raceCcomboBox.Name = "raceCcomboBox";
@@ -96,7 +82,6 @@
             // classComboBox
             // 
             this.classComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.classComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.classComboBox.FormattingEnabled = true;
             this.classComboBox.Location = new System.Drawing.Point(97, 123);
             this.classComboBox.Name = "classComboBox";
@@ -107,7 +92,6 @@
             // backgroundComboBox
             // 
             this.backgroundComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.backgroundComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.backgroundComboBox.FormattingEnabled = true;
             this.backgroundComboBox.Location = new System.Drawing.Point(97, 213);
             this.backgroundComboBox.Name = "backgroundComboBox";
@@ -118,7 +102,6 @@
             // genderComboBox
             // 
             this.genderComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(410, 33);
             this.genderComboBox.Name = "genderComboBox";
@@ -129,7 +112,6 @@
             // alignmentComboBox
             // 
             this.alignmentComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.alignmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.alignmentComboBox.FormattingEnabled = true;
             this.alignmentComboBox.Location = new System.Drawing.Point(410, 213);
             this.alignmentComboBox.Name = "alignmentComboBox";

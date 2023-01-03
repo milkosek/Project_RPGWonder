@@ -1,27 +1,38 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace RPGWonder
 {
     public partial class CreateOrEditCampaign : DefaultForm
     {
+        private static CreateOrEditCampaign instance = null;
+        public static CreateOrEditCampaign Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new CreateOrEditCampaign();
+                }
+                return instance;
+            }
+        }
         /// <summary>
         /// The campaign that is being created or edited by this form.
         /// </summary>
         internal Campaign campaign = new Campaign();
-        internal string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
         internal string TAG;
         private string _path;
         private bool _editing = false;
         /// <summary>
         /// Constructs a new instance of the `CreateOrEditCampaign` class.
         /// </summary>
-        public CreateOrEditCampaign()
+        private CreateOrEditCampaign()
         {
             InitializeComponent();
+            SetMotif();
         }
         public CreateOrEditCampaign(string path)
         {
@@ -50,22 +61,19 @@ namespace RPGWonder
                     TAG = campaign.Name;
                     string newTAG = TAG;
                     int counter = 1;
-                    while (Directory.Exists(path + "\\" + newTAG))
+                    while (Directory.Exists(Common.Instance.CampaignsPath + "\\" + newTAG))
                     {
                         newTAG = $"{TAG}({counter})";
                         counter++;
                     }
                     TAG = newTAG;
-                    Debug.WriteLine("tu");
-                    Debug.WriteLine(path + "\\" + TAG);
                 }
-                campaign.SaveToJSON(path, TAG);
+                campaign.SaveToJSON(Common.Instance.CampaignsPath, TAG);
                 string message = "Campaign saved!";
-                ManageCampaigns.instance.Reload();
+                ManageCampaigns.Instance.Reload();
                 MessageBox.Show(message);
-                ManageCampaigns manageCampaigns = new ManageCampaigns();
-                manageCampaigns.Show();
-                manageCampaigns.swapToPage2();
+                ManageCampaigns.Instance.Show();
+                ManageCampaigns.Instance.swapToPage2();
                 Close();
             }
         }
@@ -84,6 +92,16 @@ namespace RPGWonder
                 campaign.ReadFromJSON(_path + "\\" + TAG + ".json");
                 CampaignNameTextBox.Text = campaign.Name;
             } 
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

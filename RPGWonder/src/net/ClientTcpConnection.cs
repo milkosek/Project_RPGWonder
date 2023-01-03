@@ -53,7 +53,7 @@ namespace RPGWonder
                         string system = recievedString.Split('|')[1];
                         string message = "Game system mismatch.\nMake sure your game system is set to " + system;
                         MessageBox.Show(message);
-                        Client.instance.Close();
+                        Client.Instance.Close();
                     }
                 }
             }

@@ -12,11 +12,23 @@ namespace RPGWonder
     /// </summary>
     public partial class HostSession : DefaultForm
     {
+        private static HostSession instance = null;
+        public static HostSession Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new HostSession();
+                }
+                return instance;
+            }
+        }
         private string _campaign = "";
         /// <summary>
         /// Initializes a new instance of the `HostSession` class.
         /// </summary>
-        public HostSession()
+        private HostSession()
         {
             InitializeComponent();
             SetMotif();
@@ -44,9 +56,8 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void HostSession_Load(object sender, EventArgs e)
         {
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
             myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
-            string[] subdirectoryPaths = Directory.GetDirectories(path);
+            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
 
             foreach (string subdirectoryPath in subdirectoryPaths)
             {
@@ -63,6 +74,16 @@ namespace RPGWonder
         private void selectCampaignComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _campaign = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Key;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

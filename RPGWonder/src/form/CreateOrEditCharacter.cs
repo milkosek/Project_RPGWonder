@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,17 +13,28 @@ namespace RPGWonder
     /// </summary>
     public partial class CreateOrEditCharacter : DefaultForm
     {
-        public static CreateOrEditCharacter instance;
+        private static CreateOrEditCharacter instance = null;
+        public static CreateOrEditCharacter Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new CreateOrEditCharacter();
+                }
+                return instance;
+            }
+        }
         private bool bonusAdded = true;
         private Character CreatedCharacter = new Character();
+        internal string TAG;
+        private bool _editing = false;
         /// <summary>
         /// Initializes a new instance of the `CreateOrEditCharacter` class.
         /// </summary>
-        public CreateOrEditCharacter()
+        private CreateOrEditCharacter()
         {
             InitializeComponent();
-            SetMotif();
-            instance = this;
         }
         /// <summary>
         /// Populates the form's combo boxes with values from a `Common` instance,
@@ -100,9 +111,6 @@ namespace RPGWonder
                 proficiencyLayoutPanel.Size = new Size(80, 55);
                 AbilitiesTableLayoutPanel.Controls.Add(tableLayoutPanel, 0, i);
                 AbilitiesTableLayoutPanel.Controls.Add(proficiencyLayoutPanel, 1, i);
-                /// <summary>
-                /// Increment the iterator.
-                /// </summary>
                 i++;
             }
             foreach (RowStyle style in AbilitiesTableLayoutPanel.RowStyles)
@@ -131,6 +139,7 @@ namespace RPGWonder
                 style.SizeType = SizeType.Absolute;
                 style.Height = 30;
             }
+            SetMotif();
         }
         private void nextButton_Click(object sender, EventArgs e)
         {
@@ -287,14 +296,41 @@ namespace RPGWonder
             CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["armor-class-ability"]]);
             CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["initiative-ability"]]);
             CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["passive-perception-ability"]]);
-            CreatedCharacter.SaveToJSON("..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters", CreatedCharacter.Name);
+            if (!_editing)
+            {
+                TAG = CreatedCharacter.Name;
+                string newTAG = TAG;
+                int counter = 1;
+                while (File.Exists(Common.Instance.CharactersPath + "\\" + newTAG + ".json"))
+                {
+                    newTAG = $"{TAG}({counter})";
+                    counter++;
+                }
+                TAG = newTAG;
+            }
+
+            CreatedCharacter.SaveToJSON(Common.Instance.CharactersPath, TAG);
             string message = "Character saved!";
             MessageBox.Show(message);
-            Close();
+            ManageCharacters.Instance.Show();
+            ManageCharacters.Instance.swapToPage2();
+            ManageCharacters.Instance.Reload();
+            Hide();
+            swapToPage1();
         }
         private void backButton_Click(object sender, EventArgs e)
         {
             swapToPage1();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

@@ -4,16 +4,14 @@ namespace RPGWonder
 {
     public partial class Client : DefaultForm
     {
-        //TODO: Error handling wpisywanego adresu ip
-
         private ClientTcpConnection connection;
         private readonly string _character = "";
-        public static Client instance;
         private static string hostIpAddress;
+        public static Client Instance;
         public Client(string character, string ipAddr)
         {
             InitializeComponent();
-            instance = this;
+            Instance = this;
             SetMotif();
             _character = character;
             hostIpAddress = ipAddr;

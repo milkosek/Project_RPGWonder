@@ -11,12 +11,24 @@ namespace RPGWonder
     /// </summary>
     public partial class JoinSession : DefaultForm
     {
+        private static JoinSession instance = null;
+        public static JoinSession Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new JoinSession();
+                }
+                return instance;
+            }
+        }
         private string character = "";
         private string ipAddr;
         /// <summary>
         /// Initializes a new instance of the `JoinSession` class.
         /// </summary>
-        public JoinSession()
+        private JoinSession()
         {
             InitializeComponent();
             SetMotif();
@@ -41,8 +53,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void JoinSession_Load(object sender, EventArgs e)
         {
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
-            string[] filePaths = Directory.GetFiles(path, "*.json");
+            string[] filePaths = Directory.GetFiles(Common.Instance.CharactersPath, "*.json");
             foreach (string filePath in filePaths)
             {
                 JObject character = JObject.Parse(File.ReadAllText(filePath));
@@ -71,6 +82,16 @@ namespace RPGWonder
         private void charactersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
     }

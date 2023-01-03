@@ -23,26 +23,28 @@ namespace RPGWonder
                 JObject levels
             )
         {
-            Debug.WriteLine("Loading races");
+            Log.Instance.gameLog.Debug("Loading races");
             Races = races;
-            Debug.WriteLine("Loading classes");
+            Log.Instance.gameLog.Debug("Loading classes");
             Classes = classes;
-            Debug.WriteLine("Loading backgrounds");
+            Log.Instance.gameLog.Debug("Loading backgrounds");
             Backgrounds = backgrounds;
-            Debug.WriteLine("Loading genders");
+            Log.Instance.gameLog.Debug("Loading genders");
             Genders = genders;
-            Debug.WriteLine("Loading alignments");
+            Log.Instance.gameLog.Debug("Loading alignments");
             Alignments = alignments;
-            Debug.WriteLine("Loading defines");
+            Log.Instance.gameLog.Debug("Loading defines");
             Defines = defines;
-            Debug.WriteLine("Loading proficiencies");
+            Log.Instance.gameLog.Debug("Loading proficiencies");
             Proficiencies = proficiencies;
-            Debug.WriteLine("Loading abilities");
+            Log.Instance.gameLog.Debug("Loading abilities");
             Abilities = abilities;
-            Debug.WriteLine("Loading skills");
+            Log.Instance.gameLog.Debug("Loading skills");
             Skills = skills;
-            Debug.WriteLine("Loading levels");
+            Log.Instance.gameLog.Debug("Loading levels");
             Levels = levels;
+            CampaignsPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
+            CharactersPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\characters";
         }
         public JObject Races;
         public JObject Classes;
@@ -54,6 +56,8 @@ namespace RPGWonder
         public JObject Abilities;
         public JObject Skills;
         public JObject Levels;
+        public string CampaignsPath;
+        public string CharactersPath;
 
         /// <summary>
         /// Private constructor for the Common class.
@@ -75,16 +79,16 @@ namespace RPGWonder
                 if (instance == null)
                 {
                     instance = new Common(
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Races.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Backgrounds.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Genders.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Alignments.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Defines.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Proficiencies.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Abilities.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json")),
-                            JObject.Parse(File.ReadAllText("..\\..\\systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json"))
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Races.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Backgrounds.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Genders.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Alignments.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Defines.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Proficiencies.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Abilities.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json"))
                         );
                 }
                 return instance;

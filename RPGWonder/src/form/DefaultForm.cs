@@ -1,19 +1,29 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public class DefaultForm : Form
+    public partial class DefaultForm : Form
     {
-        public DefaultForm()
+        public bool isMain = false;
+        public DefaultForm ()
         {
-            BackColor = Color.FromArgb(40, 40, 40);
-            ForeColor = Color.White;
+            //FormClosing += DefaultForm_FormClosing;
         }
-
-        public void SetMotif()
+        private void DefaultForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (Control control in this.Controls)
+            e.Cancel = true;
+            if (isMain)
+            {
+                Environment.Exit(0);
+            }
+            Hide();
+        }
+        private void ProcessControls(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
             {
                 if (control is Button)
                 {
@@ -51,7 +61,15 @@ namespace RPGWonder
                     control.ForeColor = Color.White;
                 }
                 // You can add more conditions for other types of controls here
+                ProcessControls(control.Controls);
             }
+        }
+
+        public void SetMotif()
+        {
+            BackColor = Color.FromArgb(40, 40, 40);
+            ForeColor = Color.White;
+            ProcessControls(Controls);
         }
     }
 }
