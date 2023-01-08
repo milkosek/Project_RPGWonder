@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace RPGWonder
     public partial class CreateOrEditCharacter : DefaultForm
     {
         private static CreateOrEditCharacter instance = null;
+        internal string _path;
         public static CreateOrEditCharacter Instance
         {
             get
@@ -35,6 +37,25 @@ namespace RPGWonder
         private CreateOrEditCharacter()
         {
             InitializeComponent();
+        }
+
+        public CreateOrEditCharacter(string path)
+        {
+            InitializeComponent();
+            _path = path;
+            CreatedCharacter.ReadFromJSON(_path);
+            _editing = true;
+            nameTextBox.Text = CreatedCharacter.Name;
+            raceCcomboBox.Text = (string)Common.Instance.Races[CreatedCharacter.Race]["name"];
+            classComboBox.Text = (string)Common.Instance.Classes[CreatedCharacter.CharacterClass]["name"];
+            backgroundComboBox.Text = (string)Common.Instance.Backgrounds[CreatedCharacter.Background];
+            personalityTraitsTextBox.Text = CreatedCharacter.PersonalityTraits;
+            bondsTextBox.Text = CreatedCharacter.Bonds;
+            genderComboBox.Text = (string)Common.Instance.Genders[CreatedCharacter.Gender];
+            levelBox.Value = CreatedCharacter.Level;
+            alignmentComboBox.Text = (string)Common.Instance.Alignments[CreatedCharacter.Alignment];
+            ideaslTextBox.Text = CreatedCharacter.Ideals;
+            flawsTextBox.Text = CreatedCharacter.Flaws;
         }
         /// <summary>
         /// Populates the form's combo boxes with values from a `Common` instance,
@@ -161,7 +182,19 @@ namespace RPGWonder
             CreatedCharacter.Bonds = bondsTextBox.Text;
             CreatedCharacter.Flaws = flawsTextBox.Text;
             swapToPage2();
-            rollAbilities();
+            if (!_editing)
+            {
+                rollAbilities();
+            }
+            else
+            {
+                foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Abilities)
+                {
+                    Debug.WriteLine(CreatedCharacter.Abilities.Get(TAG.Key));
+                    NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("ability" + TAG.Key + "numericUpDown", true)[0];
+                    numericUpDown.Value = CreatedCharacter.Abilities.Get(TAG.Key);
+                }
+            }
         }
         private void raceCcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -251,16 +284,10 @@ namespace RPGWonder
                 if (abilityValue < (int)(numericUpDown.Minimum)) abilityValue = (int)(numericUpDown.Minimum);
                 if (abilityValue > (int)(numericUpDown.Maximum)) abilityValue = (int)(numericUpDown.Maximum);
                 numericUpDown.Value = abilityValue;
-                CreatedCharacter.Abilities.Set(TAG.Key, abilityValue);
             }
         }
         private void handleRecalcProfiencies(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Abilities)
-            {
-                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("ability" + TAG.Key + "numericUpDown", true)[0];
-                CreatedCharacter.Abilities.Set(TAG.Key, (int)numericUpDown.Value);
-            }
             updateProficiencies();
         }
         private void updateProficiencies()
@@ -271,7 +298,8 @@ namespace RPGWonder
                 Label label = (Label)Controls.Find("proficiency" + TAG.Key + "label", true)[0];
                 foreach (KeyValuePair<string, JToken> TAG2 in Common.Instance.Proficiencies)
                 {
-                    if (int.Parse(TAG2.Key) <= CreatedCharacter.Abilities[TAG.Key])
+                    NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("ability" + TAG.Key + "numericUpDown", true)[0];
+                    if (int.Parse(TAG2.Key) <= numericUpDown.Value)
                     {
                         maxBonus = (string)TAG2.Value;
                     }
@@ -284,7 +312,7 @@ namespace RPGWonder
                 string ability = (string)Common.Instance.Skills[TAG.Key]["ability"];
                 Label label = (Label)Controls.Find("skill" + TAG.Key + "label", true)[0];
                 label.Text = CreatedCharacter.Saves.Get(ability) + " " + Common.Instance.Skills[TAG.Key]["name"] + " (" + Common.Instance.Skills[TAG.Key]["ability"] + ")";
-                CreatedCharacter.Skills.Set(TAG.Key, CreatedCharacter.Saves.Get(ability));
+                
             }
         }
         private void rerollButton_Click(object sender, EventArgs e)
@@ -296,6 +324,11 @@ namespace RPGWonder
             CreatedCharacter.ArmorClass = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["armor-class-ability"]]);
             CreatedCharacter.InitiativeModifier = int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["initiative-ability"]]);
             CreatedCharacter.PassiveWisdomPerception = 10 + int.Parse(CreatedCharacter.Saves[(string)Common.Instance.Defines["passive-perception-ability"]]);
+            foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Abilities)
+            {
+                NumericUpDown numericUpDown = (NumericUpDown)Controls.Find("ability" + TAG.Key + "numericUpDown", true)[0];
+                CreatedCharacter.Abilities.Set(TAG.Key, (int)numericUpDown.Value);
+            }
             if (!_editing)
             {
                 TAG = CreatedCharacter.Name;
@@ -307,6 +340,11 @@ namespace RPGWonder
                     counter++;
                 }
                 TAG = newTAG;
+            }
+            else
+            {
+                TAG = Path.GetFileNameWithoutExtension(_path);
+                Debug.WriteLine(TAG);
             }
 
             CreatedCharacter.SaveToJSON(Common.Instance.CharactersPath, TAG);

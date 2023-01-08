@@ -109,8 +109,9 @@ namespace RPGWonder
 
         private void editCharacterButton_Click(object sender, EventArgs e)
         {
+            CreateOrEditCharacter createOrEditCharacter = new CreateOrEditCharacter(((ComboBoxObject)manageCharactersListBox.SelectedItem).Key);
+            createOrEditCharacter.Show();
             Close();
-            CreateOrEditCharacter.Instance.Show();
         }
 
         private void deleteCharacterButton_Click(object sender, EventArgs e)
@@ -133,6 +134,12 @@ namespace RPGWonder
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void createCharacterButton_Click(object sender, EventArgs e)
+        {
+            CreateOrEditCharacter.Instance.Show();
+            Close();
         }
     }
 }

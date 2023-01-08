@@ -51,6 +51,7 @@
             resources.ApplyResources(this.createCharacterButton, "createCharacterButton");
             this.createCharacterButton.Name = "createCharacterButton";
             this.createCharacterButton.UseVisualStyleBackColor = false;
+            this.createCharacterButton.Click += new System.EventHandler(this.createCharacterButton_Click);
             // 
             // deleteCharacterButton
             // 
