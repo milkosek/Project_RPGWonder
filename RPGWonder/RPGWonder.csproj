@@ -87,6 +87,12 @@
     <Compile Include="src\form\DefaultForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="src\form\Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\Game.designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
       <SubType>Form</SubType>
@@ -94,6 +100,7 @@
     <Compile Include="src\form\Host.Designer.cs">
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\map\MapHandler.cs" />
     <Compile Include="src\net\ClientData.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
@@ -184,6 +191,9 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
+    <EmbeddedResource Include="src\form\DefaultForm.resx">
+      <DependentUpon>DefaultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +205,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\Game.en.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Host.resx">
       <DependentUpon>Host.cs</DependentUpon>
@@ -258,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\asset\Die.png" />
+    <None Include="Resources\map_placeholder.png" />
     <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -273,7 +291,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="userData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

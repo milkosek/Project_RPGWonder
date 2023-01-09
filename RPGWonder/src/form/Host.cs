@@ -8,35 +8,40 @@ using System.Diagnostics;
 
 namespace RPGWonder
 {
-    public partial class Host : DefaultForm
+    public partial class Host : Game
     {
         private HostTcpConnection connection;
         public static Host instace;
         private string _campaign = "";
         private IPAddress ipAddress;
-        public Host(string campaign)
+
+        public Host(string campaign) : base() 
         {
-            InitializeComponent();
-            SetMotif();
-            instace = this;
-            _campaign = campaign;
-            Debug.WriteLine(_campaign);
-            //ipAddress = IPAdd.GetMyIPAddress();
-            ipAddress = IPAddress.Parse("127.0.0.1");
         }
+
+        //public Host(string campaign)
+        //{
+        //    InitializeComponent();
+        //    SetMotif();
+        //    instace = this;
+        //    _campaign = campaign;
+        //    Debug.WriteLine(_campaign);
+        //    //ipAddress = IPAdd.GetMyIPAddress();
+        //    ipAddress = IPAddress.Parse("127.0.0.1");
+        //}
         private void Host_Load(object sender, System.EventArgs e)
         {
-            connection = new HostTcpConnection();
-            connection.CreateSession(_campaign, ipAddress);
-            CheckForIllegalCrossThreadCalls = false;
+            //connection = new HostTcpConnection();
+            //connection.CreateSession(_campaign, ipAddress);
+            //CheckForIllegalCrossThreadCalls = false;
         }
         public void Reload()
         {
-            foreach(ClientData client in connection.Clients)
-            {
-                Character character = client.Character;
-                charlabel.Text = charlabel.Text + character.Name;
-            }
+            //    foreach(ClientData client in connection.Clients)
+            //    {
+            //        Character character = client.Character;
+            //        charlabel.Text = charlabel.Text + character.Name;
+            //    }
         }
     }
 }

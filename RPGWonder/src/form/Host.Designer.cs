@@ -36,7 +36,7 @@
             this.charlabel.AutoSize = true;
             this.charlabel.Location = new System.Drawing.Point(392, 189);
             this.charlabel.Name = "charlabel";
-            this.charlabel.Size = new System.Drawing.Size(44, 16);
+            this.charlabel.Size = new System.Drawing.Size(46, 17);
             this.charlabel.TabIndex = 0;
             this.charlabel.Text = "label1";
             // 
@@ -44,11 +44,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1422, 763);
             this.Controls.Add(this.charlabel);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "Host";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Host_Load);
+            this.Controls.SetChildIndex(this.charlabel, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
