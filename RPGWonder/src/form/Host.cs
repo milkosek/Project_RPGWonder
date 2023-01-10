@@ -10,6 +10,14 @@ using RPGWonder.src.map;
 
 namespace RPGWonder
 {
+ 
+    //TODO
+    //GAMERS
+    //  -linki do kart
+    //THROW
+    //  -per player, per stat
+    //SPAWN GENERIC (wall, enemy, chest)
+    //CHANGE MAP
     public partial class Host : DefaultForm
     {
         private HostTcpConnection connection;
