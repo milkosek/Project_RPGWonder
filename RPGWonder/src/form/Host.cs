@@ -7,10 +7,10 @@ using System.Threading;
 using System.Diagnostics;
 using System;
 using RPGWonder.src.map;
+using RPGWonder.src.form;
 
 namespace RPGWonder
 {
- 
     //TODO
     //GAMERS
     //  -linki do kart
@@ -82,6 +82,11 @@ namespace RPGWonder
         private void Host_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void DiceRollMenu_Click(object sender, EventArgs e)
+        {
+            DiceDisplay.Instance.Show();
         }
 
         private void LoadMap(int Cols, int Rows)

@@ -6,6 +6,19 @@ namespace RPGWonder.src.form
 {
     public partial class DiceDisplay : DefaultForm
     {
+        private static DiceDisplay instance = null;
+        public static DiceDisplay Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DiceDisplay();
+                }
+                return instance;
+            }
+        }
+
         private DiceRolls Roller = new DiceRolls();
         private Dictionary<int, List<int>> LastRolls = new Dictionary<int, List<int>>();
 
