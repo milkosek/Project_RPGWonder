@@ -82,6 +82,7 @@ namespace RPGWonder
         private void charactersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
+            Debug.WriteLine(character);
         }
 
         protected override void Dispose(bool disposing)

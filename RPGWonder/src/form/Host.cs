@@ -21,8 +21,8 @@ namespace RPGWonder
             instace = this;
             _campaign = campaign;
             Debug.WriteLine(_campaign);
-            //ipAddress = IPAdd.GetMyIPAddress();
-            ipAddress = IPAddress.Parse("127.0.0.1");
+            ipAddress = IPAdd.GetMyIPAddress();
+            //ipAddress = IPAddress.Parse("127.0.0.1");
         }
         private void Host_Load(object sender, System.EventArgs e)
         {

@@ -13,12 +13,18 @@ namespace RPGWonder
         private static NetworkStream stream;
         public void Connect(string serverAddr)
         {
+            Debug.WriteLine("1");
             try
             {
+                Debug.WriteLine("2");
                 int port = 13000;
+                Debug.WriteLine(serverAddr);
                 TcpClient client = new TcpClient(serverAddr, port);
+                Debug.WriteLine("4");
                 stream = client.GetStream();
+                Debug.WriteLine("5");
                 Thread listenThread = new Thread(new ThreadStart(() => Listen()));
+                Debug.WriteLine("6");
                 listenThread.Start();
             }
             catch (ArgumentNullException e)

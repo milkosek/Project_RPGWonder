@@ -20,7 +20,8 @@ namespace RPGWonder
                 JObject proficiencies,
                 JObject abilities,
                 JObject skills,
-                JObject levels
+                JObject levels,
+                JObject taskDifficulties
             )
         {
             Log.Instance.gameLog.Debug("Loading races");
@@ -43,6 +44,8 @@ namespace RPGWonder
             Skills = skills;
             Log.Instance.gameLog.Debug("Loading levels");
             Levels = levels;
+            Log.Instance.gameLog.Debug("Loading task difficulties");
+            TaskDifficulties = taskDifficulties;
             CampaignsPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
             CharactersPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\characters";
         }
@@ -56,6 +59,7 @@ namespace RPGWonder
         public JObject Abilities;
         public JObject Skills;
         public JObject Levels;
+        public JObject TaskDifficulties;
         public string CampaignsPath;
         public string CharactersPath;
 
@@ -72,6 +76,7 @@ namespace RPGWonder
         /// <param name="stats">A JObject containing information about the stats in the game.</param>
         /// <param name="skills">A JObject containing information about the skills in the game.</param>
         /// <param name="levels">A JObject containing information about the levels in the game.</param>
+        /// <param name="taskDifficulties">A JObject containing information about the task difficulties in the game.</param>
         public static Common Instance
         {
             get
@@ -88,7 +93,8 @@ namespace RPGWonder
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Proficiencies.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Abilities.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Skills.json")),
-                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json"))
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json")),
+                            JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Task Difficulties.json"))
                         );
                 }
                 return instance;
