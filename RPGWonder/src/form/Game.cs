@@ -25,62 +25,36 @@ namespace RPGWonder
         {
             InitializeComponent();
 
-            mapLoader = new MapHandler(this);
-            map = new Map() { };
+            //mapLoader = new MapHandler(this);
+            //map = new Map() { };
 
-            //string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\maps";
+            //string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\maps\\Equestria10x10.json";
 
             //map.ReadFromJSON(path);
 
-            coords.Text = "ex"; //map.Name;
-        }
-
-        internal DiceRolls DiceRolls
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal Campaign Campaign
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal VoiceChat VoiceChat
-        {
-            get => default;
-            set
-            {
-            }
+            //coords.Text = map.Name;
         }
 
         private void Game_Load(object sender, EventArgs e)
         {
-            //MainMenu.instance.Hide();
-            //LoadMap(map.Columns, map.Rows);
-            //LoadMap(16, 9);
+            LoadMap(map.Columns, map.Rows);
 
-            //EntityOnMap DieEntity1 = new EntityOnMap(0, 0, 5, 5,
-            //    @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
-            //DieEntity1.Name = "Dice1";
+            EntityOnMap DieEntity1 = new EntityOnMap(0, 0, 0, 0,
+                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
+            DieEntity1.Name = "Dice1";
 
-            //EntityOnMap DieEntity2 = new EntityOnMap(0, 0, 8, 8,
-            //    @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
-            //DieEntity2.Name = "Dice2";
+            EntityOnMap DieEntity2 = new EntityOnMap(0, 0, 0, 1,
+                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
+            DieEntity2.Name = "Dice2";
 
-            //EntityOnMap LogoEntity = new EntityOnMap(0, 0, 2, 7,
-            //    @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
-            //LogoEntity.Name = "Icon";
+            EntityOnMap LogoEntity = new EntityOnMap(0, 0, 1, 0,
+                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
+            LogoEntity.Name = "Icon";
 
-            //EntityList = new Dictionary<string, EntityOnMap> { };
-            //EntityList[DieEntity1.Name] = DieEntity1;
-            //EntityList[DieEntity2.Name] = DieEntity2;
-            //EntityList[LogoEntity.Name] = LogoEntity;
+            EntityList = new Dictionary<string, EntityOnMap> { };
+            EntityList[DieEntity1.Name] = DieEntity1;
+            EntityList[DieEntity2.Name] = DieEntity2;
+            EntityList[LogoEntity.Name] = LogoEntity;
 
             UpdateMap();
         }
@@ -91,8 +65,6 @@ namespace RPGWonder
             {
                 mapTableLayout.Controls[0].Dispose();
             }
-
-            mapTableLayout.Size = new Size(1200, 675);
 
             ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, Cols, Rows);
         }
@@ -112,7 +84,7 @@ namespace RPGWonder
                 selectedEntity.X = x2;
                 selectedEntity.Y = y2;
 
-                //UpdateMap();
+                UpdateMap();
 
                 fromButton.BackgroundImage = null;
                 fromButton.Text = string.Format("{0} {1}", x1, y1);
@@ -162,19 +134,27 @@ namespace RPGWonder
 
         private void UpdateMap()
         {
-            //foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
-            //{
-            //    string name = nameEntity.Key;
-            //    EntityOnMap EOM = nameEntity.Value;
+            foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
+            {
+                string name = nameEntity.Key;
+                EntityOnMap EOM = nameEntity.Value;
 
-            //    ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-            //    ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = EOM.Icon;
-            //}
+                ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
+                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = EOM.Icon;
+            }
         }
 
-        private void Game_FormClosed(object sender, FormClosedEventArgs e)
+        private bool TileEmpty(int x, int y)
         {
-            MainMenu.instance.Close();
+            if (ButtonsMatrix[y][x].Text == string.Format("{0} {1}", x, y))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
     }
 }

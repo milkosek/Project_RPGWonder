@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.coords = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapTableLayout
@@ -44,23 +46,32 @@
             resources.ApplyResources(this.coords, "coords");
             this.coords.Name = "coords";
             // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.coords, 0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
             // Game
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.coords);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mapTableLayout);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Game";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
             this.Load += new System.EventHandler(this.Game_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
+
         private System.Windows.Forms.TableLayoutPanel mapTableLayout;
         private System.Windows.Forms.Label coords;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

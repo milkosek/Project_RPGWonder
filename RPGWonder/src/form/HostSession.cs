@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -45,7 +46,9 @@ namespace RPGWonder
         private void HostSession_Load(object sender, EventArgs e)
         {
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
-            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
+            //myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
+            myIPTextBox.Text = "127.0.0.1";
+
             string[] subdirectoryPaths = Directory.GetDirectories(path);
 
             foreach (string subdirectoryPath in subdirectoryPaths)

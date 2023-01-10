@@ -11,11 +11,20 @@ namespace RPGWonder.src.map
 {
     class MapHandler
     {
-        private Game game;
+        private Host host;
+        private Client client;
+        private int formSelector;
 
-        public MapHandler(Game game)
+        public MapHandler(Host host)
         {
-            this.game = game;
+            this.host = host;
+            this.formSelector = 0;
+        }
+
+        public MapHandler(Client client)
+        {
+            this.client = client;
+            this.formSelector = 1;
         }
 
         public List<List<Button>> makeSquareTiles(TableLayoutPanel layout, int columnCount, int rowCount)
@@ -30,14 +39,12 @@ namespace RPGWonder.src.map
 
             for (int i = 0; i < columnCount; i++)
             {
-                layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(
-                    System.Windows.Forms.SizeType.Percent, 100 / columnCount));
+                layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100 / columnCount));
             }
 
             for (int i = 0; i < rowCount; i++)
             {
-                layout.RowStyles.Add(new System.Windows.Forms.RowStyle(
-                    System.Windows.Forms.SizeType.Percent, 100 / rowCount));
+                layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100 / rowCount));
             }
 
             for (int i = 0; i < rowCount; i++)
@@ -60,7 +67,14 @@ namespace RPGWonder.src.map
                     button.Height = button.Width;
 
                     button.Dock = DockStyle.Fill;
-                    button.MouseDown += new MouseEventHandler(btn_click);
+                    if (formSelector == 0)
+                    {
+                        button.MouseDown += new MouseEventHandler(btn_click_host);
+                    }
+                    else if (formSelector == 1)
+                    {
+                        button.MouseDown += new MouseEventHandler(btn_click_client);
+                    }
 
                     button.TextAlign = System.Drawing.ContentAlignment.BottomRight;
                     button.BackgroundImageLayout = ImageLayout.Stretch;
@@ -76,20 +90,36 @@ namespace RPGWonder.src.map
             return ButtonsMatrix;
         }
 
-        protected void btn_click(object sender, MouseEventArgs e)
+        protected void btn_click_host(object sender, MouseEventArgs e)
         {
             Button btn = (Button)sender;
-            
+
             if (e.Button == MouseButtons.Left)
             {
-                game.MapTileAction(btn.Name, 0);
+                host.MapTileAction(btn.Name, 0);
             }
             if (e.Button == MouseButtons.Right)
             {
-                game.MapTileAction(btn.Name, 1);
+                host.MapTileAction(btn.Name, 1);
             }
 
-            game.ActiveControl = null;
+            host.ActiveControl = null;
+        }
+
+        protected void btn_click_client(object sender, MouseEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (e.Button == MouseButtons.Left)
+            {
+                client.MapTileAction(btn.Name, 0);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                client.MapTileAction(btn.Name, 1);
+            }
+
+            client.ActiveControl = null;
         }
     }
 }
