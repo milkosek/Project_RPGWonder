@@ -33,6 +33,8 @@ namespace RPGWonder.src.form
             RollsList.Columns.Add("Dice", 40);
             RollsList.Columns.Add("Rolls", 120);
             RollsList.View = View.Details;
+
+            this.TopMost = true;
         }
 
         private void DiceDisplay_Load(object sender, EventArgs e)

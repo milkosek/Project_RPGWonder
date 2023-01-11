@@ -32,7 +32,7 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        public Host(string campaign)
+        public Host(string campaignFolder, string campaign)
         {
             InitializeComponent();
 
@@ -46,7 +46,8 @@ namespace RPGWonder
             mapLoader = new MapHandler(this);
             map = new Map() { };
 
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\maps\\Equestria10x10.json";
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + campaignFolder + "\\maps\\Equestria8x6.json";
+            Debug.WriteLine(path);
             map.ReadFromJSON(path);
             coords.Text = map.Name;
         }

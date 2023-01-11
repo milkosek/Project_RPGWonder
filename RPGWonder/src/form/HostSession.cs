@@ -13,6 +13,7 @@ namespace RPGWonder
     /// </summary>
     public partial class HostSession : DefaultForm
     {
+        private string _campaignFolder = "";
         private string _campaign = "";
         /// <summary>
         /// Initializes a new instance of the `HostSession` class.
@@ -31,7 +32,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void hostSessionButton_Click(object sender, EventArgs e)
         {
-            Host host = new Host(_campaign);
+            Host host = new Host(_campaignFolder, _campaign);
             Close();
             host.Show();
             //MainMenu.instance.Hide();
@@ -61,11 +62,17 @@ namespace RPGWonder
                     selectCampaignComboBox.Items.Add(comboBoxObject);
                 }
             }
+
+            if (subdirectoryPaths.Length > 0)
+            {
+                selectCampaignComboBox.SelectedIndex = 0;
+            }
         }
 
         private void selectCampaignComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _campaign = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Key;
+            _campaignFolder = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Value;
         }
     }
 }

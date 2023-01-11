@@ -33,13 +33,15 @@
             this.spawn_chest = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.spawn_npc = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.coords = new System.Windows.Forms.Label();
             this.DiceRollMenu = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // charlabel
@@ -52,29 +54,29 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tableLayoutPanel2.Controls.Add(this.spawn_chest, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button10, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.spawn_npc, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button12, 1, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(940, 338);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 708);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(320, 308);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(382, 308);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // spawn_chest
             // 
             this.spawn_chest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spawn_chest.Location = new System.Drawing.Point(5, 5);
-            this.spawn_chest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spawn_chest.Location = new System.Drawing.Point(4, 4);
             this.spawn_chest.Name = "spawn_chest";
-            this.spawn_chest.Size = new System.Drawing.Size(150, 144);
+            this.spawn_chest.Size = new System.Drawing.Size(124, 102);
             this.spawn_chest.TabIndex = 0;
             this.spawn_chest.Text = "Spawn Chest";
             this.spawn_chest.UseVisualStyleBackColor = true;
@@ -83,10 +85,9 @@
             // button10
             // 
             this.button10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button10.Location = new System.Drawing.Point(5, 158);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button10.Location = new System.Drawing.Point(4, 113);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(150, 145);
+            this.button10.Size = new System.Drawing.Size(124, 102);
             this.button10.TabIndex = 1;
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
@@ -94,24 +95,12 @@
             // spawn_npc
             // 
             this.spawn_npc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spawn_npc.Location = new System.Drawing.Point(164, 5);
-            this.spawn_npc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spawn_npc.Location = new System.Drawing.Point(135, 4);
             this.spawn_npc.Name = "spawn_npc";
-            this.spawn_npc.Size = new System.Drawing.Size(151, 144);
+            this.spawn_npc.Size = new System.Drawing.Size(124, 102);
             this.spawn_npc.TabIndex = 2;
             this.spawn_npc.Text = "Spawn NPC";
             this.spawn_npc.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button12.Location = new System.Drawing.Point(164, 158);
-            this.button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(151, 145);
-            this.button12.TabIndex = 3;
-            this.button12.Text = "button12";
-            this.button12.UseVisualStyleBackColor = true;
             // 
             // mapTableLayout
             // 
@@ -120,13 +109,13 @@
             this.mapTableLayout.ColumnCount = 2;
             this.mapTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mapTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mapTableLayout.Location = new System.Drawing.Point(20, 18);
+            this.mapTableLayout.Location = new System.Drawing.Point(30, 30);
             this.mapTableLayout.Margin = new System.Windows.Forms.Padding(0);
             this.mapTableLayout.Name = "mapTableLayout";
             this.mapTableLayout.RowCount = 2;
             this.mapTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mapTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mapTableLayout.Size = new System.Drawing.Size(907, 628);
+            this.mapTableLayout.Size = new System.Drawing.Size(1440, 1020);
             this.mapTableLayout.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -135,46 +124,74 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.coords, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.DiceRollMenu, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(940, 18);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(1500, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 308);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.21023F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.78977F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 313F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 1020);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // coords
             // 
             this.coords.AutoSize = true;
             this.coords.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.coords.Location = new System.Drawing.Point(4, 1);
+            this.coords.Location = new System.Drawing.Point(3, 1);
+            this.coords.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.coords.Name = "coords";
-            this.coords.Size = new System.Drawing.Size(51, 17);
+            this.coords.Size = new System.Drawing.Size(39, 13);
             this.coords.TabIndex = 8;
             this.coords.Text = "coords";
             // 
             // DiceRollMenu
             // 
-            this.DiceRollMenu.Location = new System.Drawing.Point(4, 233);
+            this.DiceRollMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DiceRollMenu.Location = new System.Drawing.Point(2, 2);
+            this.DiceRollMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DiceRollMenu.Name = "DiceRollMenu";
-            this.DiceRollMenu.Size = new System.Drawing.Size(107, 39);
+            this.DiceRollMenu.Size = new System.Drawing.Size(187, 122);
             this.DiceRollMenu.TabIndex = 9;
             this.DiceRollMenu.Text = "DiceMenu";
             this.DiceRollMenu.UseVisualStyleBackColor = true;
             this.DiceRollMenu.Click += new System.EventHandler(this.DiceRollMenu_Click);
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.DiceRollMenu, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 449);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(382, 252);
+            this.tableLayoutPanel3.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(194, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(185, 120);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Host
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 665);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mapTableLayout);
-            this.Controls.Add(this.tableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Host";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Host_FormClosed);
@@ -182,6 +199,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -193,10 +211,11 @@
         private System.Windows.Forms.Button spawn_chest;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button spawn_npc;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TableLayoutPanel mapTableLayout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label coords;
         private System.Windows.Forms.Button DiceRollMenu;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button button1;
     }
 }
