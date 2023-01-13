@@ -1,8 +1,9 @@
 {
-  "Name": "Epic Quest",
+  "Name": "dau",
   "Characters": null,
   "Entities": null,
   "Maps": null,
   "CurrentMap": 0,
-  "Assets": null
+  "Assets": null,
+  "CodexEntries": null
 }

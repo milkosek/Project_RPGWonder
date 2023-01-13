@@ -16,11 +16,7 @@ namespace RPGWonder
         public List<Map> Maps;
         public int CurrentMap;
         public List<Asset> Assets;
-
-        /// <summary>
-        /// Initializes a new instance of the Campaign class.
-        /// </summary>
-        public Campaign() { }
+        public List<CodexEntry> CodexEntries;
 
         /// <summary>
         /// Reads the campaign data from a JSON file.

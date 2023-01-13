@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace RPGWonder
 {
@@ -114,7 +115,6 @@ namespace RPGWonder
         {
             CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key);
             createOrEditCampaign.Show();
-            Close();
         }
 
         private void manageCampaignsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +135,9 @@ namespace RPGWonder
                 Directory.Delete(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key, true);
                 Reload();
             }
+            manageCampaignsListBox.SelectedItem = null;
+            editCampaignButton.Enabled = false;
+            deleteCampaignButton.Enabled = false;
         }
 
         private void createCampaignButton_Click(object sender, EventArgs e)
@@ -146,16 +149,6 @@ namespace RPGWonder
         {
             CreateOrEditCampaign.Instance.Show();
             Close();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            instance = null;
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

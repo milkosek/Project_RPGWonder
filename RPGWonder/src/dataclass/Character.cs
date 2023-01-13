@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
 namespace RPGWonder
@@ -43,11 +42,6 @@ namespace RPGWonder
         public int PassiveWisdomPerception;
         public string Age;
         public string AlliesAndOrgs;
-
-        /// <summary>
-        /// Initializes a new instance of the Character class.
-        /// </summary>
-        public Character() { }
 
         /// <summary>
         /// Saves the campaign data to a JSON file.

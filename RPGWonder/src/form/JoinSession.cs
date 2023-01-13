@@ -84,16 +84,5 @@ namespace RPGWonder
             character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
             Debug.WriteLine(character);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            instance = null;
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
     }
 }

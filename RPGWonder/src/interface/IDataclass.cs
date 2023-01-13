@@ -1,4 +1,4 @@
-﻿namespace RPGWonder
+﻿    namespace RPGWonder
 {
     public interface IDataclass
     {
