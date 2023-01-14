@@ -28,6 +28,7 @@ namespace RPGWonder
         public MainMenu()
         {
             InitializeComponent();
+            SetMotif();
             isMain = true;
         }
 
@@ -37,8 +38,18 @@ namespace RPGWonder
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">The event arguments.</param>
         private void MainMenu_Load(object sender, EventArgs e)
-        {
-            SetMotif();
+        {    
+            if (Common.Instance == null)
+            {
+                JoinButton.Enabled = false;
+                HostButton.Enabled = false;
+                ManageCampaignsButton.Enabled = false;
+                ManageCharsButton.Enabled = false;
+                MessageBox.Show("The path to game files is not set correctly.\nSet the correct path in Settings.");
+            }
+
+            Campaign campaign = new Campaign();
+            campaign.ReadFromJSON("D:/Archiwum Królewskie/Studia/Inzynierka/RPGWonder/RPGWonder/userData/DnD5e/campaigns/dau/dau.json");
         }
 
         /// <summary>
@@ -102,17 +113,6 @@ namespace RPGWonder
         private void CrtCharButton_Click(object sender, EventArgs e)
         {
             ManageCharacters.Instance.Show();
-        }
-
-        /// <summary>
-        /// This method is called when the TempDiceRollMenu is clicked. It creates a new DiceDisplay form
-        /// and shows it to the user.
-        /// </summary>
-        /// <param name="sender">The object that raised the eve
-        private void TempDiceRollMenu_Click(object sender, EventArgs e)
-        {
-            DiceDisplay manageCharacterWindow = new DiceDisplay();
-            manageCharacterWindow.Show();
         }
     }
 }

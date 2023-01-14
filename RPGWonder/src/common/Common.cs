@@ -1,4 +1,5 @@
 ﻿    using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -83,7 +84,9 @@ namespace RPGWonder
             {
                 if (instance == null)
                 {
-                    instance = new Common(
+                    try
+                    {
+                        instance = new Common(
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Races.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Backgrounds.json")),
@@ -96,6 +99,11 @@ namespace RPGWonder
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Levels.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Task Difficulties.json"))
                         );
+                    }
+                    catch (Exception)
+                    {
+                        Log.Instance.errorLog.Error("Couldn't read commons!");
+                    }
                 }
                 return instance;
             }

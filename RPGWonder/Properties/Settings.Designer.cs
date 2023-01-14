@@ -23,21 +23,27 @@ namespace RPGWonder.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("DnD5e")]
         public string System {
             get {
                 return ((string)(this["System"]));
             }
+            set {
+                this["System"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\")]
         public string Path {
             get {
                 return ((string)(this["Path"]));
+            }
+            set {
+                this["Path"] = value;
             }
         }
     }

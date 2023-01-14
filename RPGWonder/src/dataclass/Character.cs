@@ -51,6 +51,10 @@ namespace RPGWonder
         {
             var serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             using (StreamWriter streamWriter = new StreamWriter(path + "\\" + TAG + ".json"))
             using (JsonWriter writer = new JsonTextWriter(streamWriter))
             {

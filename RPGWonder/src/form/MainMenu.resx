@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ExitButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="SettingsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 294</value>
@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SettingsButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="ManageCharsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 233</value>
@@ -199,7 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ManageCharsButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="ManageCampaignsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 171</value>
@@ -226,7 +226,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ManageCampaignsButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="HostButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 108</value>
@@ -253,7 +253,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;HostButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="JoinButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 44</value>
@@ -280,30 +280,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;JoinButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TempDiceRollMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>576, 354</value>
-  </data>
-  <data name="TempDiceRollMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 37</value>
-  </data>
-  <data name="TempDiceRollMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="TempDiceRollMenu.Text" xml:space="preserve">
-    <value>TempDiceRollMenu</value>
-  </data>
-  <data name="&gt;&gt;TempDiceRollMenu.Name" xml:space="preserve">
-    <value>TempDiceRollMenu</value>
-  </data>
-  <data name="&gt;&gt;TempDiceRollMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TempDiceRollMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;TempDiceRollMenu.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -365,6 +341,6 @@
     <value>MainMenu</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

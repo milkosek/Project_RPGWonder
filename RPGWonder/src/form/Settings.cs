@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace RPGWonder
 {
@@ -20,16 +23,35 @@ namespace RPGWonder
         {
             InitializeComponent();
             SetMotif();
+            saveButton.BackColor = Color.SteelBlue;
         }
 
-        protected override void Dispose(bool disposing)
+        private void Settings_Load(object sender, System.EventArgs e)
         {
-            instance = null;
-            if (disposing && (components != null))
+            pathTextBox.Text = Properties.Settings.Default.Path;
+            systemComboBox.Text = Properties.Settings.Default.System;
+            string path = Properties.Settings.Default.Path + "systemPresets";
+            string[] campaigns;
+            if (Directory.Exists(path))
             {
-                components.Dispose();
+                campaigns = Directory.GetDirectories(path);
             }
-            base.Dispose(disposing);
+            else
+            {
+                campaigns = new string[0];
+            }
+            foreach (string campaign in campaigns)
+            {
+                systemComboBox.Items.Add(Path.GetFileName(campaign));
+            }
+        }
+
+        private void saveButton_Click(object sender, System.EventArgs e)
+        {
+            Properties.Settings.Default.Path = pathTextBox.Text;
+            Properties.Settings.Default.System = systemComboBox.Text;
+            Properties.Settings.Default.Save();
+            Application.Restart();
         }
     }
 }
