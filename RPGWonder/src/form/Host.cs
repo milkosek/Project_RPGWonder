@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using RPGWonder.src.net;
 
 namespace RPGWonder
 {
@@ -29,6 +30,8 @@ namespace RPGWonder
             connection = new HostTcpConnection();
             connection.CreateSession(_campaign, ipAddress);
             CheckForIllegalCrossThreadCalls = false;
+            //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
+            //DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
         }
         public void Reload()
         {

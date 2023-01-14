@@ -110,6 +110,7 @@
     <Compile Include="src\log\Log.cs" />
     <Compile Include="src\net\ClientData.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
+    <Compile Include="src\net\DiscordChannelCreation.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
     <Compile Include="src\net\IPAdd.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
