@@ -2,11 +2,12 @@
 
 namespace RPGWonder
 {
-    public partial class MapEditor : Form
+    public partial class MapEditor : DefaultForm
     {
         public MapEditor()
         {
             InitializeComponent();
+            SetMotif();
         }
 
         internal Map Map

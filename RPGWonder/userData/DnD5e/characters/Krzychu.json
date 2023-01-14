@@ -1,25 +1,25 @@
 {
-  "Name": "dfsfs",
-  "Race": "blackDragon",
-  "Gender": "Male",
-  "CharacterClass": "monk",
+  "Name": "Krzychu",
+  "Race": "hillDwarf",
+  "Gender": "Other",
+  "CharacterClass": "fighter",
   "Level": 1,
   "Experience": 0,
-  "Background": "GuildArtisan",
-  "Alignment": "TrueNeutral",
+  "Background": "Entertainer",
+  "Alignment": "NeutralGood",
   "Abilities": {
-    "STR": 16,
-    "DEX": 11,
+    "STR": 15,
+    "DEX": 15,
     "CON": 14,
-    "INT": 15,
-    "WIS": 9,
-    "CHA": 10
+    "INT": 17,
+    "WIS": 6,
+    "CHA": 13
   },
   "ProficiencyBonus": 2,
-  "ArmorClass": 10,
-  "InitiativeModifier": 0,
+  "ArmorClass": 12,
+  "InitiativeModifier": 2,
   "Initiative": 0,
-  "Speed": 30,
+  "Speed": 25,
   "Size": "medium",
   "CurrentHitPoints": 0,
   "TemporaryHitPoints": 0,
@@ -36,20 +36,20 @@
   "Items": [],
   "AttacksAndSpells": [],
   "Saves": {
-    "STR": "+3",
-    "DEX": "+0",
+    "STR": "+2",
+    "DEX": "+2",
     "CON": "+2",
-    "INT": "+2",
-    "WIS": "-1",
-    "CHA": "+0"
+    "INT": "+3",
+    "WIS": "-2",
+    "CHA": "+1"
   },
   "Skills": {
-    "Acrobatics": "+0",
-    "AnimalHandling": "-1",
-    "Arcana": "+2",
-    "Athletics": "+3"
+    "Acrobatics": "+2",
+    "AnimalHandling": "-2",
+    "Arcana": "+3",
+    "Athletics": "+2"
   },
-  "PassiveWisdomPerception": 9,
+  "PassiveWisdomPerception": 8,
   "Age": null,
   "AlliesAndOrgs": null
 }

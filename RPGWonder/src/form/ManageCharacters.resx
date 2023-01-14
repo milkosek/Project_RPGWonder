@@ -141,40 +141,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CrtNewCharacterButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
-  <data name="EditCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="LoadCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>417, 251</value>
   </data>
-  <data name="EditCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="LoadCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 102</value>
   </data>
-  <data name="EditCharacterButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="LoadCharacterButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="EditCharacterButton.Text" xml:space="preserve">
+  <data name="LoadCharacterButton.Text" xml:space="preserve">
     <value>Edit Existing Character</value>
   </data>
-  <data name="&gt;&gt;EditCharacterButton.Name" xml:space="preserve">
-    <value>EditCharacterButton</value>
+  <data name="&gt;&gt;LoadCharacterButton.Name" xml:space="preserve">
+    <value>LoadCharacterButton</value>
   </data>
-  <data name="&gt;&gt;EditCharacterButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;LoadCharacterButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;EditCharacterButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LoadCharacterButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;EditCharacterButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;LoadCharacterButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="manageCharactersListBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
   </data>
   <data name="manageCharactersListBox.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>29</value>
   </data>
   <data name="manageCharactersListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
   </data>
   <data name="manageCharactersListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>844, 500</value>
+    <value>844, 497</value>
   </data>
   <data name="manageCharactersListBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -192,6 +195,103 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;manageCharactersListBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="createCharacterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="createCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 209</value>
+  </data>
+  <data name="createCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 102</value>
+  </data>
+  <data name="createCharacterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="createCharacterButton.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="createCharacterButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;createCharacterButton.Name" xml:space="preserve">
+    <value>createCharacterButton</value>
+  </data>
+  <data name="&gt;&gt;createCharacterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createCharacterButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;createCharacterButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="deleteCharacterButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="deleteCharacterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="deleteCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 425</value>
+  </data>
+  <data name="deleteCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 102</value>
+  </data>
+  <data name="deleteCharacterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="deleteCharacterButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="deleteCharacterButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;deleteCharacterButton.Name" xml:space="preserve">
+    <value>deleteCharacterButton</value>
+  </data>
+  <data name="&gt;&gt;deleteCharacterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteCharacterButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;deleteCharacterButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="editCharacterButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="editCharacterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="editCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>862, 317</value>
+  </data>
+  <data name="editCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 102</value>
+  </data>
+  <data name="editCharacterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="editCharacterButton.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="editCharacterButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;editCharacterButton.Name" xml:space="preserve">
+    <value>editCharacterButton</value>
+  </data>
+  <data name="&gt;&gt;editCharacterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editCharacterButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;editCharacterButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -203,7 +303,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1067, 554</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
@@ -214,6 +313,6 @@
     <value>ManageCharacters</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

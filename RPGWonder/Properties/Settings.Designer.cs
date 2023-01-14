@@ -31,5 +31,14 @@ namespace RPGWonder.Properties {
                 return ((string)(this["System"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\\\..\\\\")]
+        public string Path {
+            get {
+                return ((string)(this["Path"]));
+            }
+        }
     }
 }

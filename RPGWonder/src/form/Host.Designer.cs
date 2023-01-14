@@ -28,20 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.charlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // charlabel
+            // 
+            this.charlabel.AutoSize = true;
+            this.charlabel.Location = new System.Drawing.Point(392, 189);
+            this.charlabel.Name = "charlabel";
+            this.charlabel.Size = new System.Drawing.Size(44, 16);
+            this.charlabel.TabIndex = 0;
+            this.charlabel.Text = "label1";
             // 
             // Host
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.charlabel);
             this.Name = "Host";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Host_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label charlabel;
     }
 }

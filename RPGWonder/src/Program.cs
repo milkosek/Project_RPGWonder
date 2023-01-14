@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -22,6 +23,7 @@ namespace RPGWonder
             /// <summary>
             /// Initialise Common
             /// </summary>
+            _ = Log.Instance;
             _ = Common.Instance;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

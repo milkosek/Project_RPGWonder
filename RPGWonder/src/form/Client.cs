@@ -1,39 +1,33 @@
-﻿using RPGWonder.src.net;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Windows.Forms;
 
 namespace RPGWonder
 {
-    public partial class Client : Form
+    public partial class Client : DefaultForm
     {
-        //TODO: Error handling wpisywanego adresu ip
-
         private ClientTcpConnection connection;
         private readonly string _character = "";
-        public static Client instance;
-        private static string localIpAddress;
         private static string hostIpAddress;
+        public static Client Instance;
         public Client(string character, string ipAddr)
         {
             InitializeComponent();
-            instance = this;
+            Instance = this;
+            SetMotif();
             _character = character;
             hostIpAddress = ipAddr;
-            localIpAddress = IPAdd.GetMyIPAddress().ToString();
         }
         private void Client_Load(object sender, System.EventArgs e)
         {
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
             //MainMenu.instance.Hide();
             connection = new ClientTcpConnection();
+            Debug.WriteLine("aaa");
             connection.Connect(hostIpAddress);//hostIp
-
-            ClientVoiceConnection.Listen(localIpAddress);
-            ClientVoiceConnection.Send(hostIpAddress);
-
+            Debug.WriteLine("aaa");
             connection.ValidateSystem();
-            connection.SendCharacter(File.ReadAllText(path + _character), _character);
+            Debug.WriteLine(File.ReadAllText(_character));
+            Debug.WriteLine(Path.GetFileName(_character));
+            connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
         }
     }
 }

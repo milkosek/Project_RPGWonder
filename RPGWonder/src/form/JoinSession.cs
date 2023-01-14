@@ -9,16 +9,29 @@ namespace RPGWonder
     /// <summary>
     /// This class represents a form for joining an existing game session.
     /// </summary>
-    public partial class JoinSession : Form
+    public partial class JoinSession : DefaultForm
     {
+        private static JoinSession instance = null;
+        public static JoinSession Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new JoinSession();
+                }
+                return instance;
+            }
+        }
         private string character = "";
         private string ipAddr;
         /// <summary>
         /// Initializes a new instance of the `JoinSession` class.
         /// </summary>
-        public JoinSession()
+        private JoinSession()
         {
             InitializeComponent();
+            SetMotif();
         }
 
         /// <summary>
@@ -40,23 +53,12 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void JoinSession_Load(object sender, EventArgs e)
         {
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
-            if (File.Exists(path + "\\00_Characters.json"))
+            string[] filePaths = Directory.GetFiles(Common.Instance.CharactersPath, "*.json");
+            foreach (string filePath in filePaths)
             {
-                JObject data = JObject.Parse(File.ReadAllText(path + "\\00_Characters.json"));
-                JArray characters = (JArray)data["characters"];
-                foreach (JToken characterTAG in characters)
-                {
-                    JObject character = JObject.Parse(File.ReadAllText(path + characterTAG.ToString()));
-                    ComboBoxObject comboBoxObject = new ComboBoxObject(characterTAG.ToString(), (string)character["Name"]);
-                    charactersComboBox.Items.Add(comboBoxObject);
-                }
-            }
-            else
-            {
-                string message = "00_Characters.json file seems to missing or corrupted.\nCreating a new character should fix this issue.";
-                MessageBox.Show(message);
-                Close();
+                JObject character = JObject.Parse(File.ReadAllText(filePath));
+                ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)character["Name"]);
+                charactersComboBox.Items.Add(comboBoxObject);
             }
         }
 
@@ -80,7 +82,7 @@ namespace RPGWonder
         private void charactersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
+            Debug.WriteLine(character);
         }
-
     }
 }

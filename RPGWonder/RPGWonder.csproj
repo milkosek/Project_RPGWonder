@@ -54,6 +54,10 @@
     <Reference Include="DarrenLee.LiveStream">
       <HintPath>Resources\DarrenLee.LiveStream.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NAudio">
       <HintPath>Resources\NAudio.dll</HintPath>
     </Reference>
@@ -64,7 +68,9 @@
       <HintPath>Resources\NSpeex.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,6 +90,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\comboBoxObject\ComboBoxObject.cs" />
+    <Compile Include="src\dataclass\CodexEntry.cs" />
+    <Compile Include="src\form\CreateOrEditCodexEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\CreateOrEditCodexEntry.Designer.cs">
+      <DependentUpon>CreateOrEditCodexEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\form\DefaultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
       <SubType>Form</SubType>
@@ -91,14 +107,11 @@
     <Compile Include="src\form\Host.Designer.cs">
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\net\DarrenLeeInterfaces.cs" />
-    <Compile Include="src\net\IPAdd.cs" />
+    <Compile Include="src\log\Log.cs" />
+    <Compile Include="src\net\ClientData.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
-    <Compile Include="src\net\ClientVoiceConnection.cs" />
     <Compile Include="src\net\HostTcpConnection.cs" />
-    <Compile Include="src\net\HostVoiceConnection.cs" />
-    <Compile Include="src\net\ClientVoiceListener.cs" />
-    <Compile Include="src\net\ClientVoiceSender.cs" />
+    <Compile Include="src\net\IPAdd.cs" />
     <Compile Include="src\safedict\Safedict.cs" />
     <Compile Include="src\common\Common.cs" />
     <None Include="systemPresets\DnD5e\Backgrounds.json" />
@@ -185,6 +198,12 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
+    <EmbeddedResource Include="src\form\CreateOrEditCodexEntry.resx">
+      <DependentUpon>CreateOrEditCodexEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\DefaultForm.resx">
+      <DependentUpon>DefaultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\DiceDisplay.resx">
       <DependentUpon>DiceDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +272,7 @@
     </Compile>
     <None Include="systemPresets\DnD5e\Skills.json" />
     <None Include="systemPresets\DnD5e\Abilities.json" />
+    <None Include="systemPresets\DnD5e\Task difficulties.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\App.config" />

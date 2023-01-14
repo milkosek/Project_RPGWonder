@@ -7,12 +7,20 @@ namespace RPGWonder
     /// <summary>
     /// This class represents the main menu form of the RPGWonder application.
     /// </summary>
-    public partial class MainMenu : Form
+    public partial class MainMenu : DefaultForm
     {
-        /// <summary>
-        /// The static instance of the `MainMenu` class.
-        /// </summary>
-        public static MainMenu instance;
+        private static MainMenu instance = null;
+        public static MainMenu Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MainMenu();
+                }
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the `MainMenu` class.
@@ -20,73 +28,7 @@ namespace RPGWonder
         public MainMenu()
         {
             InitializeComponent();
-            instance = this;
-        }
-
-        /// <summary>
-        /// Gets or sets the `Game` object associated with this `MainMenu` instance.
-        /// </summary>
-        public Client Game
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the `ManageCharacters` object associated with this `MainMenu` instance.
-        /// </summary>
-        public ManageCharacters ManageCharacters
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the `ManageCampaigns` object associated with this `MainMenu` instance.
-        /// </summary>
-        public ManageCampaigns ManageCampaigns
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the `Settings` object associated with this `MainMenu` instance.
-        /// </summary>
-        public Settings Settings
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the `HostSession` object associated with this `MainMenu` instance.
-        /// </summary>
-        public HostSession HostSession
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the `JoinSession` object associated with this `MainMenu` instance.
-        /// </summary>
-        public JoinSession JoinSession
-        {
-            get => default;
-            set
-            {
-            }
+            isMain = true;
         }
 
         /// <summary>
@@ -96,7 +38,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void MainMenu_Load(object sender, EventArgs e)
         {
-
+            SetMotif();
         }
 
         /// <summary>
@@ -107,8 +49,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void JoinButton_Click(object sender, EventArgs e)
         {
-            JoinSession joinSessionWindow = new JoinSession();
-            joinSessionWindow.Show();
+            JoinSession.Instance.Show();
         }
 
         /// <summary>
@@ -119,8 +60,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            Settings settingsWindow = new Settings();
-            settingsWindow.Show();
+            Settings.Instance.Show();
         }
 
         /// <summary>
@@ -141,8 +81,7 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void HostButton_Click(object sender, EventArgs e)
         {
-            HostSession hostSessionWindow = new HostSession();
-            hostSessionWindow.Show();
+            HostSession.Instance.Show();
         }
 
         /// <summary>
@@ -152,8 +91,7 @@ namespace RPGWonder
         /// <param name="sender">The object that raised the eve
         private void CrtCampaignButton_Click(object sender, EventArgs e)
         {
-            ManageCampaigns manageCampaignsWindow = new ManageCampaigns();
-            manageCampaignsWindow.Show();
+            ManageCampaigns.Instance.Show();
         }
 
         /// <summary>
@@ -163,8 +101,7 @@ namespace RPGWonder
         /// <param name="sender">The object that raised the eve
         private void CrtCharButton_Click(object sender, EventArgs e)
         {
-            ManageCharacters manageCharacterWindow = new ManageCharacters();
-            manageCharacterWindow.Show();
+            ManageCharacters.Instance.Show();
         }
 
         /// <summary>
