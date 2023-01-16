@@ -50,8 +50,6 @@ namespace RPGWonder.src.form
 
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + campaignFolder + "\\maps";
 
-            Debug.WriteLine(path);
-
             string[] filePaths = Directory.GetFiles(path, "*.json");
 
             foreach (string filePath in filePaths)
@@ -74,7 +72,6 @@ namespace RPGWonder.src.form
         private void selectCampaignComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedMap = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Key;
-            Debug.WriteLine(SelectedMap);
         }
 
         private void okButton_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace RPGWonder
     //THROW
     //  -per player, per stat
     //SPAWN GENERIC (wall, enemy, chest)
-    //CHANGE MAP ~~meh
+    //CHANGE MAP done
     public partial class Host : DefaultForm
     {
         private HostTcpConnection connection;
@@ -38,7 +38,7 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        public Host(string campaignFolder, string campaign)
+        public Host(string campaign)
         {
             InitializeComponent();
             SetMotif();
@@ -121,8 +121,6 @@ namespace RPGWonder
 
             selectedTile.x = 0;
             selectedTile.y = 0;
-
-            Debug.WriteLine(map.Name);
 
             UpdateMap();
 
