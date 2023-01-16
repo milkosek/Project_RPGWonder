@@ -8,7 +8,7 @@ namespace RPGWonder
     public sealed class Common
     {
         /// <summary>
-        /// A singleton instance of the Common class.
+        /// A singleton _instance of the Common class.
         /// </summary>
         private static Common instance = null;
         Common(

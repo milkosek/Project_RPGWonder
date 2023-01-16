@@ -1,37 +1,49 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
 namespace RPGWonder
 {
+    /// <summary>
+    /// Singleton class repesenting a form for for creating or editing campaign.
+    /// </summary>
     public partial class CreateOrEditCampaign : DefaultForm
     {
-        private static CreateOrEditCampaign instance = null;
+        private static CreateOrEditCampaign _instance = null;
+
+        /// <summary>
+        /// Gets the instance of the <see cref="CreateOrEditCampaign"/> class.
+        /// </summary>
         public static CreateOrEditCampaign Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new CreateOrEditCampaign();
+                    _instance = new CreateOrEditCampaign();
                 }
-                return instance;
+                return _instance;
             }
         }
-        internal Campaign campaign = new Campaign();
-        internal string TAG;
+        internal Campaign _campaign = new Campaign();
+        internal string _TAG;
         internal string _page = "codex";
         private string _path;
         private bool _editing = false;
+
         private CreateOrEditCampaign()
         {
             InitializeComponent();
             SetMotif();
             SetColors();
         }
+
+        /// <summary>
+        /// Public constructor creading an instance of the class for campaign editing purposes.
+        /// <param name="path">The path to the edited campaign.</param>
+        /// </summary>
         public CreateOrEditCampaign(string path)
         {
             InitializeComponent();
@@ -41,15 +53,11 @@ namespace RPGWonder
             _editing = true;
             swapToPage2();
         }
-        /// <summary>
-        /// Handles the click event for the `SaveButton` button.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The event arguments.</param>
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            campaign.Name = CampaignNameTextBox.Text;
-            if (string.IsNullOrEmpty(campaign.Name))
+            _campaign.Name = CampaignNameTextBox.Text;
+            if (string.IsNullOrEmpty(_campaign.Name))
             {
                 MessageBox.Show("Campaign name cannot be empty!");
             }
@@ -62,19 +70,15 @@ namespace RPGWonder
             }
         }
 
-        /// <summary>
-        /// Handles the `Load` event for the `CreateOrEditCampaign` form.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The event arguments.</param>
         private void CreateOrEditCampaign_Load(object sender, EventArgs e)
         {
             if (_editing)
             {
                 string[] parts = _path.Split('\\');
-                TAG = parts[parts.Length - 1];
-                campaign.ReadFromJSON(_path + "\\" + TAG + ".json");
-                CampaignNameTextBox.Text = campaign.Name;
+                _TAG = parts[parts.Length - 1];
+                _campaign.ReadFromJSON(_path + "\\" + _TAG + ".json");
+                CampaignNameTextBox.Text = _campaign.Name;
+                Log.Instance.gameLog.Debug("Editing campaign: " + _campaign.Name);
             } 
         }
 
@@ -82,14 +86,14 @@ namespace RPGWonder
         {
             if (_page == "codex")
             {
-                CreateOrEditCodexEntry.Instance(TAG, this).Show();
+                CreateOrEditCodexEntry.Instance(_TAG, this).Show();
             }
         }
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            campaign.Name = CampaignNameTextBox.Text;
-            if (string.IsNullOrEmpty(campaign.Name))
+            _campaign.Name = CampaignNameTextBox.Text;
+            if (string.IsNullOrEmpty(_campaign.Name))
             {
                 MessageBox.Show("Campaign name cannot be empty!");
             }
@@ -103,20 +107,34 @@ namespace RPGWonder
 
         private void save()
         {
+            Log.Instance.gameLog.Debug("Trying to save campaign: " + _campaign.Name);
             if (!_editing)
             {
-                TAG = campaign.Name;
-                string newTAG = TAG;
+                _TAG = _campaign.Name;
+                string newTAG = _TAG;
                 int counter = 1;
                 while (Directory.Exists(Common.Instance.CampaignsPath + "\\" + newTAG))
                 {
-                    newTAG = $"{TAG}({counter})";
+                    Log.Instance.errorLog.Error("Campaign with _TAG " + newTAG + "already exists!");
+                    newTAG = $"{_TAG}({counter})";
                     counter++;
                 }
-                TAG = newTAG;
+                _TAG = newTAG;
             }
-            Directory.CreateDirectory(Common.Instance.CampaignsPath + "\\" + TAG + "\\codex");
-            campaign.SaveToJSON(Common.Instance.CampaignsPath, TAG);
+            if (!Directory.Exists(Common.Instance.CampaignsPath + "\\" + _TAG + "\\codex"))
+            {
+                Directory.CreateDirectory(Common.Instance.CampaignsPath + "\\" + _TAG + "\\codex");
+                Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\codex");
+            }
+            try
+            {
+                _campaign.SaveToJSON(Common.Instance.CampaignsPath, _TAG);
+                Log.Instance.gameLog.Debug("Saved campaign: " + _TAG);
+            }
+            catch (Exception exception)
+            {
+                Log.Instance.errorLog.Error("Failed to save campaign: " + _TAG + " Error: " + exception.Message);
+            }
         }
 
         private void swapToPage2()
@@ -139,8 +157,12 @@ namespace RPGWonder
             deleteButton.BackColor = Color.IndianRed;
         }
 
+        /// <summary> 
+        /// Reload the instance of the class, repopulating the list box.
+        /// </summary>
         public void Reload()
         {
+            Log.Instance.gameLog.Debug("CreateOrEditCampaign: Reloading...");
             if (_page == "codex")
             {
                 listBox.Items.Clear();
@@ -172,19 +194,28 @@ namespace RPGWonder
 
             if (result == DialogResult.Yes)
             {
-                File.Delete(((ComboBoxObject)listBox.SelectedItem).Key);
-                Reload();
+                Log.Instance.gameLog.Debug("Trying to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
+                try
+                {
+                    File.Delete(((ComboBoxObject)listBox.SelectedItem).Key);
+                    Reload();
+                    listBox.SelectedItem = null;
+                    editButton.Enabled = false;
+                    deleteButton.Enabled = false;
+                    Log.Instance.gameLog.Debug("Deleted codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
+                }
+                catch (Exception exception)
+                {
+                    Log.Instance.errorLog.Error("Failed to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key + " Error: " + exception.Message);
+                }
             }
-            listBox.SelectedItem = null;
-            editButton.Enabled = false;
-            deleteButton.Enabled = false;
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
             if (_page == "codex")
             {
-                CreateOrEditCodexEntry createOrEditCodexEntry = new CreateOrEditCodexEntry(TAG, this, ((ComboBoxObject)listBox.SelectedItem).Key);
+                CreateOrEditCodexEntry createOrEditCodexEntry = new CreateOrEditCodexEntry(_TAG, this, ((ComboBoxObject)listBox.SelectedItem).Key);
                 createOrEditCodexEntry.Show();
             }
         }

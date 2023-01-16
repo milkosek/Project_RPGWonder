@@ -3,10 +3,14 @@ using System.IO;
 
 namespace RPGWonder
 {
+    /// <summary>
+    /// A class representing an entry in the codex
+    /// </summary>
     public class CodexEntry : IDataclass
     {
         public string Title;
         public string Text;
+
         public void ReadFromJSON(string path)
         {
             string jsonString = File.ReadAllText(path);

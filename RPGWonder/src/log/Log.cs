@@ -3,12 +3,27 @@ using log4net.Config;
 
 namespace RPGWonder
 {
+
+    /// <summary>
+    /// A singleton class that provides logging functionality.
+    /// </summary>
     public sealed class Log
     {
-        private static Log instance = null;
+        private static Log _instance = null;
+
+        /// <summary>
+        /// The error log.
+        /// </summary>
         public ILog errorLog;
+
+        /// <summary>
+        /// The game log.
+        /// </summary>
         public ILog gameLog;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Log"/> class.
+        /// </summary>
         Log()
         {
             XmlConfigurator.Configure();
@@ -16,15 +31,18 @@ namespace RPGWonder
             gameLog = LogManager.GetLogger("GameLogger");
         }
 
+        /// <summary>
+        /// Gets the _instance of the <see cref="Log"/> class.
+        /// </summary>
         public static Log Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new Log();
+                    _instance = new Log();
                 }
-                return instance;
+                return _instance;
             }
         }
     }
