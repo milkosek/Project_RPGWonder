@@ -50,6 +50,18 @@ namespace RPGWonder
                     control.BackColor = Color.FromArgb(64, 64, 64);
                     control.ForeColor = Color.White;
                 }
+                else if (control is TableLayoutPanel)
+                {
+                    foreach (Control button in control.Controls)
+                    {
+                        if (button is Button)
+                        {
+                            button.BackColor = Color.FromArgb(64, 64, 64);
+                            button.ForeColor = Color.White;
+                            button.Font = new Font(control.Font, FontStyle.Bold);
+                        }
+                    }
+                }
                 // You can add more conditions for other types of controls here
             }
         

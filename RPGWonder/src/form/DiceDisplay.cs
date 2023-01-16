@@ -140,5 +140,14 @@ namespace RPGWonder.src.form
                 SubDie.PerformClick();
             }
         }
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

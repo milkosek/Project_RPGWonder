@@ -87,11 +87,11 @@
     <Compile Include="src\form\DefaultForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\form\Game.cs">
+    <Compile Include="src\form\Selector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\form\Game.designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
+    <Compile Include="src\form\Selector.Designer.cs">
+      <DependentUpon>Selector.cs</DependentUpon>
     </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
@@ -193,6 +193,7 @@
     <Compile Include="src\VoiceChat.cs" />
     <EmbeddedResource Include="src\form\Client.en.resx">
       <DependentUpon>Client.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\DefaultForm.resx">
       <DependentUpon>DefaultForm.cs</DependentUpon>
@@ -209,12 +210,6 @@
     <EmbeddedResource Include="src\form\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\form\Game.en.resx">
-      <DependentUpon>Game.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\form\Game.resx">
-      <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Host.resx">
       <DependentUpon>Host.cs</DependentUpon>
@@ -248,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\MapEditor.resx">
       <DependentUpon>MapEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\Selector.resx">
+      <DependentUpon>Selector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
