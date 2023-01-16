@@ -40,8 +40,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.charlabel = new System.Windows.Forms.Label();
+            this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.controlsLayoutPanel.SuspendLayout();
             this.charactersTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,7 +98,6 @@
             this.coords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.coords.AutoSize = true;
             this.coords.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.coords.Location = new System.Drawing.Point(3, 1);
             this.coords.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -215,6 +214,17 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // charlabel
+            // 
+            this.charlabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.charlabel.Location = new System.Drawing.Point(133, 1);
+            this.charlabel.Name = "charlabel";
+            this.charlabel.Size = new System.Drawing.Size(122, 100);
+            this.charlabel.TabIndex = 13;
+            this.charlabel.Text = "charlabel";
+            // 
             // mapTableLayout
             // 
             this.mapTableLayout.BackgroundImage = global::RPGWonder.Properties.Resources.map_placeholder;
@@ -231,15 +241,6 @@
             this.mapTableLayout.Size = new System.Drawing.Size(1440, 1020);
             this.mapTableLayout.TabIndex = 11;
             // 
-            // charlabel
-            // 
-            this.charlabel.AutoSize = true;
-            this.charlabel.Location = new System.Drawing.Point(133, 1);
-            this.charlabel.Name = "charlabel";
-            this.charlabel.Size = new System.Drawing.Size(50, 13);
-            this.charlabel.TabIndex = 13;
-            this.charlabel.Text = "charlabel";
-            // 
             // Host
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,7 +254,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Host_FormClosed);
             this.Load += new System.EventHandler(this.Host_Load);
             this.controlsLayoutPanel.ResumeLayout(false);
-            this.controlsLayoutPanel.PerformLayout();
             this.charactersTabs.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);

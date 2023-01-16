@@ -64,8 +64,6 @@ namespace RPGWonder
             //myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
             myIPTextBox.Text = "127.0.0.1";
 
-            string[] subdirectoryPaths = Directory.GetDirectories(path);
-
             foreach (string subdirectoryPath in subdirectoryPaths)
             {
                 string[] filePaths = Directory.GetFiles(subdirectoryPath, "*.json");

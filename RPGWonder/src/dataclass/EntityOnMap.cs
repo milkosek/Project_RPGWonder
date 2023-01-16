@@ -14,7 +14,7 @@ namespace RPGWonder
         private int x;
         private int y;
         private string name;
-        Image icon;
+        private string imagePath;
 
         public EntityOnMap(long entityID, long mapID, int coordinatex, int coordinatey, string imagePath)
         {
@@ -22,7 +22,7 @@ namespace RPGWonder
             this.mapID = mapID;
             this.x = coordinatex;
             this.y = coordinatey;
-            this.Icon = new Bitmap(imagePath);
+            this.ImagePath = imagePath;
         }
 
         private void setName(string name)
@@ -32,9 +32,9 @@ namespace RPGWonder
 
         public long EntityID { get => entityID; set => entityID = value; }
         public long MapID { get => mapID; set => mapID = value; }
-        public Image Icon { get => icon; set => icon = value; }
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
         public string Name { get => name; set => name = value; }
+        public string ImagePath { get => imagePath; set => imagePath = value; }
     }
 }

@@ -49,7 +49,7 @@ namespace RPGWonder
             }
 
             Campaign campaign = new Campaign();
-            campaign.ReadFromJSON("D:/Archiwum Królewskie/Studia/Inzynierka/RPGWonder/RPGWonder/userData/DnD5e/campaigns/dau/dau.json");
+            //campaign.ReadFromJSON("D:/Archiwum Królewskie/Studia/Inzynierka/RPGWonder/RPGWonder/userData/DnD5e/campaigns/dau/dau.json");
         }
 
         /// <summary>

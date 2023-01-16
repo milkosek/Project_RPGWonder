@@ -1,6 +1,8 @@
 ﻿using RPGWonder.src.map;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -25,7 +27,6 @@ namespace RPGWonder
             InitializeComponent();
             Instance = this;
             SetMotif();
-            instance = this;
             _character = character;
             hostIpAddress = ipAddr;
 
@@ -39,12 +40,12 @@ namespace RPGWonder
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters\\";
 
             connection = new ClientTcpConnection();
-            Debug.WriteLine("aaa");
             connection.Connect(hostIpAddress);//hostIp
-            Debug.WriteLine("aaa");
             connection.ValidateSystem();
             //connection.SendCharacter(File.ReadAllText(path + _character), _character);
-
+            //Debug.WriteLine(File.ReadAllText(_character));
+            //Debug.WriteLine(Path.GetFileName(_character));
+            //connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
 
             //this.FormBorderStyle = FormBorderStyle.None;
             //this.WindowState = FormWindowState.Maximized;
@@ -177,7 +178,7 @@ namespace RPGWonder
                 EntityOnMap EOM = nameEntity.Value;
 
                 ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = EOM.Icon;
+                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(EOM.ImagePath);
             }
 
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
@@ -219,9 +220,6 @@ namespace RPGWonder
             tempEntity.Name = tempName;
 
             EntityList[tempEntity.Name] = tempEntity;
-            Debug.WriteLine(File.ReadAllText(_character));
-            Debug.WriteLine(Path.GetFileName(_character));
-            connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
         }
 
     }

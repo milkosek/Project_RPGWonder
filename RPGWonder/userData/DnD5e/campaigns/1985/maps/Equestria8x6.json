@@ -1,0 +1,44 @@
+{
+  "Id": 1,
+  "Name": "Equestria8x6",
+  "Columns": 8,
+  "Rows": 6,
+  "EntityList": {
+    "Chest0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 4,
+      "Y": 3,
+      "Name": "Chest0",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest1": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 7,
+      "Y": 4,
+      "Name": "Chest1",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest2": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 3,
+      "Y": 2,
+      "Name": "Chest2",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    }
+  }
+}

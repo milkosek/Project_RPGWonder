@@ -43,9 +43,9 @@ namespace RPGWonder.src.form
 
         public void Selector_Init(Host host, string campaign)
         {
-            selectCampaignComboBox.Items.Clear();
-
             this.host = host;
+
+            selectCampaignComboBox.Items.Clear();
             campaignFolder = campaign;
 
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + campaignFolder + "\\maps";
@@ -57,7 +57,7 @@ namespace RPGWonder.src.form
             foreach (string filePath in filePaths)
             {
                 JObject map = JObject.Parse(File.ReadAllText(filePath));
-                ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)map["Name"]);
+                ComboBoxObject comboBoxObject = new ComboBoxObject(map["Id"].ToString(), (string)map["Name"]);
                 selectCampaignComboBox.Items.Add(comboBoxObject);
             }
 
@@ -79,7 +79,7 @@ namespace RPGWonder.src.form
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            host.LoadMap(SelectedMap);
+            host.LoadMap(Int32.Parse(SelectedMap));
             Close();
         }
 

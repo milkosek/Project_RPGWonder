@@ -10,6 +10,7 @@ using RPGWonder.src.map;
 using RPGWonder.src.form;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Drawing;
 
 namespace RPGWonder
 {
@@ -24,12 +25,13 @@ namespace RPGWonder
     {
         private HostTcpConnection connection;
         public static Host instace;
-        private string _campaign = "";
-        private string _campaignFolder = "";
         private IPAddress ipAddress;
 
+        private string _campaignPath = "";
+        private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
+        private int lastMapId;
 
         private (int x, int y) selectedTile;
         private EntityOnMap selectedEntity;
@@ -39,12 +41,14 @@ namespace RPGWonder
         public Host(string campaignFolder, string campaign)
         {
             InitializeComponent();
-
             SetMotif();
-
             instace = this;
-            _campaign = campaign;
-            _campaignFolder = campaignFolder;
+
+            _campaignPath = campaign;
+            _campaign = new Campaign();
+            _campaign.ReadFromJSON(_campaignPath);
+            lastMapId = _campaign.CurrentMap;
+
             //ipAddress = IPAdd.GetMyIPAddress();
             ipAddress = IPAddress.Parse("127.0.0.1");
 
@@ -55,23 +59,19 @@ namespace RPGWonder
         private void Host_Load(object sender, System.EventArgs e)
         {
             connection = new HostTcpConnection();
-            connection.CreateSession(_campaign, ipAddress);
+            connection.CreateSession(_campaignPath, ipAddress);
             CheckForIllegalCrossThreadCalls = false;
-
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaignFolder + "\\maps\\Equestria8x6.json";
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps\\Equestria8x6.json";
 
-            LoadMap(path);
+            LoadMap(_campaign.CurrentMap, true);
 
             coords.Text = map.Name;
-
-            AddEntityOnMap(0, 0, "Icon", @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
-            AddEntityOnMap(1, 0, "Dice", @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
 
             UpdateMap();
         }
@@ -97,18 +97,36 @@ namespace RPGWonder
         }
 
 
-        public void LoadMap(string mapPath)
+        public void LoadMap(int mapId, bool firstLoad = false)
         {
             selectedTile.x = 0;
             selectedTile.y = 0;
 
-            //TODO save previous map
+            if (!firstLoad)
+            {
+                map.EntityList = EntityList;
+                map.SaveToJSON(GetMapById(lastMapId));
+            }
 
-            map.ReadFromJSON(mapPath);
+            EntityList.Clear();
+
+            map.ReadFromJSON(GetMapById(mapId));
+
+            if (map.EntityList != null)
+            {
+                EntityList = map.EntityList;
+            }
 
             DisplayMap(map);
 
+            selectedTile.x = 0;
+            selectedTile.y = 0;
+
+            Debug.WriteLine(map.Name);
+
             UpdateMap();
+
+            lastMapId = mapId;
         }
 
         private void DisplayMap(Map map)
@@ -119,8 +137,6 @@ namespace RPGWonder
             }
 
             ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, map.Columns, map.Rows);
-
-            EntityList.Clear();
 
             // TODO load entities from map
 
@@ -167,9 +183,6 @@ namespace RPGWonder
 
                 selectedTile.x = x2;
                 selectedTile.y = y2;
-
-                UpdateMap();
-
             }
         }
 
@@ -209,14 +222,33 @@ namespace RPGWonder
                 EntityOnMap EOM = nameEntity.Value;
 
                 ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = EOM.Icon;
+                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(EOM.ImagePath);
             }
 
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
 
             DisplaySelectedInfo();
-            Reload();
+        }
+
+        public string GetMapById(int id)
+        {
+            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
+
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+
+            string[] filePaths = Directory.GetFiles(path, "*.json");
+            foreach (string filePath in filePaths)
+            {
+                JObject map = JObject.Parse(File.ReadAllText(filePath));
+
+                if ((int)map["Id"] == id)
+                {
+                    return filePath;
+                }
+            }
+           
+            return filePaths[0];
         }
 
         private bool TileEmpty(int x, int y)
@@ -277,7 +309,7 @@ namespace RPGWonder
             Selector.Instance.Show();
             Selector.Instance.WindowState = FormWindowState.Normal;
 
-            Selector.Instance.Selector_Init(this, _campaignFolder);
+            Selector.Instance.Selector_Init(this, _campaign.Name);
         }
     }
 }

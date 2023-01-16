@@ -15,24 +15,29 @@ namespace RPGWonder
         public long Id;
         // The name of the map
         public string Name;
-        // The number of rows in the map
-        public int Rows;
         // The number of columns in the map
         public int Columns;
-
-        internal EntityOnMap EntityOnMap
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        // The number of rows in the map
+        public int Rows;
+        // Dictrionary of entities assigned to keys representig their position on map in (string)"x y" format
+        public Dictionary<string, EntityOnMap> EntityList;
 
         public void SaveToJSON(string path, string TAG)
         {
             var serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             using (StreamWriter streamWriter = new StreamWriter(path + "\\" + TAG + ".json"))
+            using (JsonWriter writer = new JsonTextWriter(streamWriter))
+            {
+                serializer.Serialize(writer, this);
+            }
+        }
+
+        public void SaveToJSON(string path)
+        {
+            var serializer = new JsonSerializer();
+            serializer.Formatting = Formatting.Indented;
+            using (StreamWriter streamWriter = new StreamWriter(path))
             using (JsonWriter writer = new JsonTextWriter(streamWriter))
             {
                 serializer.Serialize(writer, this);
