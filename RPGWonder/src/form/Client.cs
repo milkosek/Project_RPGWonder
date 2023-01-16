@@ -33,53 +33,65 @@ namespace RPGWonder
 
             mapLoader = new MapHandler(this);
             map = new Map() { };
-
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\maps\\Equestria10x10.json";
-            map.ReadFromJSON(path);
-            coords.Text = map.Name;
         }
 
         private void Client_Load(object sender, System.EventArgs e)
         {
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters";
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters\\";
 
-            //connection = new ClientTcpConnection();
-            //connection.Connect(hostIpAddress);//hostIp
+            connection = new ClientTcpConnection();
+            connection.Connect(hostIpAddress);//hostIp
 
-            //connection.ValidateSystem();
+            connection.ValidateSystem();
             //connection.SendCharacter(File.ReadAllText(path + _character), _character);
 
 
-            LoadMap(map.Columns, map.Rows);
-
-            EntityOnMap DieEntity1 = new EntityOnMap(0, 0, 0, 0,
-                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
-            DieEntity1.Name = "Dice1";
-
-            EntityOnMap DieEntity2 = new EntityOnMap(0, 0, 0, 1,
-                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
-            DieEntity2.Name = "Dice2";
-
-            EntityOnMap LogoEntity = new EntityOnMap(0, 0, 1, 0,
-                @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
-            LogoEntity.Name = "Icon";
+            //this.FormBorderStyle = FormBorderStyle.None;
+            //this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
-            EntityList[DieEntity1.Name] = DieEntity1;
-            EntityList[DieEntity2.Name] = DieEntity2;
-            EntityList[LogoEntity.Name] = LogoEntity;
+
+            string mapPath = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\My Super Epic Campaign With Katana\\maps\\Equestria8x6.json";
+
+            LoadMap(mapPath);
+
+            coords.Text = map.Name;
+
+            AddEntityOnMap(0, 0, "Icon", @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
+            AddEntityOnMap(1, 0, "Dice", @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
 
             UpdateMap();
         }
 
-        private void LoadMap(int Cols, int Rows)
+        public void LoadMap(string mapPath)
+        {
+            selectedTile.x = 0;
+            selectedTile.y = 0;
+
+            //TODO save previous map
+
+            map.ReadFromJSON(mapPath);
+
+            DisplayMap(map);
+
+            UpdateMap();
+        }
+
+        private void DisplayMap(Map map)
         {
             while (mapTableLayout.Controls.Count > 0)
             {
                 mapTableLayout.Controls[0].Dispose();
             }
 
-            ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, Cols, Rows);
+            ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, map.Columns, map.Rows);
+
+            EntityList.Clear();
+
+            // TODO load entities from map
+
+            // TODO wait for asset implementation
+            //mapTableLayout.BackgroundImage = map.BGImage;
         }
 
         // 0 - LMB select
@@ -147,6 +159,18 @@ namespace RPGWonder
 
         private void UpdateMap()
         {
+            for (int yC = 0; yC < map.Rows; yC++)
+            {
+                for (int xC = 0; xC < map.Columns; xC++)
+                {
+                    ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
+                    ButtonsMatrix[yC][xC].BackgroundImage = null;
+
+                    ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
+                    ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                }
+            }
+
             foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
             {
                 string name = nameEntity.Key;
@@ -155,6 +179,11 @@ namespace RPGWonder
                 ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
                 ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = EOM.Icon;
             }
+
+            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
+            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+
+            DisplaySelectedInfo();
         }
 
         private bool TileEmpty(int x, int y)
@@ -168,5 +197,29 @@ namespace RPGWonder
                 return false;
             }
         }
+
+        private void AddEntityOnMap(int x, int y, string name, string path)
+        {
+            if (!TileEmpty(x, y))
+            {
+                return;
+            }
+
+            int iter = 0;
+            string tempName = name + iter.ToString();
+
+            while (EntityList.ContainsKey(tempName))
+            {
+                tempName = name + iter.ToString();
+                iter += 1;
+            }
+
+            EntityOnMap tempEntity = new EntityOnMap(0, 0, x, y, path);
+
+            tempEntity.Name = tempName;
+
+            EntityList[tempEntity.Name] = tempEntity;
+        }
+
     }
 }

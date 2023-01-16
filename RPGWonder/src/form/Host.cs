@@ -19,7 +19,7 @@ namespace RPGWonder
     //THROW
     //  -per player, per stat
     //SPAWN GENERIC (wall, enemy, chest)
-    //CHANGE MAP
+    //CHANGE MAP ~~meh
     public partial class Host : DefaultForm
     {
         private HostTcpConnection connection;
@@ -58,11 +58,11 @@ namespace RPGWonder
             connection.CreateSession(_campaign, ipAddress);
             CheckForIllegalCrossThreadCalls = false;
 
+
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
-
 
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaignFolder + "\\maps\\Equestria8x6.json";
 
@@ -99,6 +99,9 @@ namespace RPGWonder
 
         public void LoadMap(string mapPath)
         {
+            selectedTile.x = 0;
+            selectedTile.y = 0;
+
             //TODO save previous map
 
             map.ReadFromJSON(mapPath);
@@ -213,6 +216,7 @@ namespace RPGWonder
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
 
             DisplaySelectedInfo();
+            Reload();
         }
 
         private bool TileEmpty(int x, int y)
