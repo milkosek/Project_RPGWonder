@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace RPGWonder
 {
@@ -13,15 +14,23 @@ namespace RPGWonder
     /// </summary>
     public partial class ManageCampaigns : DefaultForm
     {
-        /// <summary>
-        /// An instance of the ManageCampaigns form.
-        /// </summary>
-        public static ManageCampaigns instance;
+        private static ManageCampaigns instance = null;
+        public static ManageCampaigns Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ManageCampaigns();
+                }
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the ManageCampaigns class.
         /// </summary>
-        public ManageCampaigns()
+        private ManageCampaigns()
         {
             InitializeComponent();
             SetMotif();
@@ -39,8 +48,8 @@ namespace RPGWonder
         public void Reload()
         {
             manageCampaignsListBox.Items.Clear();
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
-            string[] campaigns = new string[0];
+            string path = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
+            string[] campaigns;
             if (Directory.Exists(path))
             {
                 campaigns = Directory.GetDirectories(path);
@@ -59,7 +68,6 @@ namespace RPGWonder
                     Key = path + "\\" + campaignTAG,
                     Value = (string)json["Name"]
                 };
-                Debug.WriteLine(path + "\\" + campaignTAG);
                 manageCampaignsListBox.Items.Add(comboBoxObject);
             }
         }
@@ -107,7 +115,6 @@ namespace RPGWonder
         {
             CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key);
             createOrEditCampaign.Show();
-            Close();
         }
 
         private void manageCampaignsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,6 +135,9 @@ namespace RPGWonder
                 Directory.Delete(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key, true);
                 Reload();
             }
+            manageCampaignsListBox.SelectedItem = null;
+            editCampaignButton.Enabled = false;
+            deleteCampaignButton.Enabled = false;
         }
 
         private void createCampaignButton_Click(object sender, EventArgs e)
@@ -137,9 +147,8 @@ namespace RPGWonder
 
         private void goToCreateNew()
         {
-            CreateOrEditCampaign createOrEditCampaign = new CreateOrEditCampaign();
-            createOrEditCampaign.Show();
-            Hide();
+            CreateOrEditCampaign.Instance.Show();
+            Close();
         }
     }
 }

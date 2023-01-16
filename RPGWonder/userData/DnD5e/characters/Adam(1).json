@@ -1,19 +1,19 @@
 {
-  "Name": "adas",
-  "Race": "woodElf",
+  "Name": "Adam",
+  "Race": "highElf",
   "Gender": "Male",
-  "CharacterClass": "druid",
+  "CharacterClass": "fighter",
   "Level": 1,
   "Experience": 0,
-  "Background": "Hermit",
-  "Alignment": "TrueNeutral",
+  "Background": "Entertainer",
+  "Alignment": "NeutralGood",
   "Abilities": {
-    "STR": 11,
+    "STR": 14,
     "DEX": 15,
     "CON": 12,
-    "INT": 5,
-    "WIS": 15,
-    "CHA": 14
+    "INT": 9,
+    "WIS": 16,
+    "CHA": 8
   },
   "ProficiencyBonus": 2,
   "ArmorClass": 12,
@@ -36,20 +36,20 @@
   "Items": [],
   "AttacksAndSpells": [],
   "Saves": {
-    "STR": "+0",
+    "STR": "+2",
     "DEX": "+2",
     "CON": "+1",
-    "INT": "-3",
-    "WIS": "+2",
-    "CHA": "+2"
+    "INT": "-1",
+    "WIS": "+3",
+    "CHA": "-1"
   },
   "Skills": {
     "Acrobatics": "+2",
-    "AnimalHandling": "+2",
-    "Arcana": "-3",
-    "Athletics": "+0"
+    "AnimalHandling": "+3",
+    "Arcana": "-1",
+    "Athletics": "+2"
   },
-  "PassiveWisdomPerception": 12,
+  "PassiveWisdomPerception": 13,
   "Age": null,
   "AlliesAndOrgs": null
 }

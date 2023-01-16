@@ -8,12 +8,10 @@ namespace RPGWonder
 {
     public partial class Client : DefaultForm
     {
-        //TODO: Error handling wpisywanego adresu ip
-
         private ClientTcpConnection connection;
         private readonly string _character = "";
-        public static Client instance;
         private static string hostIpAddress;
+        public static Client Instance;
 
         private MapHandler mapLoader;
         private Map map;
@@ -25,7 +23,7 @@ namespace RPGWonder
         public Client(string character, string ipAddr)
         {
             InitializeComponent();
-
+            Instance = this;
             SetMotif();
             instance = this;
             _character = character;
@@ -37,11 +35,13 @@ namespace RPGWonder
 
         private void Client_Load(object sender, System.EventArgs e)
         {
+            //MainMenu.instance.Hide();
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters\\";
 
             connection = new ClientTcpConnection();
+            Debug.WriteLine("aaa");
             connection.Connect(hostIpAddress);//hostIp
-
+            Debug.WriteLine("aaa");
             connection.ValidateSystem();
             //connection.SendCharacter(File.ReadAllText(path + _character), _character);
 
@@ -219,6 +219,9 @@ namespace RPGWonder
             tempEntity.Name = tempName;
 
             EntityList[tempEntity.Name] = tempEntity;
+            Debug.WriteLine(File.ReadAllText(_character));
+            Debug.WriteLine(Path.GetFileName(_character));
+            connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
         }
 
     }

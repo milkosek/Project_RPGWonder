@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
 namespace RPGWonder
@@ -45,11 +44,6 @@ namespace RPGWonder
         public string AlliesAndOrgs;
 
         /// <summary>
-        /// Initializes a new instance of the Character class.
-        /// </summary>
-        public Character() { }
-
-        /// <summary>
         /// Saves the campaign data to a JSON file.
         /// </summary>
         /// <param name="path">The path to the directory where the JSON file should be saved.</param>
@@ -57,6 +51,10 @@ namespace RPGWonder
         {
             var serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             using (StreamWriter streamWriter = new StreamWriter(path + "\\" + TAG + ".json"))
             using (JsonWriter writer = new JsonTextWriter(streamWriter))
             {

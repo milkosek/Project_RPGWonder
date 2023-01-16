@@ -13,12 +13,24 @@ namespace RPGWonder
     /// </summary>
     public partial class HostSession : DefaultForm
     {
+        private static HostSession instance = null;
+        public static HostSession Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new HostSession();
+                }
+                return instance;
+            }
+        }
         private string _campaignFolder = "";
         private string _campaign = "";
         /// <summary>
         /// Initializes a new instance of the `HostSession` class.
         /// </summary>
-        public HostSession()
+        private HostSession()
         {
             InitializeComponent();
             SetMotif();
@@ -46,6 +58,8 @@ namespace RPGWonder
         /// <param name="e">The event arguments.</param>
         private void HostSession_Load(object sender, EventArgs e)
         {
+            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
+            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
             //myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
             myIPTextBox.Text = "127.0.0.1";

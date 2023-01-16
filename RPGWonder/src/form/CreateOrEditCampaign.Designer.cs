@@ -13,6 +13,7 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            instance = null;
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -28,97 +29,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CampaignNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.listBox = new System.Windows.Forms.ListBox();
+            this.addButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.createButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 46);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 342);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 313);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Entities";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 313);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Graphical Assets";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // SaveButton
             // 
-            this.SaveButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SaveButton.BackColor = System.Drawing.SystemColors.Control;
             this.SaveButton.Location = new System.Drawing.Point(12, 394);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(772, 44);
             this.SaveButton.TabIndex = 1;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Visible = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CampaignNameTextBox
             // 
-            this.CampaignNameTextBox.Location = new System.Drawing.Point(128, 15);
+            this.CampaignNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
+            this.CampaignNameTextBox.Location = new System.Drawing.Point(255, 18);
             this.CampaignNameTextBox.Name = "CampaignNameTextBox";
-            this.CampaignNameTextBox.Size = new System.Drawing.Size(263, 22);
+            this.CampaignNameTextBox.Size = new System.Drawing.Size(295, 38);
             this.CampaignNameTextBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 18);
+            this.label1.Location = new System.Drawing.Point(140, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Campaign name:";
+            // 
+            // listBox
+            // 
+            this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.listBox.FormattingEnabled = true;
+            this.listBox.ItemHeight = 29;
+            this.listBox.Location = new System.Drawing.Point(12, 92);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(691, 265);
+            this.listBox.TabIndex = 4;
+            this.listBox.Visible = false;
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(709, 147);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 75);
+            this.addButton.TabIndex = 5;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Visible = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Enabled = false;
+            this.deleteButton.Location = new System.Drawing.Point(709, 309);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 75);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // createButton
+            // 
+            this.createButton.BackColor = System.Drawing.SystemColors.Control;
+            this.createButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.createButton.Location = new System.Drawing.Point(255, 174);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(290, 102);
+            this.createButton.TabIndex = 7;
+            this.createButton.Text = "Create";
+            this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // editButton
+            // 
+            this.editButton.Enabled = false;
+            this.editButton.Location = new System.Drawing.Point(709, 228);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(75, 75);
+            this.editButton.TabIndex = 8;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Visible = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // CreateOrEditCampaign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.createButton);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.listBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CampaignNameTextBox);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.tabControl1);
             this.Name = "CreateOrEditCampaign";
             this.Text = "CreateOrEditCampaign";
             this.Load += new System.EventHandler(this.CreateOrEditCampaign_Load);
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox CampaignNameTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button editButton;
     }
 }

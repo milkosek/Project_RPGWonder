@@ -1,0 +1,26 @@
+{
+  "very-easy": {
+    "name": "Very Easy",
+    "difficulty class": 5
+  },
+  "easy": {
+    "name": "Easy",
+    "difficulty class": 10
+  },
+  "medium": {
+    "name": "Medium",
+    "difficulty class": 15
+  },
+  "hard": {
+    "name": "Hard",
+    "difficulty class": 20
+  },
+  "very-hard": {
+    "name": "Very Hard",
+    "difficulty class": 25
+  },
+  "nearly-impossible": {
+    "name": "Nearly Impossible",
+    "difficulty class": 30
+  }
+}
