@@ -90,7 +90,10 @@ namespace RPGWonder
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
+            Thread discordThread = new Thread(new ThreadStart(
+                () => DiscordChannelConnection.
+                CreateGuildThenChannelThenInviteAndOpen()));
+            discordThread.Start();
         }
 
 
