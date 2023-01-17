@@ -218,12 +218,6 @@
       <DependentUpon>ManageCharacters.cs</DependentUpon>
     </Compile>
     <Compile Include="src\dataclass\Map.cs" />
-    <Compile Include="src\form\MapEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\form\MapEditor.Designer.cs">
-      <DependentUpon>MapEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\form\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,8 +281,8 @@
     <EmbeddedResource Include="src\form\ManageCharacters.resx">
       <DependentUpon>ManageCharacters.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\form\MapEditor.resx">
-      <DependentUpon>MapEditor.cs</DependentUpon>
+    <EmbeddedResource Include="src\form\Settings.en.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

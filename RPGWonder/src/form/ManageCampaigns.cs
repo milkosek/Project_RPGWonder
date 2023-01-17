@@ -14,22 +14,19 @@ namespace RPGWonder
     /// </summary>
     public partial class ManageCampaigns : DefaultForm
     {
-        private static ManageCampaigns instance = null;
+        private static ManageCampaigns _instance = null;
         public static ManageCampaigns Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new ManageCampaigns();
+                    _instance = new ManageCampaigns();
                 }
-                return instance;
+                return _instance;
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the ManageCampaigns class.
-        /// </summary>
         private ManageCampaigns()
         {
             InitializeComponent();
@@ -39,14 +36,15 @@ namespace RPGWonder
             createCampaignButton.BackColor = Color.SeaGreen;
             CrtNewCampaignButton.BackColor = Color.SeaGreen;
             LoadCampaignButton.BackColor = Color.SteelBlue;
-            instance = this;
+            _instance = this;
         }
 
         /// <summary>
-        /// Reloads the list of campaigns from the ./userdata/Campaigns directory.
+        /// Reloads the list of campaigns from the ./userdata/campaigns directory.
         /// </summary>
         public void Reload()
         {
+            Log.Instance.gameLog.Debug("ManageCampaigns: Reloading...");
             manageCampaignsListBox.Items.Clear();
             string path = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
             string[] campaigns;
@@ -56,51 +54,48 @@ namespace RPGWonder
             }
             else
             {
+                Log.Instance.errorLog.Error("Directory " + path + " not found!");
                 campaigns = new string[0];
             }
             foreach (string campaign in campaigns)
             {
                 string campaignTAG = campaign.Split('\\').Last();
-                string jsonString = File.ReadAllText(path + "\\" + campaignTAG + "\\" + campaignTAG + ".json");
-                JObject json = JObject.Parse(jsonString);
-                ComboBoxObject comboBoxObject = new ComboBoxObject
+                try
                 {
-                    Key = path + "\\" + campaignTAG,
-                    Value = (string)json["Name"]
-                };
-                manageCampaignsListBox.Items.Add(comboBoxObject);
+                    string jsonString = File.ReadAllText(path + "\\" + campaignTAG + "\\" + campaignTAG + ".json");
+                    JObject json = JObject.Parse(jsonString);
+                    ComboBoxObject comboBoxObject = new ComboBoxObject
+                    {
+                        Key = path + "\\" + campaignTAG,
+                        Value = (string)json["Name"]
+                    };
+                    manageCampaignsListBox.Items.Add(comboBoxObject);
+                }
+                catch (Exception exception)
+                {
+                    Log.Instance.errorLog.Error("Cannot load " + path + "\\" + campaignTAG + "\\" + campaignTAG + ".json." + " Error: " + exception.Message);
+                }
             }
         }
 
-        /// <summary>
-        /// Handles the Load event of the ManageCampaigns form.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The event data.</param>
         private void ManageCampaigns_Load(object sender, EventArgs e)
         {
             Reload();
         }
 
-        /// <summary>
-        /// Handles the Click event of the CrtNewCampaignButton button.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The event data.</param>
         private void CrtNewCampaignButton_Click(object sender, EventArgs e)
         {
             goToCreateNew();
         }
-        /// <summary>
-        /// Handles the Click event of the LoadCampaignButton button.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The event data.</param>
+
         private void LoadCampaignButton_Click(object sender, EventArgs e)
         {
             swapToPage2();
         }
 
+        /// <summary>
+        /// Swaps to the second page of the manager (the proper management).
+        /// </summary>
         public void swapToPage2()
         {
             LoadCampaignButton.Hide();
@@ -132,12 +127,21 @@ namespace RPGWonder
 
             if (result == DialogResult.Yes)
             {
-                Directory.Delete(((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key, true);
-                Reload();
+                try
+                {
+                    string toDelete = ((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key;
+                    Directory.Delete(toDelete, true);
+                    Reload();
+                    Log.Instance.gameLog.Debug(toDelete + " deleted succesfully.");
+                    manageCampaignsListBox.SelectedItem = null;
+                    editCampaignButton.Enabled = false;
+                    deleteCampaignButton.Enabled = false;
+                }
+                catch(Exception exception)
+                {
+                    Log.Instance.errorLog.Error("Cannot delete " + ((ComboBoxObject)manageCampaignsListBox.SelectedItem).Key + " Error: " + exception.Message);
+                }
             }
-            manageCampaignsListBox.SelectedItem = null;
-            editCampaignButton.Enabled = false;
-            deleteCampaignButton.Enabled = false;
         }
 
         private void createCampaignButton_Click(object sender, EventArgs e)

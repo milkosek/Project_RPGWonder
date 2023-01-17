@@ -1,0 +1,344 @@
+﻿{
+  "human": {
+    "name": "Human",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "1"
+      },
+      {
+        "ability": "DEX",
+        "bonus": "1"
+      },
+      {
+        "ability": "CON",
+        "bonus": "1"
+      },
+      {
+        "ability": "INT",
+        "bonus": "1"
+      },
+      {
+        "ability": "WIS",
+        "bonus": "1"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "hillDwarf": {
+    "name": "Hill Dwarf",
+    "speed": "25",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "CON",
+        "bonus": "2"
+      },
+      {
+        "ability": "WIS",
+        "bonus": "1"
+      }
+    ]
+  },
+  "mountainDwarf": {
+    "name": "Mountain Dwarf",
+    "speed": "25",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CON",
+        "bonus": "2"
+      }
+    ]
+  },
+  "highElf": {
+    "name": "High Elf",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "DEX",
+        "bonus": "2"
+      },
+      {
+        "ability": "INT",
+        "bonus": "1"
+      }
+    ]
+  },
+  "woodElf": {
+    "name": "Wood Elf",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "DEX",
+        "bonus": "2"
+      },
+      {
+        "ability": "WIS",
+        "bonus": "1"
+      }
+    ]
+  },
+  "darkElf": {
+    "name": "Dark Elf",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "DEX",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "halfElf": {
+    "name": "Half-Elf",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "CHA",
+        "bonus": "2"
+      }
+    ]
+  },
+  "lightfootHalfling": {
+    "name": "Lightfoot Halfling",
+    "speed": "25",
+    "size": "small",
+    "increases": [
+      {
+        "ability": "DEX",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "stoutHalfling": {
+    "name": "Stout Halfling",
+    "speed": "25",
+    "size": "small",
+    "increases": [
+      {
+        "ability": "DEX",
+        "bonus": "2"
+      },
+      {
+        "ability": "CON",
+        "bonus": "1"
+      }
+    ]
+  },
+  "blackDragon": {
+    "name": "Dragonborn (Black Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "blueDragon": {
+    "name": "Dragonborn (Blue Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "brassDragon": {
+    "name": "Dragonborn (Brass Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "copperDragon": {
+    "name": "Dragonborn (Copper Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "goldDragon": {
+    "name": "Dragonborn (Gold Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "greenDragon": {
+    "name": "Dragonborn (Green Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "redDragon": {
+    "name": "Dragonborn (Red Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "silverDragon": {
+    "name": "Dragonborn (Silver Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "whiteDragon": {
+    "name": "Dragonborn (White Dragon)",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "1"
+      }
+    ]
+  },
+  "forestGnome": {
+    "name": "Forest Gnome",
+    "speed": "25",
+    "size": "small",
+    "increases": [
+      {
+        "ability": "DEX",
+        "bonus": "1"
+      },
+      {
+        "ability": "INT",
+        "bonus": "2"
+      }
+    ]
+  },
+  "rockGnome": {
+    "name": "Rock Gnome",
+    "speed": "25",
+    "size": "small",
+    "increases": [
+      {
+        "ability": "CON",
+        "bonus": "1"
+      },
+      {
+        "ability": "INT",
+        "bonus": "2"
+      }
+    ]
+  },
+  "halfOrc": {
+    "name": "Half-Orc",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "STR",
+        "bonus": "2"
+      },
+      {
+        "ability": "CON",
+        "bonus": "1"
+      }
+    ]
+  },
+  "Tiefling": {
+    "name": "Tiefling",
+    "speed": "30",
+    "size": "medium",
+    "increases": [
+      {
+        "ability": "INT",
+        "bonus": "1"
+      },
+      {
+        "ability": "CHA",
+        "bonus": "2"
+      }
+    ]
+  }
+}

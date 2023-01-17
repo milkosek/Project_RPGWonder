@@ -8,21 +8,19 @@ namespace RPGWonder
 {
     public partial class ManageCharacters : DefaultForm
     {
-        private static ManageCharacters instance = null;
+        private static ManageCharacters _instance = null;
         public static ManageCharacters Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new ManageCharacters();
+                    _instance = new ManageCharacters();
                 }
-                return instance;
+                return _instance;
             }
         }
-        /// <summary>
-        /// Constructs a new instance of the `ManageCharacters` class.
-        /// </summary>
+
         private ManageCharacters()
         {
             InitializeComponent();
@@ -34,6 +32,9 @@ namespace RPGWonder
             createCharacterButton.BackColor = Color.SeaGreen;
         }
 
+        /// <summary>
+        /// Swaps to the second page of the manager (the proper management).
+        /// </summary>
         public void swapToPage2()
         {
             CrtNewCharacterButton.Hide();
@@ -44,11 +45,6 @@ namespace RPGWonder
             manageCharactersListBox.Show();
         }
 
-        /// <summary>
-        /// Handles the click event for the `CrtNewCharacterButton` button.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The event arguments.</param>
         private void CrtNewCharacterButton_Click(object sender, EventArgs e)
         {
             CreateOrEditCharacter.Instance.Show();
@@ -65,8 +61,12 @@ namespace RPGWonder
             Reload();
         }
 
+        /// <summary>
+        /// Reloads the list of characters from the ./userdata/characters directory.
+        /// </summary>
         public void Reload()
         {
+            Log.Instance.gameLog.Debug("ManageCharacters: Reloading...");
             manageCharactersListBox.Items.Clear();
             string path = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\characters";
             string[] characters;
@@ -76,6 +76,7 @@ namespace RPGWonder
             }
             else
             {
+                Log.Instance.errorLog.Error("Directory " + path + " not found!");
                 characters = new string[0];
             }
             foreach (string character in characters)
@@ -91,9 +92,9 @@ namespace RPGWonder
                     };
                     manageCharactersListBox.Items.Add(comboBoxObject);
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
-                    Log.Instance.errorLog.Error("Character file " + character + " couldn't be read!");
+                    Log.Instance.errorLog.Error("Cannot load " + character + ". Error: " + exception.Message);
                 }
             }
         }
