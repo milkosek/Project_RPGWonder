@@ -16,8 +16,7 @@ namespace RPGWonder.src.net
         private static string invite_link = "";
         private static Discord.ITextChannel textChannel;
         
-        public async void LogIntoTextChannel(string message)
-        {
+        public async void LogIntoTextChannel(string message){
             await textChannel.SendMessageAsync(message);
         }
 
@@ -41,6 +40,7 @@ namespace RPGWonder.src.net
 
             string guild_id = GetGuild();
             var voice_channel_id = GetVoiceChannelId(guild_id);
+            CreateChatChannel(guild_id);
             GetAndOpenInvite(voice_channel_id);
         }
 
@@ -62,8 +62,6 @@ namespace RPGWonder.src.net
                 StreamReader reader1 = new StreamReader(response1.GetResponseStream());
                 apiResponse1 = reader1.ReadToEnd();
             }
-
-            //MessageBox.Show(apiResponse1);
             JObject x = JObject.Parse(apiResponse1);
 
             string guild_id = "";
@@ -75,6 +73,31 @@ namespace RPGWonder.src.net
                 break;
             }
             return (guild_id);
+        }
+
+        private static void CreateChatChannel(string guild_id) {
+            HttpWebRequest webRequest1 = (HttpWebRequest)WebRequest.Create("https://discordapp.com/api/guilds/" + guild_id.ToString() + "/channels");
+            webRequest1.Method = "POST";
+            webRequest1.Headers.Add("Authorization", token);
+            webRequest1.ContentType = "application/json";
+
+            Stream postStream = webRequest1.GetRequestStream();
+            var data = Encoding.ASCII.GetBytes("{\"name\": \"chat\"}");
+            postStream.Write(data, 0, data.Length);
+            postStream.Close();
+
+            string apiResponse1;
+            using (HttpWebResponse response1 = webRequest1.GetResponse() as HttpWebResponse)
+            {
+                StreamReader reader1 = new StreamReader(response1.GetResponseStream());
+                apiResponse1 = reader1.ReadToEnd();
+            }
+            JObject x = JObject.Parse(apiResponse1);
+            foreach (var a in x)
+            {
+                SetTextChannelId(a.ToString().TrimEnd(new char[] { '"', ']' }).Substring(5));
+            }
+
         }
 
         private static void GetAndOpenInvite(string channel_id)
@@ -128,12 +151,8 @@ namespace RPGWonder.src.net
                 foreach (var x in jToken)
                 {
                     if (!x.ToString().Substring(1, 4).Equals("type")) continue;
-                    if (x.ToString().Substring(8).Equals("2"))
-                    {
+                    if (x.ToString().Substring(8).Equals("2")){
                         voiceChannelid = jToken["id"].ToString();
-                    }
-                    else if (x.ToString().Substring(8).Equals("0")) {
-                        SetTextChannelId(jToken["id"].ToString());
                     }
                 }
             }

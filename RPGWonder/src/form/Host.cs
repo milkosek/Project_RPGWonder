@@ -85,15 +85,15 @@ namespace RPGWonder
                 _connection.CreateSession(_campaignPath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
             }
-            catch (Exception exception)
-            {
+            catch (Exception exception){
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
+            Thread discordThread = new Thread(new ThreadStart(
+                () => DiscordChannelConnection.
+                CreateGuildThenChannelThenInviteAndOpen()));
+            discordThread.Start();    
         }
-
-
         /// <summary>
         /// Method for reloading the game state.
         /// </summary>
@@ -321,6 +321,11 @@ namespace RPGWonder
             Selector.Instance.WindowState = FormWindowState.Normal;
 
             Selector.Instance.Selector_Init(this, _campaign.Name);
+        }
+
+        private void mapTableLayout_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
