@@ -1,0 +1,20 @@
+{
+  "Id": 1,
+  "Name": "DefaultMap",
+  "Columns": 16,
+  "Rows": 12,
+  "EntityList": {
+    "Chest0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 9,
+      "Y": 6,
+      "Name": "Chest0",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    }
+  }
+}
