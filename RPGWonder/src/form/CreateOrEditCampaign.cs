@@ -140,6 +140,12 @@ namespace RPGWonder
                 Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\codex");
             }
 
+            if (!Directory.Exists(Common.Instance.CampaignsPath + "\\" + _TAG + "\\characters"))
+            {
+                Directory.CreateDirectory(Common.Instance.CampaignsPath + "\\" + _TAG + "\\characters");
+                Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\characters");
+            }
+
             try
             {
                 _campaign.SaveToJSON(Common.Instance.CampaignsPath, _TAG);
