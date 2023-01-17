@@ -40,7 +40,7 @@ namespace RPGWonder.src.net
 
             string guild_id = GetGuild();
             var voice_channel_id = GetVoiceChannelId(guild_id);
-            CreateChatChannel(guild_id);
+            CreateLogChannel(guild_id);
             GetAndOpenInvite(voice_channel_id);
         }
 
@@ -75,14 +75,14 @@ namespace RPGWonder.src.net
             return (guild_id);
         }
 
-        private static void CreateChatChannel(string guild_id) {
+        private static void CreateLogChannel(string guild_id) {
             HttpWebRequest webRequest1 = (HttpWebRequest)WebRequest.Create("https://discordapp.com/api/guilds/" + guild_id.ToString() + "/channels");
             webRequest1.Method = "POST";
             webRequest1.Headers.Add("Authorization", token);
             webRequest1.ContentType = "application/json";
 
             Stream postStream = webRequest1.GetRequestStream();
-            var data = Encoding.ASCII.GetBytes("{\"name\": \"chat\"}");
+            var data = Encoding.ASCII.GetBytes("{\"name\": \"Overseer\"}");
             postStream.Write(data, 0, data.Length);
             postStream.Close();
 
@@ -96,6 +96,7 @@ namespace RPGWonder.src.net
             foreach (var a in x)
             {
                 SetTextChannelId(a.ToString().TrimEnd(new char[] { '"', ']' }).Substring(5));
+                break;
             }
 
         }
