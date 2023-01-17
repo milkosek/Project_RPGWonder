@@ -40,7 +40,6 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        private string _campaign = "";
         private IPAddress _ipAddress;
 
         /// <summary>
@@ -64,9 +63,8 @@ namespace RPGWonder
             map = new Map() { };
         }
 
-        private void Host_Load(object sender, System.EventArgs e)
-            _campaign = campaign;
-            Debug.WriteLine(_campaign);
+        private void Host_Load(object sender, EventArgs e)
+        {
             try
             {
                 _ipAddress = IPAdd.GetMyIPAddress();
@@ -82,11 +80,8 @@ namespace RPGWonder
                 Log.Instance.gameLog.Debug("Got ip adress: " + _ipAddress);
             }
 
-        }
-        private void Host_Load(object sender, EventArgs e)
-        {
-            connection = new HostTcpConnection();
-            connection.CreateSession(_campaignPath, ipAddress);
+            _connection = new HostTcpConnection();
+            _connection.CreateSession(_campaignPath, ipAddress);
             CheckForIllegalCrossThreadCalls = false;
 
             this.FormBorderStyle = FormBorderStyle.None;
@@ -105,7 +100,7 @@ namespace RPGWonder
             try
             {
                 _connection = new HostTcpConnection();
-                _connection.CreateSession(_campaign, _ipAddress);
+                _connection.CreateSession(_campaignPath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
             }
             catch (Exception exception)
@@ -120,7 +115,7 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
-            foreach (ClientData client in connection.Clients)
+            foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
                 charlabel.Text = charlabel.Text + character.Name;

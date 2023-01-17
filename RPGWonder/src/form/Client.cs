@@ -28,7 +28,7 @@ namespace RPGWonder
             Instance = this;
             SetMotif();
             _character = character;
-            hostIpAddress = ipAddr;
+            _hostIpAddress = ipAddr;
 
             mapLoader = new MapHandler(this);
             map = new Map() { };
@@ -36,16 +36,20 @@ namespace RPGWonder
 
         private void Client_Load(object sender, System.EventArgs e)
         {
-            //MainMenu.instance.Hide();
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\characters\\";
-
-            connection = new ClientTcpConnection();
-            connection.Connect(hostIpAddress);//hostIp
-            connection.ValidateSystem();
-            //connection.SendCharacter(File.ReadAllText(path + _character), _character);
-            //Debug.WriteLine(File.ReadAllText(_character));
-            //Debug.WriteLine(Path.GetFileName(_character));
-            //connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
+            //MainMenu._instance.Hide();
+            Log.Instance.gameLog.Debug("Attempting to establish connection...");
+            try
+            {
+                _connection = new ClientTcpConnection();
+                _connection.Connect(_hostIpAddress);
+                _connection.ValidateSystem();
+                _connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
+                Log.Instance.gameLog.Debug("Estabilish connection success.");
+            }
+            catch (Exception exception)
+            {
+                Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
+            }
 
             //this.FormBorderStyle = FormBorderStyle.None;
             //this.WindowState = FormWindowState.Maximized;
@@ -220,26 +224,7 @@ namespace RPGWonder
             tempEntity.Name = tempName;
 
             EntityList[tempEntity.Name] = tempEntity;
-            _hostIpAddress = ipAddr;
+            _hostIpAddress = _hostIpAddress;
         }
-
-        private void Client_Load(object sender, EventArgs e)
-        {
-            //MainMenu._instance.Hide();
-            Log.Instance.gameLog.Debug("Attempting to establish connection...");
-            try
-            {
-                _connection = new ClientTcpConnection();
-                _connection.Connect(_hostIpAddress);
-                _connection.ValidateSystem();
-                _connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
-                Log.Instance.gameLog.Debug("Estabilish connection success.");
-            }
-            catch (Exception exception)
-            {
-                Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
-            }
-        }
-
     }
 }
