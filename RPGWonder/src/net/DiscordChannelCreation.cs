@@ -21,6 +21,10 @@ namespace RPGWonder.src.net
             await textChannel.SendMessageAsync(message);
         }
 
+        private static void SetInviteLink(string link) { 
+            invite_link = link;
+        }
+
         public static string GetInviteLink() {
             return invite_link;
         }
@@ -95,7 +99,7 @@ namespace RPGWonder.src.net
             JObject x = JObject.Parse(apiResponse1);
             var code = x.First.ToString().Substring(9, 8);
 
-            invite_link = "https://discord.gg/" + code;
+            SetInviteLink("https://discord.gg/" + code);
 
             Thread openLinkThread = new Thread(new ThreadStart(() => DiscordChannelConnection.OpenInviteLink(invite_link)));
             openLinkThread.Start();

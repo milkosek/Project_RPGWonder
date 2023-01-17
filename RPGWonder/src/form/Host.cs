@@ -31,7 +31,7 @@ namespace RPGWonder
             connection.CreateSession(_campaign, ipAddress);
             CheckForIllegalCrossThreadCalls = false;
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            //DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
+            DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
         }
         public void Reload()
         {

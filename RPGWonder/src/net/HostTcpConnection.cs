@@ -86,6 +86,9 @@ namespace RPGWonder
                     }
                     else if (recievedString.Contains("Character|"))
                     {
+                        SendToClient("DiscordLink|" + DiscordChannelConnection.GetInviteLink(), stream);
+
+
                         string character_tag = recievedString.Split('|')[1];
                         string character_json = recievedString.Split('|')[2];
                         string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));
@@ -98,7 +101,6 @@ namespace RPGWonder
                         clients.Add(clientData);
                         Host.instace.Reload();
                         
-                        SendToClient("DiscordLink|"+DiscordChannelConnection.GetInviteLink(),stream);
                     }
                     Broadcast(recievedString);
                 }
