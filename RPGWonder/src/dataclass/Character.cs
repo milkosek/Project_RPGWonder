@@ -43,10 +43,6 @@ namespace RPGWonder
         public string Age;
         public string AlliesAndOrgs;
 
-        /// <summary>
-        /// Saves the campaign data to a JSON file.
-        /// </summary>
-        /// <param name="path">The path to the directory where the JSON file should be saved.</param>
         public void SaveToJSON(string path, string TAG)
         {
             var serializer = new JsonSerializer();
@@ -62,10 +58,6 @@ namespace RPGWonder
             }
         }
 
-        /// <summary>
-        /// Reads the campaign data from a JSON file.
-        /// </summary>
-        /// <param name="path">The path to the JSON file.</param>
         public void ReadFromJSON(string path)
         {
             string jsonString = File.ReadAllText(path);

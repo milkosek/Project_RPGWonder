@@ -7,7 +7,7 @@ using System.IO;
 namespace RPGWonder
 {
     /// <summary>
-    /// A class representing a campaign
+    /// A class representing a _campaign
     /// </summary>
     class Campaign : IDataclass
     {
@@ -19,10 +19,6 @@ namespace RPGWonder
         //public List<Asset> Assets;
         public Safedict<string, CodexEntry> CodexEntries = new Safedict<string, CodexEntry>();
 
-        /// <summary>
-        /// Reads the campaign data from a JSON file.
-        /// </summary>
-        /// <param name="path">The path to the JSON file.</param>
         public void ReadFromJSON(string path)
         {
             string jsonString = File.ReadAllText(path);
@@ -41,10 +37,6 @@ namespace RPGWonder
             }
         }
 
-        /// <summary>
-        /// Saves the campaign data to a JSON file.
-        /// </summary>
-        /// <param name="path">The path to the directory where the JSON file should be saved.</param>
         public void SaveToJSON(string path, string TAG)
         {           
             var serializer = new JsonSerializer();

@@ -4,26 +4,22 @@ using System.Diagnostics;
 namespace RPGWonder
 {
     /// <summary>
-    /// Represents an item in a combo box (a drop-down list of selectable items).
+    /// Represents a combo box object that contains a key and value.
     /// </summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+
     public class ComboBoxObject
     {
         public string Key;
         public string Value;
 
-        /// <summary>
-        /// Initializes a new instance of the ComboBoxObject class.
-        /// </summary>
-        public ComboBoxObject()
-        {
-        }
+        public ComboBoxObject() { }
 
         /// <summary>
-        /// Initializes a new instance of the ComboBoxObject class with the specified key and value.
+        /// Creates a new combo box object with the specified key and value.
         /// </summary>
-        /// <param name="key">The unique identifier for the item.</param>
-        /// <param name="value">The string that is displayed in the combo box for the item.</param>
+        /// <param name="key">The key of the combo box object.</param>
+        /// <param name="value">The value of the combo box object.</param>
         public ComboBoxObject(string key, string value)
         {
             Key = key;
@@ -31,11 +27,9 @@ namespace RPGWonder
         }
 
         /// <summary>
-        /// Determines whether the specified object is equal to the current ComboBoxObject.
-        /// Two ComboBoxObject instances are considered equal if they have the same key and value.
+        /// Determines whether the specified object is equal to the current object.
         /// </summary>
-        /// <param name="obj">The object to compare with the current ComboBoxObject.</param>
-        /// <returns>true if the specified object is equal to the current ComboBoxObject; otherwise, false.</returns>
+        /// <param name="obj">The object to compare with the current object.</param>
         public override bool Equals(object obj)
         {
             return obj is ComboBoxObject @object &&
@@ -44,9 +38,8 @@ namespace RPGWonder
         }
 
         /// <summary>
-        /// Serves as the default hash function for the ComboBoxObject class.
+        /// Serves as the default hash function.
         /// </summary>
-        /// <returns>A hash code for the current ComboBoxObject instance.</returns>
         public override int GetHashCode()
         {
             int hashCode = 206514262;
@@ -56,18 +49,16 @@ namespace RPGWonder
         }
 
         /// <summary>
-        /// Returns the string that is displayed in the combo box for the item.
+        /// Returns a string that represents the current object.
         /// </summary>
-        /// <returns>The value of the ComboBoxObject instance as a string.</returns>
         public override string ToString()
         {
             return Value.ToString();
         }
 
         /// <summary>
-        /// Gets the string that is displayed in the debugger for the ComboBoxObject instance.
+        /// Returns a string that represents the current object for debugging purposes.
         /// </summary>
-        /// <returns>The string that is displayed in the debugger for the ComboBoxObject instance.</returns>
         private string GetDebuggerDisplay()
         {
             return ToString();

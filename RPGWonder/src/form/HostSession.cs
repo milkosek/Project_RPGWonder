@@ -9,52 +9,38 @@ using System.Windows.Forms;
 namespace RPGWonder
 {
     /// <summary>
-    /// This class represents a form for hosting a new game session.
+    /// Class representing a form for hosting a new game session.
     /// </summary>
     public partial class HostSession : DefaultForm
     {
-        private static HostSession instance = null;
+        private static HostSession _instance = null;
+        private string _campaign;
         public static HostSession Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new HostSession();
+                    _instance = new HostSession();
                 }
-                return instance;
+                return _instance;
             }
         }
-        private string _campaign = "";
-        /// <summary>
-        /// Initializes a new instance of the `HostSession` class.
-        /// </summary>
+
         private HostSession()
         {
             InitializeComponent();
             SetMotif();
         }
 
-        /// <summary>
-        /// This method is called when the `hostSessionButton` is clicked. It creates a new `Game` object,
-        /// closes the `HostSession` form, and shows the `Host` form.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The event arguments.</param>
         private void hostSessionButton_Click(object sender, EventArgs e)
         {
             Host host = new Host(_campaign);
             Close();
             host.Show();
-            //MainMenu.instance.Hide();
+            //MainMenu._instance.Hide();
         }
 
-        /// <summary>
-        /// This method is called when the `HostSession` form is loaded. It reads the list of campaigns
-        /// from a JSON file and adds them to the `selectCampaignComboBox` control.
-        /// </summary>
-        /// <param name="sender">The object that raised the event.</param>
-        /// <param name="e">The event arguments.</param>
         private void HostSession_Load(object sender, EventArgs e)
         {
             myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
@@ -68,9 +54,19 @@ namespace RPGWonder
                 string[] filePaths = Directory.GetFiles(subdirectoryPath, "*.json");
                 foreach (string filePath in filePaths)
                 {
-                    JObject campaign = JObject.Parse(File.ReadAllText(filePath));
-                    ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)campaign["Name"]);
-                    selectCampaignComboBox.Items.Add(comboBoxObject);
+                    try
+                    {
+                        Campaign testCampaign = new Campaign();
+                        testCampaign.ReadFromJSON(filePath);
+                        JObject campaign = JObject.Parse(File.ReadAllText(filePath));
+                        ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)campaign["Name"]);
+                        selectCampaignComboBox.Items.Add(comboBoxObject);
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Instance.errorLog.Error("Cannot load " + filePath + ". Error: " + exception.Message);
+                        continue;
+                    }
                 }
             }
 
