@@ -43,6 +43,9 @@ namespace RPGWonder
                 Log.Instance.errorLog.Error("Error: Path not set correctly");
                 MessageBox.Show("The path to game files is not set correctly.\nSet the correct path in Settings.");
             }
+            Character character = new Character();
+            character.ReadFromJSON("D:\\Archiwum Królewskie\\Studia\\Inzynierka\\RPGWonder\\RPGWonder\\userData\\DnD5e\\characters\\Adam(1).json");
+            character.Show();
         }
 
         private void JoinButton_Click(object sender, EventArgs e)

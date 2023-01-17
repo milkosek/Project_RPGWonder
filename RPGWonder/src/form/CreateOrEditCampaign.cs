@@ -197,7 +197,8 @@ namespace RPGWonder
                 Log.Instance.gameLog.Debug("Trying to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
                 try
                 {
-                    File.Delete(((ComboBoxObject)listBox.SelectedItem).Key);
+                    string toDelete = ((ComboBoxObject)listBox.SelectedItem).Key;
+                    File.Delete(toDelete);
                     Reload();
                     listBox.SelectedItem = null;
                     editButton.Enabled = false;

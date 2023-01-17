@@ -33,7 +33,7 @@ namespace RPGWonder.Properties {
         }
         
         /// <summary>
-        ///   Returns the cached ResourceManager _instance used by this class.
+        ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
@@ -57,6 +57,16 @@ namespace RPGWonder.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Die {
+            get {
+                object obj = ResourceManager.GetObject("Die", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

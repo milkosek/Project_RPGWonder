@@ -143,10 +143,12 @@ namespace RPGWonder
             {
                 TableLayoutPanel skillLayoutPanel = new TableLayoutPanel();
                 skillLayoutPanel.Size = new Size(200, 30);
-                Label label = new Label();
-                label.Width = 150;
-                label.Name = "skill" + TAG.Key + "label";
-                label.Text = "---";
+                Label label = new Label
+                {
+                    Width = 150,
+                    Name = "skill" + TAG.Key + "label",
+                    Text = "---"
+                };
                 skillLayoutPanel.Controls.Add(label);
                 skillsTableLayoutPanel.Controls.Add(skillLayoutPanel);
             }

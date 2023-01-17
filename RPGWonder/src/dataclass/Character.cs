@@ -6,7 +6,7 @@ namespace RPGWonder
     /// <summary>
     /// A class representing a character
     /// </summary>
-    class Character : IDataclass
+    public class Character : IDataclass
     {
         public string Name;
         public string Race;
@@ -62,6 +62,14 @@ namespace RPGWonder
         {
             string jsonString = File.ReadAllText(path);
             JsonConvert.PopulateObject(jsonString, this);
+        }
+
+        /// <summary>
+        /// Show a form with this characters
+        /// </summary>
+        public void Show()
+        {
+            ShowCharacter.Instance(this).Show();
         }
     }
 }

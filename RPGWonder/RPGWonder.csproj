@@ -122,6 +122,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="src\form\RollDie.resx">
+      <DependentUpon>RollDie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\form\ShowCharacter.resx">
+      <DependentUpon>ShowCharacter.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="systemPresets\DnD5e\Alignments.json" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -139,6 +145,18 @@
     </Compile>
     <Compile Include="src\form\DefaultForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\RollDie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\RollDie.Designer.cs">
+      <DependentUpon>RollDie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\form\ShowCharacter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\ShowCharacter.Designer.cs">
+      <DependentUpon>ShowCharacter.cs</DependentUpon>
     </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
@@ -314,6 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\asset\Die.png" />
+    <None Include="Resources\Die.png" />
     <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -330,7 +349,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DiscordGameSDK\" />
-    <Folder Include="Resources\" />
     <Folder Include="userData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
