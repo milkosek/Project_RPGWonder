@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RPGWonder.src.net;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -85,6 +86,9 @@ namespace RPGWonder
                     }
                     else if (recievedString.Contains("Character|"))
                     {
+                        SendToClient("DiscordLink|" + DiscordChannelConnection.GetInviteLink(), stream);
+
+
                         string character_tag = recievedString.Split('|')[1];
                         string character_json = recievedString.Split('|')[2];
                         string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));

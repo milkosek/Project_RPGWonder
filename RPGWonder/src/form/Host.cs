@@ -11,6 +11,7 @@ using RPGWonder.src.form;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Drawing;
+using RPGWonder.src.net;
 
 namespace RPGWonder
 {
@@ -88,6 +89,8 @@ namespace RPGWonder
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+            //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
+            DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
         }
 
 

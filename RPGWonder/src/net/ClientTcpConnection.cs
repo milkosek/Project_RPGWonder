@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGWonder.src.net;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
@@ -60,6 +61,12 @@ namespace RPGWonder
                         string message = "Game system mismatch.\nMake sure your game system is set to " + system;
                         MessageBox.Show(message);
                         Client.Instance.Close();
+                    }
+                    else if (recievedString.StartsWith("DiscordLink|")){
+                        string link = recievedString.Substring("DiscordLink|".Length);
+
+                        Thread openLinkThread = new Thread(new ThreadStart(() => DiscordChannelConnection.OpenInviteLink(link)));
+                        openLinkThread.Start();
                     }
                 }
             }
