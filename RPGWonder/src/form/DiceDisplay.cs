@@ -6,6 +6,19 @@ namespace RPGWonder.src.form
 {
     public partial class DiceDisplay : DefaultForm
     {
+        private static DiceDisplay instance = null;
+        public static DiceDisplay Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DiceDisplay();
+                }
+                return instance;
+            }
+        }
+
         private DiceRolls Roller = new DiceRolls();
         private Dictionary<int, List<int>> LastRolls = new Dictionary<int, List<int>>();
 
@@ -20,6 +33,8 @@ namespace RPGWonder.src.form
             RollsList.Columns.Add("Dice", 40);
             RollsList.Columns.Add("Rolls", 120);
             RollsList.View = View.Details;
+
+            this.TopMost = true;
         }
 
         private void DiceDisplay_Load(object sender, EventArgs e)
@@ -124,6 +139,15 @@ namespace RPGWonder.src.form
             {
                 SubDie.PerformClick();
             }
+        }
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

@@ -79,8 +79,7 @@ namespace RPGWonder
                     else if (recievedString.Contains("System|"))
                     {
                         string system = recievedString.Split('|')[1];
-                        if (system != Properties.Settings.Default.System)
-                        {
+                        if (system != Properties.Settings.Default.System){
                             SendToClient("WrongSystem|" + Properties.Settings.Default.System, stream);
                         }
                     }
@@ -99,8 +98,7 @@ namespace RPGWonder
                         character.ReadFromJSON(path + "\\" + campaign_name + "\\characters\\" + character_tag);
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
-                        Host.instace.Reload();
-                        
+                        Host.Instace.Reload();
                     }
                     Broadcast(recievedString);
                 }

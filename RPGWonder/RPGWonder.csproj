@@ -158,6 +158,12 @@
     <Compile Include="src\form\ShowCharacter.Designer.cs">
       <DependentUpon>ShowCharacter.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\form\Selector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\Selector.Designer.cs">
+      <DependentUpon>Selector.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">
       <SubType>Form</SubType>
@@ -166,6 +172,7 @@
       <DependentUpon>Host.cs</DependentUpon>
     </Compile>
     <Compile Include="src\log\Log.cs" />
+    <Compile Include="src\map\MapHandler.cs" />
     <Compile Include="src\net\ClientData.cs" />
     <Compile Include="src\net\ClientTcpConnection.cs" />
     <Compile Include="src\net\DiscordChannelCreation.cs" />
@@ -251,6 +258,9 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
+    <EmbeddedResource Include="src\form\Client.en.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\CreateOrEditCodexEntry.resx">
       <DependentUpon>CreateOrEditCodexEntry.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +278,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\form\Host.resx">
       <DependentUpon>Host.cs</DependentUpon>
@@ -302,6 +313,9 @@
     <EmbeddedResource Include="src\form\Settings.en.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\form\Selector.resx">
+      <DependentUpon>Selector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +347,8 @@
   <ItemGroup>
     <None Include="src\asset\Die.png" />
     <None Include="Resources\Die.png" />
+    <None Include="Resources\map_placeholder.png" />
+    <Content Include="src\asset\chest.png" />
     <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
   <ItemGroup>

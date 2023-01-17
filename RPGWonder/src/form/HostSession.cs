@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -34,7 +35,7 @@ namespace RPGWonder
 
         private void hostSessionButton_Click(object sender, EventArgs e)
         {
-            Host host = new Host(_campaign);
+            Host host = new Host(_campaign, myIPTextBox.Text);
             Close();
             host.Show();
             //MainMenu._instance.Hide();
@@ -44,6 +45,9 @@ namespace RPGWonder
         {
             myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
             string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
+            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
+            //myIPTextBox.Text = "127.0.0.1";
 
             foreach (string subdirectoryPath in subdirectoryPaths)
             {
@@ -64,6 +68,11 @@ namespace RPGWonder
                         continue;
                     }
                 }
+            }
+
+            if (subdirectoryPaths.Length > 0)
+            {
+                selectCampaignComboBox.SelectedIndex = 0;
             }
         }
 
