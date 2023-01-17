@@ -121,21 +121,27 @@
   <data name="spawn_npc.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Game</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
   </data>
   <data name="&gt;&gt;spawn_chest.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DiceRollMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
   </data>
   <data name="&gt;&gt;ChangeMap.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;coords.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;button1.Parent" xml:space="preserve">
     <value>controlsLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -183,9 +189,6 @@
   <data name="&gt;&gt;spawn_npc.Parent" xml:space="preserve">
     <value>controlsLayoutPanel</value>
   </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>705, 9</value>
   </data>
@@ -213,14 +216,8 @@
   <data name="&gt;&gt;controlsLayoutPanel.Name" xml:space="preserve">
     <value>controlsLayoutPanel</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>charactersTabs</value>
-  </data>
-  <data name="&gt;&gt;coords.Name" xml:space="preserve">
-    <value>coords</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="mapTableLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
   <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 97</value>
@@ -243,11 +240,11 @@
   <data name="&gt;&gt;coords.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mapTableLayout.Name" xml:space="preserve">
-    <value>mapTableLayout</value>
-  </data>
   <data name="&gt;&gt;charactersTabs.Name" xml:space="preserve">
     <value>charactersTabs</value>
+  </data>
+  <data name="mapTableLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
   </data>
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -258,17 +255,11 @@
   <data name="charlabel.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="ChangeMap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 812</value>
-  </data>
   <data name="&gt;&gt;button1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mapTableLayout.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -284,6 +275,12 @@
   </data>
   <data name="&gt;&gt;spawn_chest.Name" xml:space="preserve">
     <value>spawn_chest</value>
+  </data>
+  <data name="&gt;&gt;DiceRollMenu.Name" xml:space="preserve">
+    <value>DiceRollMenu</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
   </data>
   <data name="&gt;&gt;listView1.Name" xml:space="preserve">
     <value>listView1</value>
@@ -306,8 +303,8 @@
   <data name="charlabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 1</value>
   </data>
-  <data name="&gt;&gt;DiceRollMenu.Name" xml:space="preserve">
-    <value>DiceRollMenu</value>
+  <data name="&gt;&gt;mapTableLayout.Name" xml:space="preserve">
+    <value>mapTableLayout</value>
   </data>
   <data name="&gt;&gt;mapTableLayout.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -315,8 +312,8 @@
   <data name="&gt;&gt;ChangeMap.Parent" xml:space="preserve">
     <value>controlsLayoutPanel</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="ChangeMap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 812</value>
   </data>
   <data name="&gt;&gt;controlsLayoutPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -324,11 +321,14 @@
   <data name="coords.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
   <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>charactersTabs</value>
   </data>
   <data name="controlsLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -348,11 +348,14 @@
   <data name="&gt;&gt;coords.Parent" xml:space="preserve">
     <value>controlsLayoutPanel</value>
   </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Client</value>
+  </data>
   <data name="&gt;&gt;DiceRollMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mapTableLayout.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Game</value>
   </data>
   <data name="&gt;&gt;controlsLayoutPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -408,17 +411,17 @@
   <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
+  <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;mapTableLayout.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Client</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;coords.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;coords.Name" xml:space="preserve">
+    <value>coords</value>
   </data>
   <data name="&gt;&gt;spawn_npc.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -429,14 +432,11 @@
   <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
   <data name="RemoveEntity.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mapTableLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 9</value>
   </data>
   <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 77</value>
