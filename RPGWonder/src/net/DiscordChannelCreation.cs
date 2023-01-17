@@ -3,21 +3,44 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
+using Discord.WebSocket;
+using Discord;
+using System.Threading;
+
 namespace RPGWonder.src.net
 {
     internal class DiscordChannelConnection
     {
         private static string token = "Bot MTA2MTYyMTgxMjUwNjY2NTAyMQ.GVilXh.6M7BsjlSL_R8mcNG-lHItfPo2Lzj4Xi9kn0Tqk";
-
+        private static DiscordSocketClient _client;
         private static string invite_link = "";
-        public static void CreateGuildThenChannelThenInviteAndOpen()
+        private static Discord.ITextChannel textChannel;
+        
+        public async void LogIntoTextChannel(string message)
         {
-            string guild_id = getGuild();
-            var voice_channel_id = getChannel(guild_id);
-            get_and_openInvite(voice_channel_id);
+            await textChannel.SendMessageAsync(message);
         }
 
-        private static string getGuild()
+        public static string GetInviteLink() {
+            return invite_link;
+        }
+
+        private static void SetTextChannelId(string id){
+            var textChannelId = ulong.Parse(id);
+            textChannel = _client.GetChannel(textChannelId) as ITextChannel;
+        }
+        public async static void CreateGuildThenChannelThenInviteAndOpen()
+        {
+            _client = new DiscordSocketClient();
+            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.StartAsync();
+
+            string guild_id = GetGuild();
+            var voice_channel_id = GetVoiceChannelId(guild_id);
+            GetAndOpenInvite(voice_channel_id);
+        }
+
+        private static string GetGuild()
         {
             HttpWebRequest webRequest1 = (HttpWebRequest)WebRequest.Create("https://discordapp.com/api/guilds");
             webRequest1.Method = "POST";
@@ -50,7 +73,7 @@ namespace RPGWonder.src.net
             return (guild_id);
         }
 
-        private static void get_and_openInvite(string channel_id)
+        private static void GetAndOpenInvite(string channel_id)
         {
             HttpWebRequest webRequest1 = (HttpWebRequest)WebRequest.Create("https://discordapp.com/api/channels/" + channel_id + "/invites");
             webRequest1.Method = "POST";
@@ -72,16 +95,13 @@ namespace RPGWonder.src.net
             JObject x = JObject.Parse(apiResponse1);
             var code = x.First.ToString().Substring(9, 8);
 
-            invite_link = "https://discord.gg/" + code; 
-            ProcessStartInfo psInfo = new ProcessStartInfo
-            {
-                FileName = invite_link,
-                UseShellExecute = true
-            };
-            Process.Start(psInfo);
+            invite_link = "https://discord.gg/" + code;
+
+            Thread openLinkThread = new Thread(new ThreadStart(() => DiscordChannelConnection.OpenInviteLink(invite_link)));
+            openLinkThread.Start();
         }
 
-        private static string getChannel(string guild_id)
+        private static string GetVoiceChannelId(string guild_id)
         {
             HttpWebRequest webRequest1 =
                 (HttpWebRequest)WebRequest.Create("https://discordapp.com/api/guilds/" + guild_id + "/channels");
@@ -98,6 +118,7 @@ namespace RPGWonder.src.net
             }
 
             JArray jsonArray = JArray.Parse(apiResponse1);
+            string voiceChannelid = "";
             foreach (var jToken in jsonArray)
             {
                 foreach (var x in jToken)
@@ -105,12 +126,24 @@ namespace RPGWonder.src.net
                     if (!x.ToString().Substring(1, 4).Equals("type")) continue;
                     if (x.ToString().Substring(8).Equals("2"))
                     {
-                        return jToken["id"].ToString();
+                        voiceChannelid = jToken["id"].ToString();
+                    }
+                    else if (x.ToString().Substring(8).Equals("0")) {
+                        SetTextChannelId(jToken["id"].ToString());
                     }
                 }
             }
 
-            return jsonArray[0]["id"].ToString();
+            return voiceChannelid;
+        }
+
+        public static void OpenInviteLink(string link) {
+            ProcessStartInfo psInfo = new ProcessStartInfo
+            {
+                FileName = link,
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
         }
     }
 }

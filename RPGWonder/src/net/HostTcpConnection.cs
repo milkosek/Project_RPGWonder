@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RPGWonder.src.net;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -96,6 +97,8 @@ namespace RPGWonder
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
                         Host.instace.Reload();
+                        
+                        SendToClient("DiscordLink|"+DiscordChannelConnection.GetInviteLink(),stream);
                     }
                     Broadcast(recievedString);
                 }
