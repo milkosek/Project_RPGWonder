@@ -80,7 +80,7 @@ namespace RPGWonder
             }
             finally
             {
-                stream.Close();
+                //stream.Close();
             }
         }
         public static void Send(string data)

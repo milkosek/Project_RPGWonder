@@ -1,0 +1,20 @@
+{
+  "Id": 2,
+  "Name": "Equestria4x3",
+  "Columns": 4,
+  "Rows": 3,
+  "EntityList": {
+    "Chest0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 1,
+      "Y": 1,
+      "Name": "Chest0",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    }
+  }
+}
