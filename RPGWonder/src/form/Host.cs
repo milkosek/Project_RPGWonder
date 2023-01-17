@@ -27,8 +27,8 @@ namespace RPGWonder
     public partial class Host : DefaultForm
     {
         private HostTcpConnection _connection;
-        public static Host instace;
-        private IPAddress ipAddress;
+        public static Host Instace;
+        private IPAddress _ipAddress;
 
         private string _campaignPath = "";
         private Campaign _campaign;
@@ -40,24 +40,21 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        private IPAddress _ipAddress;
-
         /// <summary>
         /// Public contructor of <see cref="Host"/> class.
         /// </summary>
         /// <param name="campaign">The capaign that is hosted.</param>
-        public Host(string campaign)
+        public Host(string campaign, string ip)
         {
             InitializeComponent();
             SetMotif();
-            instace = this;
+            Instace = this;
 
             _campaignPath = campaign;
             _campaign = new Campaign();
             _campaign.ReadFromJSON(_campaignPath);
 
-            //ipAddress = IPAdd.GetMyIPAddress();
-            ipAddress = IPAddress.Parse("127.0.0.1");
+            _ipAddress = IPAddress.Parse(ip);
 
             mapLoader = new MapHandler(this);
             map = new Map() { };
@@ -65,23 +62,8 @@ namespace RPGWonder
 
         private void Host_Load(object sender, EventArgs e)
         {
-            try
-            {
-                _ipAddress = IPAdd.GetMyIPAddress();
-                //ipAddress = IPAddress.Parse("127.0.0.1");
-            }
-            catch (Exception exception)
-            {
-                Log.Instance.errorLog.Error("Error getting ip: " + exception);
-                Close();
-            }
-            finally
-            {
-                Log.Instance.gameLog.Debug("Got ip adress: " + _ipAddress);
-            }
-
             _connection = new HostTcpConnection();
-            _connection.CreateSession(_campaignPath, ipAddress);
+            _connection.CreateSession(_campaignPath, _ipAddress);
             CheckForIllegalCrossThreadCalls = false;
 
             this.FormBorderStyle = FormBorderStyle.None;
@@ -89,13 +71,12 @@ namespace RPGWonder
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps\\Equestria8x6.json";
-
-            LoadMap(_campaign.CurrentMap, true);
+            LoadMap(_campaign.CurrentMap);
 
             coords.Text = map.Name;
 
             UpdateMap();
+
             Log.Instance.gameLog.Debug("Attempting to establish connection...");
             try
             {
@@ -134,7 +115,7 @@ namespace RPGWonder
         }
 
 
-        public void LoadMap(int mapId, bool firstLoad = false)
+        public void LoadMap(int mapId)
         {
             _campaign.CurrentMap = mapId;
 
@@ -152,9 +133,6 @@ namespace RPGWonder
 
             DisplayMap(map);
 
-            selectedTile.x = 0;
-            selectedTile.y = 0;
-
             UpdateMap();
         }
 
@@ -166,8 +144,6 @@ namespace RPGWonder
             }
 
             ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, map.Columns, map.Rows);
-
-            // TODO load entities from map
 
             // TODO wait for asset implementation
             //mapTableLayout.BackgroundImage = map.BGImage;

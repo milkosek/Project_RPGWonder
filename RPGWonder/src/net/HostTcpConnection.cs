@@ -95,7 +95,7 @@ namespace RPGWonder
                         character.ReadFromJSON(path + "\\" + campaign_name + "\\characters\\" + character_tag);
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
-                        Host.instace.Reload();
+                        Host.Instace.Reload();
                     }
                     Broadcast(recievedString);
                 }

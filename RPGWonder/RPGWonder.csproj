@@ -199,6 +199,9 @@
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\VoiceChat.cs" />
+    <EmbeddedResource Include="src\form\Client.en.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\CreateOrEditCodexEntry.resx">
       <DependentUpon>CreateOrEditCodexEntry.cs</DependentUpon>
     </EmbeddedResource>

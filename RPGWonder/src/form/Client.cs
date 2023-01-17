@@ -1,28 +1,38 @@
-﻿using RPGWonder.src.map;
+﻿using Newtonsoft.Json.Linq;
+using RPGWonder.src.form;
+using RPGWonder.src.map;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace RPGWonder
 {
     public partial class Client : DefaultForm
     {
+        //Same as host
         private ClientTcpConnection _connection;
-        private readonly string _character;
-        private static string _hostIpAddress;
         public static Client Instance;
+        private IPAddress _ipAddress;
 
+        private string _campaignPath = "";
+        private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
+
         private (int x, int y) selectedTile;
         private EntityOnMap selectedEntity;
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        public Client(string character, string ipAddr)
+        private readonly string _character;
+        private static string _hostIpAddress;
+
+
+        public Client(string character, string ipAddr = "127.0.0.1")
         {
             InitializeComponent();
             Instance = this;
@@ -51,31 +61,54 @@ namespace RPGWonder
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
 
-            //this.FormBorderStyle = FormBorderStyle.None;
-            //this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 
-            string mapPath = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\My Super Epic Campaign With Katana\\maps\\Equestria8x6.json";
-
-            LoadMap(mapPath);
+            if (_campaign == null)
+            {
+                LoadMap(-1);
+            }
+            else
+            {
+                LoadMap(_campaign.CurrentMap);
+            }
 
             coords.Text = map.Name;
-
-            AddEntityOnMap(0, 0, "Icon", @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\RPGWonder.ico");
-            AddEntityOnMap(1, 0, "Dice", @"C:\Users\Victorus\Source\Repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\Die.png");
 
             UpdateMap();
         }
 
-        public void LoadMap(string mapPath)
+        private void DiceRollMenu_Click(object sender, EventArgs e)
+        {
+            DiceDisplay.Instance.Show();
+            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
+        }
+
+
+        public void LoadMap(int mapId)
         {
             selectedTile.x = 0;
             selectedTile.y = 0;
 
-            //TODO save previous map
+            EntityList.Clear();
 
-            map.ReadFromJSON(mapPath);
+            if (mapId != -1)
+            {
+                _campaign.CurrentMap = mapId;
+
+                map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
+
+                if (map.EntityList != null)
+                {
+                    EntityList = map.EntityList;
+                }
+            }
+            else
+            {
+                map = new Map() { Id = -1, Columns = 8, Rows = 6, Name = "noMapYet"};
+            }
 
             DisplayMap(map);
 
@@ -90,10 +123,6 @@ namespace RPGWonder
             }
 
             ButtonsMatrix = mapLoader.makeSquareTiles(mapTableLayout, map.Columns, map.Rows);
-
-            EntityList.Clear();
-
-            // TODO load entities from map
 
             // TODO wait for asset implementation
             //mapTableLayout.BackgroundImage = map.BGImage;
@@ -118,7 +147,7 @@ namespace RPGWonder
                     break;
             }
 
-            DisplaySelectedInfo();
+            UpdateMap();
         }
 
         // x1, y1 - from
@@ -135,11 +164,6 @@ namespace RPGWonder
             {
                 selectedEntity.X = x2;
                 selectedEntity.Y = y2;
-
-                UpdateMap();
-
-                fromButton.BackgroundImage = null;
-                fromButton.Text = string.Format("{0} {1}", x1, y1);
 
                 selectedTile.x = x2;
                 selectedTile.y = y2;
@@ -189,6 +213,29 @@ namespace RPGWonder
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
 
             DisplaySelectedInfo();
+
+            //map.EntityList = EntityList;
+            //map.SaveToJSON(GetMapById(_campaign.CurrentMap));
+        }
+
+        public string GetMapById(int id)
+        {
+            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
+
+            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+
+            string[] filePaths = Directory.GetFiles(path, "*.json");
+            foreach (string filePath in filePaths)
+            {
+                JObject map = JObject.Parse(File.ReadAllText(filePath));
+
+                if ((int)map["Id"] == id)
+                {
+                    return filePath;
+                }
+            }
+
+            return filePaths[0];
         }
 
         private bool TileEmpty(int x, int y)
@@ -201,30 +248,6 @@ namespace RPGWonder
             {
                 return false;
             }
-        }
-
-        private void AddEntityOnMap(int x, int y, string name, string path)
-        {
-            if (!TileEmpty(x, y))
-            {
-                return;
-            }
-
-            int iter = 0;
-            string tempName = name + iter.ToString();
-
-            while (EntityList.ContainsKey(tempName))
-            {
-                tempName = name + iter.ToString();
-                iter += 1;
-            }
-
-            EntityOnMap tempEntity = new EntityOnMap(0, 0, x, y, path);
-
-            tempEntity.Name = tempName;
-
-            EntityList[tempEntity.Name] = tempEntity;
-            _hostIpAddress = _hostIpAddress;
         }
     }
 }

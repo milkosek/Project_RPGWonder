@@ -35,7 +35,7 @@ namespace RPGWonder
 
         private void hostSessionButton_Click(object sender, EventArgs e)
         {
-            Host host = new Host(_campaign);
+            Host host = new Host(_campaign, myIPTextBox.Text);
             Close();
             host.Show();
             //MainMenu._instance.Hide();
