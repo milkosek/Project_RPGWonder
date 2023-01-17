@@ -31,7 +31,6 @@ namespace RPGWonder
         private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
-        private int lastMapId;
 
         private (int x, int y) selectedTile;
         private EntityOnMap selectedEntity;
@@ -47,7 +46,6 @@ namespace RPGWonder
             _campaignPath = campaign;
             _campaign = new Campaign();
             _campaign.ReadFromJSON(_campaignPath);
-            lastMapId = _campaign.CurrentMap;
 
             //ipAddress = IPAdd.GetMyIPAddress();
             ipAddress = IPAddress.Parse("127.0.0.1");
@@ -99,18 +97,14 @@ namespace RPGWonder
 
         public void LoadMap(int mapId, bool firstLoad = false)
         {
+            _campaign.CurrentMap = mapId;
+
             selectedTile.x = 0;
             selectedTile.y = 0;
 
-            if (!firstLoad)
-            {
-                map.EntityList = EntityList;
-                map.SaveToJSON(GetMapById(lastMapId));
-            }
-
             EntityList.Clear();
 
-            map.ReadFromJSON(GetMapById(mapId));
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
 
             if (map.EntityList != null)
             {
@@ -123,8 +117,6 @@ namespace RPGWonder
             selectedTile.y = 0;
 
             UpdateMap();
-
-            lastMapId = mapId;
         }
 
         private void DisplayMap(Map map)
@@ -227,6 +219,9 @@ namespace RPGWonder
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
 
             DisplaySelectedInfo();
+
+            map.EntityList = EntityList;
+            map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
         public string GetMapById(int id)

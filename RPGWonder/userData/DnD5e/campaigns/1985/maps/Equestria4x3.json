@@ -4,25 +4,13 @@
   "Columns": 4,
   "Rows": 3,
   "EntityList": {
-    "Icon0": {
-      "EntityID": 0,
-      "MapID": 0,
-      "X": 0,
-      "Y": 0,
-      "Name": "Icon0",
-      "ImagePath": "C:\\Users\\Victorus\\Source\\Repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\RPGWonder.ico",
-      "Id": 0,
-      "Type": null,
-      "Description": null,
-      "Src": null
-    },
-    "Dice0": {
+    "Chest0": {
       "EntityID": 0,
       "MapID": 0,
       "X": 2,
       "Y": 1,
-      "Name": "Dice0",
-      "ImagePath": "C:\\Users\\Victorus\\Source\\Repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\Die.png",
+      "Name": "Chest0",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
       "Id": 0,
       "Type": null,
       "Description": null,
