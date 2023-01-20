@@ -43,7 +43,11 @@
         "ability": "WIS",
         "bonus": "1"
       }
-    ]
+    ],
+    "hp-bonus": {
+      "value": 1,
+      "type":  "per level"
+    }
   },
   "mountainDwarf": {
     "name": "Mountain Dwarf",

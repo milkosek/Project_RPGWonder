@@ -337,6 +337,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="systemPresets\DnD5e\Sizes.json" />
     <None Include="systemPresets\DnD5e\Skills.json" />
     <None Include="systemPresets\DnD5e\Abilities.json" />
     <None Include="systemPresets\DnD5e\Task difficulties.json" />

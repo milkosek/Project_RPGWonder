@@ -74,6 +74,7 @@ namespace RPGWonder
 
         private void CreateOrEditCampaign_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             if (_editing)
             {
                 string[] parts = _path.Split('\\');

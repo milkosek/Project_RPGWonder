@@ -117,170 +117,236 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ExitButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 354</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ExitButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="exitButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="exitButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="exitButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 363</value>
+  </data>
+  <data name="exitButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="ExitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 38</value>
+  <data name="exitButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 50</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ExitButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="exitButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="ExitButton.Text" xml:space="preserve">
+  <data name="exitButton.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="&gt;&gt;ExitButton.Name" xml:space="preserve">
-    <value>ExitButton</value>
+  <data name="&gt;&gt;exitButton.Name" xml:space="preserve">
+    <value>exitButton</value>
   </data>
-  <data name="&gt;&gt;ExitButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;exitButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ExitButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;exitButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;ExitButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="SettingsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 294</value>
-  </data>
-  <data name="SettingsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="SettingsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 38</value>
-  </data>
-  <data name="SettingsButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;exitButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="SettingsButton.Text" xml:space="preserve">
+  <data name="settingsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="settingsButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="settingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 290</value>
+  </data>
+  <data name="settingsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="settingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 50</value>
+  </data>
+  <data name="settingsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="settingsButton.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="&gt;&gt;SettingsButton.Name" xml:space="preserve">
-    <value>SettingsButton</value>
+  <data name="&gt;&gt;settingsButton.Name" xml:space="preserve">
+    <value>settingsButton</value>
   </data>
-  <data name="&gt;&gt;SettingsButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;settingsButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SettingsButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;settingsButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;SettingsButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="ManageCharsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 233</value>
-  </data>
-  <data name="ManageCharsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="ManageCharsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 38</value>
-  </data>
-  <data name="ManageCharsButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;settingsButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="ManageCharsButton.Text" xml:space="preserve">
+  <data name="manageCharactersButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="manageCharactersButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="manageCharactersButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 220</value>
+  </data>
+  <data name="manageCharactersButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="manageCharactersButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 50</value>
+  </data>
+  <data name="manageCharactersButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="manageCharactersButton.Text" xml:space="preserve">
     <value>Manage Characters</value>
   </data>
-  <data name="&gt;&gt;ManageCharsButton.Name" xml:space="preserve">
-    <value>ManageCharsButton</value>
+  <data name="&gt;&gt;manageCharactersButton.Name" xml:space="preserve">
+    <value>manageCharactersButton</value>
   </data>
-  <data name="&gt;&gt;ManageCharsButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;manageCharactersButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ManageCharsButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;manageCharactersButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;ManageCharsButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;manageCharactersButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="ManageCampaignsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 171</value>
+  <data name="manageCampaignsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="ManageCampaignsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="manageCampaignsButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="manageCampaignsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 150</value>
+  </data>
+  <data name="manageCampaignsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="ManageCampaignsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 38</value>
+  <data name="manageCampaignsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 50</value>
   </data>
-  <data name="ManageCampaignsButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="manageCampaignsButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="ManageCampaignsButton.Text" xml:space="preserve">
+  <data name="manageCampaignsButton.Text" xml:space="preserve">
     <value>Manage Campaigns</value>
   </data>
-  <data name="&gt;&gt;ManageCampaignsButton.Name" xml:space="preserve">
-    <value>ManageCampaignsButton</value>
+  <data name="&gt;&gt;manageCampaignsButton.Name" xml:space="preserve">
+    <value>manageCampaignsButton</value>
   </data>
-  <data name="&gt;&gt;ManageCampaignsButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;manageCampaignsButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ManageCampaignsButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;manageCampaignsButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;ManageCampaignsButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="HostButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 108</value>
-  </data>
-  <data name="HostButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="HostButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 38</value>
-  </data>
-  <data name="HostButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="HostButton.Text" xml:space="preserve">
-    <value>Host Session</value>
-  </data>
-  <data name="&gt;&gt;HostButton.Name" xml:space="preserve">
-    <value>HostButton</value>
-  </data>
-  <data name="&gt;&gt;HostButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HostButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HostButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="JoinButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 44</value>
-  </data>
-  <data name="JoinButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="JoinButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 38</value>
-  </data>
-  <data name="JoinButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;manageCampaignsButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="JoinButton.Text" xml:space="preserve">
-    <value>Join Session</value>
+  <data name="hostSessionButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="&gt;&gt;JoinButton.Name" xml:space="preserve">
-    <value>JoinButton</value>
+  <data name="hostSessionButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
   </data>
-  <data name="&gt;&gt;JoinButton.Type" xml:space="preserve">
+  <data name="hostSessionButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 80</value>
+  </data>
+  <data name="hostSessionButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="hostSessionButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 50</value>
+  </data>
+  <data name="hostSessionButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="hostSessionButton.Text" xml:space="preserve">
+    <value>Host Session</value>
+  </data>
+  <data name="&gt;&gt;hostSessionButton.Name" xml:space="preserve">
+    <value>hostSessionButton</value>
+  </data>
+  <data name="&gt;&gt;hostSessionButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;JoinButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;hostSessionButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;hostSessionButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="joinSessionButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="joinSessionButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="joinSessionButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 10</value>
+  </data>
+  <data name="joinSessionButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="joinSessionButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 50</value>
+  </data>
+  <data name="joinSessionButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="joinSessionButton.Text" xml:space="preserve">
+    <value>Join Session</value>
+  </data>
+  <data name="&gt;&gt;joinSessionButton.Name" xml:space="preserve">
+    <value>joinSessionButton</value>
+  </data>
+  <data name="&gt;&gt;joinSessionButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;joinSessionButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;joinSessionButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 426</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;JoinButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="joinSessionButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="exitButton" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="settingsButton" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="manageCharactersButton" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="hostSessionButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="manageCampaignsButton" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -335,7 +401,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>RPGWonder</value>
+    <value>Main Menu</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainMenu</value>

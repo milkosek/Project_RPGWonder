@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RollDie));
             this.difficultyComboBox = new System.Windows.Forms.ComboBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.bonusTextBox = new System.Windows.Forms.TextBox();
@@ -105,8 +106,9 @@
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.bonusTextBox);
             this.Controls.Add(this.rollButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RollDie";
-            this.Text = "RollDie";
+            this.Text = "Roll Die";
             this.Load += new System.EventHandler(this.RollDie_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -80,6 +80,7 @@ namespace RPGWonder
 
         private void ManageCampaigns_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Reload();
         }
 

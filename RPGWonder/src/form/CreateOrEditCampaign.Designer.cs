@@ -29,9 +29,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateOrEditCampaign));
             this.SaveButton = new System.Windows.Forms.Button();
             this.CampaignNameTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.listBox = new System.Windows.Forms.ListBox();
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -42,7 +42,7 @@
             // SaveButton
             // 
             this.SaveButton.BackColor = System.Drawing.SystemColors.Control;
-            this.SaveButton.Location = new System.Drawing.Point(12, 394);
+            this.SaveButton.Location = new System.Drawing.Point(12, 298);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(772, 44);
             this.SaveButton.TabIndex = 1;
@@ -54,35 +54,26 @@
             // CampaignNameTextBox
             // 
             this.CampaignNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
-            this.CampaignNameTextBox.Location = new System.Drawing.Point(255, 18);
+            this.CampaignNameTextBox.Location = new System.Drawing.Point(12, 12);
             this.CampaignNameTextBox.Name = "CampaignNameTextBox";
             this.CampaignNameTextBox.Size = new System.Drawing.Size(295, 38);
             this.CampaignNameTextBox.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(140, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Campaign name:";
             // 
             // listBox
             // 
             this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 29;
-            this.listBox.Location = new System.Drawing.Point(12, 92);
+            this.listBox.Location = new System.Drawing.Point(12, 56);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(691, 265);
+            this.listBox.Size = new System.Drawing.Size(691, 236);
             this.listBox.TabIndex = 4;
             this.listBox.Visible = false;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(709, 147);
+            this.addButton.Location = new System.Drawing.Point(709, 56);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 75);
             this.addButton.TabIndex = 5;
@@ -94,7 +85,7 @@
             // deleteButton
             // 
             this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(709, 309);
+            this.deleteButton.Location = new System.Drawing.Point(709, 218);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 75);
             this.deleteButton.TabIndex = 6;
@@ -107,9 +98,9 @@
             // 
             this.createButton.BackColor = System.Drawing.SystemColors.Control;
             this.createButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.createButton.Location = new System.Drawing.Point(255, 174);
+            this.createButton.Location = new System.Drawing.Point(313, 12);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(290, 102);
+            this.createButton.Size = new System.Drawing.Size(95, 38);
             this.createButton.TabIndex = 7;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
@@ -118,7 +109,7 @@
             // editButton
             // 
             this.editButton.Enabled = false;
-            this.editButton.Location = new System.Drawing.Point(709, 228);
+            this.editButton.Location = new System.Drawing.Point(709, 137);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 75);
             this.editButton.TabIndex = 8;
@@ -131,17 +122,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(789, 351);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.listBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.CampaignNameTextBox);
             this.Controls.Add(this.SaveButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateOrEditCampaign";
-            this.Text = "CreateOrEditCampaign";
+            this.Text = "Campaign";
             this.Load += new System.EventHandler(this.CreateOrEditCampaign_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,7 +142,6 @@
         #endregion
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox CampaignNameTextBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
