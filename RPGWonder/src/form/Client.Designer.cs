@@ -45,8 +45,8 @@
             // 
             // mapTableLayout
             // 
-            resources.ApplyResources(this.mapTableLayout, "mapTableLayout");
             this.mapTableLayout.BackgroundImage = global::RPGWonder.Properties.Resources.map_placeholder;
+            resources.ApplyResources(this.mapTableLayout, "mapTableLayout");
             this.mapTableLayout.Name = "mapTableLayout";
             // 
             // controlsLayoutPanel
@@ -81,15 +81,15 @@
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.listView1);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
-            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.HideSelection = false;
+            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 

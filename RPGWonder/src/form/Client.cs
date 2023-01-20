@@ -18,7 +18,7 @@ namespace RPGWonder
         public static Client Instance;
         private IPAddress _ipAddress;
 
-        private string _campaignPath = "";
+        private string _clientCampaignsPath = Common.Instance.ClientCampaignsPath;
         private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
@@ -35,13 +35,16 @@ namespace RPGWonder
         public Client(string character, string ipAddr = "127.0.0.1")
         {
             InitializeComponent();
-            Instance = this;
             SetMotif();
+            Instance = this;
+
             _character = character;
+
             _hostIpAddress = ipAddr;
 
+            _campaign = new Campaign();
             mapLoader = new MapHandler(this);
-            map = new Map() { };
+            map = new Map();
         }
 
         private void Client_Load(object sender, System.EventArgs e)
@@ -50,19 +53,6 @@ namespace RPGWonder
             this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
-
-            if (_campaign == null)
-            {
-                LoadMap(-1);
-            }
-            else
-            {
-                LoadMap(_campaign.CurrentMap);
-            }
-
-            coords.Text = map.Name;
-
-            UpdateMap();
 
             //MainMenu._instance.Hide();
             Log.Instance.gameLog.Debug("Attempting to establish connection...");
@@ -94,6 +84,12 @@ namespace RPGWonder
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+
+            //LoadMap(_campaign.CurrentMap);
+
+            //coords.Text = map.Name;
+
+            //UpdateMap();
         }
 
         /// <summary>
@@ -112,6 +108,18 @@ namespace RPGWonder
             //}
         }
 
+        public void LoadCampaign(string campaign_tag)
+        {
+            Debug.WriteLine("LOADING CLIENT CAMPAIGN!");
+            _campaign.ReadFromJSON(_clientCampaignsPath + "\\" + campaign_tag);
+        }
+
+        public void LoadLoadMap(int mapId)
+        {
+            Debug.WriteLine("LOADING CLIENT MAP!");
+            LoadMap(mapId);
+        }
+
         private void DiceRollMenu_Click(object sender, EventArgs e)
         {
             DiceDisplay.Instance.Show();
@@ -121,25 +129,18 @@ namespace RPGWonder
 
         public void LoadMap(int mapId)
         {
+            _campaign.CurrentMap = mapId;
+
             selectedTile.x = 0;
             selectedTile.y = 0;
 
             EntityList.Clear();
 
-            if (mapId != -1)
-            {
-                _campaign.CurrentMap = mapId;
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
 
-                map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
-
-                if (map.EntityList != null)
-                {
-                    EntityList = map.EntityList;
-                }
-            }
-            else
+            if (map.EntityList != null)
             {
-                map = new Map() { Id = -1, Columns = 8, Rows = 6, Name = "noMapYet"};
+                EntityList = map.EntityList;
             }
 
             DisplayMap(map);
@@ -252,11 +253,10 @@ namespace RPGWonder
 
         public string GetMapById(int id)
         {
-            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
-
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+            string path = _clientCampaignsPath + "\\maps";
 
             string[] filePaths = Directory.GetFiles(path, "*.json");
+
             foreach (string filePath in filePaths)
             {
                 JObject map = JObject.Parse(File.ReadAllText(filePath));

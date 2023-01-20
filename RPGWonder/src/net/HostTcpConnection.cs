@@ -65,8 +65,9 @@ namespace RPGWonder
         private static void Listen(NetworkStream stream, string campaign)
         {
             byte[] bytes = new byte[16000];
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
+            string path = Common.Instance.CampaignsPath;
             int i;
+
             try
             {
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
@@ -178,16 +179,20 @@ namespace RPGWonder
 
         public static void BroadcastCampaign(string campaign, string campaign_json)
         {
-            Broadcast("Map|" + campaign + "|" + campaign_json);
+            Debug.WriteLine("Broadcasting campaign");
+            Broadcast("Campaign|" + campaign + "|" + campaign_json);
         }
-        public void BroadcastMap(string map, string map_json)
+
+        public static void BroadcastMap(string map, string map_json)
         {
+            Debug.WriteLine("Broadcasting map");
             Broadcast("Map|" + map + "|" + map_json);
         }
 
-        public void BroadcastCharacter(string character, string character_json)
+        public static void BroadcastCharacter(string character, string character_json)
         {
-            Broadcast("Map|" + character + "|" + character_json);
+            Debug.WriteLine("Broadcasting character");
+            Broadcast("Character|" + character + "|" + character_json);
         }
     }
 }

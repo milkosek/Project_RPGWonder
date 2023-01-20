@@ -1,10 +1,12 @@
-﻿using RPGWonder.src.net;
+﻿using Discord;
+using RPGWonder.src.net;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RPGWonder
 {
@@ -12,6 +14,9 @@ namespace RPGWonder
 	{
 		private static string recievedString; 
 		private static NetworkStream stream;
+
+		private Campaign _campaign;
+
 		public void Connect(string serverAddr)
 		{
 			try
@@ -39,8 +44,9 @@ namespace RPGWonder
 		private static void Listen()
 		{
 			byte[] bytes = new byte[16000];
-			string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
+			string path = Common.Instance.ClientCampaignsPath;
 			int i;
+
 			try
 			{
 				while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
@@ -55,31 +61,41 @@ namespace RPGWonder
 					}
 					else if (recievedString.StartsWith("Campaign|"))
 					{
+						if (!Directory.Exists(path))
+						{
+                            Directory.CreateDirectory(path);
+                        }
+
                         string campaign_tag = recievedString.Split('|')[1];
                         string campaign_json = recievedString.Split('|')[2];
 
-                        //string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));
-                        //string campaign_name = campaign.Substring(campaign.LastIndexOf('\\')).Replace("\\", "").Replace(".json", "");
-                        //string parentDirectory = Path.GetDirectoryName(path + campaign);
+                        File.WriteAllText(path + "\\" + campaign_tag, campaign_json);
 
-                        Client.Instance.Reload();
+                        Client.Instance.LoadCampaign(campaign_tag);
                     }
-					else if (recievedString.StartsWith("Map|"))
+                    else if (recievedString.StartsWith("Map|"))
 					{
-						//string map_tag = recievedString.Split('|')[1];
-						//string map_json = recievedString.Split('|')[2];
-						//string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));
-						//string campaign_name = campaign.Substring(campaign.LastIndexOf('\\')).Replace("\\", "").Replace(".json", "");
-						//string parentDirectory = Path.GetDirectoryName(path + campaign);
+                        if (!Directory.Exists(path + "\\maps"))
+                        {
+                            Directory.CreateDirectory(path + "\\maps");
+                        }
 
-						//File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + map_tag, map_json);
+						string map_tag = recievedString.Split('|')[1];
+						string map_json = recievedString.Split('|')[2];
 
-						//Map map = new Map();
-						//map.ReadFromJSON(path + "\\" + campaign_name + "\\characters\\" + map_tag);
+                        File.WriteAllText(path + "\\maps\\" + map_tag, map_json);
 
-						//Client.Instance.Reload();
-					}
-					else if (recievedString.Contains("WrongSystem:"))
+                        Map map = new Map();
+						map.ReadFromJSON(path + "\\maps\\" + map_tag);
+
+                        Debug.WriteLine("	CLIENT read map");
+
+                        Client.Instance.LoadLoadMap((int)map.Id);
+
+                        Debug.WriteLine("	CLIENT loaded map");
+
+                    }
+                    else if (recievedString.Contains("WrongSystem:"))
 					{
 						string system = recievedString.Split('|')[1];
 						string message = "Game system mismatch.\nMake sure your game system is set to " + system;
@@ -129,18 +145,20 @@ namespace RPGWonder
 				stream.Close();
 			}
 		}
+
 		public void ValidateSystem()
 		{
 			Send("Connect");
 		}
+
 		public void SendMap(string map, string map_json)
 		{
-			Send("Character|" + map + "|" + map_json);
+			Send("Map|" + map + "|" + map_json);
 		}
 
 		public void SendCharacter(string character, string character_json)
 		{
-			Send("Character|" + character + "|" + character_json);
-		}
-	}
+            Send("Character|" + character + "|" + character_json);
+        }
+    }
 }

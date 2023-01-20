@@ -86,7 +86,7 @@ namespace RPGWonder
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
 
                 //broadcast map
-                HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
+
 
                 //receive all character
 
@@ -119,13 +119,17 @@ namespace RPGWonder
         {
             Debug.WriteLine("RELOADING HOST!");
 
+            charlabel.Text = "Characters:\n";
+
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
-                charlabel.Text = charlabel.Text + "\n" + character.Name;
-                
-                Debug.WriteLine("HOST RELOADED:", character.Name);
+                charlabel.Text = charlabel.Text + character.Name + "\n";
             }
+
+            HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
+            
+            HostTcpConnection.BroadcastMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)
@@ -260,9 +264,7 @@ namespace RPGWonder
 
         public string GetMapById(int id)
         {
-            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
-
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+            string path = Common.Instance.CampaignsPath + "\\" + _campaign.Name + "\\maps";
 
             string[] filePaths = Directory.GetFiles(path, "*.json");
             foreach (string filePath in filePaths)

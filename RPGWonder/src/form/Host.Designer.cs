@@ -250,7 +250,7 @@
             this.Controls.Add(this.mapTableLayout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Host";
-            this.Text = "Form1";
+            this.Text = "Game";
             this.Load += new System.EventHandler(this.Host_Load);
             this.controlsLayoutPanel.ResumeLayout(false);
             this.charactersTabs.ResumeLayout(false);
