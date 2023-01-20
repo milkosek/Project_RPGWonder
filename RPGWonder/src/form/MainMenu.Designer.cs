@@ -32,80 +32,90 @@ namespace RPGWonder
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
-            this.ExitButton = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
-            this.ManageCharsButton = new System.Windows.Forms.Button();
-            this.ManageCampaignsButton = new System.Windows.Forms.Button();
-            this.HostButton = new System.Windows.Forms.Button();
-            this.JoinButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.manageCharactersButton = new System.Windows.Forms.Button();
+            this.manageCampaignsButton = new System.Windows.Forms.Button();
+            this.hostSessionButton = new System.Windows.Forms.Button();
+            this.joinSessionButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ExitButton
+            // exitButton
             // 
-            resources.ApplyResources(this.ExitButton, "ExitButton");
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.UseVisualStyleBackColor = true;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            resources.ApplyResources(this.exitButton, "exitButton");
+            this.exitButton.Name = "exitButton";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // SettingsButton
+            // settingsButton
             // 
-            resources.ApplyResources(this.SettingsButton, "SettingsButton");
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.UseVisualStyleBackColor = true;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            resources.ApplyResources(this.settingsButton, "settingsButton");
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
-            // ManageCharsButton
+            // manageCharactersButton
             // 
-            resources.ApplyResources(this.ManageCharsButton, "ManageCharsButton");
-            this.ManageCharsButton.Name = "ManageCharsButton";
-            this.ManageCharsButton.UseVisualStyleBackColor = true;
-            this.ManageCharsButton.Click += new System.EventHandler(this.CrtCharButton_Click);
+            resources.ApplyResources(this.manageCharactersButton, "manageCharactersButton");
+            this.manageCharactersButton.Name = "manageCharactersButton";
+            this.manageCharactersButton.UseVisualStyleBackColor = true;
+            this.manageCharactersButton.Click += new System.EventHandler(this.CrtCharButton_Click);
             // 
-            // ManageCampaignsButton
+            // manageCampaignsButton
             // 
-            resources.ApplyResources(this.ManageCampaignsButton, "ManageCampaignsButton");
-            this.ManageCampaignsButton.Name = "ManageCampaignsButton";
-            this.ManageCampaignsButton.UseVisualStyleBackColor = true;
-            this.ManageCampaignsButton.Click += new System.EventHandler(this.CrtCampaignButton_Click);
+            resources.ApplyResources(this.manageCampaignsButton, "manageCampaignsButton");
+            this.manageCampaignsButton.Name = "manageCampaignsButton";
+            this.manageCampaignsButton.UseVisualStyleBackColor = true;
+            this.manageCampaignsButton.Click += new System.EventHandler(this.CrtCampaignButton_Click);
             // 
-            // HostButton
+            // hostSessionButton
             // 
-            resources.ApplyResources(this.HostButton, "HostButton");
-            this.HostButton.Name = "HostButton";
-            this.HostButton.UseVisualStyleBackColor = true;
-            this.HostButton.Click += new System.EventHandler(this.HostButton_Click);
+            resources.ApplyResources(this.hostSessionButton, "hostSessionButton");
+            this.hostSessionButton.Name = "hostSessionButton";
+            this.hostSessionButton.UseVisualStyleBackColor = true;
+            this.hostSessionButton.Click += new System.EventHandler(this.HostButton_Click);
             // 
-            // JoinButton
+            // joinSessionButton
             // 
-            resources.ApplyResources(this.JoinButton, "JoinButton");
-            this.JoinButton.Name = "JoinButton";
-            this.JoinButton.UseVisualStyleBackColor = true;
-            this.JoinButton.Click += new System.EventHandler(this.JoinButton_Click);
+            resources.ApplyResources(this.joinSessionButton, "joinSessionButton");
+            this.joinSessionButton.Name = "joinSessionButton";
+            this.joinSessionButton.UseVisualStyleBackColor = true;
+            this.joinSessionButton.Click += new System.EventHandler(this.JoinButton_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.joinSessionButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.exitButton, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.settingsButton, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.manageCharactersButton, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.hostSessionButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.manageCampaignsButton, 0, 2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // MainMenu
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.JoinButton);
-            this.Controls.Add(this.HostButton);
-            this.Controls.Add(this.ManageCampaignsButton);
-            this.Controls.Add(this.ManageCharsButton);
-            this.Controls.Add(this.SettingsButton);
-            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainMenu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.Button SettingsButton;
-        private System.Windows.Forms.Button ManageCharsButton;
-        private System.Windows.Forms.Button ManageCampaignsButton;
-        private System.Windows.Forms.Button HostButton;
-        private System.Windows.Forms.Button JoinButton;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button manageCharactersButton;
+        private System.Windows.Forms.Button manageCampaignsButton;
+        private System.Windows.Forms.Button hostSessionButton;
+        private System.Windows.Forms.Button joinSessionButton;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
 

@@ -66,7 +66,7 @@ namespace RPGWonder
                 _TAG = _TAG.Remove(_TAG.Length - 5);
         }
 
-        private void saveButton_Click(object sender, System.EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             if (codexEntryTitleTextBox.Text == "")
             {
@@ -108,6 +108,11 @@ namespace RPGWonder
             {
                 Log.Instance.errorLog.Error("Failed to save codex entry: " + _TAG + " Error: " + exception.Message);
             }
+        }
+
+        private void CreateOrEditCodexEntry_Load(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace RPGWonder
 
         private void RollDie_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             titleLabel.Text = "Rolling for " + Common.Instance.Abilities[_ability]["name"];
             bonusTextBox.Text = _bonus.ToString();
             foreach (KeyValuePair<string, JToken> difficulty in Common.Instance.TaskDifficulties)

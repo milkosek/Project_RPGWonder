@@ -16,5 +16,16 @@
   "difficulty-die-always-failure": [
 
   ],
-  "difficulty-die-always-failure-apply-post-throw": "false"
+  "difficulty-die-always-failure-apply-post-throw": "false",
+  "abilities-affecting-hp": [
+    {
+      "ability": "CON",
+      "bonus-type": "per level save",
+      "bonus-multiplication": 1
+    }
+  ],
+  "roll-for-hp": "true",
+  "using-races-for-base-hp": "false",
+  "using-classes-for-base-hp": "true",
+  "using-base-hp": "true"
 }

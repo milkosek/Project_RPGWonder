@@ -29,8 +29,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateOrEditCodexEntry));
             this.codexEntryTextTextBox = new System.Windows.Forms.TextBox();
-            this.codexEntryTextLabel = new System.Windows.Forms.Label();
             this.codexEntryTitleLabel = new System.Windows.Forms.Label();
             this.codexEntryTitleTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
@@ -39,22 +39,11 @@
             // codexEntryTextTextBox
             // 
             this.codexEntryTextTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.codexEntryTextTextBox.Location = new System.Drawing.Point(15, 93);
+            this.codexEntryTextTextBox.Location = new System.Drawing.Point(15, 50);
             this.codexEntryTextTextBox.Multiline = true;
             this.codexEntryTextTextBox.Name = "codexEntryTextTextBox";
-            this.codexEntryTextTextBox.Size = new System.Drawing.Size(771, 289);
+            this.codexEntryTextTextBox.Size = new System.Drawing.Size(771, 301);
             this.codexEntryTextTextBox.TabIndex = 7;
-            // 
-            // codexEntryTextLabel
-            // 
-            this.codexEntryTextLabel.AutoSize = true;
-            this.codexEntryTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
-            this.codexEntryTextLabel.Location = new System.Drawing.Point(12, 50);
-            this.codexEntryTextLabel.Name = "codexEntryTextLabel";
-            this.codexEntryTextLabel.Size = new System.Drawing.Size(69, 32);
-            this.codexEntryTextLabel.TabIndex = 6;
-            this.codexEntryTextLabel.Text = "Text";
-            this.codexEntryTextLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // codexEntryTitleLabel
             // 
@@ -77,7 +66,7 @@
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.SystemColors.Control;
-            this.saveButton.Location = new System.Drawing.Point(14, 388);
+            this.saveButton.Location = new System.Drawing.Point(14, 357);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(772, 44);
             this.saveButton.TabIndex = 8;
@@ -89,14 +78,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 407);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.codexEntryTextTextBox);
-            this.Controls.Add(this.codexEntryTextLabel);
             this.Controls.Add(this.codexEntryTitleLabel);
             this.Controls.Add(this.codexEntryTitleTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateOrEditCodexEntry";
-            this.Text = "CreateOrEditCodexEntry";
+            this.Text = "Codex Entry";
+            this.Load += new System.EventHandler(this.CreateOrEditCodexEntry_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,7 +95,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox codexEntryTextTextBox;
-        private System.Windows.Forms.Label codexEntryTextLabel;
         private System.Windows.Forms.Label codexEntryTitleLabel;
         private System.Windows.Forms.TextBox codexEntryTitleTextBox;
         private System.Windows.Forms.Button saveButton;

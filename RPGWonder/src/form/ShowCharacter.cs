@@ -1,13 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -38,14 +32,21 @@ namespace RPGWonder
             raceTextBox.Text = (string)Common.Instance.Races[_character.Race]["name"];
             classTextBox.Text = (string)Common.Instance.Classes[_character.CharacterClass]["name"];
             backgroundTextBox.Text = (string)Common.Instance.Backgrounds[_character.Background];
-            personalityTextBox.Text = _character.PersonalityTraits;
-            bondTextBox.Text = _character.Bonds;
             genderTextBox.Text = (string)Common.Instance.Genders[_character.Gender];
             levelTextBox.Text = _character.Level.ToString();
             alignmentTextBox.Text = (string)Common.Instance.Alignments[_character.Alignment];
-            idealTextBox.Text = _character.Ideals;
-            flawTextBox.Text = _character.Flaws;
+            HPtextBox.Text = _character.CurrentHitPoints.ToString();
+            proficiencyBonusTextBox.Text = _character.ProficiencyBonus.ToString();
+            armorClassTextBox.Text = _character.ArmorClass.ToString();
+            initiativeModifierTextBox.Text = _character.InitiativeModifier.ToString();
+            speedTextBox.Text = _character.Speed.ToString();
+            sizeTextBox.Text = (string)Common.Instance.Sizes[_character.Size];
+            hitDiceTextBox.Text = "d" + _character.HitDice.ToString();
+            passivePerceptionTextBox.Text = _character.PassiveWisdomPerception.ToString();
             abilitiesTableLayoutPanel.RowCount = Common.Instance.Abilities.Count;
+            descriptionTextBox.Text = _character.Description;
+            equipmentTextBox.Text = _character.Equipment;
+            specialsTextBox.Text = _character.Specials;
             int i = 0;
             foreach (KeyValuePair<string, JToken> TAG in Common.Instance.Abilities)
             {
