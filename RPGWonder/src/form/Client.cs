@@ -46,21 +46,6 @@ namespace RPGWonder
 
         private void Client_Load(object sender, System.EventArgs e)
         {
-            //MainMenu._instance.Hide();
-            Log.Instance.gameLog.Debug("Attempting to establish connection...");
-            try
-            {
-                _connection = new ClientTcpConnection();
-                _connection.Connect(_hostIpAddress);
-                _connection.ValidateSystem();
-                _connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
-                Log.Instance.gameLog.Debug("Estabilish connection success.");
-            }
-            catch (Exception exception)
-            {
-                Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
-            }
-
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
@@ -78,6 +63,53 @@ namespace RPGWonder
             coords.Text = map.Name;
 
             UpdateMap();
+
+            //MainMenu._instance.Hide();
+            Log.Instance.gameLog.Debug("Attempting to establish connection...");
+            try
+            {
+                _connection = new ClientTcpConnection();
+                _connection.Connect(_hostIpAddress);
+                _connection.ValidateSystem();
+                Log.Instance.gameLog.Debug("Estabilish connection success.");
+
+                //receive map
+
+
+                //send character
+
+
+                //gm places characters
+
+
+                //receive other characters
+
+
+                //receive new map
+
+
+                _connection.SendCharacter(Path.GetFileName(_character), File.ReadAllText(_character));
+            }
+            catch (Exception exception)
+            {
+                Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method for reloading the game state.
+        /// </summary>
+        public void Reload()
+        {
+            Debug.WriteLine("RELOADING CLIENT!");
+
+            //foreach (ClientData client in _connection.Clients)
+            //{
+            //    Character character = client.Character;
+            //    charlabel.Text = charlabel.Text + "\n" + character.Name;
+
+            //    Debug.WriteLine("RELOADED:", character.Name);
+            //}
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)

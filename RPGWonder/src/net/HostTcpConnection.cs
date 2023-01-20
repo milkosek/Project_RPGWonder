@@ -39,7 +39,8 @@ namespace RPGWonder
                     TcpClient client = server.AcceptTcpClient();
 
                     NetworkStream stream = client.GetStream();
-                    IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;//intercept client's ip address
+                    //intercept client's ip address
+                    IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;
                     Debug.WriteLine("Connected to: "+ ipClient.ToString());
 
                     Thread listenTcpThread = new Thread(new ThreadStart(() => Listen(stream, campaign)));
@@ -49,11 +50,11 @@ namespace RPGWonder
             }
             catch (SocketException e)
             {
-                Debug.WriteLine("SocketException: {0}", e);
+                //Debug.WriteLine("SocketException: {0}", e);
             }
             catch (IOException e)
             {
-                Debug.WriteLine("Exception: {0}", e);
+                //Debug.WriteLine("Exception: {0}", e);
             }
             finally
             {
@@ -71,7 +72,7 @@ namespace RPGWonder
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     recievedString = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                    Debug.WriteLine("Received: {0}", recievedString);
+                    //Debug.WriteLine("Received: {0}", recievedString);
                     if (recievedString == "Connect")
                     {
                         SendToClient("GetSystem", stream);
@@ -86,19 +87,22 @@ namespace RPGWonder
                     }
                     else if (recievedString.Contains("Character|"))
                     {
-                        SendToClient("DiscordLink|" + DiscordChannelConnection.GetInviteLink(), stream);
-
+                        //SendToClient("DiscordLink|" + DiscordChannelConnection.GetInviteLink(), stream);
 
                         string character_tag = recievedString.Split('|')[1];
                         string character_json = recievedString.Split('|')[2];
                         string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));
                         string campaign_name = campaign.Substring(campaign.LastIndexOf('\\')).Replace("\\", "").Replace(".json", "");
                         string parentDirectory = Path.GetDirectoryName(path + campaign);
+
                         File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + character_tag, character_json);
+                        
                         Character character = new Character();
                         character.ReadFromJSON(path + "\\" + campaign_name + "\\characters\\" + character_tag);
+                        
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
+
                         Host.Instace.Reload();
                     }
                     Broadcast(recievedString);
@@ -106,11 +110,11 @@ namespace RPGWonder
             }
             catch (SocketException e)
             {
-                Debug.WriteLine("SocketException: {0}", e);
+                //Debug.WriteLine("SocketException: {0}", e);
             }
             catch (IOException e)
             {
-                Debug.WriteLine("Exception: {0}", e);
+                //Debug.WriteLine("Exception: {0}", e);
             }
             finally
             {
@@ -138,16 +142,16 @@ namespace RPGWonder
                 try
                 {
                     stream.Write(msg, 0, msg.Length);
-                    Debug.WriteLine("Sent: {0} to: {1}", data, stream);
+                    //Debug.WriteLine("Sent: {0} to: {1}", data, stream);
                 }
                 catch (SocketException e)
                 {
-                    Debug.WriteLine("SocketException: {0}", e);
+                    //Debug.WriteLine("SocketException: {0}", e);
                     stream.Close();
                 }
                 catch (IOException e)
                 {
-                    Debug.WriteLine("Exception: {0}", e);
+                    //Debug.WriteLine("Exception: {0}", e);
                     stream.Close();
                 }
             }
@@ -158,18 +162,32 @@ namespace RPGWonder
             try
             {
                 stream.Write(msg, 0, msg.Length);
-                Debug.WriteLine("Sent: {0} to: {1}", data, stream);
+                //Debug.WriteLine("Sent: {0} to: {1}", data, stream);
             }
             catch (SocketException e)
             {
-                Debug.WriteLine("SocketException: {0}", e);
+                //Debug.WriteLine("SocketException: {0}", e);
                 stream.Close();
             }
             catch (IOException e)
             {
-                Debug.WriteLine("Exception: {0}", e);
+                //Debug.WriteLine("Exception: {0}", e);
                 stream.Close();
             }
+        }
+
+        public static void BroadcastCampaign(string campaign, string campaign_json)
+        {
+            Broadcast("Map|" + campaign + "|" + campaign_json);
+        }
+        public void BroadcastMap(string map, string map_json)
+        {
+            Broadcast("Map|" + map + "|" + map_json);
+        }
+
+        public void BroadcastCharacter(string character, string character_json)
+        {
+            Broadcast("Map|" + character + "|" + character_json);
         }
     }
 }

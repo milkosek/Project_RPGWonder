@@ -223,7 +223,7 @@
             this.charlabel.Name = "charlabel";
             this.charlabel.Size = new System.Drawing.Size(122, 100);
             this.charlabel.TabIndex = 13;
-            this.charlabel.Text = "charlabel";
+            this.charlabel.Text = "Characters";
             // 
             // mapTableLayout
             // 
@@ -251,7 +251,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Host";
             this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Host_FormClosed);
             this.Load += new System.EventHandler(this.Host_Load);
             this.controlsLayoutPanel.ResumeLayout(false);
             this.charactersTabs.ResumeLayout(false);

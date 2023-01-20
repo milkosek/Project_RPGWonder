@@ -84,16 +84,31 @@ namespace RPGWonder
                 _connection = new HostTcpConnection();
                 _connection.CreateSession(_campaignPath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
+
+                //broadcast map
+                HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
+
+                //receive all character
+
+
+                //place characters
+
+
+                //broadcast characters
+
+
+                //SYNC
             }
             catch (Exception exception)
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            Thread discordThread = new Thread(new ThreadStart(
-                () => DiscordChannelConnection.
-                CreateGuildThenChannelThenInviteAndOpen()));
-            discordThread.Start();
+            //Thread discordThread = new Thread(new ThreadStart(
+            //    () => DiscordChannelConnection.
+            //    CreateGuildThenChannelThenInviteAndOpen()));
+            //discordThread.Start();
         }
 
 
@@ -102,16 +117,15 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
+            Debug.WriteLine("RELOADING HOST!");
+
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
-                charlabel.Text = charlabel.Text + character.Name;
+                charlabel.Text = charlabel.Text + "\n" + character.Name;
+                
+                Debug.WriteLine("HOST RELOADED:", character.Name);
             }
-        }
-
-        private void Host_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(0);
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)
@@ -119,7 +133,6 @@ namespace RPGWonder
             DiceDisplay.Instance.Show();
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
-
 
         public void LoadMap(int mapId)
         {
