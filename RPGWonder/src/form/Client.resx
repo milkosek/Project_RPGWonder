@@ -162,6 +162,36 @@
   <data name="controlsLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="turnLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="turnLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 1</value>
+  </data>
+  <data name="turnLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 100</value>
+  </data>
+  <data name="turnLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="turnLabel.Text" xml:space="preserve">
+    <value>Wait for your turn!</value>
+  </data>
+  <data name="turnLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;turnLabel.Name" xml:space="preserve">
+    <value>turnLabel</value>
+  </data>
+  <data name="&gt;&gt;turnLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;turnLabel.Parent" xml:space="preserve">
+    <value>controlsLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;turnLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="DiceRollMenu.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -190,7 +220,7 @@
     <value>controlsLayoutPanel</value>
   </data>
   <data name="&gt;&gt;DiceRollMenu.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="coords.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -213,6 +243,9 @@
   <data name="coords.Text" xml:space="preserve">
     <value>coords</value>
   </data>
+  <data name="coords.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
   <data name="&gt;&gt;coords.Name" xml:space="preserve">
     <value>coords</value>
   </data>
@@ -223,7 +256,7 @@
     <value>controlsLayoutPanel</value>
   </data>
   <data name="&gt;&gt;coords.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="charactersTabs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -271,7 +304,7 @@
     <value>controlsLayoutPanel</value>
   </data>
   <data name="&gt;&gt;charactersTabs.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="charlabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -288,6 +321,9 @@
   <data name="charlabel.Text" xml:space="preserve">
     <value>Characters</value>
   </data>
+  <data name="charlabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
   <data name="&gt;&gt;charlabel.Name" xml:space="preserve">
     <value>charlabel</value>
   </data>
@@ -298,7 +334,7 @@
     <value>controlsLayoutPanel</value>
   </data>
   <data name="&gt;&gt;charlabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="controlsLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>1500, 30</value>
@@ -325,7 +361,7 @@
     <value>0</value>
   </data>
   <data name="controlsLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="DiceRollMenu" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="coords" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="charactersTabs" Row="1" RowSpan="3" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="charlabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;Rows Styles="Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="turnLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="DiceRollMenu" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="coords" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="charactersTabs" Row="1" RowSpan="3" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="charlabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;Rows Styles="Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10,Percent,10" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="&gt;&gt;listView1.Name" xml:space="preserve">
     <value>listView1</value>
@@ -421,7 +457,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1920, 1080</value>
+    <value>1920, 1061</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

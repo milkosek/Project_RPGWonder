@@ -79,7 +79,6 @@ namespace RPGWonder.src.map
                     button.TextAlign = System.Drawing.ContentAlignment.BottomRight;
                     button.BackgroundImageLayout = ImageLayout.Stretch;
 
-                    //https://stackoverflow.com/questions/14750872/c-sharp-controls-created-on-one-thread-cannot-be-parented-to-a-control-on-a-diff
                     layout.Controls.Add(button, j, i);
 
                     rowOfButtons.Add(button);

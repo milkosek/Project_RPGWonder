@@ -19,8 +19,8 @@
     "Chest1": {
       "EntityID": 0,
       "MapID": 0,
-      "X": 2,
-      "Y": 2,
+      "X": 3,
+      "Y": 3,
       "Name": "Chest1",
       "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
       "Id": 0,

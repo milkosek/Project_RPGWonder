@@ -31,6 +31,12 @@ namespace RPGWonder
         private readonly string _character;
         private static string _hostIpAddress;
 
+        public delegate void ReloadClient(int mapId);
+        public ReloadClient reloadDelegate;
+
+        private bool yourTurn = false;
+
+        public bool YourTurn { get => yourTurn; set => yourTurn = value; }
 
         public Client(string character, string ipAddr = "127.0.0.1")
         {
@@ -45,12 +51,14 @@ namespace RPGWonder
             _campaign = new Campaign();
             mapLoader = new MapHandler(this);
             map = new Map();
+
+            reloadDelegate = new ReloadClient(LoadMap);
         }
 
         private void Client_Load(object sender, System.EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            //this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 
@@ -60,7 +68,7 @@ namespace RPGWonder
             {
                 _connection = new ClientTcpConnection();
                 _connection.Connect(_hostIpAddress);
-                _connection.ValidateSystem();
+                ClientTcpConnection.ValidateSystem();
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
 
                 //receive map
@@ -78,18 +86,12 @@ namespace RPGWonder
                 //receive new map
 
 
-                _connection.SendCharacter(Path.GetFileName(_character), File.ReadAllText(_character));
+                ClientTcpConnection.SendCharacter(Path.GetFileName(_character), File.ReadAllText(_character));
             }
             catch (Exception exception)
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
-
-            //LoadMap(_campaign.CurrentMap);
-
-            //coords.Text = map.Name;
-
-            //UpdateMap();
         }
 
         /// <summary>
@@ -97,7 +99,7 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
-            Debug.WriteLine("RELOADING CLIENT!");
+            turnLabel.Text = "Your turn!";
 
             //foreach (ClientData client in _connection.Clients)
             //{
@@ -108,16 +110,15 @@ namespace RPGWonder
             //}
         }
 
-        public void LoadCampaign(string campaign_tag)
+        private void ClientSendMap()
         {
-            Debug.WriteLine("LOADING CLIENT CAMPAIGN!");
-            _campaign.ReadFromJSON(_clientCampaignsPath + "\\" + campaign_tag);
+            ClientTcpConnection.SendMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
         }
 
-        public void LoadLoadMap(int mapId)
+        public void LoadCampaign(string campaign_tag)
         {
-            Debug.WriteLine("LOADING CLIENT MAP!");
-            LoadMap(mapId);
+            //Debug.WriteLine("LOADING CLIENT CAMPAIGN!");
+            _campaign.ReadFromJSON(_clientCampaignsPath + "\\" + campaign_tag);
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)
@@ -173,14 +174,25 @@ namespace RPGWonder
                 case 0:
                     selectedTile.x = pressedButtonX;
                     selectedTile.y = pressedButtonY;
+
+                    UpdateMap();
+
                     break;
 
                 case 1:
-                    MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+                    if (YourTurn)
+                    {
+                        MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+
+                        UpdateMap();
+
+                        ClientSendMap();
+                        yourTurn = false;
+                    }
                     break;
             }
 
-            UpdateMap();
+            //UpdateMap();
         }
 
         // x1, y1 - from
@@ -247,8 +259,8 @@ namespace RPGWonder
 
             DisplaySelectedInfo();
 
-            //map.EntityList = EntityList;
-            //map.SaveToJSON(GetMapById(_campaign.CurrentMap));
+            map.EntityList = EntityList;
+            map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
         public string GetMapById(int id)

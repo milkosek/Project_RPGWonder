@@ -38,6 +38,7 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.charlabel = new System.Windows.Forms.Label();
+            this.turnLabel = new System.Windows.Forms.Label();
             this.controlsLayoutPanel.SuspendLayout();
             this.charactersTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -52,6 +53,7 @@
             // controlsLayoutPanel
             // 
             resources.ApplyResources(this.controlsLayoutPanel, "controlsLayoutPanel");
+            this.controlsLayoutPanel.Controls.Add(this.turnLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.DiceRollMenu, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
             this.controlsLayoutPanel.Controls.Add(this.charactersTabs, 0, 1);
@@ -104,6 +106,11 @@
             resources.ApplyResources(this.charlabel, "charlabel");
             this.charlabel.Name = "charlabel";
             // 
+            // turnLabel
+            // 
+            resources.ApplyResources(this.turnLabel, "turnLabel");
+            this.turnLabel.Name = "turnLabel";
+            // 
             // Client
             // 
             resources.ApplyResources(this, "$this");
@@ -131,5 +138,6 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label charlabel;
+        private System.Windows.Forms.Label turnLabel;
     }
 }

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
+using System.Web.UI;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -88,12 +89,12 @@ namespace RPGWonder
                         Map map = new Map();
 						map.ReadFromJSON(path + "\\maps\\" + map_tag);
 
-                        Debug.WriteLine("	CLIENT read map");
-
-                        Client.Instance.LoadLoadMap((int)map.Id);
-
-                        Debug.WriteLine("	CLIENT loaded map");
-
+                        Client.Instance.Invoke(Client.Instance.reloadDelegate, (int)map.Id);
+                    }
+                    else if (recievedString.Contains("Turn|"))
+                    {
+                        Client.Instance.YourTurn = true;
+						Client.Instance.Reload();
                     }
                     else if (recievedString.Contains("WrongSystem:"))
 					{
@@ -146,17 +147,17 @@ namespace RPGWonder
 			}
 		}
 
-		public void ValidateSystem()
+        public static void ValidateSystem()
 		{
 			Send("Connect");
 		}
 
-		public void SendMap(string map, string map_json)
+		public static void SendMap(string map, string map_json)
 		{
 			Send("Map|" + map + "|" + map_json);
 		}
 
-		public void SendCharacter(string character, string character_json)
+        public static void SendCharacter(string character, string character_json)
 		{
             Send("Character|" + character + "|" + character_json);
         }

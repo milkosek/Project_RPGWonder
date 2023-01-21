@@ -67,6 +67,7 @@ namespace RPGWonder
             byte[] bytes = new byte[16000];
             string path = Common.Instance.CampaignsPath;
             int i;
+            string campaign_name = campaign.Substring(campaign.LastIndexOf('\\')).Replace("\\", "").Replace(".json", "");
 
             try
             {
@@ -92,8 +93,6 @@ namespace RPGWonder
 
                         string character_tag = recievedString.Split('|')[1];
                         string character_json = recievedString.Split('|')[2];
-                        string campaigns_path = campaign.Substring(0, campaign.LastIndexOf('\\'));
-                        string campaign_name = campaign.Substring(campaign.LastIndexOf('\\')).Replace("\\", "").Replace(".json", "");
                         string parentDirectory = Path.GetDirectoryName(path + campaign);
 
                         File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + character_tag, character_json);
@@ -104,8 +103,21 @@ namespace RPGWonder
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
 
-                        Host.Instace.Reload();
+                        Host.Instance.Reload();
                     }
+                    else if (recievedString.StartsWith("Map|"))
+                    {
+                        string map_tag = recievedString.Split('|')[1];
+                        string map_json = recievedString.Split('|')[2];
+
+                        File.WriteAllText(path + "\\" + campaign_name + "\\maps\\" + map_tag, map_json);
+
+                        Map map = new Map();
+                        map.ReadFromJSON(path + "\\" + campaign_name + "\\maps\\" + map_tag);
+
+                        Host.Instance.Invoke(Host.Instance.reloadDelegate, (int)map.Id);
+                    }
+                    //clever one
                     Broadcast(recievedString);
                 }
             }
@@ -179,20 +191,26 @@ namespace RPGWonder
 
         public static void BroadcastCampaign(string campaign, string campaign_json)
         {
-            Debug.WriteLine("Broadcasting campaign");
+            //Debug.WriteLine("Broadcasting campaign");
             Broadcast("Campaign|" + campaign + "|" + campaign_json);
         }
 
         public static void BroadcastMap(string map, string map_json)
         {
-            Debug.WriteLine("Broadcasting map");
+            //Debug.WriteLine("Broadcasting map");
             Broadcast("Map|" + map + "|" + map_json);
         }
 
         public static void BroadcastCharacter(string character, string character_json)
         {
-            Debug.WriteLine("Broadcasting character");
+            //Debug.WriteLine("Broadcasting character");
             Broadcast("Character|" + character + "|" + character_json);
+        }
+
+        public static void YourTurn(int playerNum)
+        {
+            //Debug.WriteLine("Broadcasting character");
+            SendToClient("Turn|", streams[playerNum]);
         }
     }
 }

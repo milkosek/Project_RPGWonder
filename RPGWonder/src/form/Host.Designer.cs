@@ -31,7 +31,6 @@
             this.controlsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.DiceRollMenu = new System.Windows.Forms.Button();
             this.coords = new System.Windows.Forms.Label();
-            this.ChangeMap = new System.Windows.Forms.Button();
             this.RemoveEntity = new System.Windows.Forms.Button();
             this.spawn_chest = new System.Windows.Forms.Button();
             this.spawn_npc = new System.Windows.Forms.Button();
@@ -41,7 +40,10 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.charlabel = new System.Windows.Forms.Label();
+            this.ChangeMap = new System.Windows.Forms.Button();
+            this.nextPlayerButton = new System.Windows.Forms.Button();
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.currentPlayerLabel = new System.Windows.Forms.Label();
             this.controlsLayoutPanel.SuspendLayout();
             this.charactersTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -56,13 +58,15 @@
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.controlsLayoutPanel.Controls.Add(this.DiceRollMenu, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
-            this.controlsLayoutPanel.Controls.Add(this.ChangeMap, 2, 8);
             this.controlsLayoutPanel.Controls.Add(this.RemoveEntity, 0, 8);
             this.controlsLayoutPanel.Controls.Add(this.spawn_chest, 1, 7);
             this.controlsLayoutPanel.Controls.Add(this.spawn_npc, 0, 7);
             this.controlsLayoutPanel.Controls.Add(this.button1, 2, 7);
             this.controlsLayoutPanel.Controls.Add(this.charactersTabs, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
+            this.controlsLayoutPanel.Controls.Add(this.ChangeMap, 2, 8);
+            this.controlsLayoutPanel.Controls.Add(this.nextPlayerButton, 0, 9);
+            this.controlsLayoutPanel.Controls.Add(this.currentPlayerLabel, 2, 0);
             this.controlsLayoutPanel.Location = new System.Drawing.Point(1500, 30);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
             this.controlsLayoutPanel.RowCount = 10;
@@ -105,19 +109,7 @@
             this.coords.Size = new System.Drawing.Size(124, 100);
             this.coords.TabIndex = 8;
             this.coords.Text = "coords";
-            // 
-            // ChangeMap
-            // 
-            this.ChangeMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeMap.Location = new System.Drawing.Point(262, 812);
-            this.ChangeMap.Name = "ChangeMap";
-            this.ChangeMap.Size = new System.Drawing.Size(124, 94);
-            this.ChangeMap.TabIndex = 10;
-            this.ChangeMap.Text = "Change Map";
-            this.ChangeMap.UseVisualStyleBackColor = true;
-            this.ChangeMap.Click += new System.EventHandler(this.ChangeMap_Click);
+            this.coords.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RemoveEntity
             // 
@@ -224,6 +216,33 @@
             this.charlabel.Size = new System.Drawing.Size(122, 100);
             this.charlabel.TabIndex = 13;
             this.charlabel.Text = "Characters";
+            this.charlabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ChangeMap
+            // 
+            this.ChangeMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangeMap.Location = new System.Drawing.Point(262, 812);
+            this.ChangeMap.Name = "ChangeMap";
+            this.ChangeMap.Size = new System.Drawing.Size(124, 94);
+            this.ChangeMap.TabIndex = 10;
+            this.ChangeMap.Text = "Change Map";
+            this.ChangeMap.UseVisualStyleBackColor = true;
+            this.ChangeMap.Click += new System.EventHandler(this.ChangeMap_Click);
+            // 
+            // nextPlayerButton
+            // 
+            this.nextPlayerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nextPlayerButton.Location = new System.Drawing.Point(4, 913);
+            this.nextPlayerButton.Name = "nextPlayerButton";
+            this.nextPlayerButton.Size = new System.Drawing.Size(122, 103);
+            this.nextPlayerButton.TabIndex = 14;
+            this.nextPlayerButton.Text = "Next Player";
+            this.nextPlayerButton.UseVisualStyleBackColor = true;
+            this.nextPlayerButton.Click += new System.EventHandler(this.nextPlayerButton_Click);
             // 
             // mapTableLayout
             // 
@@ -240,6 +259,18 @@
             this.mapTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mapTableLayout.Size = new System.Drawing.Size(1440, 1020);
             this.mapTableLayout.TabIndex = 11;
+            // 
+            // currentPlayerLabel
+            // 
+            this.currentPlayerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.currentPlayerLabel.Location = new System.Drawing.Point(262, 1);
+            this.currentPlayerLabel.Name = "currentPlayerLabel";
+            this.currentPlayerLabel.Size = new System.Drawing.Size(124, 100);
+            this.currentPlayerLabel.TabIndex = 15;
+            this.currentPlayerLabel.Text = "Current player:";
+            this.currentPlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Host
             // 
@@ -275,5 +306,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label charlabel;
+        private System.Windows.Forms.Button nextPlayerButton;
+        private System.Windows.Forms.Label currentPlayerLabel;
     }
 }
