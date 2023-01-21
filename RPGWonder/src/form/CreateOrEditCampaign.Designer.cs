@@ -42,13 +42,13 @@
             // SaveButton
             // 
             this.SaveButton.BackColor = System.Drawing.SystemColors.Control;
+            this.SaveButton.Enabled = false;
             this.SaveButton.Location = new System.Drawing.Point(12, 298);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(772, 44);
             this.SaveButton.TabIndex = 1;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
-            this.SaveButton.Visible = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CampaignNameTextBox
@@ -61,6 +61,7 @@
             // 
             // listBox
             // 
+            this.listBox.Enabled = false;
             this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 29;
@@ -68,18 +69,17 @@
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(691, 236);
             this.listBox.TabIndex = 4;
-            this.listBox.Visible = false;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // addButton
             // 
+            this.addButton.Enabled = false;
             this.addButton.Location = new System.Drawing.Point(709, 56);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 75);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Visible = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // deleteButton
@@ -91,7 +91,6 @@
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Visible = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // createButton
@@ -115,7 +114,6 @@
             this.editButton.TabIndex = 8;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Visible = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // CreateOrEditCampaign
