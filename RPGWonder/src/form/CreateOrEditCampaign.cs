@@ -12,6 +12,7 @@ namespace RPGWonder
     /// </summary>
     public partial class CreateOrEditCampaign : DefaultForm
     {
+
         private static CreateOrEditCampaign _instance = null;
 
         /// <summary>
@@ -240,6 +241,36 @@ namespace RPGWonder
             {
                 CreateOrEditCodexEntry createOrEditCodexEntry = new CreateOrEditCodexEntry(_TAG, this, ((ComboBoxObject)listBox.SelectedItem).Key);
                 createOrEditCodexEntry.Show();
+            }
+        }
+
+        private void addAsset_Click(object sender, EventArgs e)
+        {
+            string assetPath = string.Empty;
+            string targetPath = _path + "\\assets\\";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    assetPath = openFileDialog.FileName;
+                    targetPath = targetPath + System.IO.Path.GetFileName(assetPath);
+                    try
+                    {
+                        File.Copy(assetPath, targetPath);
+                        Log.Instance.gameLog.Debug("File copied successfully.");
+                    }
+                    catch (IOException exception)
+                    {
+                        Log.Instance.errorLog.Error("An error occurred: " + exception.Message);
+                    }
+                    Asset asset = new Asset(targetPath);
+                }
             }
         }
     }

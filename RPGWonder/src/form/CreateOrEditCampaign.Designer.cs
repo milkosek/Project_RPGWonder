@@ -37,6 +37,7 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.addAsset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -116,11 +117,22 @@
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
+            // addAsset
+            // 
+            this.addAsset.Location = new System.Drawing.Point(677, 12);
+            this.addAsset.Name = "addAsset";
+            this.addAsset.Size = new System.Drawing.Size(100, 38);
+            this.addAsset.TabIndex = 9;
+            this.addAsset.Text = "Add Asset";
+            this.addAsset.UseVisualStyleBackColor = true;
+            this.addAsset.Click += new System.EventHandler(this.addAsset_Click);
+            // 
             // CreateOrEditCampaign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 351);
+            this.Controls.Add(this.addAsset);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.deleteButton);
@@ -145,5 +157,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button addAsset;
     }
 }

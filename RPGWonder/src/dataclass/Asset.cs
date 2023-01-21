@@ -1,8 +1,16 @@
-﻿namespace RPGWonder
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
+
+namespace RPGWonder
 {
     class Asset
     {
-        private long id;
         private string src;
+        public Asset(string s)
+        {
+            this.src = s;
+        }
+        
     }
 }

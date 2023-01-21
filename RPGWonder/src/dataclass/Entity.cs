@@ -1,6 +1,6 @@
 ﻿namespace RPGWonder
 {
-    class Entity : Asset
+    class Entity
     {
         private long id;
         private string name;

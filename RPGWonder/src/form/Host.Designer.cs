@@ -64,7 +64,7 @@
             this.controlsLayoutPanel.Controls.Add(this.charactersTabs, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
             this.controlsLayoutPanel.Location = new System.Drawing.Point(2000, 37);
-            this.controlsLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.controlsLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
             this.controlsLayoutPanel.RowCount = 10;
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -112,7 +112,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangeMap.Location = new System.Drawing.Point(351, 1005);
-            this.ChangeMap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChangeMap.Margin = new System.Windows.Forms.Padding(4);
             this.ChangeMap.Name = "ChangeMap";
             this.ChangeMap.Size = new System.Drawing.Size(164, 116);
             this.ChangeMap.TabIndex = 10;
@@ -126,7 +126,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveEntity.Location = new System.Drawing.Point(5, 1005);
-            this.RemoveEntity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RemoveEntity.Margin = new System.Windows.Forms.Padding(4);
             this.RemoveEntity.Name = "RemoveEntity";
             this.RemoveEntity.Size = new System.Drawing.Size(164, 116);
             this.RemoveEntity.TabIndex = 3;
@@ -140,7 +140,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spawn_chest.Location = new System.Drawing.Point(178, 880);
-            this.spawn_chest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spawn_chest.Margin = new System.Windows.Forms.Padding(4);
             this.spawn_chest.Name = "spawn_chest";
             this.spawn_chest.Size = new System.Drawing.Size(164, 116);
             this.spawn_chest.TabIndex = 0;
@@ -154,7 +154,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spawn_npc.Location = new System.Drawing.Point(5, 880);
-            this.spawn_npc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spawn_npc.Margin = new System.Windows.Forms.Padding(4);
             this.spawn_npc.Name = "spawn_npc";
             this.spawn_npc.Size = new System.Drawing.Size(164, 116);
             this.spawn_npc.TabIndex = 2;
@@ -167,7 +167,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(351, 880);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(164, 116);
             this.button1.TabIndex = 11;
@@ -183,7 +183,7 @@
             this.charactersTabs.Controls.Add(this.tabPage1);
             this.charactersTabs.Controls.Add(this.tabPage2);
             this.charactersTabs.Location = new System.Drawing.Point(5, 130);
-            this.charactersTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.charactersTabs.Margin = new System.Windows.Forms.Padding(4);
             this.charactersTabs.Name = "charactersTabs";
             this.controlsLayoutPanel.SetRowSpan(this.charactersTabs, 3);
             this.charactersTabs.SelectedIndex = 0;
@@ -194,9 +194,9 @@
             // 
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(502, 337);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
@@ -206,7 +206,7 @@
             // 
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(43, 95);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(160, 118);
             this.listView1.TabIndex = 0;
@@ -215,10 +215,10 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(501, 335);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(502, 337);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -256,11 +256,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1942, 1102);
+            this.ClientSize = new System.Drawing.Size(1989, 1102);
             this.Controls.Add(this.controlsLayoutPanel);
             this.Controls.Add(this.mapTableLayout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Host";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Host_FormClosed);
