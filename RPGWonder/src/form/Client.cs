@@ -52,6 +52,11 @@ namespace RPGWonder
             mapLoader = new MapHandler(this);
             map = new Map();
 
+            if (Directory.Exists(Common.Instance.ClientCampaignsPath))
+            {
+                Directory.Delete(Common.Instance.ClientCampaignsPath, true);
+            }
+
             reloadDelegate = new ReloadClient(LoadMap);
         }
 
