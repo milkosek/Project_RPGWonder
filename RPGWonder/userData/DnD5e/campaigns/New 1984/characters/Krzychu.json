@@ -1,25 +1,25 @@
 {
-  "Name": "Adam",
-  "Race": "highElf",
-  "Gender": "Male",
+  "Name": "Krzychu",
+  "Race": "hillDwarf",
+  "Gender": "Other",
   "CharacterClass": "fighter",
   "Level": 1,
   "Experience": 0,
   "Background": "Entertainer",
   "Alignment": "NeutralGood",
   "Abilities": {
-    "STR": 14,
+    "STR": 15,
     "DEX": 15,
-    "CON": 12,
-    "INT": 9,
-    "WIS": 16,
-    "CHA": 8
+    "CON": 14,
+    "INT": 17,
+    "WIS": 6,
+    "CHA": 13
   },
   "ProficiencyBonus": 2,
   "ArmorClass": 12,
   "InitiativeModifier": 2,
   "Initiative": 0,
-  "Speed": 30,
+  "Speed": 25,
   "Size": "medium",
   "CurrentHitPoints": 0,
   "TemporaryHitPoints": 0,
@@ -38,18 +38,18 @@
   "Saves": {
     "STR": "+2",
     "DEX": "+2",
-    "CON": "+1",
-    "INT": "-1",
-    "WIS": "+3",
-    "CHA": "-1"
+    "CON": "+2",
+    "INT": "+3",
+    "WIS": "-2",
+    "CHA": "+1"
   },
   "Skills": {
     "Acrobatics": "+2",
-    "AnimalHandling": "+3",
-    "Arcana": "-1",
+    "AnimalHandling": "-2",
+    "Arcana": "+3",
     "Athletics": "+2"
   },
-  "PassiveWisdomPerception": 13,
+  "PassiveWisdomPerception": 8,
   "Age": null,
   "AlliesAndOrgs": null
 }

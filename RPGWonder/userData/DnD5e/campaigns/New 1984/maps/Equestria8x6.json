@@ -1,5 +1,5 @@
 {
-  "Id": 1,
+  "Id": 2,
   "Name": "Equestria8x6",
   "Columns": 8,
   "Rows": 6,
@@ -8,7 +8,7 @@
       "EntityID": 0,
       "MapID": 0,
       "X": 1,
-      "Y": 1,
+      "Y": 2,
       "Name": "Chest0",
       "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
       "Id": 0,
@@ -19,8 +19,8 @@
     "Chest1": {
       "EntityID": 0,
       "MapID": 0,
-      "X": 2,
-      "Y": 1,
+      "X": 3,
+      "Y": 3,
       "Name": "Chest1",
       "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
       "Id": 0,

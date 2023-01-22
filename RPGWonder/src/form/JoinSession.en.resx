@@ -137,6 +137,9 @@
   <data name="ipAddrInput.Size" type="System.Drawing.Size, System.Drawing">
     <value>276, 41</value>
   </data>
+  <data name="ipAddrInput.Text" xml:space="preserve">
+    <value>127.0.0.1</value>
+  </data>
   <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 158</value>
   </data>

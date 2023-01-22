@@ -43,9 +43,9 @@ namespace RPGWonder
 
         private void HostSession_Load(object sender, EventArgs e)
         {
-            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
             string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
+
             //myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
             myIPTextBox.Text = "127.0.0.1";
 

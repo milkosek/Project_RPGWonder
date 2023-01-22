@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Drawing;
 using RPGWonder.src.net;
+using static RPGWonder.Client;
 
 namespace RPGWonder
 {
@@ -21,14 +22,14 @@ namespace RPGWonder
     //THROW
     //  -per player, per stat
     //SPAWN GENERIC (wall, enemy, chest)
-    //CHANGE MAP done
+
     /// <summary>
     /// Class representing a from with game window as seen by the Host
     /// </summary>
     public partial class Host : DefaultForm
     {
         private HostTcpConnection _connection;
-        public static Host Instace;
+        public static Host Instance;
         private IPAddress _ipAddress;
 
         private string _campaignPath = "";
@@ -41,6 +42,11 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
+        public delegate void ReloadHost(int mapId);
+        public ReloadHost reloadDelegate;
+
+        private int _currentPLayer = 0;
+
         /// <summary>
         /// Public contructor of <see cref="Host"/> class.
         /// </summary>
@@ -49,7 +55,7 @@ namespace RPGWonder
         {
             InitializeComponent();
             SetMotif();
-            Instace = this;
+            Instance = this;
 
             _campaignPath = campaign;
             _campaign = new Campaign();
@@ -59,6 +65,8 @@ namespace RPGWonder
 
             mapLoader = new MapHandler(this);
             map = new Map() { };
+
+            reloadDelegate = new ReloadHost(LoadMap);
         }
 
         private void Host_Load(object sender, EventArgs e)
@@ -76,6 +84,8 @@ namespace RPGWonder
 
             coords.Text = map.Name;
 
+            currentPlayerLabel.Text = "Current player: You";
+
             UpdateMap();
 
             Log.Instance.gameLog.Debug("Attempting to establish connection...");
@@ -84,13 +94,25 @@ namespace RPGWonder
                 _connection = new HostTcpConnection();
                 _connection.CreateSession(_campaignPath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
+
+                //receive all character
+
+
+                //broadcast characters
+
+
+                //SYNC
             }
             catch (Exception exception)
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            DiscordChannelConnection.CreateGuildThenChannelThenInviteAndOpen();
+            //Thread discordThread = new Thread(new ThreadStart(
+            //    () => DiscordChannelConnection.
+            //    CreateGuildThenChannelThenInviteAndOpen()));
+            //discordThread.Start();
         }
 
 
@@ -99,16 +121,24 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
+            Debug.WriteLine("RELOADING HOST!");
+
+            charlabel.Text = "Characters:\n";
+
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
-                charlabel.Text = charlabel.Text + character.Name;
+                charlabel.Text = charlabel.Text + character.Name + "\n";
             }
+
+            HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
+            
+            HostBroadcastMap();
         }
 
-        private void Host_FormClosed(object sender, FormClosedEventArgs e)
+        private void HostBroadcastMap() 
         {
-            Environment.Exit(0);
+            HostTcpConnection.BroadcastMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)
@@ -116,7 +146,6 @@ namespace RPGWonder
             DiceDisplay.Instance.Show();
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
-
 
         public void LoadMap(int mapId)
         {
@@ -136,7 +165,7 @@ namespace RPGWonder
 
             DisplayMap(map);
 
-            UpdateMap();
+            UpdateAndBroadcastMap();
         }
 
         private void DisplayMap(Map map)
@@ -164,14 +193,22 @@ namespace RPGWonder
                 case 0:
                     selectedTile.x = pressedButtonX;
                     selectedTile.y = pressedButtonY;
+
+                    UpdateMap();
+
                     break;
 
                 case 1:
-                    MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+                    if (_currentPLayer == 0)
+                    {
+                        MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+
+                        UpdateAndBroadcastMap();
+                    }
                     break;
             }
 
-            UpdateMap();
+            //UpdateMap();
         }
 
         // x1, y1 - from
@@ -235,18 +272,23 @@ namespace RPGWonder
 
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-
+            
             DisplaySelectedInfo();
 
             map.EntityList = EntityList;
             map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
+        private void UpdateAndBroadcastMap()
+        {
+            UpdateMap();
+
+            HostBroadcastMap();
+        }
+
         public string GetMapById(int id)
         {
-            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
-
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+            string path = Common.Instance.CampaignsPath + "\\" + _campaign.Name + "\\maps";
 
             string[] filePaths = Directory.GetFiles(path, "*.json");
             foreach (string filePath in filePaths)
@@ -276,13 +318,15 @@ namespace RPGWonder
 
         private void SpawnChest(object sender, System.EventArgs e)
         {
-            if (TileEmpty(selectedTile.x, selectedTile.y))
+            if (_currentPLayer == 0)
             {
-                AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\chest.png");
+                if (TileEmpty(selectedTile.x, selectedTile.y))
+                {
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\chest.png");
 
-                UpdateMap();
+                    UpdateAndBroadcastMap();
+                }
             }
-
         }
 
         private void AddEntityOnMap(int x, int y, string name, string path) 
@@ -310,9 +354,12 @@ namespace RPGWonder
 
         private void RemoveEntity_Click(object sender, EventArgs e)
         {
-            EntityList.Remove(ButtonsMatrix[selectedTile.y][selectedTile.x].Text);
+            if (_currentPLayer == 0)
+            {
+                EntityList.Remove(ButtonsMatrix[selectedTile.y][selectedTile.x].Text);
 
-            UpdateMap();
+                UpdateAndBroadcastMap();
+            }
         }
 
         private void ChangeMap_Click(object sender, EventArgs e)
@@ -321,6 +368,39 @@ namespace RPGWonder
             Selector.Instance.WindowState = FormWindowState.Normal;
 
             Selector.Instance.Selector_Init(this, _campaign.Name);
+        }
+
+        private void nextPlayerButton_Click(object sender, EventArgs e)
+        {
+            nextPLayer();
+        }
+
+        public void nextPLayer()
+        {
+            if (_connection.Clients.Count > 0)
+            {
+                _currentPLayer++;
+
+                if (_currentPLayer >= 1 + _connection.Clients.Count)
+                {
+                    _currentPLayer = 0;
+                    currentPlayerLabel.Text = "Current player: You";
+                }
+                else
+                {
+                    //Debug.WriteLine("Current player:");
+                    //Debug.WriteLine(_currentPLayer);
+                    //Debug.WriteLine("clients count:");
+                    //Debug.WriteLine(_connection.Clients.Count);
+                    //Debug.WriteLine("clients count:");
+                    //Debug.WriteLine(_connection.Clients);
+
+                    //TODO get char name
+                    currentPlayerLabel.Text = "Current player: " + (_currentPLayer - 1);
+
+                    HostTcpConnection.YourTurn(_currentPLayer - 1);
+                }
+            }
         }
     }
 }

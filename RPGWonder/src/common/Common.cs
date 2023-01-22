@@ -49,6 +49,7 @@ namespace RPGWonder
             TaskDifficulties = taskDifficulties;
             CampaignsPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
             CharactersPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\characters";
+            ClientCampaignsPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\clientCampaign";
         }
         public JObject Races;
         public JObject Classes;
@@ -63,6 +64,7 @@ namespace RPGWonder
         public JObject TaskDifficulties;
         public string CampaignsPath;
         public string CharactersPath;
+        public string ClientCampaignsPath;
 
         /// <summary>
         /// Private constructor for the Common class.

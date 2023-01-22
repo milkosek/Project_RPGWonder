@@ -23,18 +23,19 @@ namespace RPGWonder
         {
             string jsonString = File.ReadAllText(path);
             JObject jObject = JObject.Parse(jsonString);
-            string fullPath = Path.GetFullPath(path);
-            string parentDir = Path.GetDirectoryName(fullPath);
             Name = (string)jObject["Name"];
             CurrentMap = (int)jObject["CurrentMap"];
-            DirectoryInfo dir = new DirectoryInfo(parentDir + "\\codex");
-            FileInfo[] jsonFiles = dir.GetFiles("*.json");
-            foreach (FileInfo jsonFile in jsonFiles)
-            {
-                CodexEntry codexEntry = new CodexEntry();
-                codexEntry.ReadFromJSON(jsonFile.FullName);
-                CodexEntries.Set(jsonFile.Name.Replace(jsonFile.Extension, ""), codexEntry);
-            }
+
+            //string fullPath = Path.GetFullPath(path);
+            //string parentDir = Path.GetDirectoryName(fullPath);
+            //DirectoryInfo dir = new DirectoryInfo(parentDir + "\\codex");
+            //FileInfo[] jsonFiles = dir.GetFiles("*.json");
+            //foreach (FileInfo jsonFile in jsonFiles)
+            //{
+            //    CodexEntry codexEntry = new CodexEntry();
+            //    codexEntry.ReadFromJSON(jsonFile.FullName);
+            //    CodexEntries.Set(jsonFile.Name.Replace(jsonFile.Extension, ""), codexEntry);
+            //}
         }
 
         public void SaveToJSON(string path, string TAG)
