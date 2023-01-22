@@ -34,8 +34,6 @@ namespace RPGWonder
 
         private void JoinSession_Load(object sender, EventArgs e)
         {
-            ipAddrInput.Text = "169.254.45.10";
-
             string[] filePaths = Directory.GetFiles(Common.Instance.CharactersPath, "*.json");
             foreach (string filePath in filePaths)
             {
