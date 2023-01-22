@@ -41,7 +41,7 @@
             // 
             // CrtNewCampaignButton
             // 
-            this.CrtNewCampaignButton.BackColor = System.Drawing.Color.SeaGreen;
+            this.CrtNewCampaignButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.CrtNewCampaignButton, "CrtNewCampaignButton");
             this.CrtNewCampaignButton.Name = "CrtNewCampaignButton";
             this.CrtNewCampaignButton.UseVisualStyleBackColor = false;
@@ -56,7 +56,7 @@
             // 
             // LoadCampaignButton
             // 
-            this.LoadCampaignButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.LoadCampaignButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.LoadCampaignButton, "LoadCampaignButton");
             this.LoadCampaignButton.Name = "LoadCampaignButton";
             this.LoadCampaignButton.UseVisualStyleBackColor = false;
@@ -64,7 +64,7 @@
             // 
             // editCampaignButton
             // 
-            this.editCampaignButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.editCampaignButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.editCampaignButton, "editCampaignButton");
             this.editCampaignButton.Name = "editCampaignButton";
             this.editCampaignButton.UseVisualStyleBackColor = false;
@@ -72,7 +72,7 @@
             // 
             // deleteCampaignButton
             // 
-            this.deleteCampaignButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteCampaignButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.deleteCampaignButton, "deleteCampaignButton");
             this.deleteCampaignButton.Name = "deleteCampaignButton";
             this.deleteCampaignButton.UseVisualStyleBackColor = false;
@@ -80,7 +80,7 @@
             // 
             // createCampaignButton
             // 
-            this.createCampaignButton.BackColor = System.Drawing.Color.SeaGreen;
+            this.createCampaignButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.createCampaignButton, "createCampaignButton");
             this.createCampaignButton.Name = "createCampaignButton";
             this.createCampaignButton.UseVisualStyleBackColor = false;

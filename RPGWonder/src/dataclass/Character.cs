@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
 namespace RPGWonder
 {
     /// <summary>
     /// A class representing a character
     /// </summary>
-    class Character : IDataclass
+    public class Character : IDataclass
     {
         public string Name;
         public string Race;
@@ -25,23 +24,14 @@ namespace RPGWonder
         public string Size;
         public int CurrentHitPoints;
         public int TemporaryHitPoints;
-        public string PersonalityTraits;
-        public string Ideals;
-        public string Bonds;
-        public string Flaws;
         public int HitDice;
         public int DeathSavesFail;
         public int DeathSavesSuccess;
-        public string FeaturesAndTraits;
-        public string OtherProficienciesAndLanguages;
-        public Safedict<string, int> Money = new Safedict<string, int>();
-        public List<int> Items = new List<int>();
-        public List<int> AttacksAndSpells = new List<int>();
+        public string Equipment;
+        public string Description;
+        public string Specials;
         public Safedict<string, string> Saves = new Safedict<string, string>();
-        public Safedict<string, string> Skills = new Safedict<string, string>();
         public int PassiveWisdomPerception;
-        public string Age;
-        public string AlliesAndOrgs;
 
         public void SaveToJSON(string path, string TAG)
         {
@@ -62,6 +52,14 @@ namespace RPGWonder
         {
             string jsonString = File.ReadAllText(path);
             JsonConvert.PopulateObject(jsonString, this);
+        }
+
+        /// <summary>
+        /// Show a form with this characters
+        /// </summary>
+        public void Show()
+        {
+            ShowCharacter.Instance(this).Show();
         }
     }
 }

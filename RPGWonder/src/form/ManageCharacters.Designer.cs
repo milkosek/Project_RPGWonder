@@ -61,7 +61,7 @@
             // 
             // createCharacterButton
             // 
-            this.createCharacterButton.BackColor = System.Drawing.Color.SeaGreen;
+            this.createCharacterButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.createCharacterButton, "createCharacterButton");
             this.createCharacterButton.Name = "createCharacterButton";
             this.createCharacterButton.UseVisualStyleBackColor = false;
@@ -69,7 +69,7 @@
             // 
             // deleteCharacterButton
             // 
-            this.deleteCharacterButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteCharacterButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.deleteCharacterButton, "deleteCharacterButton");
             this.deleteCharacterButton.Name = "deleteCharacterButton";
             this.deleteCharacterButton.UseVisualStyleBackColor = false;
@@ -77,7 +77,7 @@
             // 
             // editCharacterButton
             // 
-            this.editCharacterButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.editCharacterButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.editCharacterButton, "editCharacterButton");
             this.editCharacterButton.Name = "editCharacterButton";
             this.editCharacterButton.UseVisualStyleBackColor = false;

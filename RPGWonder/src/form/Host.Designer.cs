@@ -63,6 +63,8 @@
             this.controlsLayoutPanel.Controls.Add(this.currentPlayerLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.listView1, 0, 1);
             this.controlsLayoutPanel.Location = new System.Drawing.Point(1500, 30);
+            this.controlsLayoutPanel.Location = new System.Drawing.Point(2000, 37);
+            this.controlsLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
             this.controlsLayoutPanel.RowCount = 10;
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -75,7 +77,7 @@
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.controlsLayoutPanel.Size = new System.Drawing.Size(390, 1020);
+            this.controlsLayoutPanel.Size = new System.Drawing.Size(520, 1255);
             this.controlsLayoutPanel.TabIndex = 10;
             // 
             // DiceRollMenu
@@ -83,10 +85,10 @@
             this.DiceRollMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DiceRollMenu.Location = new System.Drawing.Point(3, 407);
-            this.DiceRollMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.DiceRollMenu.Location = new System.Drawing.Point(4, 503);
+            this.DiceRollMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DiceRollMenu.Name = "DiceRollMenu";
-            this.DiceRollMenu.Size = new System.Drawing.Size(124, 96);
+            this.DiceRollMenu.Size = new System.Drawing.Size(166, 120);
             this.DiceRollMenu.TabIndex = 9;
             this.DiceRollMenu.Text = "Dice Menu";
             this.DiceRollMenu.UseVisualStyleBackColor = true;
@@ -98,10 +100,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coords.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.coords.Location = new System.Drawing.Point(3, 1);
-            this.coords.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.coords.Location = new System.Drawing.Point(4, 1);
             this.coords.Name = "coords";
-            this.coords.Size = new System.Drawing.Size(124, 100);
+            this.coords.Size = new System.Drawing.Size(166, 124);
             this.coords.TabIndex = 8;
             this.coords.Text = "coords";
             this.coords.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,9 +112,10 @@
             this.RemoveEntity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveEntity.Location = new System.Drawing.Point(4, 812);
+            this.RemoveEntity.Location = new System.Drawing.Point(5, 1005);
+            this.RemoveEntity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RemoveEntity.Name = "RemoveEntity";
-            this.RemoveEntity.Size = new System.Drawing.Size(122, 94);
+            this.RemoveEntity.Size = new System.Drawing.Size(164, 116);
             this.RemoveEntity.TabIndex = 3;
             this.RemoveEntity.Text = "Remove Entity";
             this.RemoveEntity.UseVisualStyleBackColor = true;
@@ -124,9 +126,10 @@
             this.spawn_chest.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_chest.Location = new System.Drawing.Point(133, 711);
+            this.spawn_chest.Location = new System.Drawing.Point(178, 880);
+            this.spawn_chest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spawn_chest.Name = "spawn_chest";
-            this.spawn_chest.Size = new System.Drawing.Size(122, 94);
+            this.spawn_chest.Size = new System.Drawing.Size(164, 116);
             this.spawn_chest.TabIndex = 0;
             this.spawn_chest.Text = "Spawn Chest";
             this.spawn_chest.UseVisualStyleBackColor = true;
@@ -137,9 +140,10 @@
             this.spawn_npc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_npc.Location = new System.Drawing.Point(4, 711);
+            this.spawn_npc.Location = new System.Drawing.Point(5, 880);
+            this.spawn_npc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spawn_npc.Name = "spawn_npc";
-            this.spawn_npc.Size = new System.Drawing.Size(122, 94);
+            this.spawn_npc.Size = new System.Drawing.Size(164, 116);
             this.spawn_npc.TabIndex = 2;
             this.spawn_npc.Text = "Spawn NPC";
             this.spawn_npc.UseVisualStyleBackColor = true;
@@ -149,9 +153,10 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(262, 711);
+            this.button1.Location = new System.Drawing.Point(351, 880);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 94);
+            this.button1.Size = new System.Drawing.Size(164, 116);
             this.button1.TabIndex = 11;
             this.button1.Text = "Spawn Wall";
             this.button1.UseVisualStyleBackColor = true;
@@ -213,14 +218,15 @@
             this.mapTableLayout.ColumnCount = 2;
             this.mapTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mapTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mapTableLayout.Location = new System.Drawing.Point(30, 30);
+            this.mapTableLayout.Location = new System.Drawing.Point(40, 37);
             this.mapTableLayout.Margin = new System.Windows.Forms.Padding(0);
             this.mapTableLayout.Name = "mapTableLayout";
             this.mapTableLayout.RowCount = 2;
             this.mapTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mapTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mapTableLayout.Size = new System.Drawing.Size(1440, 1020);
+            this.mapTableLayout.Size = new System.Drawing.Size(1920, 1255);
             this.mapTableLayout.TabIndex = 11;
+            this.mapTableLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.mapTableLayout_Paint);
             // 
             // listView1
             // 
@@ -238,12 +244,13 @@
             // 
             // Host
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1942, 1102);
             this.Controls.Add(this.controlsLayoutPanel);
             this.Controls.Add(this.mapTableLayout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Host";
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Host_Load);

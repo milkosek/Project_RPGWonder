@@ -118,59 +118,114 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="JoinGameButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
   <data name="JoinGameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 275</value>
+    <value>12, 92</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="JoinGameButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="JoinGameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 63</value>
+    <value>670, 43</value>
+  </data>
+  <data name="ipAddrInput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 189</value>
+    <value>315, 50</value>
   </data>
   <data name="ipAddrInput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="ipAddrInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 41</value>
+    <value>367, 38</value>
+  </data>
+  <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="ipAddrInput.Text" xml:space="preserve">
     <value>127.0.0.1</value>
   </data>
   <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 158</value>
-  </data>
-  <data name="ipAddrLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+    <value>26, 52</value>
   </data>
   <data name="ipAddrLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 29</value>
+    <value>283, 31</value>
+  </data>
+  <data name="charactersComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
   </data>
   <data name="charactersComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 89</value>
+    <value>315, 7</value>
   </data>
   <data name="charactersComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="charactersComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 44</value>
+    <value>367, 39</value>
+  </data>
+  <data name="charactersLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="charactersLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 57</value>
-  </data>
-  <data name="charactersLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+    <value>12, 9</value>
   </data>
   <data name="charactersLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 29</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>297, 31</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>600, 366</value>
+    <value>688, 139</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEANzcQAAEABAAkCAAAFgAAACgAAAA3AAAAbgAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAHkAAACqAGBAWAAdONoAD3CcAABl6gCdjY0AqKdVADCF7QAMmdYAS6XiANzCwgD//60AAP//AP//
+        /wAAAAAA//////////////8iIiIiIi//////////////8P////////////IiIAAAAAAiIv//////////
+        //D//////////yIiAAAAAAAAAAIiL//////////w/////////yIgAAAAAAAAAAAAACIv////////8P//
+        /////yIgAAAAAAACAAAAAAAAIi////////D///////IgAAAAAAAAJiAAAAAAAAAi///////w//////8i
+        ABAAEAAQACYgABAAEAAQAi//////8P/////yIQEBAQEBAQJmsgEBAQEBAQEi//////D/////IhAQEBAQ
+        EBAStuIQEBAQEBAQEi/////w////8iEBEQERAREBJrbrIQERAREBEQEi////8P///yIRERERERERESa7
+        7iEREREREREREi////D///IhEREREREREREmu+4hEREREREREREi///w//8iERERERERERERJrvuIRER
+        EREREREREi//8P//IxETERMRExETESa77iETERMRExETERMv//D/8iExMTExMTExMTEmu+4hMTExMTEx
+        MTExIv/w//ITExMTExMTExMTJrbuIxMTExMTExMTExL/8P8iMTMxMzEzMTMxMya27iMxMzEzMTMxMzEy
+        L/D/IzMzMzMzMzMzMzMmtrsjMzMzMzMzMzMzMy/w/yMzMzMzMyIiIiIiIiIiIiIiIiIiMzMzMzMv8PIj
+        MzMzMzMp2d0pnSkpKZ0imdKS0jMzMzMzIvDyMzMzMzMzLS0uKS4pLSki4pIinSIzMzMzMzLw8jMzMzMz
+        My4uLi3uLe4t7iLe4t7iMzMzMzMy8CIzMzMzMzMiIiIiIiIiIiIiIiIiIjMzMzMzMiAjMzMzMzInzMwp
+        IpKdJu4nKdJ8zMciMzMzMzMgIzMzMzIszMzMKSLSnSa7IpItLMzMzCIzMzMzICNTM1Is7u7u7CndIp0i
+        IiKSnizu7u7sIlMzUyAlNTUs7u7szu4pItKd3dkikt4u7szu7uwlNTUgI1NSzsd3zu7uKSLinZmdktIi
+        Lu7ux3fOwlNTICU1Usd3zu7uzC3eIp0iKdkt7izO7u7Hd8JVNSAlVVIizu7uzO4iInKdJuKdIiLu7M7u
+        7sIiVVUgJVVSzux3fO7u7HIinSaynSInzu7sd3zuwlVVICVVLux3fO7sciIlUp0iKd4lUiJ87ux3fO4l
+        VSAiVSxyfO7HIiVVVVKd3d3iVVVVIifO7HJ8JVIg8lUiLO7HIlVVVVVSne7uJVVVVVVSJ87sIiVS8PJV
+        Us7sclVVVVVVVSIiIiVVVVVVVVJ87sJVUvDyJS7sciVVhVWFVSImtr4iJVWFVYVVInzuJSLw/yguxyhY
+        WFhYWFKZIiIiLeJYWFhYWFgnzigv8P8lIiKFhYWFhYWCnd3d3d7ShYWFhYWFgiIlL/D/IohYiFiIWIhY
+        iCLu7u7iKIhYiFiIWIhYgi/w//KIiIiIiIiIiIiIIiIiKIiIiIiIiIiIiIL/8P/yKIiIiIiIiIiIiIJJ
+        koiIiIiIiIiIiIgi//D//yiIiIiIiIiIiIiCRJKIiIiIiIiIiIiIL//w//8iiIiIiIiIiIiIgkmSiIiI
+        iIiIiIiIgi//8P//8iiKiIqIioiKiIJEkoiKiIqIioiKiCL///D///8iqKioqKioqKiiIiKoqKioqKio
+        qKIv///w////8iqKioqKioqKgp2SioqKioqKiooi////8P////8iqqiqqKqoqind3SqoqqiqqKqiL///
+        //D/////8iqqqqqqqqot3d4qqqqqqqqqIv/////w//////8iqqqqqqqqKd3uKqqqqqqqoi//////8P//
+        ////8iqqqqqqqqLe4qqqqqqqqiL///////D///////8iKqqqqqqqIiqqqqqqqiIv///////w////////
+        /yIqqqqqqqqqqqqqqiIv////////8P//////////IiKqqqqqqqqqoiIv//////////D////////////y
+        IiqqqqqqIiL////////////w//////////////8iIiIiIi//////////////8P///AB///4A///gAA//
+        /gD//wAAAf/+AP/8AAAAf/4A//AAAAAf/gD/4AAAAA/+AP/AAAAAB/4A/4AAAAAD/gD/AAAAAAH+AP4A
+        AAAAAP4A/AAAAAAAfgD4AAAAAAA+APAAAAAAAB4A8AAAAAAAHgDgAAAAAAAOAOAAAAAAAA4AwAAAAAAA
+        BgDAAAAAAAAGAMAAAAAAAAYAgAAAAAAAAgCAAAAAAAACAIAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAIAAAAAAAAIAgAAAAAAAAgCAAAAAAAACAMAAAAAAAAYAwAAAAAAABgDAAAAAAAAGAOAA
+        AAAAAA4A4AAAAAAADgDwAAAAAAAeAPAAAAAAAB4A+AAAAAAAPgD8AAAAAAB+AP4AAAAAAP4A/wAAAAAB
+        /gD/gAAAAAP+AP/AAAAAB/4A/+AAAAAP/gD/8AAAAB/+AP/8AAAAf/4A//8AAAH//gD//+AAD//+AP//
+        /AB///4A
+</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Join Session</value>
   </data>
 </root>

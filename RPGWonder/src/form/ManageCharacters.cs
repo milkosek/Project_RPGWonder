@@ -58,6 +58,7 @@ namespace RPGWonder
 
         private void ManageCharacters_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Reload();
         }
 

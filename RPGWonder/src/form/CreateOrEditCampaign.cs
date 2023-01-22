@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -74,6 +75,7 @@ namespace RPGWonder
 
         private void CreateOrEditCampaign_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             if (_editing)
             {
                 string[] parts = _path.Split('\\');
@@ -150,6 +152,7 @@ namespace RPGWonder
             {
                 _campaign.SaveToJSON(Common.Instance.CampaignsPath, _TAG);
                 Log.Instance.gameLog.Debug("Saved campaign: " + _TAG);
+                _path = Common.Instance.CampaignsPath + "\\" + _TAG;
             }
             catch (Exception exception)
             {
@@ -159,12 +162,10 @@ namespace RPGWonder
 
         private void swapToPage2()
         {
-            createButton.Visible = false;
-            addButton.Visible = true;
-            editButton.Visible = true;
-            deleteButton.Visible = true;
-            SaveButton.Visible = true;
-            listBox.Visible = true;
+            createButton.Enabled = false;
+            addButton.Enabled = true;
+            SaveButton.Enabled = true;
+            listBox.Enabled = true;
             Reload();
         }
 
@@ -182,6 +183,7 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
+            Debug.WriteLine(_path + "\\codex");
             Log.Instance.gameLog.Debug("CreateOrEditCampaign: Reloading...");
             if (_page == "codex")
             {
@@ -217,12 +219,13 @@ namespace RPGWonder
                 Log.Instance.gameLog.Debug("Trying to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
                 try
                 {
-                    File.Delete(((ComboBoxObject)listBox.SelectedItem).Key);
+                    string toDelete = ((ComboBoxObject)listBox.SelectedItem).Key;
+                    File.Delete(toDelete);
                     Reload();
                     listBox.SelectedItem = null;
                     editButton.Enabled = false;
                     deleteButton.Enabled = false;
-                    Log.Instance.gameLog.Debug("Deleted codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
+                    Log.Instance.gameLog.Debug("Deleted codex entry: " + toDelete);
                 }
                 catch (Exception exception)
                 {

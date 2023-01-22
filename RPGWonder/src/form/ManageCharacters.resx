@@ -118,11 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CrtNewCharacterButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
   <data name="CrtNewCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 143</value>
+    <value>324, 133</value>
   </data>
   <data name="CrtNewCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 102</value>
+    <value>300, 100</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CrtNewCharacterButton.TabIndex" type="System.Int32, mscorlib">
@@ -143,11 +146,14 @@
   <data name="&gt;&gt;CrtNewCharacterButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="LoadCharacterButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
   <data name="LoadCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 251</value>
+    <value>324, 239</value>
   </data>
   <data name="LoadCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 102</value>
+    <value>300, 100</value>
   </data>
   <data name="LoadCharacterButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -174,7 +180,7 @@
     <value>29</value>
   </data>
   <data name="manageCharactersListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
+    <value>12, 12</value>
   </data>
   <data name="manageCharactersListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>844, 497</value>
@@ -202,10 +208,10 @@
     <value>NoControl</value>
   </data>
   <data name="createCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>862, 209</value>
+    <value>862, 272</value>
   </data>
   <data name="createCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 102</value>
+    <value>75, 75</value>
   </data>
   <data name="createCharacterButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -235,10 +241,10 @@
     <value>NoControl</value>
   </data>
   <data name="deleteCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>862, 425</value>
+    <value>862, 434</value>
   </data>
   <data name="deleteCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 102</value>
+    <value>75, 75</value>
   </data>
   <data name="deleteCharacterButton.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -268,10 +274,10 @@
     <value>NoControl</value>
   </data>
   <data name="editCharacterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>862, 317</value>
+    <value>862, 353</value>
   </data>
   <data name="editCharacterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 102</value>
+    <value>75, 75</value>
   </data>
   <data name="editCharacterButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -301,13 +307,53 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 554</value>
+    <value>943, 514</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEANzcQAAEABAAkCAAAFgAAACgAAAA3AAAAbgAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAHkAAACqAGBAWAAdONoAD3CcAABl6gCdjY0AqKdVADCF7QAMmdYAS6XiANzCwgD//60AAP//AP//
+        /wAAAAAA//////////////8iIiIiIi//////////////8P////////////IiIAAAAAAiIv//////////
+        //D//////////yIiAAAAAAAAAAIiL//////////w/////////yIgAAAAAAAAAAAAACIv////////8P//
+        /////yIgAAAAAAACAAAAAAAAIi////////D///////IgAAAAAAAAJiAAAAAAAAAi///////w//////8i
+        ABAAEAAQACYgABAAEAAQAi//////8P/////yIQEBAQEBAQJmsgEBAQEBAQEi//////D/////IhAQEBAQ
+        EBAStuIQEBAQEBAQEi/////w////8iEBEQERAREBJrbrIQERAREBEQEi////8P///yIRERERERERESa7
+        7iEREREREREREi////D///IhEREREREREREmu+4hEREREREREREi///w//8iERERERERERERJrvuIRER
+        EREREREREi//8P//IxETERMRExETESa77iETERMRExETERMv//D/8iExMTExMTExMTEmu+4hMTExMTEx
+        MTExIv/w//ITExMTExMTExMTJrbuIxMTExMTExMTExL/8P8iMTMxMzEzMTMxMya27iMxMzEzMTMxMzEy
+        L/D/IzMzMzMzMzMzMzMmtrsjMzMzMzMzMzMzMy/w/yMzMzMzMyIiIiIiIiIiIiIiIiIiMzMzMzMv8PIj
+        MzMzMzMp2d0pnSkpKZ0imdKS0jMzMzMzIvDyMzMzMzMzLS0uKS4pLSki4pIinSIzMzMzMzLw8jMzMzMz
+        My4uLi3uLe4t7iLe4t7iMzMzMzMy8CIzMzMzMzMiIiIiIiIiIiIiIiIiIjMzMzMzMiAjMzMzMzInzMwp
+        IpKdJu4nKdJ8zMciMzMzMzMgIzMzMzIszMzMKSLSnSa7IpItLMzMzCIzMzMzICNTM1Is7u7u7CndIp0i
+        IiKSnizu7u7sIlMzUyAlNTUs7u7szu4pItKd3dkikt4u7szu7uwlNTUgI1NSzsd3zu7uKSLinZmdktIi
+        Lu7ux3fOwlNTICU1Usd3zu7uzC3eIp0iKdkt7izO7u7Hd8JVNSAlVVIizu7uzO4iInKdJuKdIiLu7M7u
+        7sIiVVUgJVVSzux3fO7u7HIinSaynSInzu7sd3zuwlVVICVVLux3fO7sciIlUp0iKd4lUiJ87ux3fO4l
+        VSAiVSxyfO7HIiVVVVKd3d3iVVVVIifO7HJ8JVIg8lUiLO7HIlVVVVVSne7uJVVVVVVSJ87sIiVS8PJV
+        Us7sclVVVVVVVSIiIiVVVVVVVVJ87sJVUvDyJS7sciVVhVWFVSImtr4iJVWFVYVVInzuJSLw/yguxyhY
+        WFhYWFKZIiIiLeJYWFhYWFgnzigv8P8lIiKFhYWFhYWCnd3d3d7ShYWFhYWFgiIlL/D/IohYiFiIWIhY
+        iCLu7u7iKIhYiFiIWIhYgi/w//KIiIiIiIiIiIiIIiIiKIiIiIiIiIiIiIL/8P/yKIiIiIiIiIiIiIJJ
+        koiIiIiIiIiIiIgi//D//yiIiIiIiIiIiIiCRJKIiIiIiIiIiIiIL//w//8iiIiIiIiIiIiIgkmSiIiI
+        iIiIiIiIgi//8P//8iiKiIqIioiKiIJEkoiKiIqIioiKiCL///D///8iqKioqKioqKiiIiKoqKioqKio
+        qKIv///w////8iqKioqKioqKgp2SioqKioqKiooi////8P////8iqqiqqKqoqind3SqoqqiqqKqiL///
+        //D/////8iqqqqqqqqot3d4qqqqqqqqqIv/////w//////8iqqqqqqqqKd3uKqqqqqqqoi//////8P//
+        ////8iqqqqqqqqLe4qqqqqqqqiL///////D///////8iKqqqqqqqIiqqqqqqqiIv///////w////////
+        /yIqqqqqqqqqqqqqqiIv////////8P//////////IiKqqqqqqqqqoiIv//////////D////////////y
+        IiqqqqqqIiL////////////w//////////////8iIiIiIi//////////////8P///AB///4A///gAA//
+        /gD//wAAAf/+AP/8AAAAf/4A//AAAAAf/gD/4AAAAA/+AP/AAAAAB/4A/4AAAAAD/gD/AAAAAAH+AP4A
+        AAAAAP4A/AAAAAAAfgD4AAAAAAA+APAAAAAAAB4A8AAAAAAAHgDgAAAAAAAOAOAAAAAAAA4AwAAAAAAA
+        BgDAAAAAAAAGAMAAAAAAAAYAgAAAAAAAAgCAAAAAAAACAIAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAIAAAAAAAAIAgAAAAAAAAgCAAAAAAAACAMAAAAAAAAYAwAAAAAAABgDAAAAAAAAGAOAA
+        AAAAAA4A4AAAAAAADgDwAAAAAAAeAPAAAAAAAB4A+AAAAAAAPgD8AAAAAAB+AP4AAAAAAP4A/wAAAAAB
+        /gD/gAAAAAP+AP/AAAAAB/4A/+AAAAAP/gD/8AAAAB/+AP/8AAAAf/4A//8AAAH//gD//+AAD//+AP//
+        /AB///4A
+</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>RPGWonder</value>
+    <value>Characters</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ManageCharacters</value>

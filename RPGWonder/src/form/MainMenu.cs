@@ -1,5 +1,6 @@
 ﻿using RPGWonder.src.form;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -28,21 +29,28 @@ namespace RPGWonder
         public MainMenu()
         {
             InitializeComponent();
-            SetMotif();
             isMain = true;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
-        {    
+        {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             if (Common.Instance == null)
             {
-                JoinButton.Enabled = false;
-                HostButton.Enabled = false;
-                ManageCampaignsButton.Enabled = false;
-                ManageCharsButton.Enabled = false;
+                joinSessionButton.Enabled = false;
+                hostSessionButton.Enabled = false;
+                manageCampaignsButton.Enabled = false;
+                manageCharactersButton.Enabled = false;
                 Log.Instance.errorLog.Error("Error: Path not set correctly");
                 MessageBox.Show("The path to game files is not set correctly.\nSet the correct path in Settings.");
             }
+            SetMotif();
+            joinSessionButton.BackColor = Color.SeaGreen;
+            hostSessionButton.BackColor = Color.SeaGreen;
+            manageCampaignsButton.BackColor = Color.SteelBlue;
+            manageCharactersButton.BackColor = Color.SteelBlue;
+            settingsButton.BackColor = Color.SteelBlue;
+            exitButton.BackColor = Color.IndianRed;
         }
 
         private void JoinButton_Click(object sender, EventArgs e)

@@ -103,8 +103,7 @@ namespace RPGWonder
 
                 //SYNC
             }
-            catch (Exception exception)
-            {
+            catch (Exception exception){
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
 
@@ -114,8 +113,6 @@ namespace RPGWonder
             //    CreateGuildThenChannelThenInviteAndOpen()));
             //discordThread.Start();
         }
-
-
         /// <summary>
         /// Method for reloading the game state.
         /// </summary>

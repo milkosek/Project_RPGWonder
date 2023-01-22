@@ -7,5 +7,25 @@
   "armor-class-ability": "DEX",
   "initiative-ability": "DEX",
   "passive-perception-ability": "WIS",
-  "ability-points-per-level": "2"
+  "ability-points-per-level": "2",
+  "difficulty-die-faces": "20",
+  "difficulty-die-always-success": [
+    "20"
+  ],
+  "difficulty-die-always-success-apply-post-throw": "false",
+  "difficulty-die-always-failure": [
+
+  ],
+  "difficulty-die-always-failure-apply-post-throw": "false",
+  "abilities-affecting-hp": [
+    {
+      "ability": "CON",
+      "bonus-type": "per level save",
+      "bonus-multiplication": 1
+    }
+  ],
+  "roll-for-hp": "true",
+  "using-races-for-base-hp": "false",
+  "using-classes-for-base-hp": "true",
+  "using-base-hp": "true"
 }

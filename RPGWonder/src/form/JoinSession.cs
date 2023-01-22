@@ -34,6 +34,7 @@ namespace RPGWonder
 
         private void JoinSession_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             string[] filePaths = Directory.GetFiles(Common.Instance.CharactersPath, "*.json");
             foreach (string filePath in filePaths)
             {

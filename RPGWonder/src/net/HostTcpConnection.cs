@@ -82,8 +82,7 @@ namespace RPGWonder
                     else if (recievedString.Contains("System|"))
                     {
                         string system = recievedString.Split('|')[1];
-                        if (system != Properties.Settings.Default.System)
-                        {
+                        if (system != Properties.Settings.Default.System){
                             SendToClient("WrongSystem|" + Properties.Settings.Default.System, stream);
                         }
                     }
