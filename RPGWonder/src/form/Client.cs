@@ -187,7 +187,9 @@ namespace RPGWonder
                         UpdateMap();
 
                         ClientSendMap();
+
                         yourTurn = false;
+                        turnLabel.Text = "Wait for your turn!";
                     }
                     break;
             }

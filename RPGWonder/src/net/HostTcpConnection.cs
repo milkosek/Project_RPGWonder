@@ -119,6 +119,11 @@ namespace RPGWonder
                     }
                     //clever one
                     Broadcast(recievedString);
+
+                    if (recievedString.StartsWith("Map|"))
+                    {
+                        Host.Instance.nextPLayer();
+                    }
                 }
             }
             catch (SocketException e)

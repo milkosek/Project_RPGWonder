@@ -47,7 +47,8 @@ namespace RPGWonder
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
 
             //myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
-            myIPTextBox.Text = "127.0.0.1";
+            //myIPTextBox.Text = "127.0.0.1";
+            myIPTextBox.Text = "169.254.45.10";
 
             foreach (string subdirectoryPath in subdirectoryPaths)
             {

@@ -372,6 +372,11 @@ namespace RPGWonder
 
         private void nextPlayerButton_Click(object sender, EventArgs e)
         {
+            nextPLayer();
+        }
+
+        public void nextPLayer()
+        {
             if (_connection.Clients.Count > 0)
             {
                 _currentPLayer++;
@@ -383,12 +388,12 @@ namespace RPGWonder
                 }
                 else
                 {
-                    Debug.WriteLine("Current player:");
-                    Debug.WriteLine(_currentPLayer);
-                    Debug.WriteLine("clients count:");
-                    Debug.WriteLine(_connection.Clients.Count);
-                    Debug.WriteLine("clients count:");
-                    Debug.WriteLine(_connection.Clients);
+                    //Debug.WriteLine("Current player:");
+                    //Debug.WriteLine(_currentPLayer);
+                    //Debug.WriteLine("clients count:");
+                    //Debug.WriteLine(_connection.Clients.Count);
+                    //Debug.WriteLine("clients count:");
+                    //Debug.WriteLine(_connection.Clients);
 
                     //TODO get char name
                     currentPlayerLabel.Text = "Current player: " + (_currentPLayer - 1);
