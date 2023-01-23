@@ -82,6 +82,7 @@
             this.Controls.Add(this.mapTableLayout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Client";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Client_FormClosed);
             this.Load += new System.EventHandler(this.Client_Load);
             this.controlsLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);

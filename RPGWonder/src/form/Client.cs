@@ -33,6 +33,7 @@ namespace RPGWonder
 
         public delegate void ReloadClient(int mapId);
         public ReloadClient reloadDelegate;
+        public ReloadClient reloadDelegate2;
 
         private bool yourTurn = false;
 
@@ -58,6 +59,7 @@ namespace RPGWonder
             }
 
             reloadDelegate = new ReloadClient(LoadMap);
+            reloadDelegate2 = new ReloadClient(ReloadEntities);
         }
 
         private void Client_Load(object sender, System.EventArgs e)
@@ -132,6 +134,19 @@ namespace RPGWonder
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
 
+        public void ReloadEntities(int voider)
+        {
+            EntityList.Clear();
+
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
+
+            if (map.EntityList != null)
+            {
+                EntityList = map.EntityList;
+            }
+
+            UpdateMap();
+        }
 
         public void LoadMap(int mapId)
         {
@@ -299,6 +314,11 @@ namespace RPGWonder
             {
                 return false;
             }
+        }
+
+        private void Client_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ClientTcpConnection.CloseStream();
         }
     }
 }

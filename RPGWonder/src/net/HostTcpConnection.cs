@@ -28,6 +28,8 @@ namespace RPGWonder
         private static void AcceptNewPlayers(string campaign, IPAddress ipAddress)
         {
             TcpListener server = null;
+            NetworkStream stream = null;
+
             try
             {
                 server = new TcpListener(ipAddress, port);
@@ -38,7 +40,7 @@ namespace RPGWonder
                     Debug.Write("Waiting for a connection... ");
                     TcpClient client = server.AcceptTcpClient();
 
-                    NetworkStream stream = client.GetStream();
+                    stream = client.GetStream();
                     //intercept client's ip address
                     IPAddress ipClient = ((IPEndPoint)client.Client.RemoteEndPoint).Address;
                     Debug.WriteLine("Connected to: "+ ipClient.ToString());
@@ -51,10 +53,38 @@ namespace RPGWonder
             catch (SocketException e)
             {
                 //Debug.WriteLine("SocketException: {0}", e);
+                Debug.WriteLine("Client disconnected 1");
+
+                if (streams.Contains(stream))
+                {
+                    streams.Remove(stream);
+
+                    int index = clients.FindIndex(f => f.Stream == stream);
+
+                    if (index != -1)
+                    {
+                        clients.RemoveAt(index);
+                    }
+
+                }
             }
             catch (IOException e)
             {
                 //Debug.WriteLine("Exception: {0}", e);
+                Debug.WriteLine("Client disconnected 2");
+
+                if (streams.Contains(stream))
+                {
+                    streams.Remove(stream);
+
+                    int index = clients.FindIndex(f => f.Stream == stream);
+
+                    if (index != -1)
+                    {
+                        clients.RemoveAt(index);
+                    }
+
+                }
             }
             finally
             {
@@ -104,7 +134,7 @@ namespace RPGWonder
 
                         Host.Instance.Reload();
                     }
-                    else if (recievedString.StartsWith("Map|"))
+                    else if (recievedString.StartsWith("MapUpdate|"))
                     {
                         string map_tag = recievedString.Split('|')[1];
                         string map_json = recievedString.Split('|')[2];
@@ -114,7 +144,7 @@ namespace RPGWonder
                         Map map = new Map();
                         map.ReadFromJSON(path + "\\" + campaign_name + "\\maps\\" + map_tag);
 
-                        Host.Instance.Invoke(Host.Instance.reloadDelegate, (int)map.Id);
+                        Host.Instance.Invoke(Host.Instance.reloadDelegate);
                     }
                     //clever one
                     Broadcast(recievedString);
@@ -202,7 +232,13 @@ namespace RPGWonder
         public static void BroadcastMap(string map, string map_json)
         {
             //Debug.WriteLine("Broadcasting map");
-            Broadcast("Map|" + map + "|" + map_json);
+            Broadcast("MapChange|" + map + "|" + map_json);
+        }
+
+        public static void BroadcastMapUpdate(string map, string map_json)
+        {
+            //Debug.WriteLine("Broadcasting map");
+            Broadcast("MapUpdate|" + map + "|" + map_json);
         }
 
         public static void BroadcastCharacter(string character, string character_json)

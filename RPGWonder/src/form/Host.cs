@@ -42,10 +42,12 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        public delegate void ReloadHost(int mapId);
+        public delegate void ReloadHost();
         public ReloadHost reloadDelegate;
 
         private int _currentPLayer = 0;
+
+        private int _selectedChar;
 
         /// <summary>
         /// Public contructor of <see cref="Host"/> class.
@@ -66,7 +68,7 @@ namespace RPGWonder
             mapLoader = new MapHandler(this);
             map = new Map() { };
 
-            reloadDelegate = new ReloadHost(LoadMap);
+            reloadDelegate = new ReloadHost(ReloadEntities);
         }
 
         private void Host_Load(object sender, EventArgs e)
@@ -129,12 +131,32 @@ namespace RPGWonder
 
             HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
             
-            HostBroadcastMap();
+            HostBroadcastMap(true);
         }
 
-        private void HostBroadcastMap() 
+        private void HostBroadcastMap(bool changeMap = false) 
         {
-            HostTcpConnection.BroadcastMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
+            if (changeMap)
+            {
+                HostTcpConnection.BroadcastMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
+            }
+            else
+            {
+                HostTcpConnection.BroadcastMapUpdate(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
+            }
+        }
+        public void ReloadEntities()
+        {
+            EntityList.Clear();
+
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
+
+            if (map.EntityList != null)
+            {
+                EntityList = map.EntityList;
+            }
+
+            UpdateMap();
         }
 
         public void LoadMap(int mapId)
@@ -286,11 +308,20 @@ namespace RPGWonder
             map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
-        private void UpdateAndBroadcastMap()
+        private void UpdateAndBroadcastMap(bool changeMap = false)
         {
-            UpdateMap();
+            if (changeMap)
+            {
+                UpdateMap();
 
-            HostBroadcastMap();
+                HostBroadcastMap(changeMap);
+            }
+            else
+            {
+                UpdateMap();
+
+                HostBroadcastMap();
+            }
         }
 
         public string GetMapById(int id)
@@ -359,25 +390,12 @@ namespace RPGWonder
                 }
                 else
                 {
-                    //Debug.WriteLine("Current player:");
-                    //Debug.WriteLine(_currentPLayer);
-                    //Debug.WriteLine("clients count:");
-                    //Debug.WriteLine(_connection.Clients.Count);
-                    //Debug.WriteLine("clients count:");
-                    //Debug.WriteLine(_connection.Clients);
-
                     //TODO get char name
                     currentPlayerLabel.Text = "Current player: " + (_currentPLayer - 1);
 
                     HostTcpConnection.YourTurn(_currentPLayer - 1);
                 }
             }
-        }
-
-        private void character_selected(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            ShowCharacter showChar = new ShowCharacter(_connection.Clients[e.ItemIndex].Character);
-            showChar.Show();
         }
 
         private void next_player_button_Click(object sender, EventArgs e)
@@ -420,6 +438,17 @@ namespace RPGWonder
         {
             DiceDisplay.Instance.Show();
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
+        }
+
+        private void character_selected(object sender, EventArgs e)
+        {
+            ShowCharacter showChar = new ShowCharacter(_connection.Clients[_selectedChar].Character);
+            showChar.Show();
+        }
+
+        private void selected_char_changed(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            _selectedChar = e.ItemIndex;
         }
     }
 }

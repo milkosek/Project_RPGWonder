@@ -33,7 +33,6 @@
             this.dice_roll_button = new System.Windows.Forms.Button();
             this.coords = new System.Windows.Forms.Label();
             this.remove_entity_button = new System.Windows.Forms.Button();
-            this.spawn_chest_button = new System.Windows.Forms.Button();
             this.spawn_npc_button = new System.Windows.Forms.Button();
             this.spawn_wall_button = new System.Windows.Forms.Button();
             this.charlabel = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.spawn_chest_button = new System.Windows.Forms.Button();
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.controlsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -135,19 +135,6 @@
             this.remove_entity_button.UseVisualStyleBackColor = true;
             this.remove_entity_button.Click += new System.EventHandler(this.remove_entity_button_Click);
             // 
-            // spawn_chest_button
-            // 
-            this.spawn_chest_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_chest_button.Location = new System.Drawing.Point(133, 711);
-            this.spawn_chest_button.Name = "spawn_chest_button";
-            this.spawn_chest_button.Size = new System.Drawing.Size(122, 94);
-            this.spawn_chest_button.TabIndex = 0;
-            this.spawn_chest_button.Text = "Spawn Chest";
-            this.spawn_chest_button.UseVisualStyleBackColor = true;
-            this.spawn_chest_button.Click += new System.EventHandler(this.spawn_chest_button_Click);
-            // 
             // spawn_npc_button
             // 
             this.spawn_npc_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -233,7 +220,8 @@
             this.charactersListView.TabIndex = 16;
             this.charactersListView.UseCompatibleStateImageBehavior = false;
             this.charactersListView.View = System.Windows.Forms.View.Details;
-            this.charactersListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.character_selected);
+            this.charactersListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.selected_char_changed);
+            this.charactersListView.DoubleClick += new System.EventHandler(this.character_selected);
             // 
             // columnHeader1
             // 
@@ -254,6 +242,19 @@
             // 
             this.columnHeader4.Text = "Init";
             this.columnHeader4.Width = 40;
+            // 
+            // spawn_chest_button
+            // 
+            this.spawn_chest_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spawn_chest_button.Location = new System.Drawing.Point(133, 711);
+            this.spawn_chest_button.Name = "spawn_chest_button";
+            this.spawn_chest_button.Size = new System.Drawing.Size(122, 94);
+            this.spawn_chest_button.TabIndex = 0;
+            this.spawn_chest_button.Text = "Spawn Chest";
+            this.spawn_chest_button.UseVisualStyleBackColor = true;
+            this.spawn_chest_button.Click += new System.EventHandler(this.spawn_chest_button_Click);
             // 
             // mapTableLayout
             // 

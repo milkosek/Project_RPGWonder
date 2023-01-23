@@ -74,24 +74,36 @@ namespace RPGWonder
 
                         Client.Instance.LoadCampaign(campaign_tag);
                     }
-                    else if (recievedString.StartsWith("Map|"))
+					else if (recievedString.StartsWith("MapChange|"))
 					{
-                        if (!Directory.Exists(path + "\\maps"))
-                        {
-                            Directory.CreateDirectory(path + "\\maps");
-                        }
+						if (!Directory.Exists(path + "\\maps"))
+						{
+							Directory.CreateDirectory(path + "\\maps");
+						}
 
 						string map_tag = recievedString.Split('|')[1];
 						string map_json = recievedString.Split('|')[2];
 
-                        File.WriteAllText(path + "\\maps\\" + map_tag, map_json);
+						File.WriteAllText(path + "\\maps\\" + map_tag, map_json);
 
-                        Map map = new Map();
+						Map map = new Map();
 						map.ReadFromJSON(path + "\\maps\\" + map_tag);
 
-                        Client.Instance.Invoke(Client.Instance.reloadDelegate, (int)map.Id);
-                    }
-                    else if (recievedString.Contains("Turn|"))
+						Client.Instance.Invoke(Client.Instance.reloadDelegate, (int)map.Id);
+					}
+					else if (recievedString.StartsWith("MapUpdate|"))
+					{
+						string map_tag = recievedString.Split('|')[1];
+						string map_json = recievedString.Split('|')[2];
+
+						File.WriteAllText(path + "\\maps\\" + map_tag, map_json);
+
+						Map map = new Map();
+						map.ReadFromJSON(path + "\\maps\\" + map_tag);
+
+						Client.Instance.Invoke(Client.Instance.reloadDelegate2, 0);
+					}
+					else if (recievedString.Contains("Turn|"))
                     {
                         Client.Instance.YourTurn = true;
 						Client.Instance.Reload();
@@ -121,8 +133,8 @@ namespace RPGWonder
 			}
 			finally
 			{
-				//stream.Close();
-			}
+				stream.Close();
+            }
 		}
 		public static void Send(string data)
 		{
@@ -154,12 +166,17 @@ namespace RPGWonder
 
 		public static void SendMap(string map, string map_json)
 		{
-			Send("Map|" + map + "|" + map_json);
+			Send("MapUpdate|" + map + "|" + map_json);
 		}
 
         public static void SendCharacter(string character, string character_json)
 		{
             Send("Character|" + character + "|" + character_json);
         }
-    }
+
+		public static void CloseStream()
+        {
+			stream.Close();
+		}
+	}
 }
