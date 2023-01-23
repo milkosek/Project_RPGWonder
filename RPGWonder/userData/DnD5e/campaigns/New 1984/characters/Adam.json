@@ -1,0 +1,41 @@
+{
+  "Name": "Adam",
+  "Race": "human",
+  "Gender": "Male",
+  "CharacterClass": "barbarian",
+  "Level": 1,
+  "Experience": 0,
+  "Background": "Acolyte",
+  "Alignment": "LawfulGood",
+  "Abilities": {
+    "STR": 14,
+    "DEX": 13,
+    "CON": 10,
+    "INT": 17,
+    "WIS": 15,
+    "CHA": 12
+  },
+  "ProficiencyBonus": 2,
+  "ArmorClass": 11,
+  "InitiativeModifier": 1,
+  "Initiative": 0,
+  "Speed": 30,
+  "Size": "medium",
+  "CurrentHitPoints": 12,
+  "TemporaryHitPoints": 0,
+  "HitDice": 12,
+  "DeathSavesFail": 0,
+  "DeathSavesSuccess": 0,
+  "Equipment": "Some stuff",
+  "Description": "A very nice guy",
+  "Specials": "Crazy abilities!",
+  "Saves": {
+    "STR": "+2",
+    "DEX": "+1",
+    "CON": "+0",
+    "INT": "+3",
+    "WIS": "+2",
+    "CHA": "+1"
+  },
+  "PassiveWisdomPerception": 12
+}

@@ -95,9 +95,6 @@ namespace RPGWonder
                 _connection.CreateSession(_campaignPath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
 
-                //receive all character
-
-
                 //broadcast characters
 
 
@@ -125,8 +122,10 @@ namespace RPGWonder
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
-                charlabel.Text = charlabel.Text + character.Name + "\n";
+                charlabel.Text = charlabel.Text + character.Name +  " Lvl." + character.Level + "\n";
             }
+
+            populateCharactersList();
 
             HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
             
@@ -136,12 +135,6 @@ namespace RPGWonder
         private void HostBroadcastMap() 
         {
             HostTcpConnection.BroadcastMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
-        }
-
-        private void DiceRollMenu_Click(object sender, EventArgs e)
-        {
-            DiceDisplay.Instance.Show();
-            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
 
         public void LoadMap(int mapId)
@@ -176,6 +169,23 @@ namespace RPGWonder
 
             // TODO wait for asset implementation
             //mapTableLayout.BackgroundImage = map.BGImage;
+        }
+
+        private void populateCharactersList()
+        {
+            charactersListView.Items.Clear();
+
+            foreach (ClientData client in _connection.Clients)
+            {
+                Character character = client.Character;
+                ListViewItem item = new ListViewItem(character.Name);
+
+                item.SubItems.Add(character.Level.ToString());
+                item.SubItems.Add(character.CurrentHitPoints.ToString());
+                item.SubItems.Add(character.Initiative.ToString());
+
+                charactersListView.Items.Add(item); 
+            }
         }
 
         // 0 - LMB select
@@ -313,19 +323,6 @@ namespace RPGWonder
             }
         }
 
-        private void SpawnChest(object sender, System.EventArgs e)
-        {
-            if (_currentPLayer == 0)
-            {
-                if (TileEmpty(selectedTile.x, selectedTile.y))
-                {
-                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\chest.png");
-
-                    UpdateAndBroadcastMap();
-                }
-            }
-        }
-
         private void AddEntityOnMap(int x, int y, string name, string path) 
         {
             if (!TileEmpty(x, y))
@@ -347,29 +344,6 @@ namespace RPGWonder
             tempEntity.Name = tempName;
 
             EntityList[tempEntity.Name] = tempEntity;
-        }
-
-        private void RemoveEntity_Click(object sender, EventArgs e)
-        {
-            if (_currentPLayer == 0)
-            {
-                EntityList.Remove(ButtonsMatrix[selectedTile.y][selectedTile.x].Text);
-
-                UpdateAndBroadcastMap();
-            }
-        }
-
-        private void ChangeMap_Click(object sender, EventArgs e)
-        {
-            Selector.Instance.Show();
-            Selector.Instance.WindowState = FormWindowState.Normal;
-
-            Selector.Instance.Selector_Init(this, _campaign.Name);
-        }
-
-        private void nextPlayerButton_Click(object sender, EventArgs e)
-        {
-            nextPLayer();
         }
 
         public void nextPLayer()
@@ -398,6 +372,54 @@ namespace RPGWonder
                     HostTcpConnection.YourTurn(_currentPLayer - 1);
                 }
             }
+        }
+
+        private void character_selected(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            ShowCharacter showChar = new ShowCharacter(_connection.Clients[e.ItemIndex].Character);
+            showChar.Show();
+        }
+
+        private void next_player_button_Click(object sender, EventArgs e)
+        {
+            nextPLayer();
+        }
+
+        private void change_map_button_Click(object sender, EventArgs e)
+        {
+            Selector.Instance.Show();
+            Selector.Instance.WindowState = FormWindowState.Normal;
+
+            Selector.Instance.Selector_Init(this, _campaign.Name);
+        }
+
+        private void remove_entity_button_Click(object sender, EventArgs e)
+        {
+            if (_currentPLayer == 0)
+            {
+                EntityList.Remove(ButtonsMatrix[selectedTile.y][selectedTile.x].Text);
+
+                UpdateAndBroadcastMap();
+            }
+        }
+
+        private void spawn_chest_button_Click(object sender, EventArgs e)
+        {
+            if (_currentPLayer == 0)
+            {
+                if (TileEmpty(selectedTile.x, selectedTile.y))
+                {
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\chest.png");
+
+                    UpdateAndBroadcastMap();
+                }
+            }
+        }
+
+        private void dice_roll_button_Click(object sender, EventArgs e)
+        {
+            DiceDisplay.Instance.Show();
+            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
     }
 }

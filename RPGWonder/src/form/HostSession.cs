@@ -44,11 +44,11 @@ namespace RPGWonder
         private void HostSession_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
             string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";
-            myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
-            //myIPTextBox.Text = "127.0.0.1";
+
+            //myIPTextBox.Text = IPAdd.GetMyIPAddress().ToString();
+            myIPTextBox.Text = "127.0.0.1";
 
             foreach (string subdirectoryPath in subdirectoryPaths)
             {
