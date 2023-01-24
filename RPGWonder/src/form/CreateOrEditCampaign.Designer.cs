@@ -120,9 +120,9 @@
             // 
             // addAsset
             // 
-            this.addAsset.Location = new System.Drawing.Point(684, 12);
+            this.addAsset.Location = new System.Drawing.Point(649, 12);
             this.addAsset.Name = "addAsset";
-            this.addAsset.Size = new System.Drawing.Size(100, 38);
+            this.addAsset.Size = new System.Drawing.Size(135, 38);
             this.addAsset.TabIndex = 9;
             this.addAsset.Text = "Add Asset";
             this.addAsset.UseVisualStyleBackColor = true;
@@ -130,9 +130,9 @@
             // 
             // removeAsset
             // 
-            this.removeAsset.Location = new System.Drawing.Point(576, 12);
+            this.removeAsset.Location = new System.Drawing.Point(496, 12);
             this.removeAsset.Name = "removeAsset";
-            this.removeAsset.Size = new System.Drawing.Size(102, 37);
+            this.removeAsset.Size = new System.Drawing.Size(147, 37);
             this.removeAsset.TabIndex = 10;
             this.removeAsset.Text = "Remove Asset";
             this.removeAsset.UseVisualStyleBackColor = true;

@@ -177,6 +177,8 @@ namespace RPGWonder
             editButton.BackColor = Color.SteelBlue;
             SaveButton.BackColor = Color.SteelBlue;
             deleteButton.BackColor = Color.IndianRed;
+            addAsset.BackColor = Color.SeaGreen;
+            removeAsset.BackColor = Color.IndianRed;
         }
 
         /// <summary> 
@@ -290,7 +292,7 @@ namespace RPGWonder
                     assetPath = openFileDialog.FileName;
                     try
                     {
-                        if(assetPath.Contains(targetPath))
+                        if(assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
                         {
                             File.Delete(assetPath);
                             Log.Instance.gameLog.Debug("File deleted successfully.");
