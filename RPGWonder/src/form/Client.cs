@@ -332,5 +332,10 @@ namespace RPGWonder
         {
             ClientTcpConnection.CloseStream();
         }
+        public void ChangeAsset(string assetPath)
+        {
+            Image asset = Image.FromFile(assetPath);
+            mapTableLayout.BackgroundImage = asset;
+        }
     }
 }

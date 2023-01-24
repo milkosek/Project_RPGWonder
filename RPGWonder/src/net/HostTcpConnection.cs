@@ -247,5 +247,12 @@ namespace RPGWonder
             //Debug.WriteLine("Broadcasting character");
             SendToClient("Turn|", streams[playerNum]);
         }
+        public static void BroadcastAsset(string assetPath)
+        {
+            byte[] imageArray = System.IO.File.ReadAllBytes(assetPath);
+            string base64ImageRepresentation = System.Convert.ToBase64String(imageArray);
+            Broadcast("Asset|" + System.IO.Path.GetFileName(assetPath) + "|" + base64ImageRepresentation);
+
+        }
     }
 }
