@@ -135,19 +135,19 @@
     <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>315, 50</value>
+    <value>342, 50</value>
   </data>
   <data name="ipAddrInput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="ipAddrInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 38</value>
-  </data>
-  <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 16pt</value>
+    <value>340, 38</value>
   </data>
   <data name="ipAddrInput.Text" xml:space="preserve">
     <value>127.0.0.1</value>
+  </data>
+  <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 52</value>
@@ -159,13 +159,13 @@
     <value>Microsoft Sans Serif, 16.2pt</value>
   </data>
   <data name="charactersComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>315, 7</value>
+    <value>342, 7</value>
   </data>
   <data name="charactersComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="charactersComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 39</value>
+    <value>340, 39</value>
   </data>
   <data name="charactersLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 16pt</value>
