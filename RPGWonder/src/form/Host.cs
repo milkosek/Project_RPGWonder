@@ -111,7 +111,6 @@ namespace RPGWonder
         public void Reload()
         {
             Debug.WriteLine("RELOADING HOST!");
-
         }
 
         public void NewPLayerConnected()
@@ -128,6 +127,8 @@ namespace RPGWonder
                 charlabel.Text = charlabel.Text + character.Name + " Lvl." + character.Level + "\n";
 
                 _characters.Add(character);
+
+                HostBroadcastCharacter();
             }
 
             PopulateCharactersList();
@@ -137,7 +138,7 @@ namespace RPGWonder
             HostBroadcastMap(true);
         }
 
-        private void HostBroadcastMap(bool changeMap = false) 
+        private void HostBroadcastMap(bool changeMap = false)
         {
             if (changeMap)
             {
@@ -147,6 +148,12 @@ namespace RPGWonder
             {
                 HostTcpConnection.BroadcastMapUpdate(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
             }
+        }
+
+        private void HostBroadcastCharacter()
+        {
+            //TODO broadcast chars 
+            //HostTcpConnection.BroadcastCharacter(Path.GetFileName(), File.ReadAllText());
         }
         public void ReloadEntities()
         {
@@ -311,7 +318,7 @@ namespace RPGWonder
             map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
-        private void UpdateAndBroadcastMap(bool changeMap = false)
+        public void UpdateAndBroadcastMap(bool changeMap = false)
         {
             if (changeMap)
             {
