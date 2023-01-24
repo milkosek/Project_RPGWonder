@@ -120,9 +120,7 @@ namespace RPGWonder
                         Host.Instance.nextPLayer();
                     }
                     //clever one
-
-                    //TODO SOMETHING tutaj
-                    //Broadcast(recievedString);
+                    Broadcast(recievedString);
 
                     if (recievedString.StartsWith("Map|"))
                     {
