@@ -109,7 +109,7 @@ namespace RPGWonder
                         Client.Instance.YourTurn = true;
 						Client.Instance.Invoke(Client.Instance.reloadDelegateTurn, 0);
 					}
-					else if (recievedString.Contains("WrongSystem:"))
+					else if (receivedString.Contains("WrongSystem:"))
 					{
 						string system = receivedString.Split('|')[1];
 						string message = "Game system mismatch.\nMake sure your game system is set to " + system;
