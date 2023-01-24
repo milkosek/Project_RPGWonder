@@ -18,7 +18,7 @@ namespace RPGWonder
         public static Client Instance;
         private IPAddress _ipAddress;
 
-        private string _campaignPath = "";
+        private string _clientCampaignsPath = Common.Instance.ClientCampaignsPath;
         private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
@@ -28,56 +28,107 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        private readonly string _character;
+        private readonly string _characterPath;
+        private Character _yourCharacter;
         private static string _hostIpAddress;
 
+        public delegate void ReloadClient(int mapId);
+        public ReloadClient reloadDelegate;
+        public ReloadClient reloadDelegate2;
+
+        private bool yourTurn = false;
+
+        public bool YourTurn { get => yourTurn; set => yourTurn = value; }
 
         public Client(string character, string ipAddr = "127.0.0.1")
         {
             InitializeComponent();
-            Instance = this;
             SetMotif();
-            _character = character;
+            Instance = this;
+
+            _characterPath = character;
+            _yourCharacter = new Character();
+            _yourCharacter.ReadFromJSON(_characterPath);
+
             _hostIpAddress = ipAddr;
 
+            _campaign = new Campaign();
             mapLoader = new MapHandler(this);
-            map = new Map() { };
+            map = new Map();
+
+            if (Directory.Exists(Common.Instance.ClientCampaignsPath))
+            {
+                Directory.Delete(Common.Instance.ClientCampaignsPath, true);
+            }
+
+            reloadDelegate = new ReloadClient(LoadMap);
+            reloadDelegate2 = new ReloadClient(ReloadEntities);
         }
 
         private void Client_Load(object sender, System.EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            //this.WindowState = FormWindowState.Maximized;
+
+            EntityList = new Dictionary<string, EntityOnMap> { };
+
             //MainMenu._instance.Hide();
             Log.Instance.gameLog.Debug("Attempting to establish connection...");
             try
             {
                 _connection = new ClientTcpConnection();
                 _connection.Connect(_hostIpAddress);
-                _connection.ValidateSystem();
-                _connection.SendCharacter(File.ReadAllText(_character), Path.GetFileName(_character));
+                ClientTcpConnection.ValidateSystem();
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
+
+                //receive map
+
+
+                //send character
+
+
+                //gm places characters
+
+
+                //receive other characters
+
+
+                //receive new map
+
+
+                ClientTcpConnection.SendCharacter(Path.GetFileName(_characterPath), File.ReadAllText(_characterPath));
             }
             catch (Exception exception)
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+        }
 
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+        /// <summary>
+        /// Method for reloading the game state.
+        /// </summary>
+        public void Reload()
+        {
+            turnLabel.Text = "Your turn!";
 
-            EntityList = new Dictionary<string, EntityOnMap> { };
+            //foreach (ClientData client in _connection.Clients)
+            //{
+            //    Character character = client.Character;
+            //    charlabel.Text = charlabel.Text + "\n" + character.Name;
 
-            if (_campaign == null)
-            {
-                LoadMap(-1);
-            }
-            else
-            {
-                LoadMap(_campaign.CurrentMap);
-            }
+            //    Debug.WriteLine("RELOADED:", character.Name);
+            //}
+        }
 
-            coords.Text = map.Name;
+        private void ClientSendMap()
+        {
+            ClientTcpConnection.SendMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
+        }
 
-            UpdateMap();
+        public void LoadCampaign(string campaign_tag)
+        {
+            //Debug.WriteLine("LOADING CLIENT CAMPAIGN!");
+            _campaign.ReadFromJSON(_clientCampaignsPath + "\\" + campaign_tag);
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)
@@ -85,29 +136,54 @@ namespace RPGWonder
             DiceDisplay.Instance.Show();
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
+        private void PopulateCharactersList()
+        {
+            charactersListView.Items.Clear();
 
+            //TODO later
+            //
+            //maybe
+            //
+            //foreach (ClientData client in _connection.Clients)
+            //{
+            //    Character character = client.Character;
+            //    ListViewItem item = new ListViewItem(character.Name);
+
+            //    item.SubItems.Add(character.Level.ToString());
+            //    item.SubItems.Add(character.CurrentHitPoints.ToString());
+            //    item.SubItems.Add(character.Initiative.ToString());
+
+            //    charactersListView.Items.Add(item);
+            //}
+        }
+        public void ReloadEntities(int voider)
+        {
+            EntityList.Clear();
+
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
+
+            if (map.EntityList != null)
+            {
+                EntityList = map.EntityList;
+            }
+
+            UpdateMap();
+        }
 
         public void LoadMap(int mapId)
         {
+            _campaign.CurrentMap = mapId;
+
             selectedTile.x = 0;
             selectedTile.y = 0;
 
             EntityList.Clear();
 
-            if (mapId != -1)
-            {
-                _campaign.CurrentMap = mapId;
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
 
-                map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
-
-                if (map.EntityList != null)
-                {
-                    EntityList = map.EntityList;
-                }
-            }
-            else
+            if (map.EntityList != null)
             {
-                map = new Map() { Id = -1, Columns = 8, Rows = 6, Name = "noMapYet"};
+                EntityList = map.EntityList;
             }
 
             DisplayMap(map);
@@ -140,14 +216,27 @@ namespace RPGWonder
                 case 0:
                     selectedTile.x = pressedButtonX;
                     selectedTile.y = pressedButtonY;
+
+                    UpdateMap();
+
                     break;
 
                 case 1:
-                    MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+                    if (YourTurn && selectedEntity.Name == _yourCharacter.Name)
+                    {
+                        MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+
+                        UpdateMap();
+
+                        ClientSendMap();
+
+                        yourTurn = false;
+                        turnLabel.Text = "Wait for your turn!";
+                    }
                     break;
             }
 
-            UpdateMap();
+            //UpdateMap();
         }
 
         // x1, y1 - from
@@ -214,17 +303,16 @@ namespace RPGWonder
 
             DisplaySelectedInfo();
 
-            //map.EntityList = EntityList;
-            //map.SaveToJSON(GetMapById(_campaign.CurrentMap));
+            map.EntityList = EntityList;
+            map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
         public string GetMapById(int id)
         {
-            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
-
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+            string path = _clientCampaignsPath + "\\maps";
 
             string[] filePaths = Directory.GetFiles(path, "*.json");
+
             foreach (string filePath in filePaths)
             {
                 JObject map = JObject.Parse(File.ReadAllText(filePath));
@@ -248,6 +336,11 @@ namespace RPGWonder
             {
                 return false;
             }
+        }
+
+        private void Client_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ClientTcpConnection.CloseStream();
         }
     }
 }

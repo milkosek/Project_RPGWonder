@@ -146,6 +146,9 @@
   <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 16pt</value>
   </data>
+  <data name="ipAddrInput.Text" xml:space="preserve">
+    <value>127.0.0.1</value>
+  </data>
   <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 52</value>
   </data>

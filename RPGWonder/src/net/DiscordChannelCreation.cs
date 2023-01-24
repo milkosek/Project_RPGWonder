@@ -33,7 +33,6 @@ namespace RPGWonder.src.net
             Thread.Sleep(3000);
             var textChannelId = ulong.Parse(id);
             textChannel = _client.GetChannel(textChannelId) as ITextChannel;
-            var w = textChannel;
         }
         public async static void CreateGuildThenChannelThenInviteAndOpen()
         {

@@ -50,6 +50,11 @@ namespace RPGWonder
                     continue;
                 }
             }
+
+            if (filePaths.Length > 0)
+            {
+                charactersComboBox.SelectedIndex = 0;
+            }
         }
 
         private void JoinGameButton_Click(object sender, EventArgs e)
@@ -66,7 +71,7 @@ namespace RPGWonder
         private void charactersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
-            Debug.WriteLine(_character);
+            //Debug.WriteLine(_character);
         }
     }
 }
