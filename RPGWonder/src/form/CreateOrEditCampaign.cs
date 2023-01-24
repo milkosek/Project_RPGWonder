@@ -273,5 +273,39 @@ namespace RPGWonder
                 }
             }
         }
+        private void removeAsset_Click(object sender, EventArgs e)
+        {
+            string assetPath = string.Empty;
+            string targetPath = _path + "\\assets\\";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    assetPath = openFileDialog.FileName;
+                    try
+                    {
+                        if(assetPath.Contains(targetPath))
+                        {
+                            File.Delete(assetPath);
+                            Log.Instance.gameLog.Debug("File deleted successfully.");
+                        }
+                        else
+                        {
+                            Log.Instance.errorLog.Error("You chose a file outside of assets");
+                        }
+                    }
+                    catch (IOException exception)
+                    {
+                        Log.Instance.errorLog.Error("An error occurred: " + exception.Message);
+                    }
+                }
+            }
+        }
     }
 }
