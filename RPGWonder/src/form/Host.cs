@@ -500,14 +500,15 @@ namespace RPGWonder
                 openFileDialog.InitialDirectory = Path.GetFullPath(targetPath);
                 openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
-                targetPath = Path.GetFullPath(targetPath);
+                targetPath = Path.GetFullPath(targetPath).ToLower();
+
                 if (!Directory.Exists(targetPath))
                 {
                     Directory.CreateDirectory(targetPath);
                 }
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    assetPath = openFileDialog.FileName;
+                    assetPath = openFileDialog.FileName.ToLower();
 
                     try
                     {
