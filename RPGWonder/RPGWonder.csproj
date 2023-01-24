@@ -128,6 +128,7 @@
     <EmbeddedResource Include="src\form\ShowCharacter.resx">
       <DependentUpon>ShowCharacter.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="systemPresets\DnD5e\Alignments.json" />
     <Compile Include="Properties\Resources.Designer.cs">

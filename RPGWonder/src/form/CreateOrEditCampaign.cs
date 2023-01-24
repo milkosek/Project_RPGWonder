@@ -12,6 +12,7 @@ namespace RPGWonder
     /// </summary>
     public partial class CreateOrEditCampaign : DefaultForm
     {
+
         private static CreateOrEditCampaign _instance = null;
 
         /// <summary>
@@ -176,6 +177,8 @@ namespace RPGWonder
             editButton.BackColor = Color.SteelBlue;
             SaveButton.BackColor = Color.SteelBlue;
             deleteButton.BackColor = Color.IndianRed;
+            addAsset.BackColor = Color.SeaGreen;
+            removeAsset.BackColor = Color.IndianRed;
         }
 
         /// <summary> 
@@ -240,6 +243,70 @@ namespace RPGWonder
             {
                 CreateOrEditCodexEntry createOrEditCodexEntry = new CreateOrEditCodexEntry(_TAG, this, ((ComboBoxObject)listBox.SelectedItem).Key);
                 createOrEditCodexEntry.Show();
+            }
+        }
+
+        private void addAsset_Click(object sender, EventArgs e)
+        {
+            string assetPath = string.Empty;
+            string targetPath = _path + "\\assets\\";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    assetPath = openFileDialog.FileName;
+                    targetPath = targetPath + System.IO.Path.GetFileName(assetPath);
+                    try
+                    {
+                        File.Copy(assetPath, targetPath);
+                        Log.Instance.gameLog.Debug("File copied successfully.");
+                    }
+                    catch (IOException exception)
+                    {
+                        Log.Instance.errorLog.Error("An error occurred: " + exception.Message);
+                    }
+                    Asset asset = new Asset(targetPath);
+                }
+            }
+        }
+        private void removeAsset_Click(object sender, EventArgs e)
+        {
+            string assetPath = string.Empty;
+            string targetPath = _path + "\\assets\\";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    assetPath = openFileDialog.FileName;
+                    try
+                    {
+                        if(assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
+                        {
+                            File.Delete(assetPath);
+                            Log.Instance.gameLog.Debug("File deleted successfully.");
+                        }
+                        else
+                        {
+                            Log.Instance.errorLog.Error("You chose a file outside of assets");
+                        }
+                    }
+                    catch (IOException exception)
+                    {
+                        Log.Instance.errorLog.Error("An error occurred: " + exception.Message);
+                    }
+                }
             }
         }
     }

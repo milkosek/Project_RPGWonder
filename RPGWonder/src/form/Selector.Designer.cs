@@ -32,22 +32,23 @@ namespace RPGWonder.src.form
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectCampaignComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.selectCampaignComboBox.FormattingEnabled = true;
-            this.selectCampaignComboBox.Location = new System.Drawing.Point(74, 91);
-            this.selectCampaignComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.selectCampaignComboBox.Location = new System.Drawing.Point(99, 112);
+            this.selectCampaignComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectCampaignComboBox.Name = "selectCampaignComboBox";
-            this.selectCampaignComboBox.Size = new System.Drawing.Size(453, 37);
+            this.selectCampaignComboBox.Size = new System.Drawing.Size(603, 44);
             this.selectCampaignComboBox.TabIndex = 1;
             this.selectCampaignComboBox.SelectedIndexChanged += new System.EventHandler(this.selectCampaignComboBox_SelectedIndexChanged);
+            this.selectCampaignComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.selectCampaignComboBox_KeyPress);
             // 
             // okButton
             // 
             this.okButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.okButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.okButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.okButton.Location = new System.Drawing.Point(232, 166);
-            this.okButton.Margin = new System.Windows.Forms.Padding(2);
+            this.okButton.Location = new System.Drawing.Point(309, 204);
+            this.okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(137, 35);
+            this.okButton.Size = new System.Drawing.Size(183, 43);
             this.okButton.TabIndex = 3;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = false;
@@ -55,11 +56,12 @@ namespace RPGWonder.src.form
             // 
             // Selector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.selectCampaignComboBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Selector";
             this.Text = "Selector";
             this.Load += new System.EventHandler(this.Selector_Load);

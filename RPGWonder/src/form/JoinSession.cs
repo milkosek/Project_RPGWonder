@@ -73,5 +73,10 @@ namespace RPGWonder
             _character = ((ComboBoxObject)charactersComboBox.SelectedItem).Key;
             //Debug.WriteLine(_character);
         }
+
+        private void charactersComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

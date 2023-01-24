@@ -45,6 +45,7 @@
             this.difficultyComboBox.Name = "difficultyComboBox";
             this.difficultyComboBox.Size = new System.Drawing.Size(226, 28);
             this.difficultyComboBox.TabIndex = 7;
+            this.difficultyComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.difficultyComboBox_KeyPress);
             // 
             // titleLabel
             // 

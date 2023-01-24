@@ -81,5 +81,10 @@ namespace RPGWonder
         {
             _campaign = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Key;
         }
+
+        private void selectCampaignComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

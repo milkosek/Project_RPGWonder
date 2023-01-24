@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+
 namespace RPGWonder
 {
-    class Map : Asset
+    class Map : IDataclass
     {
         // The ID of the map
         public long Id;
