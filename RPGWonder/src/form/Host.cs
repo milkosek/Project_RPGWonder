@@ -25,7 +25,8 @@ namespace RPGWonder
         public static Host Instance;
         private IPAddress _ipAddress;
 
-        private string _campaignPath = "";
+        private string _campaignFilePath = "";
+        private string _campaignFolderPath = "";
         private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
@@ -53,9 +54,10 @@ namespace RPGWonder
             SetMotif();
             Instance = this;
 
-            _campaignPath = campaign;
+            _campaignFilePath = campaign;
+            _campaignFolderPath = campaign + "\\..";
             _campaign = new Campaign();
-            _campaign.ReadFromJSON(_campaignPath);
+            _campaign.ReadFromJSON(_campaignFilePath);
 
             _ipAddress = IPAddress.Parse(ip);
 
@@ -70,7 +72,7 @@ namespace RPGWonder
         private void Host_Load(object sender, EventArgs e)
         {
             _connection = new HostTcpConnection();
-            _connection.CreateSession(_campaignPath, _ipAddress);
+            _connection.CreateSession(_campaignFilePath, _ipAddress);
             CheckForIllegalCrossThreadCalls = false;
 
             this.FormBorderStyle = FormBorderStyle.None;
@@ -90,7 +92,7 @@ namespace RPGWonder
             try
             {
                 _connection = new HostTcpConnection();
-                _connection.CreateSession(_campaignPath, _ipAddress);
+                _connection.CreateSession(_campaignFilePath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
             }
             catch (Exception exception){
@@ -130,7 +132,7 @@ namespace RPGWonder
 
             PopulateCharactersList();
 
-            HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
+            HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignFilePath), File.ReadAllText(_campaignFilePath));
 
             HostBroadcastMap(true);
         }
@@ -437,7 +439,7 @@ namespace RPGWonder
             {
                 if (TileEmpty(selectedTile.x, selectedTile.y))
                 {
-                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", _campaignPath + "\\assets\\chest.png");
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", "\\assets\\chest.png");
 
                     UpdateAndBroadcastMap();
                 }
@@ -469,7 +471,7 @@ namespace RPGWonder
                 {
                     if (!EntityList.ContainsKey(chara.Name))
                     {
-                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, _campaignPath + "\\assets\\knight.png", true);
+                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, "\\assets\\knight.png", true);
 
                         break;
                     }
