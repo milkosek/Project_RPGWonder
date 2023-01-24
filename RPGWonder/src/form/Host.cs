@@ -55,7 +55,7 @@ namespace RPGWonder
             Instance = this;
 
             _campaignFilePath = campaign;
-            _campaignFolderPath = campaign + "\\..";
+            _campaignFolderPath = Path.GetDirectoryName(campaign);
             _campaign = new Campaign();
             _campaign.ReadFromJSON(_campaignFilePath);
 
@@ -493,13 +493,13 @@ namespace RPGWonder
         private void changeAsset_Click(object sender, EventArgs e)
         {
             string assetPath = string.Empty;
-            string targetPath = _campaignFolderPath + "\\assets\\";
+            string targetPath = _campaignFolderPath + "\\assets";
 
             Debug.WriteLine(targetPath);
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.InitialDirectory = Path.GetFullPath(targetPath);
                 openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
 
@@ -508,7 +508,7 @@ namespace RPGWonder
                     assetPath = openFileDialog.FileName;
                     try
                     {
-                        if (assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
+                        if (assetPath.Contains(Path.GetFullPath(targetPath)))
                         {
                             Image asset = Image.FromFile(assetPath);
                             mapTableLayout.BackgroundImage = asset;
