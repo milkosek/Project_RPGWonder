@@ -37,9 +37,9 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.turnLabel = new System.Windows.Forms.Label();
+            this.charlabel = new System.Windows.Forms.Label();
             this.DiceRollMenu = new System.Windows.Forms.Button();
             this.coords = new System.Windows.Forms.Label();
-            this.charlabel = new System.Windows.Forms.Label();
             this.controlsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,21 +97,22 @@
             resources.ApplyResources(this.turnLabel, "turnLabel");
             this.turnLabel.Name = "turnLabel";
             // 
+            // charlabel
+            // 
+            resources.ApplyResources(this.charlabel, "charlabel");
+            this.charlabel.Name = "charlabel";
+            // 
             // DiceRollMenu
             // 
             resources.ApplyResources(this.DiceRollMenu, "DiceRollMenu");
             this.DiceRollMenu.Name = "DiceRollMenu";
             this.DiceRollMenu.UseVisualStyleBackColor = true;
+            this.DiceRollMenu.Click += new System.EventHandler(this.DiceRollMenu_Click_1);
             // 
             // coords
             // 
             resources.ApplyResources(this.coords, "coords");
             this.coords.Name = "coords";
-            // 
-            // charlabel
-            // 
-            resources.ApplyResources(this.charlabel, "charlabel");
-            this.charlabel.Name = "charlabel";
             // 
             // Client
             // 
