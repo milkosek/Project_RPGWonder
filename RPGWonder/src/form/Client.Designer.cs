@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Client));
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.controlsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.turnLabel = new System.Windows.Forms.Label();
-            this.DiceRollMenu = new System.Windows.Forms.Button();
-            this.coords = new System.Windows.Forms.Label();
-            this.charlabel = new System.Windows.Forms.Label();
             this.charactersListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.turnLabel = new System.Windows.Forms.Label();
+            this.DiceRollMenu = new System.Windows.Forms.Button();
+            this.coords = new System.Windows.Forms.Label();
+            this.charlabel = new System.Windows.Forms.Label();
             this.controlsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,31 +54,10 @@
             resources.ApplyResources(this.controlsLayoutPanel, "controlsLayoutPanel");
             this.controlsLayoutPanel.Controls.Add(this.charactersListView, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.turnLabel, 2, 0);
+            this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
             this.controlsLayoutPanel.Controls.Add(this.DiceRollMenu, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
-            this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
-            // 
-            // turnLabel
-            // 
-            resources.ApplyResources(this.turnLabel, "turnLabel");
-            this.turnLabel.Name = "turnLabel";
-            // 
-            // DiceRollMenu
-            // 
-            resources.ApplyResources(this.DiceRollMenu, "DiceRollMenu");
-            this.DiceRollMenu.Name = "DiceRollMenu";
-            this.DiceRollMenu.UseVisualStyleBackColor = true;
-            // 
-            // coords
-            // 
-            resources.ApplyResources(this.coords, "coords");
-            this.coords.Name = "coords";
-            // 
-            // charlabel
-            // 
-            resources.ApplyResources(this.charlabel, "charlabel");
-            this.charlabel.Name = "charlabel";
             // 
             // charactersListView
             // 
@@ -112,6 +91,27 @@
             // columnHeader4
             // 
             resources.ApplyResources(this.columnHeader4, "columnHeader4");
+            // 
+            // turnLabel
+            // 
+            resources.ApplyResources(this.turnLabel, "turnLabel");
+            this.turnLabel.Name = "turnLabel";
+            // 
+            // DiceRollMenu
+            // 
+            resources.ApplyResources(this.DiceRollMenu, "DiceRollMenu");
+            this.DiceRollMenu.Name = "DiceRollMenu";
+            this.DiceRollMenu.UseVisualStyleBackColor = true;
+            // 
+            // coords
+            // 
+            resources.ApplyResources(this.coords, "coords");
+            this.coords.Name = "coords";
+            // 
+            // charlabel
+            // 
+            resources.ApplyResources(this.charlabel, "charlabel");
+            this.charlabel.Name = "charlabel";
             // 
             // Client
             // 

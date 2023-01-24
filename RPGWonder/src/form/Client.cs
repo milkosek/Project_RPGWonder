@@ -83,21 +83,6 @@ namespace RPGWonder
                 ClientTcpConnection.ValidateSystem();
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
 
-                //receive map
-
-
-                //send character
-
-
-                //gm places characters
-
-
-                //receive other characters
-
-
-                //receive new map
-
-
                 ClientTcpConnection.SendCharacter(Path.GetFileName(_characterPath), File.ReadAllText(_characterPath));
             }
             catch (Exception exception)
