@@ -134,7 +134,7 @@ namespace RPGWonder
 							System.IO.File.Delete(filePath);
                         }
 						asset.Save(filePath);
-						Client.ChangeAsset(filePath);
+						Client.Instance.ChangeAsset(filePath);
                     }
 				}
 			}
