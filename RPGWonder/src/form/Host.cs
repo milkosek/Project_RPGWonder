@@ -297,7 +297,6 @@ namespace RPGWonder
                 EntityOnMap EOM = nameEntity.Value;
 
                 ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                Debug.WriteLine(EOM.ImagePath);
                 ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(EOM.ImagePath);
             }
 
