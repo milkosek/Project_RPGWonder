@@ -130,14 +130,12 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>800, 450</value>
   </data>
-  <data name="&gt;&gt;charactersComboBox.Name" xml:space="preserve">
-    <value>charactersComboBox</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ipAddrLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="charactersComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 22.2pt</value>
-  </data>
-  <data name="charactersLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 18pt</value>
   </data>
   <data name="&gt;&gt;charactersLabel.Name" xml:space="preserve">
     <value>charactersLabel</value>
@@ -149,12 +147,11 @@
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;ipAddrInput.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;charactersComboBox.Name" xml:space="preserve">
+    <value>charactersComboBox</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="charactersComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;charactersComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ipAddrLabel.Name" xml:space="preserve">
     <value>ipAddrLabel</value>
@@ -198,8 +195,8 @@
   <data name="charactersLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 233</value>
+  <data name="&gt;&gt;ipAddrInput.Name" xml:space="preserve">
+    <value>ipAddrInput</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
@@ -222,8 +219,8 @@
   <data name="&gt;&gt;charactersComboBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ipAddrLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="charactersLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 18pt</value>
   </data>
   <data name="JoinGameButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 77</value>
@@ -234,8 +231,8 @@
   <data name="ipAddrLabel.Text" xml:space="preserve">
     <value>Enter host IP address:</value>
   </data>
-  <data name="&gt;&gt;ipAddrInput.Name" xml:space="preserve">
-    <value>ipAddrInput</value>
+  <data name="charactersComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="charactersLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -255,17 +252,20 @@
   <data name="&gt;&gt;JoinGameButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 18pt</value>
+  </data>
   <data name="&gt;&gt;ipAddrInput.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;charactersComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ipAddrInput.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;JoinGameButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 18pt</value>
+  <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 233</value>
   </data>
   <data name="charactersLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>324, 36</value>

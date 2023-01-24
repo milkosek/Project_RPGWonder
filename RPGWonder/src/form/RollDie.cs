@@ -101,5 +101,10 @@ namespace RPGWonder
             }
             return new KeyValuePair<int, bool>(roll, false);
         }
+
+        private void difficultyComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

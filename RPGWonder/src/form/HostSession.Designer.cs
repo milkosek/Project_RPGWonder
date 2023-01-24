@@ -43,6 +43,7 @@
             this.selectCampaignComboBox.FormattingEnabled = true;
             this.selectCampaignComboBox.Name = "selectCampaignComboBox";
             this.selectCampaignComboBox.SelectedIndexChanged += new System.EventHandler(this.selectCampaignComboBox_SelectedIndexChanged);
+            this.selectCampaignComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.selectCampaignComboBox_KeyPress);
             // 
             // selectCampaignLabel
             // 

@@ -44,6 +44,7 @@
             resources.ApplyResources(this.systemComboBox, "systemComboBox");
             this.systemComboBox.FormattingEnabled = true;
             this.systemComboBox.Name = "systemComboBox";
+            this.systemComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.systemComboBox_KeyPress);
             // 
             // tableLayoutPanel1
             // 

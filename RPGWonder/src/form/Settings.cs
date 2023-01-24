@@ -53,5 +53,10 @@ namespace RPGWonder
             Properties.Settings.Default.Save();
             Application.Restart();
         }
+
+        private void systemComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

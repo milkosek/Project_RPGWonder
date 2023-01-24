@@ -89,5 +89,10 @@ namespace RPGWonder.src.form
             }
             base.Dispose(disposing);
         }
+
+        private void selectCampaignComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
