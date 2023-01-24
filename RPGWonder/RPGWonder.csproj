@@ -347,8 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\map_placeholder.png" />
-    <Content Include="src\asset\knight.png" />
-    <Content Include="src\asset\chest.png" />
     <Content Include="src\asset\RPGWonder.ico" />
   </ItemGroup>
   <ItemGroup>
