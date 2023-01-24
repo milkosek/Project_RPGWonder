@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RPGWonder.Properties.Resources" Collapsed="true">
+    <Position X="26.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAABEAAAAQAACAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Properties.Settings" Collapsed="true">
+    <Position X="29.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAIAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ComboBoxObject" Collapsed="true">
+    <Position X="26.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEiAAAAAAAAAAAAIAAAAAgAAAAAAA=</HashCode>
+      <FileName>src\comboBoxObject\ComboBoxObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Common" Collapsed="true">
+    <Position X="28" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAIFEAAQAAAAAEAFAAAhAAAABQAAACAAAAAA=</HashCode>
+      <FileName>src\common\Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Asset" Collapsed="true">
+    <Position X="22.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\dataclass\Asset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.AttackOrSpell" Collapsed="true">
+    <Position X="24.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>src\dataclass\AttackOrSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Campaign" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAIAAAAAABAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>src\dataclass\Campaign.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RPGWonder.Character" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAAEASIBAGBpgECAACAAhQQBABAEAAABAAAgAAAAQAA=</HashCode>
+      <FileName>src\dataclass\Character.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RPGWonder.CodexEntry" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAABAAEAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>src\dataclass\CodexEntry.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RPGWonder.Entity" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAIAAAAAQAAAAFAgAAAQIAAAAAAgA=</HashCode>
+      <FileName>src\dataclass\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.EntityOnMap" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAACAgAAAgIQAAAAEAABAAABgAAAAYAA=</HashCode>
+      <FileName>src\dataclass\EntityOnMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Map" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAABAAEAAAAAAAAQAAAAAAAAAAAAAgAgAAAA=</HashCode>
+      <FileName>src\dataclass\Map.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RPGWonder.DiceRolls" Collapsed="true">
+    <Position X="29.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAEAAAAAACAgAAAgAAAAAgAAAAAAAADAAAA=</HashCode>
+      <FileName>src\DiceRolls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Client" Collapsed="true">
+    <Position X="31.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAGAAgYGBAAEICgASQAIECAJBAAIAA0BAAgKAFJAA=</HashCode>
+      <FileName>src\form\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.CreateOrEditCampaign" Collapsed="true">
+    <Position X="2" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FEAEAAIgAGCSAEAAEGCACBgCCAAAIAAQyAggAAAAAAE=</HashCode>
+      <FileName>src\form\CreateOrEditCampaign.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.CreateOrEditCharacter" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBSnaQoCGGArhlMKmWyFAWm2wJQIoEAhRCEIayFCIAA=</HashCode>
+      <FileName>src\form\CreateOrEditCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.CreateOrEditCodexEntry" Collapsed="true">
+    <Position X="13.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgCCCCAAAAEECAAAASAABICQAAQAAgQAEAAAA=</HashCode>
+      <FileName>src\form\CreateOrEditCodexEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.DefaultForm" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAEAAAIAAAA=</HashCode>
+      <FileName>src\form\DefaultForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Host" Collapsed="true">
+    <Position X="22.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACEGEAgYGRABAICgASREIECEJBIAIgAmBAAgKAVBAA=</HashCode>
+      <FileName>src\form\Host.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.HostSession" Collapsed="true">
+    <Position X="26.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAggACAQAAAQAAiAAABCIAAIAIAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\form\HostSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.JoinSession" Collapsed="true">
+    <Position X="33.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAEAAAgASAAAEAAAACCAAIKAAAAAAAAQIQAAAIAAAA=</HashCode>
+      <FileName>src\form\JoinSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.MainMenu" Collapsed="true">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEAAAAACAQQAAAIADAAAACIIAAAABAQAAARAYAACA=</HashCode>
+      <FileName>src\form\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ManageCampaigns" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEACgIACAAIAAAAACAEQAiABAQAAAASAAAAKCAQBA=</HashCode>
+      <FileName>src\form\ManageCampaigns.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ManageCharacters" Collapsed="true">
+    <Position X="15.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GGAEAAAAAKAgAAABAACCwAACAAAACAAASAAIAAAAABA=</HashCode>
+      <FileName>src\form\ManageCharacters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.RollDie" Collapsed="true">
+    <Position X="20" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIABBAACAAAACBAACAACACAAKAAAAQQACAAAQAAAA=</HashCode>
+      <FileName>src\form\RollDie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Settings" Collapsed="true">
+    <Position X="24.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACAAAAIAAICAAAACQABIAAAAQABAQAAAACA=</HashCode>
+      <FileName>src\form\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ShowCharacter" Collapsed="true">
+    <Position X="29" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQnAQAABCAiBlMAAWSAAFiywBAIJUABRBAQIwFAIAA=</HashCode>
+      <FileName>src\form\ShowCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Log" Collapsed="true">
+    <Position X="28" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAQAAAAAAAAAAAAAABAAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\log\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ClientData" Collapsed="true">
+    <Position X="29.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAIAAAAAAAAAAAACBA=</HashCode>
+      <FileName>src\net\ClientData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.ClientTcpConnection" Collapsed="true">
+    <Position X="22.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAEAACIQAAAAgAAAAiAAAAAAAAAA=</HashCode>
+      <FileName>src\net\ClientTcpConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.HostTcpConnection" Collapsed="true">
+    <Position X="24.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAECAAlAAACAQAAAgAAAgAAgAAAAAAAAAAQA=</HashCode>
+      <FileName>src\net\HostTcpConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.IPAdd" Collapsed="true">
+    <Position X="26.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\net\IPAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Program" Collapsed="true">
+    <Position X="24.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>src\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.Safedict&lt;T1, T2&gt;" Collapsed="true">
+    <Position X="28" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\safedict\Safedict.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.VoiceChat" Collapsed="true">
+    <Position X="22.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\VoiceChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.src.form.DiceDisplay" Collapsed="true">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgAAAAAADEAgAAAAGCAgFACAMBgAAAAQEAJAACgIAA=</HashCode>
+      <FileName>src\form\DiceDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.src.form.Selector" Collapsed="true">
+    <Position X="17.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAEACAAAAAAAACAAABCAABAEIAAQAhAAAAAAAA=</HashCode>
+      <FileName>src\form\Selector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.src.map.MapHandler" Collapsed="true">
+    <Position X="22.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAQAAAAAAAAAAAACAAAAgABAAAEAA=</HashCode>
+      <FileName>src\map\MapHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGWonder.src.net.DiscordChannelConnection" Collapsed="true">
+    <Position X="22.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABggAQBAAEAAAAQABAAAAgAAAEBAAAAAgAAQAAI=</HashCode>
+      <FileName>src\net\DiscordChannelCreation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="RPGWonder.IDataclass" Collapsed="true">
+    <Position X="22.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\interface\IDataclass.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
