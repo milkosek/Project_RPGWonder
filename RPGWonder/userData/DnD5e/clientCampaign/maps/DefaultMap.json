@@ -1,0 +1,104 @@
+{
+  "Id": 0,
+  "Name": "DefaultMap",
+  "Columns": 16,
+  "Rows": 12,
+  "EntityList": {
+    "Chest0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 6,
+      "Y": 3,
+      "Name": "Chest0",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest1": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 6,
+      "Y": 5,
+      "Name": "Chest1",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest7": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 9,
+      "Y": 1,
+      "Name": "Chest7",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest8": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 7,
+      "Y": 1,
+      "Name": "Chest8",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest9": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 5,
+      "Y": 1,
+      "Name": "Chest9",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest10": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 3,
+      "Y": 1,
+      "Name": "Chest10",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest11": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 3,
+      "Y": 5,
+      "Name": "Chest11",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Chest2": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 9,
+      "Y": 5,
+      "Name": "Chest2",
+      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    }
+  }
+}

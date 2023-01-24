@@ -12,26 +12,21 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Drawing;
 using RPGWonder.src.net;
+using static RPGWonder.Client;
 
 namespace RPGWonder
 {
-    //TODO
-    //GAMERS
-    //  -linki do kart
-    //THROW
-    //  -per player, per stat
-    //SPAWN GENERIC (wall, enemy, chest)
-    //CHANGE MAP done
     /// <summary>
     /// Class representing a from with game window as seen by the Host
     /// </summary>
     public partial class Host : DefaultForm
     {
         private HostTcpConnection _connection;
-        public static Host Instace;
+        public static Host Instance;
         private IPAddress _ipAddress;
 
-        private string _campaignPath = "";
+        private string _campaignFilePath = "";
+        private string _campaignFolderPath = "";
         private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
@@ -41,6 +36,14 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
+        public delegate void ReloadHost();
+        public ReloadHost reloadDelegate;
+
+        private int _currentPLayer = 0;
+
+        private List<Character> _characters;
+        private int _listViewSelectedChar;
+
         /// <summary>
         /// Public contructor of <see cref="Host"/> class.
         /// </summary>
@@ -49,22 +52,27 @@ namespace RPGWonder
         {
             InitializeComponent();
             SetMotif();
-            Instace = this;
+            Instance = this;
 
-            _campaignPath = campaign;
+            _campaignFilePath = campaign;
+            _campaignFolderPath = campaign + "\\..";
             _campaign = new Campaign();
-            _campaign.ReadFromJSON(_campaignPath);
+            _campaign.ReadFromJSON(_campaignFilePath);
 
             _ipAddress = IPAddress.Parse(ip);
 
             mapLoader = new MapHandler(this);
             map = new Map() { };
+
+            _characters = new List<Character> { };
+
+            reloadDelegate = new ReloadHost(ReloadEntities);
         }
 
         private void Host_Load(object sender, EventArgs e)
         {
             _connection = new HostTcpConnection();
-            _connection.CreateSession(_campaignPath, _ipAddress);
+            _connection.CreateSession(_campaignFilePath, _ipAddress);
             CheckForIllegalCrossThreadCalls = false;
 
             this.FormBorderStyle = FormBorderStyle.None;
@@ -76,47 +84,83 @@ namespace RPGWonder
 
             coords.Text = map.Name;
 
+            currentPlayerLabel.Text = "Current player: You";
+
             UpdateMap();
 
             Log.Instance.gameLog.Debug("Attempting to establish connection...");
             try
             {
                 _connection = new HostTcpConnection();
-                _connection.CreateSession(_campaignPath, _ipAddress);
+                _connection.CreateSession(_campaignFilePath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
             }
             catch (Exception exception){
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            Thread discordThread = new Thread(new ThreadStart(
-                () => DiscordChannelConnection.
-                CreateGuildThenChannelThenInviteAndOpen()));
-            discordThread.Start();    
+            //Thread discordThread = new Thread(new ThreadStart(
+            //    () => DiscordChannelConnection.
+            //    CreateGuildThenChannelThenInviteAndOpen()));
+            //discordThread.Start();
         }
         /// <summary>
         /// Method for reloading the game state.
         /// </summary>
         public void Reload()
         {
+            Debug.WriteLine("RELOADING HOST!");
+
+        }
+
+        public void NewPLayerConnected()
+        {
+            Debug.WriteLine("INFORMING NEW CLIENT!");
+
+            charlabel.Text = "Characters:\n";
+
+            _characters.Clear();
+
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
-                charlabel.Text = charlabel.Text + character.Name;
+                charlabel.Text = charlabel.Text + character.Name + " Lvl." + character.Level + "\n";
+
+                _characters.Add(character);
+            }
+
+            PopulateCharactersList();
+
+            HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignFilePath), File.ReadAllText(_campaignFilePath));
+
+            HostBroadcastMap(true);
+        }
+
+        private void HostBroadcastMap(bool changeMap = false) 
+        {
+            if (changeMap)
+            {
+                HostTcpConnection.BroadcastMap(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
+            }
+            else
+            {
+                HostTcpConnection.BroadcastMapUpdate(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
             }
         }
-
-        private void Host_FormClosed(object sender, FormClosedEventArgs e)
+        public void ReloadEntities()
         {
-            Environment.Exit(0);
-        }
+            EntityList.Clear();
 
-        private void DiceRollMenu_Click(object sender, EventArgs e)
-        {
-            DiceDisplay.Instance.Show();
-            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
-        }
+            map.ReadFromJSON(GetMapById(_campaign.CurrentMap));
 
+            if (map.EntityList != null)
+            {
+                EntityList = map.EntityList;
+            }
+
+            UpdateMap();
+        }
 
         public void LoadMap(int mapId)
         {
@@ -136,7 +180,7 @@ namespace RPGWonder
 
             DisplayMap(map);
 
-            UpdateMap();
+            UpdateAndBroadcastMap(true);
         }
 
         private void DisplayMap(Map map)
@@ -152,6 +196,23 @@ namespace RPGWonder
             //mapTableLayout.BackgroundImage = map.BGImage;
         }
 
+        private void PopulateCharactersList()
+        {
+            charactersListView.Items.Clear();
+
+            foreach (ClientData client in _connection.Clients)
+            {
+                Character character = client.Character;
+                ListViewItem item = new ListViewItem(character.Name);
+
+                item.SubItems.Add(character.Level.ToString());
+                item.SubItems.Add(character.CurrentHitPoints.ToString());
+                item.SubItems.Add(character.Initiative.ToString());
+
+                charactersListView.Items.Add(item); 
+            }
+        }
+
         // 0 - LMB select
         // 1 - RMB move
         public void MapTileAction(string myText, int actionType)
@@ -164,14 +225,22 @@ namespace RPGWonder
                 case 0:
                     selectedTile.x = pressedButtonX;
                     selectedTile.y = pressedButtonY;
+
+                    UpdateMap();
+
                     break;
 
                 case 1:
-                    MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+                    if (_currentPLayer == 0)
+                    {
+                        MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
+
+                        UpdateAndBroadcastMap();
+                    }
                     break;
             }
 
-            UpdateMap();
+            //UpdateMap();
         }
 
         // x1, y1 - from
@@ -235,18 +304,32 @@ namespace RPGWonder
 
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
             ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-
+            
             DisplaySelectedInfo();
 
             map.EntityList = EntityList;
             map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
+        private void UpdateAndBroadcastMap(bool changeMap = false)
+        {
+            if (changeMap)
+            {
+                UpdateMap();
+
+                HostBroadcastMap(changeMap);
+            }
+            else
+            {
+                UpdateMap();
+
+                HostBroadcastMap();
+            }
+        }
+
         public string GetMapById(int id)
         {
-            string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
-
-            string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns\\" + _campaign.Name + "\\maps";
+            string path = Common.Instance.CampaignsPath + "\\" + _campaign.Name + "\\maps";
 
             string[] filePaths = Directory.GetFiles(path, "*.json");
             foreach (string filePath in filePaths)
@@ -274,31 +357,29 @@ namespace RPGWonder
             }
         }
 
-        private void SpawnChest(object sender, System.EventArgs e)
-        {
-            if (TileEmpty(selectedTile.x, selectedTile.y))
-            {
-                AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\chest.png");
-
-                UpdateMap();
-            }
-
-        }
-
-        private void AddEntityOnMap(int x, int y, string name, string path) 
+        private void AddEntityOnMap(int x, int y, string name, string path, bool character = false) 
         {
             if (!TileEmpty(x, y))
             {
                 return;
             }
 
-            int iter = 0;
-            string tempName = name + iter.ToString();
+            string tempName;
 
-            while (EntityList.ContainsKey(tempName))
+            if (character)
             {
+                tempName = name;
+            }
+            else
+            {
+                int iter = 0;
                 tempName = name + iter.ToString();
-                iter += 1;
+
+                while (EntityList.ContainsKey(tempName))
+                {
+                    tempName = name + iter.ToString();
+                    iter += 1;
+                }
             }
 
             EntityOnMap tempEntity = new EntityOnMap(0, 0, x, y, path);
@@ -308,14 +389,33 @@ namespace RPGWonder
             EntityList[tempEntity.Name] = tempEntity;
         }
 
-        private void RemoveEntity_Click(object sender, EventArgs e)
+        public void nextPLayer()
         {
-            EntityList.Remove(ButtonsMatrix[selectedTile.y][selectedTile.x].Text);
+            if (_connection.Clients.Count > 0)
+            {
+                _currentPLayer++;
 
-            UpdateMap();
+                if (_currentPLayer >= 1 + _connection.Clients.Count)
+                {
+                    _currentPLayer = 0;
+                    currentPlayerLabel.Text = "Current player: You";
+                }
+                else
+                {
+                    //TODO get char name
+                    currentPlayerLabel.Text = "Current player: " + (_connection.Clients[_currentPLayer - 1].Character.Name);
+
+                    HostTcpConnection.YourTurn(_currentPLayer - 1);
+                }
+            }
         }
 
-        private void ChangeMap_Click(object sender, EventArgs e)
+        private void next_player_button_Click(object sender, EventArgs e)
+        {
+            nextPLayer();
+        }
+
+        private void change_map_button_Click(object sender, EventArgs e)
         {
             Selector.Instance.Show();
             Selector.Instance.WindowState = FormWindowState.Normal;
@@ -323,9 +423,97 @@ namespace RPGWonder
             Selector.Instance.Selector_Init(this, _campaign.Name);
         }
 
-        private void mapTableLayout_Paint(object sender, PaintEventArgs e)
+        private void remove_entity_button_Click(object sender, EventArgs e)
         {
+            if (_currentPLayer == 0)
+            {
+                EntityList.Remove(ButtonsMatrix[selectedTile.y][selectedTile.x].Text);
 
+                UpdateAndBroadcastMap();
+            }
+        }
+
+        private void spawn_chest_button_Click(object sender, EventArgs e)
+        {
+            if (_currentPLayer == 0)
+            {
+                if (TileEmpty(selectedTile.x, selectedTile.y))
+                {
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", "\\assets\\chest.png");
+
+                    UpdateAndBroadcastMap();
+                }
+            }
+        }
+
+        private void dice_roll_button_Click(object sender, EventArgs e)
+        {
+            DiceDisplay.Instance.Show();
+            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
+        }
+
+        private void character_selected(object sender, EventArgs e)
+        {
+            ShowCharacter showChar = new ShowCharacter(_connection.Clients[_listViewSelectedChar].Character);
+            showChar.Show();
+        }
+
+        private void selected_char_changed(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            _listViewSelectedChar = e.ItemIndex;
+        }
+
+        private void spawn_player_button_Click(object sender, EventArgs e)
+        {
+            if (TileEmpty(selectedTile.x, selectedTile.y))
+            {
+                foreach(Character chara in _characters)
+                {
+                    if (!EntityList.ContainsKey(chara.Name))
+                    {
+                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, "\\assets\\knight.png", true);
+
+                        break;
+                    }
+                }
+
+                UpdateAndBroadcastMap();
+            }
+        }
+        private void changeAsset_Click(object sender, EventArgs e)
+        {
+            string assetPath = string.Empty;
+            string targetPath = _campaignFolderPath + "\\assets\\";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    assetPath = openFileDialog.FileName;
+                    try
+                    {
+                        if (assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
+                        {
+                            Image asset = Image.FromFile(assetPath);
+                            mapTableLayout.BackgroundImage = asset;
+                            Log.Instance.gameLog.Debug("Asset changed successfully.");
+                        }
+                        else
+                        {
+                            Log.Instance.errorLog.Error("You chose an asset outside of campaign");
+                        }
+                    }
+                    catch (IOException exception)
+                    {
+                        Log.Instance.errorLog.Error("An error occurred: " + exception.Message);
+                    }
+                }
+            }
         }
     }
 }

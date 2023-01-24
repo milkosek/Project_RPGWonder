@@ -31,32 +31,38 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Client));
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.controlsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.turnLabel = new System.Windows.Forms.Label();
             this.DiceRollMenu = new System.Windows.Forms.Button();
             this.coords = new System.Windows.Forms.Label();
-            this.charactersTabs = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.charlabel = new System.Windows.Forms.Label();
+            this.charactersListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controlsLayoutPanel.SuspendLayout();
-            this.charactersTabs.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapTableLayout
             // 
-            resources.ApplyResources(this.mapTableLayout, "mapTableLayout");
             this.mapTableLayout.BackgroundImage = global::RPGWonder.Properties.Resources.map_placeholder;
+            resources.ApplyResources(this.mapTableLayout, "mapTableLayout");
             this.mapTableLayout.Name = "mapTableLayout";
             // 
             // controlsLayoutPanel
             // 
             resources.ApplyResources(this.controlsLayoutPanel, "controlsLayoutPanel");
+            this.controlsLayoutPanel.Controls.Add(this.charactersListView, 0, 1);
+            this.controlsLayoutPanel.Controls.Add(this.turnLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.DiceRollMenu, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
-            this.controlsLayoutPanel.Controls.Add(this.charactersTabs, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
+            // 
+            // turnLabel
+            // 
+            resources.ApplyResources(this.turnLabel, "turnLabel");
+            this.turnLabel.Name = "turnLabel";
             // 
             // DiceRollMenu
             // 
@@ -69,40 +75,43 @@
             resources.ApplyResources(this.coords, "coords");
             this.coords.Name = "coords";
             // 
-            // charactersTabs
-            // 
-            resources.ApplyResources(this.charactersTabs, "charactersTabs");
-            this.controlsLayoutPanel.SetColumnSpan(this.charactersTabs, 3);
-            this.charactersTabs.Controls.Add(this.tabPage1);
-            this.charactersTabs.Controls.Add(this.tabPage2);
-            this.charactersTabs.Name = "charactersTabs";
-            this.controlsLayoutPanel.SetRowSpan(this.charactersTabs, 3);
-            this.charactersTabs.SelectedIndex = 0;
-            // 
-            // tabPage1
-            // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Controls.Add(this.listView1);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.HideSelection = false;
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // tabPage2
-            // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // charlabel
             // 
             resources.ApplyResources(this.charlabel, "charlabel");
             this.charlabel.Name = "charlabel";
+            // 
+            // charactersListView
+            // 
+            resources.ApplyResources(this.charactersListView, "charactersListView");
+            this.charactersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.controlsLayoutPanel.SetColumnSpan(this.charactersListView, 3);
+            this.charactersListView.FullRowSelect = true;
+            this.charactersListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.charactersListView.HideSelection = false;
+            this.charactersListView.Name = "charactersListView";
+            this.controlsLayoutPanel.SetRowSpan(this.charactersListView, 3);
+            this.charactersListView.UseCompatibleStateImageBehavior = false;
+            this.charactersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
+            // 
+            // columnHeader2
+            // 
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
+            // 
+            // columnHeader3
+            // 
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
+            // 
+            // columnHeader4
+            // 
+            resources.ApplyResources(this.columnHeader4, "columnHeader4");
             // 
             // Client
             // 
@@ -112,10 +121,9 @@
             this.Controls.Add(this.mapTableLayout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Client";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Client_FormClosed);
             this.Load += new System.EventHandler(this.Client_Load);
             this.controlsLayoutPanel.ResumeLayout(false);
-            this.charactersTabs.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -126,10 +134,12 @@
         private System.Windows.Forms.TableLayoutPanel controlsLayoutPanel;
         private System.Windows.Forms.Button DiceRollMenu;
         private System.Windows.Forms.Label coords;
-        private System.Windows.Forms.TabControl charactersTabs;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label charlabel;
+        private System.Windows.Forms.Label turnLabel;
+        private System.Windows.Forms.ListView charactersListView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

@@ -52,6 +52,7 @@ namespace RPGWonder
             Sizes = sizes;
             CampaignsPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\campaigns";
             CharactersPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\characters";
+            ClientCampaignsPath = Properties.Settings.Default.Path + "userData\\" + Properties.Settings.Default.System + "\\clientCampaign";
         }
         public JObject Races;
         public JObject Classes;
@@ -67,6 +68,7 @@ namespace RPGWonder
         public JObject Sizes;
         public string CampaignsPath;
         public string CharactersPath;
+        public string ClientCampaignsPath;
 
         public static Common Instance
         {

@@ -72,6 +72,7 @@ namespace RPGWonder.src.form
         private void selectCampaignComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedMap = ((ComboBoxObject)selectCampaignComboBox.SelectedItem).Key;
+            //Debug.WriteLine(SelectedMap.Value);
         }
 
         private void okButton_Click(object sender, EventArgs e)
