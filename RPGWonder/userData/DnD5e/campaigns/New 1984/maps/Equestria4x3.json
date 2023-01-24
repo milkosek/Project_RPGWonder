@@ -3,18 +3,5 @@
   "Name": "Equestria4x3",
   "Columns": 4,
   "Rows": 3,
-  "EntityList": {
-    "Adam": {
-      "EntityID": 0,
-      "MapID": 0,
-      "X": 2,
-      "Y": 1,
-      "Name": "Adam",
-      "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\knight.png",
-      "Id": 0,
-      "Type": null,
-      "Description": null,
-      "Src": null
-    }
-  }
+  "EntityList": {}
 }

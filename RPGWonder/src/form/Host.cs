@@ -297,6 +297,7 @@ namespace RPGWonder
                 EntityOnMap EOM = nameEntity.Value;
 
                 ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
+                Debug.WriteLine(EOM.ImagePath);
                 ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(EOM.ImagePath);
             }
 
@@ -437,7 +438,7 @@ namespace RPGWonder
             {
                 if (TileEmpty(selectedTile.x, selectedTile.y))
                 {
-                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\chest.png");
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", _campaignPath + "\\assets\\chest.png");
 
                     UpdateAndBroadcastMap();
                 }
@@ -469,7 +470,7 @@ namespace RPGWonder
                 {
                     if (!EntityList.ContainsKey(chara.Name))
                     {
-                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\knight.png", true);
+                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, _campaignPath + "\\assets\\knight.png", true);
 
                         break;
                     }

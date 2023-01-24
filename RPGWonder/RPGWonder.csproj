@@ -346,7 +346,6 @@
     <None Include="src\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\asset\Die.png" />
     <None Include="Resources\map_placeholder.png" />
     <Content Include="src\asset\knight.png" />
     <Content Include="src\asset\chest.png" />
