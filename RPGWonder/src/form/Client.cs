@@ -28,7 +28,8 @@ namespace RPGWonder
         List<List<Button>> ButtonsMatrix;
         Dictionary<string, EntityOnMap> EntityList;
 
-        private readonly string _character;
+        private readonly string _characterPath;
+        private Character _yourCharacter;
         private static string _hostIpAddress;
 
         public delegate void ReloadClient(int mapId);
@@ -45,7 +46,9 @@ namespace RPGWonder
             SetMotif();
             Instance = this;
 
-            _character = character;
+            _characterPath = character;
+            _yourCharacter = new Character();
+            _yourCharacter.ReadFromJSON(_characterPath);
 
             _hostIpAddress = ipAddr;
 
@@ -93,7 +96,7 @@ namespace RPGWonder
                 //receive new map
 
 
-                ClientTcpConnection.SendCharacter(Path.GetFileName(_character), File.ReadAllText(_character));
+                ClientTcpConnection.SendCharacter(Path.GetFileName(_characterPath), File.ReadAllText(_characterPath));
             }
             catch (Exception exception)
             {
@@ -133,7 +136,26 @@ namespace RPGWonder
             DiceDisplay.Instance.Show();
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
+        private void PopulateCharactersList()
+        {
+            charactersListView.Items.Clear();
 
+            //TODO later
+            //
+            //maybe
+            //
+            //foreach (ClientData client in _connection.Clients)
+            //{
+            //    Character character = client.Character;
+            //    ListViewItem item = new ListViewItem(character.Name);
+
+            //    item.SubItems.Add(character.Level.ToString());
+            //    item.SubItems.Add(character.CurrentHitPoints.ToString());
+            //    item.SubItems.Add(character.Initiative.ToString());
+
+            //    charactersListView.Items.Add(item);
+            //}
+        }
         public void ReloadEntities(int voider)
         {
             EntityList.Clear();
@@ -200,7 +222,7 @@ namespace RPGWonder
                     break;
 
                 case 1:
-                    if (YourTurn)
+                    if (YourTurn && selectedEntity.Name == _yourCharacter.Name)
                     {
                         MoveOnMap(selectedTile.x, selectedTile.y, pressedButtonX, pressedButtonY);
 

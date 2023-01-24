@@ -117,6 +117,7 @@ namespace RPGWonder
                         map.ReadFromJSON(path + "\\" + campaign_name + "\\maps\\" + map_tag);
 
                         Host.Instance.Invoke(Host.Instance.reloadDelegate);
+                        Host.Instance.nextPLayer();
                     }
                     //clever one
                     Broadcast(recievedString);

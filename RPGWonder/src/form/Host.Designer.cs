@@ -45,6 +45,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.spawn_chest_button = new System.Windows.Forms.Button();
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.spawn_player_button = new System.Windows.Forms.Button();
             this.controlsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,14 +59,15 @@
             this.controlsLayoutPanel.Controls.Add(this.next_player_button, 0, 9);
             this.controlsLayoutPanel.Controls.Add(this.dice_roll_button, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
-            this.controlsLayoutPanel.Controls.Add(this.remove_entity_button, 0, 8);
             this.controlsLayoutPanel.Controls.Add(this.spawn_npc_button, 0, 7);
             this.controlsLayoutPanel.Controls.Add(this.spawn_wall_button, 2, 7);
             this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
-            this.controlsLayoutPanel.Controls.Add(this.change_map_button, 2, 8);
             this.controlsLayoutPanel.Controls.Add(this.currentPlayerLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.charactersListView, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.spawn_chest_button, 1, 7);
+            this.controlsLayoutPanel.Controls.Add(this.change_map_button, 2, 9);
+            this.controlsLayoutPanel.Controls.Add(this.remove_entity_button, 2, 8);
+            this.controlsLayoutPanel.Controls.Add(this.spawn_player_button, 0, 8);
             this.controlsLayoutPanel.Location = new System.Drawing.Point(1500, 30);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
             this.controlsLayoutPanel.RowCount = 10;
@@ -127,9 +129,9 @@
             this.remove_entity_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.remove_entity_button.Location = new System.Drawing.Point(4, 812);
+            this.remove_entity_button.Location = new System.Drawing.Point(262, 812);
             this.remove_entity_button.Name = "remove_entity_button";
-            this.remove_entity_button.Size = new System.Drawing.Size(122, 94);
+            this.remove_entity_button.Size = new System.Drawing.Size(124, 94);
             this.remove_entity_button.TabIndex = 3;
             this.remove_entity_button.Text = "Remove Entity";
             this.remove_entity_button.UseVisualStyleBackColor = true;
@@ -177,9 +179,9 @@
             this.change_map_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_map_button.Location = new System.Drawing.Point(262, 812);
+            this.change_map_button.Location = new System.Drawing.Point(262, 913);
             this.change_map_button.Name = "change_map_button";
-            this.change_map_button.Size = new System.Drawing.Size(124, 94);
+            this.change_map_button.Size = new System.Drawing.Size(124, 103);
             this.change_map_button.TabIndex = 10;
             this.change_map_button.Text = "Change Map";
             this.change_map_button.UseVisualStyleBackColor = true;
@@ -272,6 +274,19 @@
             this.mapTableLayout.Size = new System.Drawing.Size(1440, 1020);
             this.mapTableLayout.TabIndex = 11;
             // 
+            // spawn_player_button
+            // 
+            this.spawn_player_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spawn_player_button.Location = new System.Drawing.Point(4, 812);
+            this.spawn_player_button.Name = "spawn_player_button";
+            this.spawn_player_button.Size = new System.Drawing.Size(122, 94);
+            this.spawn_player_button.TabIndex = 18;
+            this.spawn_player_button.Text = "Spawn Next Player";
+            this.spawn_player_button.UseVisualStyleBackColor = true;
+            this.spawn_player_button.Click += new System.EventHandler(this.spawn_player_button_Click);
+            // 
             // Host
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,5 +322,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button next_player_button;
+        private System.Windows.Forms.Button spawn_player_button;
     }
 }

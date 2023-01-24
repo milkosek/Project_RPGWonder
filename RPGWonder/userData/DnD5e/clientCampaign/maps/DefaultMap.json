@@ -7,7 +7,7 @@
     "Chest0": {
       "EntityID": 0,
       "MapID": 0,
-      "X": 3,
+      "X": 6,
       "Y": 3,
       "Name": "Chest0",
       "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
@@ -91,8 +91,8 @@
     "Chest2": {
       "EntityID": 0,
       "MapID": 0,
-      "X": 7,
-      "Y": 3,
+      "X": 9,
+      "Y": 5,
       "Name": "Chest2",
       "ImagePath": "C:\\Users\\Victorus\\source\\repos\\milkosek\\Project_RPGWonder\\RPGWonder\\src\\asset\\chest.png",
       "Id": 0,

@@ -35,6 +35,11 @@
             this.DiceRollMenu = new System.Windows.Forms.Button();
             this.coords = new System.Windows.Forms.Label();
             this.charlabel = new System.Windows.Forms.Label();
+            this.charactersListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controlsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +52,7 @@
             // controlsLayoutPanel
             // 
             resources.ApplyResources(this.controlsLayoutPanel, "controlsLayoutPanel");
+            this.controlsLayoutPanel.Controls.Add(this.charactersListView, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.turnLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.DiceRollMenu, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
@@ -74,6 +80,39 @@
             resources.ApplyResources(this.charlabel, "charlabel");
             this.charlabel.Name = "charlabel";
             // 
+            // charactersListView
+            // 
+            resources.ApplyResources(this.charactersListView, "charactersListView");
+            this.charactersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.controlsLayoutPanel.SetColumnSpan(this.charactersListView, 3);
+            this.charactersListView.FullRowSelect = true;
+            this.charactersListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.charactersListView.HideSelection = false;
+            this.charactersListView.Name = "charactersListView";
+            this.controlsLayoutPanel.SetRowSpan(this.charactersListView, 3);
+            this.charactersListView.UseCompatibleStateImageBehavior = false;
+            this.charactersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
+            // 
+            // columnHeader2
+            // 
+            resources.ApplyResources(this.columnHeader2, "columnHeader2");
+            // 
+            // columnHeader3
+            // 
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
+            // 
+            // columnHeader4
+            // 
+            resources.ApplyResources(this.columnHeader4, "columnHeader4");
+            // 
             // Client
             // 
             resources.ApplyResources(this, "$this");
@@ -97,5 +136,10 @@
         private System.Windows.Forms.Label coords;
         private System.Windows.Forms.Label charlabel;
         private System.Windows.Forms.Label turnLabel;
+        private System.Windows.Forms.ListView charactersListView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

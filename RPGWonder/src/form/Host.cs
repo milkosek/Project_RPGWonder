@@ -16,13 +16,6 @@ using static RPGWonder.Client;
 
 namespace RPGWonder
 {
-    //TODO
-    //GAMERS
-    //  -linki do kart
-    //THROW
-    //  -per player, per stat
-    //SPAWN GENERIC (wall, enemy, chest)
-
     /// <summary>
     /// Class representing a from with game window as seen by the Host
     /// </summary>
@@ -47,7 +40,8 @@ namespace RPGWonder
 
         private int _currentPLayer = 0;
 
-        private int _selectedChar;
+        private List<Character> _characters;
+        private int _listViewSelectedChar;
 
         /// <summary>
         /// Public contructor of <see cref="Host"/> class.
@@ -67,6 +61,8 @@ namespace RPGWonder
 
             mapLoader = new MapHandler(this);
             map = new Map() { };
+
+            _characters = new List<Character> { };
 
             reloadDelegate = new ReloadHost(ReloadEntities);
         }
@@ -96,11 +92,6 @@ namespace RPGWonder
                 _connection = new HostTcpConnection();
                 _connection.CreateSession(_campaignPath, _ipAddress);
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
-
-                //broadcast characters
-
-
-                //SYNC
             }
             catch (Exception exception){
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
@@ -127,10 +118,14 @@ namespace RPGWonder
 
             charlabel.Text = "Characters:\n";
 
+            _characters.Clear();
+
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
                 charlabel.Text = charlabel.Text + character.Name + " Lvl." + character.Level + "\n";
+
+                _characters.Add(character);
             }
 
             PopulateCharactersList();
@@ -183,7 +178,7 @@ namespace RPGWonder
 
             DisplayMap(map);
 
-            UpdateAndBroadcastMap();
+            UpdateAndBroadcastMap(true);
         }
 
         private void DisplayMap(Map map)
@@ -360,20 +355,29 @@ namespace RPGWonder
             }
         }
 
-        private void AddEntityOnMap(int x, int y, string name, string path) 
+        private void AddEntityOnMap(int x, int y, string name, string path, bool character = false) 
         {
             if (!TileEmpty(x, y))
             {
                 return;
             }
 
-            int iter = 0;
-            string tempName = name + iter.ToString();
+            string tempName;
 
-            while (EntityList.ContainsKey(tempName))
+            if (character)
             {
+                tempName = name;
+            }
+            else
+            {
+                int iter = 0;
                 tempName = name + iter.ToString();
-                iter += 1;
+
+                while (EntityList.ContainsKey(tempName))
+                {
+                    tempName = name + iter.ToString();
+                    iter += 1;
+                }
             }
 
             EntityOnMap tempEntity = new EntityOnMap(0, 0, x, y, path);
@@ -448,13 +452,31 @@ namespace RPGWonder
 
         private void character_selected(object sender, EventArgs e)
         {
-            ShowCharacter showChar = new ShowCharacter(_connection.Clients[_selectedChar].Character);
+            ShowCharacter showChar = new ShowCharacter(_connection.Clients[_listViewSelectedChar].Character);
             showChar.Show();
         }
 
         private void selected_char_changed(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            _selectedChar = e.ItemIndex;
+            _listViewSelectedChar = e.ItemIndex;
+        }
+
+        private void spawn_player_button_Click(object sender, EventArgs e)
+        {
+            if (TileEmpty(selectedTile.x, selectedTile.y))
+            {
+                foreach(Character chara in _characters)
+                {
+                    if (!EntityList.ContainsKey(chara.Name))
+                    {
+                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, @"C:\Users\Victorus\source\repos\milkosek\Project_RPGWonder\RPGWonder\src\asset\knight.png", true);
+
+                        break;
+                    }
+                }
+
+                UpdateAndBroadcastMap();
+            }
         }
     }
 }
