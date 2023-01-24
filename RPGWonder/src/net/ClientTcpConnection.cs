@@ -89,7 +89,7 @@ namespace RPGWonder
 						Map map = new Map();
 						map.ReadFromJSON(path + "\\maps\\" + map_tag);
 
-						Client.Instance.Invoke(Client.Instance.reloadDelegate, (int)map.Id);
+						Client.Instance.Invoke(Client.Instance.reloadDelegateLoadMap, (int)map.Id);
 					}
 					else if (recievedString.StartsWith("MapUpdate|"))
 					{
@@ -101,14 +101,14 @@ namespace RPGWonder
 						Map map = new Map();
 						map.ReadFromJSON(path + "\\maps\\" + map_tag);
 
-						Client.Instance.Invoke(Client.Instance.reloadDelegate2, 0);
+						Client.Instance.Invoke(Client.Instance.reloadDelegateReloadEntities, 0);
 					}
 					else if (recievedString.Contains("Turn|"))
                     {
                         Client.Instance.YourTurn = true;
-						Client.Instance.Reload();
-                    }
-                    else if (recievedString.Contains("WrongSystem:"))
+						Client.Instance.Invoke(Client.Instance.reloadDelegateTurn, 0);
+					}
+					else if (recievedString.Contains("WrongSystem:"))
 					{
 						string system = recievedString.Split('|')[1];
 						string message = "Game system mismatch.\nMake sure your game system is set to " + system;

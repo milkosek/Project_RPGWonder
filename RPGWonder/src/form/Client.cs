@@ -33,8 +33,9 @@ namespace RPGWonder
         private static string _hostIpAddress;
 
         public delegate void ReloadClient(int mapId);
-        public ReloadClient reloadDelegate;
-        public ReloadClient reloadDelegate2;
+        public ReloadClient reloadDelegateLoadMap;
+        public ReloadClient reloadDelegateReloadEntities;
+        public ReloadClient reloadDelegateTurn;
 
         private bool yourTurn = false;
 
@@ -61,8 +62,9 @@ namespace RPGWonder
                 Directory.Delete(Common.Instance.ClientCampaignsPath, true);
             }
 
-            reloadDelegate = new ReloadClient(LoadMap);
-            reloadDelegate2 = new ReloadClient(ReloadEntities);
+            reloadDelegateLoadMap = new ReloadClient(LoadMap);
+            reloadDelegateReloadEntities = new ReloadClient(ReloadEntities);
+            reloadDelegateTurn = new ReloadClient(ReloadTurn);
         }
 
         private void Client_Load(object sender, System.EventArgs e)
@@ -109,8 +111,6 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
-            turnLabel.Text = "Your turn!";
-
             //foreach (ClientData client in _connection.Clients)
             //{
             //    Character character = client.Character;
@@ -119,6 +119,7 @@ namespace RPGWonder
             //    Debug.WriteLine("RELOADED:", character.Name);
             //}
         }
+
 
         private void ClientSendMap()
         {
@@ -168,6 +169,10 @@ namespace RPGWonder
             }
 
             UpdateMap();
+        }
+        public void ReloadTurn(int voider)
+        {
+            turnLabel.Text = "Your turn!";
         }
 
         public void LoadMap(int mapId)
