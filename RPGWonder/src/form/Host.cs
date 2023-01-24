@@ -493,7 +493,9 @@ namespace RPGWonder
         private void changeAsset_Click(object sender, EventArgs e)
         {
             string assetPath = string.Empty;
-            string targetPath = Path.GetFullPath(_campaignFolderPath + "\\assets").ToLower();
+            string targetPath = _campaignFolderPath + "\\assets";
+
+            Debug.WriteLine(targetPath);
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -503,10 +505,10 @@ namespace RPGWonder
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    assetPath = openFileDialog.FileName.ToLower();
+                    assetPath = openFileDialog.FileName;
                     try
                     {
-                        if (assetPath.Contains(targetPath))
+                        if (assetPath.Contains(Path.GetFullPath(targetPath)))
                         {
                             Image asset = Image.FromFile(assetPath);
                             mapTableLayout.BackgroundImage = asset;
@@ -515,8 +517,6 @@ namespace RPGWonder
                         else
                         {
                             Log.Instance.errorLog.Error("You chose an asset outside of campaign");
-                            Debug.WriteLine(Path.GetFullPath(targetPath));
-                            Debug.WriteLine(assetPath);
                         }
                     }
                     catch (IOException exception)
