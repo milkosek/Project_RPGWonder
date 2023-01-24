@@ -35,6 +35,7 @@ namespace RPGWonder
         public delegate void ReloadClient(int mapId);
         public ReloadClient reloadDelegate;
         public ReloadClient reloadDelegate2;
+        public ReloadClient reloadDelegateAsset;
 
         private bool yourTurn = false;
 
@@ -341,6 +342,11 @@ namespace RPGWonder
         private void Client_FormClosed(object sender, FormClosedEventArgs e)
         {
             ClientTcpConnection.CloseStream();
+        }
+        public static void ChangeAsset(string assetPath)
+        {
+            Image asset = Image.FromFile(assetPath);
+            mapTableLayout.BackgroundImage = asset;
         }
     }
 }

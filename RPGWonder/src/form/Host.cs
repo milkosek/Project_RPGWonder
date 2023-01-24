@@ -480,5 +480,40 @@ namespace RPGWonder
                 UpdateAndBroadcastMap();
             }
         }
+        private void changeAsset_Click(object sender, EventArgs e)
+        {
+            string assetPath = string.Empty;
+            string targetPath = _campaignFolderPath + "\\assets\\";
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    assetPath = openFileDialog.FileName;
+                    try
+                    {
+                        if (assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
+                        {
+                            Image asset = Image.FromFile(assetPath);
+                            mapTableLayout.BackgroundImage = asset;
+                            Log.Instance.gameLog.Debug("Asset changed successfully.");
+                        }
+                        else
+                        {
+                            Log.Instance.errorLog.Error("You chose an asset outside of campaign");
+                        }
+                    }
+                    catch (IOException exception)
+                    {
+                        Log.Instance.errorLog.Error("An error occurred: " + exception.Message);
+                    }
+                }
+            }
+        }
     }
 }

@@ -8,12 +8,13 @@ using System.Threading;
 using System.Web.UI;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Drawing;
 
 namespace RPGWonder
 {
 	internal class ClientTcpConnection
 	{
-		private static string recievedString; 
+		private static string receivedString; 
 		private static NetworkStream stream;
 
 		private Campaign _campaign;
@@ -44,7 +45,7 @@ namespace RPGWonder
 		}
 		private static void Listen()
 		{
-			byte[] bytes = new byte[16000];
+			byte[] bytes = new byte[16000000];
 			string path = Common.Instance.ClientCampaignsPath;
 			int i;
 
@@ -52,37 +53,37 @@ namespace RPGWonder
 			{
 				while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
 				{
-					recievedString = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+					receivedString = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
 					
-					//Debug.WriteLine("Received: {0}", recievedString);
+					//Debug.WriteLine("Received: {0}", receivedString);
 					
-					if (recievedString == "GetSystem")
+					if (receivedString == "GetSystem")
 					{
 						Send("System|" + Properties.Settings.Default.System);
 					}
-					else if (recievedString.StartsWith("Campaign|"))
+					else if (receivedString.StartsWith("Campaign|"))
 					{
 						if (!Directory.Exists(path))
 						{
                             Directory.CreateDirectory(path);
                         }
 
-                        string campaign_tag = recievedString.Split('|')[1];
-                        string campaign_json = recievedString.Split('|')[2];
+                        string campaign_tag = receivedString.Split('|')[1];
+                        string campaign_json = receivedString.Split('|')[2];
 
                         File.WriteAllText(path + "\\" + campaign_tag, campaign_json);
 
                         Client.Instance.LoadCampaign(campaign_tag);
                     }
-					else if (recievedString.StartsWith("MapChange|"))
+					else if (receivedString.StartsWith("MapChange|"))
 					{
 						if (!Directory.Exists(path + "\\maps"))
 						{
 							Directory.CreateDirectory(path + "\\maps");
 						}
 
-						string map_tag = recievedString.Split('|')[1];
-						string map_json = recievedString.Split('|')[2];
+						string map_tag = receivedString.Split('|')[1];
+						string map_json = receivedString.Split('|')[2];
 
 						File.WriteAllText(path + "\\maps\\" + map_tag, map_json);
 
@@ -91,10 +92,10 @@ namespace RPGWonder
 
 						Client.Instance.Invoke(Client.Instance.reloadDelegate, (int)map.Id);
 					}
-					else if (recievedString.StartsWith("MapUpdate|"))
+					else if (receivedString.StartsWith("MapUpdate|"))
 					{
-						string map_tag = recievedString.Split('|')[1];
-						string map_json = recievedString.Split('|')[2];
+						string map_tag = receivedString.Split('|')[1];
+						string map_json = receivedString.Split('|')[2];
 
 						File.WriteAllText(path + "\\maps\\" + map_tag, map_json);
 
@@ -103,24 +104,38 @@ namespace RPGWonder
 
 						Client.Instance.Invoke(Client.Instance.reloadDelegate2, 0);
 					}
-					else if (recievedString.Contains("Turn|"))
+					else if (receivedString.Contains("Turn|"))
                     {
                         Client.Instance.YourTurn = true;
 						Client.Instance.Reload();
                     }
-                    else if (recievedString.Contains("WrongSystem:"))
+                    else if (receivedString.Contains("WrongSystem:"))
 					{
-						string system = recievedString.Split('|')[1];
+						string system = receivedString.Split('|')[1];
 						string message = "Game system mismatch.\nMake sure your game system is set to " + system;
 						MessageBox.Show(message);
 						Client.Instance.Close();
 					}
-					else if (recievedString.StartsWith("DiscordLink|")){
-						string link = recievedString.Substring("DiscordLink|".Length);
+					else if (receivedString.StartsWith("DiscordLink|")){
+						string link = receivedString.Substring("DiscordLink|".Length);
 
 						Thread openLinkThread = new Thread(new ThreadStart(() => DiscordChannelConnection.OpenInviteLink(link)));
 						openLinkThread.Start();
 					}
+					else if (receivedString.StartsWith("Asset|"))
+                    {
+						string fileName = receivedString.Split('|')[1];
+						string filePath = Common.Instance.ClientCampaignsPath + "\\assets\\" + fileName;
+						string image = receivedString.Substring(("Asset|" + fileName + "|").Length);
+						System.Drawing.Image asset = System.Drawing.Image.FromStream(new MemoryStream(Convert.FromBase64String(image)));
+						Directory.CreateDirectory(Common.Instance.ClientCampaignsPath + "\\assets\\");
+						if(System.IO.File.Exists(filePath))
+                        {
+							System.IO.File.Delete(filePath);
+                        }
+						asset.Save(filePath);
+						Client.ChangeAsset(filePath);
+                    }
 				}
 			}
 			catch (SocketException e)

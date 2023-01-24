@@ -290,7 +290,7 @@ namespace RPGWonder
                     assetPath = openFileDialog.FileName;
                     try
                     {
-                        if(assetPath.Contains(targetPath))
+                        if(assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
                         {
                             File.Delete(assetPath);
                             Log.Instance.gameLog.Debug("File deleted successfully.");
