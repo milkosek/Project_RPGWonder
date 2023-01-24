@@ -119,18 +119,24 @@ namespace RPGWonder
         {
             Debug.WriteLine("RELOADING HOST!");
 
+        }
+
+        public void NewPLayerConnected()
+        {
+            Debug.WriteLine("INFORMING NEW CLIENT!");
+
             charlabel.Text = "Characters:\n";
 
             foreach (ClientData client in _connection.Clients)
             {
                 Character character = client.Character;
-                charlabel.Text = charlabel.Text + character.Name +  " Lvl." + character.Level + "\n";
+                charlabel.Text = charlabel.Text + character.Name + " Lvl." + character.Level + "\n";
             }
 
-            populateCharactersList();
+            PopulateCharactersList();
 
             HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignPath), File.ReadAllText(_campaignPath));
-            
+
             HostBroadcastMap(true);
         }
 
@@ -193,7 +199,7 @@ namespace RPGWonder
             //mapTableLayout.BackgroundImage = map.BGImage;
         }
 
-        private void populateCharactersList()
+        private void PopulateCharactersList()
         {
             charactersListView.Items.Clear();
 
@@ -391,7 +397,7 @@ namespace RPGWonder
                 else
                 {
                     //TODO get char name
-                    currentPlayerLabel.Text = "Current player: " + (_currentPLayer - 1);
+                    currentPlayerLabel.Text = "Current player: " + (_connection.Clients[_currentPLayer - 1].Character.Name);
 
                     HostTcpConnection.YourTurn(_currentPLayer - 1);
                 }

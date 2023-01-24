@@ -53,38 +53,10 @@ namespace RPGWonder
             catch (SocketException e)
             {
                 //Debug.WriteLine("SocketException: {0}", e);
-                Debug.WriteLine("Client disconnected 1");
-
-                if (streams.Contains(stream))
-                {
-                    streams.Remove(stream);
-
-                    int index = clients.FindIndex(f => f.Stream == stream);
-
-                    if (index != -1)
-                    {
-                        clients.RemoveAt(index);
-                    }
-
-                }
             }
             catch (IOException e)
             {
                 //Debug.WriteLine("Exception: {0}", e);
-                Debug.WriteLine("Client disconnected 2");
-
-                if (streams.Contains(stream))
-                {
-                    streams.Remove(stream);
-
-                    int index = clients.FindIndex(f => f.Stream == stream);
-
-                    if (index != -1)
-                    {
-                        clients.RemoveAt(index);
-                    }
-
-                }
             }
             finally
             {
@@ -132,7 +104,7 @@ namespace RPGWonder
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
 
-                        Host.Instance.Reload();
+                        Host.Instance.NewPLayerConnected();
                     }
                     else if (recievedString.StartsWith("MapUpdate|"))
                     {
@@ -167,6 +139,13 @@ namespace RPGWonder
             {
                 stream.Close();
                 streams.Remove(stream);
+
+                int index = clients.FindIndex(f => f.Stream == stream);
+                if (index != -1)
+                {
+                    clients.RemoveAt(index);
+                    Host.Instance.NewPLayerConnected();
+                }
             }
         }
         public static void Broadcast(string data)
