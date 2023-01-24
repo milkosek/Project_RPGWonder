@@ -337,5 +337,11 @@ namespace RPGWonder
             Image asset = Image.FromFile(assetPath);
             mapTableLayout.BackgroundImage = asset;
         }
+
+        private void DiceRollMenu_Click_1(object sender, EventArgs e)
+        {
+            DiceDisplay.Instance.Show();
+            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
+        }
     }
 }
