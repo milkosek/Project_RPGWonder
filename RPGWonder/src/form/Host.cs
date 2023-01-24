@@ -495,20 +495,24 @@ namespace RPGWonder
             string assetPath = string.Empty;
             string targetPath = _campaignFolderPath + "\\assets";
 
-            Debug.WriteLine(targetPath);
-
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = Path.GetFullPath(targetPath);
                 openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
+                targetPath = Path.GetFullPath(targetPath).ToLower();
 
+                if (!Directory.Exists(targetPath))
+                {
+                    Directory.CreateDirectory(targetPath);
+                }
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    assetPath = openFileDialog.FileName;
+                    assetPath = openFileDialog.FileName.ToLower();
+
                     try
                     {
-                        if (assetPath.Contains(Path.GetFullPath(targetPath)))
+                        if (assetPath.Contains(targetPath))
                         {
                             Image asset = Image.FromFile(assetPath);
                             mapTableLayout.BackgroundImage = asset;
