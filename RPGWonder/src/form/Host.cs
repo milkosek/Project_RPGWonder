@@ -531,6 +531,7 @@ namespace RPGWonder
                             Image asset = Image.FromFile(assetPath);
                             mapTableLayout.BackgroundImage = asset;
                             Log.Instance.gameLog.Debug("Asset changed successfully.");
+                            HostTcpConnection.BroadcastAsset(assetPath);
                         }
                         else
                         {
