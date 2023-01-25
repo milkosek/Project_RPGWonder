@@ -149,6 +149,22 @@ namespace RPGWonder
                 Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\characters");
             }
 
+            if (!Directory.Exists(Common.Instance.CampaignsPath + "\\" + _TAG + "\\assets"))
+            {
+                Directory.CreateDirectory(Common.Instance.CampaignsPath + "\\" + _TAG + "\\assets");
+                Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\assets");
+            }
+
+            if (!Directory.Exists(Common.Instance.CampaignsPath + "\\" + _TAG + "\\entityAssets"))
+            {
+                Directory.CreateDirectory(Common.Instance.CampaignsPath + "\\" + _TAG + "\\entityAssets");
+                Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\entityAssets");
+
+                File.Copy(Properties.Settings.Default.Path + "src\\asset\\chest.png", Common.Instance.CampaignsPath + "\\" + _TAG + "\\entityAssets\\chest.png", true);
+                File.Copy(Properties.Settings.Default.Path + "src\\asset\\knight.png", Common.Instance.CampaignsPath + "\\" + _TAG + "\\entityAssets\\knight.png", true);
+                File.Copy(Properties.Settings.Default.Path + "src\\asset\\wall.png", Common.Instance.CampaignsPath + "\\" + _TAG + "\\entityAssets\\wall.png", true);
+            }
+
             try
             {
                 _campaign.SaveToJSON(Common.Instance.CampaignsPath, _TAG);

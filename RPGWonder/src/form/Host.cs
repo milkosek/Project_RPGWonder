@@ -55,7 +55,7 @@ namespace RPGWonder
             Instance = this;
 
             _campaignFilePath = campaign;
-            _campaignFolderPath = campaign + "\\..";
+            _campaignFolderPath = Path.GetDirectoryName(campaign);
             _campaign = new Campaign();
             _campaign.ReadFromJSON(_campaignFilePath);
 
@@ -111,7 +111,6 @@ namespace RPGWonder
         public void Reload()
         {
             Debug.WriteLine("RELOADING HOST!");
-
         }
 
         public void NewPLayerConnected()
@@ -128,6 +127,8 @@ namespace RPGWonder
                 charlabel.Text = charlabel.Text + character.Name + " Lvl." + character.Level + "\n";
 
                 _characters.Add(character);
+
+                HostBroadcastCharacter();
             }
 
             PopulateCharactersList();
@@ -137,7 +138,7 @@ namespace RPGWonder
             HostBroadcastMap(true);
         }
 
-        private void HostBroadcastMap(bool changeMap = false) 
+        private void HostBroadcastMap(bool changeMap = false)
         {
             if (changeMap)
             {
@@ -147,6 +148,12 @@ namespace RPGWonder
             {
                 HostTcpConnection.BroadcastMapUpdate(Path.GetFileName(GetMapById(_campaign.CurrentMap)), File.ReadAllText(GetMapById(_campaign.CurrentMap)));
             }
+        }
+
+        private void HostBroadcastCharacter()
+        {
+            //TODO broadcast chars 
+            //HostTcpConnection.BroadcastCharacter(Path.GetFileName(), File.ReadAllText());
         }
         public void ReloadEntities()
         {
@@ -281,37 +288,40 @@ namespace RPGWonder
 
         private void UpdateMap()
         {
-            for (int yC = 0; yC < map.Rows; yC++)
+            if (map.Columns > 0 && map.Rows > 0)
             {
-                for (int xC = 0; xC < map.Columns; xC++)
+                for (int yC = 0; yC < map.Rows; yC++)
                 {
-                    ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
-                    ButtonsMatrix[yC][xC].BackgroundImage = null;
+                    for (int xC = 0; xC < map.Columns; xC++)
+                    {
+                        ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
+                        ButtonsMatrix[yC][xC].BackgroundImage = null;
 
-                    ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
-                    ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                        ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
+                        ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                    }
                 }
+
+                foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
+                {
+                    string name = nameEntity.Key;
+                    EntityOnMap EOM = nameEntity.Value;
+
+                    ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
+                    ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(_campaignFolderPath + EOM.ImagePath);
+                }
+
+                ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
+                ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+
+                DisplaySelectedInfo();
+
+                map.EntityList = EntityList;
+                map.SaveToJSON(GetMapById(_campaign.CurrentMap));
             }
-
-            foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
-            {
-                string name = nameEntity.Key;
-                EntityOnMap EOM = nameEntity.Value;
-
-                ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(EOM.ImagePath);
-            }
-
-            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
-            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-            
-            DisplaySelectedInfo();
-
-            map.EntityList = EntityList;
-            map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
-        private void UpdateAndBroadcastMap(bool changeMap = false)
+        public void UpdateAndBroadcastMap(bool changeMap = false)
         {
             if (changeMap)
             {
@@ -439,7 +449,21 @@ namespace RPGWonder
             {
                 if (TileEmpty(selectedTile.x, selectedTile.y))
                 {
-                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", "\\assets\\chest.png");
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", "\\entityAssets\\chest.png");
+
+                    UpdateAndBroadcastMap();
+                }
+            }
+        }
+
+
+        private void spawn_wall_button_Click(object sender, EventArgs e)
+        {
+            if (_currentPLayer == 0)
+            {
+                if (TileEmpty(selectedTile.x, selectedTile.y))
+                {
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Wall", "\\entityAssets\\wall.png");
 
                     UpdateAndBroadcastMap();
                 }
@@ -471,7 +495,7 @@ namespace RPGWonder
                 {
                     if (!EntityList.ContainsKey(chara.Name))
                     {
-                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, "\\assets\\knight.png", true);
+                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, "\\entityAssets\\knight.png", true);
 
                         break;
                     }
@@ -483,24 +507,31 @@ namespace RPGWonder
         private void changeAsset_Click(object sender, EventArgs e)
         {
             string assetPath = string.Empty;
-            string targetPath = _campaignFolderPath + "\\assets\\";
+            string targetPath = _campaignFolderPath + "\\assets";
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.InitialDirectory = Path.GetFullPath(targetPath);
                 openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
+                targetPath = Path.GetFullPath(targetPath).ToLower();
 
+                if (!Directory.Exists(targetPath))
+                {
+                    Directory.CreateDirectory(targetPath);
+                }
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    assetPath = openFileDialog.FileName;
+                    assetPath = openFileDialog.FileName.ToLower();
+
                     try
                     {
-                        if (assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
+                        if (assetPath.Contains(targetPath))
                         {
                             Image asset = Image.FromFile(assetPath);
                             mapTableLayout.BackgroundImage = asset;
                             Log.Instance.gameLog.Debug("Asset changed successfully.");
+                            HostTcpConnection.BroadcastAsset(assetPath);
                         }
                         else
                         {
@@ -514,5 +545,6 @@ namespace RPGWonder
                 }
             }
         }
+
     }
 }

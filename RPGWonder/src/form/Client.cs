@@ -33,9 +33,9 @@ namespace RPGWonder
         private static string _hostIpAddress;
 
         public delegate void ReloadClient(int mapId);
-        public ReloadClient reloadDelegate;
-        public ReloadClient reloadDelegate2;
-        public ReloadClient reloadDelegateAsset;
+        public ReloadClient reloadDelegateLoadMap;
+        public ReloadClient reloadDelegateReloadEntities;
+        public ReloadClient reloadDelegateTurn;
 
         private bool yourTurn = false;
 
@@ -62,8 +62,9 @@ namespace RPGWonder
                 Directory.Delete(Common.Instance.ClientCampaignsPath, true);
             }
 
-            reloadDelegate = new ReloadClient(LoadMap);
-            reloadDelegate2 = new ReloadClient(ReloadEntities);
+            reloadDelegateLoadMap = new ReloadClient(LoadMap);
+            reloadDelegateReloadEntities = new ReloadClient(ReloadEntities);
+            reloadDelegateTurn = new ReloadClient(ReloadTurn);
         }
 
         private void Client_Load(object sender, System.EventArgs e)
@@ -82,21 +83,6 @@ namespace RPGWonder
                 ClientTcpConnection.ValidateSystem();
                 Log.Instance.gameLog.Debug("Estabilish connection success.");
 
-                //receive map
-
-
-                //send character
-
-
-                //gm places characters
-
-
-                //receive other characters
-
-
-                //receive new map
-
-
                 ClientTcpConnection.SendCharacter(Path.GetFileName(_characterPath), File.ReadAllText(_characterPath));
             }
             catch (Exception exception)
@@ -110,8 +96,6 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
-            turnLabel.Text = "Your turn!";
-
             //foreach (ClientData client in _connection.Clients)
             //{
             //    Character character = client.Character;
@@ -120,6 +104,7 @@ namespace RPGWonder
             //    Debug.WriteLine("RELOADED:", character.Name);
             //}
         }
+
 
         private void ClientSendMap()
         {
@@ -169,6 +154,10 @@ namespace RPGWonder
             }
 
             UpdateMap();
+        }
+        public void ReloadTurn(int voider)
+        {
+            turnLabel.Text = "Your turn!";
         }
 
         public void LoadMap(int mapId)
@@ -278,34 +267,37 @@ namespace RPGWonder
 
         private void UpdateMap()
         {
-            for (int yC = 0; yC < map.Rows; yC++)
+            if (map.Columns > 0 && map.Rows > 0)
             {
-                for (int xC = 0; xC < map.Columns; xC++)
+                for (int yC = 0; yC < map.Rows; yC++)
                 {
-                    ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
-                    ButtonsMatrix[yC][xC].BackgroundImage = null;
+                    for (int xC = 0; xC < map.Columns; xC++)
+                    {
+                        ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
+                        ButtonsMatrix[yC][xC].BackgroundImage = null;
 
-                    ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
-                    ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                        ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
+                        ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                    }
                 }
+
+                foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
+                {
+                    string name = nameEntity.Key;
+                    EntityOnMap EOM = nameEntity.Value;
+
+                    ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
+                    ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(_clientCampaignsPath + EOM.ImagePath);
+                }
+
+                ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
+                ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+
+                DisplaySelectedInfo();
+
+                map.EntityList = EntityList;
+                map.SaveToJSON(GetMapById(_campaign.CurrentMap));
             }
-
-            foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
-            {
-                string name = nameEntity.Key;
-                EntityOnMap EOM = nameEntity.Value;
-
-                ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(EOM.ImagePath);
-            }
-
-            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
-            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-
-            DisplaySelectedInfo();
-
-            map.EntityList = EntityList;
-            map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
         public string GetMapById(int id)
@@ -347,6 +339,12 @@ namespace RPGWonder
         {
             Image asset = Image.FromFile(assetPath);
             mapTableLayout.BackgroundImage = asset;
+        }
+
+        private void DiceRollMenu_Click_1(object sender, EventArgs e)
+        {
+            DiceDisplay.Instance.Show();
+            DiceDisplay.Instance.WindowState = FormWindowState.Normal;
         }
     }
 }

@@ -1,0 +1,56 @@
+{
+  "Id": 1,
+  "Name": "DefaultMap",
+  "Columns": 16,
+  "Rows": 12,
+  "EntityList": {
+    "Chest0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 4,
+      "Y": 3,
+      "Name": "Chest0",
+      "ImagePath": "\\entityAssets\\chest.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Wall0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 5,
+      "Y": 4,
+      "Name": "Wall0",
+      "ImagePath": "\\entityAssets\\wall.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Wall1": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 6,
+      "Y": 4,
+      "Name": "Wall1",
+      "ImagePath": "\\entityAssets\\wall.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    },
+    "Adam": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 7,
+      "Y": 4,
+      "Name": "Adam",
+      "ImagePath": "\\entityAssets\\knight.png",
+      "Id": 0,
+      "Type": null,
+      "Description": null,
+      "Src": null
+    }
+  }
+}

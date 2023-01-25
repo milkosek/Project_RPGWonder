@@ -117,17 +117,17 @@ namespace RPGWonder
                         map.ReadFromJSON(path + "\\" + campaign_name + "\\maps\\" + map_tag);
 
                         Host.Instance.Invoke(Host.Instance.reloadDelegate);
+
+                        BroadcastMRE(recievedString);
                         Host.Instance.nextPLayer();
                     }
-                    //clever one
-
-                    //TODO SOMETHING tutaj
-                    //Broadcast(recievedString);
 
                     if (recievedString.StartsWith("Map|"))
                     {
                         Host.Instance.nextPLayer();
                     }
+
+                    stream.Flush();
                 }
             }
             catch (SocketException e)
@@ -156,6 +156,19 @@ namespace RPGWonder
             //creating a new thread, so that it is non-blocking
             Thread sendThread = new Thread(new ThreadStart(() => BroadcastThreaded(data)));
             sendThread.Start();
+        }
+        public static void BroadcastMRE(string data)
+        {
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            Thread sendThread = new Thread(new ThreadStart(() =>
+            {
+                BroadcastThreaded(data);
+                mre.Set();
+            }));
+
+            sendThread.Start();
+            mre.WaitOne();
         }
         public static void SendToClient(string data, NetworkStream stream)
         {
