@@ -71,7 +71,7 @@
             this.controlsLayoutPanel.Controls.Add(this.remove_entity_button, 2, 8);
             this.controlsLayoutPanel.Controls.Add(this.spawn_player_button, 0, 8);
             this.controlsLayoutPanel.Location = new System.Drawing.Point(1500, 30);
-            this.controlsLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlsLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
             this.controlsLayoutPanel.RowCount = 10;
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -133,7 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coords.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.coords.Location = new System.Drawing.Point(4, 4);
-            this.coords.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.coords.Margin = new System.Windows.Forms.Padding(3);
             this.coords.Name = "coords";
             this.coords.Size = new System.Drawing.Size(122, 94);
             this.coords.TabIndex = 8;
@@ -146,7 +146,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spawn_npc_button.Location = new System.Drawing.Point(3, 710);
-            this.spawn_npc_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.spawn_npc_button.Margin = new System.Windows.Forms.Padding(2);
             this.spawn_npc_button.Name = "spawn_npc_button";
             this.spawn_npc_button.Size = new System.Drawing.Size(124, 96);
             this.spawn_npc_button.TabIndex = 2;
@@ -159,12 +159,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spawn_wall_button.Location = new System.Drawing.Point(261, 710);
-            this.spawn_wall_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.spawn_wall_button.Margin = new System.Windows.Forms.Padding(2);
             this.spawn_wall_button.Name = "spawn_wall_button";
             this.spawn_wall_button.Size = new System.Drawing.Size(126, 96);
             this.spawn_wall_button.TabIndex = 11;
             this.spawn_wall_button.Text = "Spawn Wall";
             this.spawn_wall_button.UseVisualStyleBackColor = true;
+            this.spawn_wall_button.Click += new System.EventHandler(this.spawn_wall_button_Click);
             // 
             // charlabel
             // 
@@ -172,7 +173,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.charlabel.Location = new System.Drawing.Point(133, 4);
-            this.charlabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.charlabel.Margin = new System.Windows.Forms.Padding(3);
             this.charlabel.Name = "charlabel";
             this.charlabel.Size = new System.Drawing.Size(122, 94);
             this.charlabel.TabIndex = 13;
@@ -185,7 +186,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentPlayerLabel.Location = new System.Drawing.Point(262, 4);
-            this.currentPlayerLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.currentPlayerLabel.Margin = new System.Windows.Forms.Padding(3);
             this.currentPlayerLabel.Name = "currentPlayerLabel";
             this.currentPlayerLabel.Size = new System.Drawing.Size(124, 94);
             this.currentPlayerLabel.TabIndex = 15;
@@ -207,7 +208,7 @@
             this.charactersListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.charactersListView.HideSelection = false;
             this.charactersListView.Location = new System.Drawing.Point(3, 104);
-            this.charactersListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.charactersListView.Margin = new System.Windows.Forms.Padding(2);
             this.charactersListView.Name = "charactersListView";
             this.controlsLayoutPanel.SetRowSpan(this.charactersListView, 3);
             this.charactersListView.Size = new System.Drawing.Size(384, 298);
@@ -313,7 +314,7 @@
             this.Controls.Add(this.controlsLayoutPanel);
             this.Controls.Add(this.mapTableLayout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Host";
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Host_Load);

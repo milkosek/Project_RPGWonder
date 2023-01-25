@@ -267,34 +267,37 @@ namespace RPGWonder
 
         private void UpdateMap()
         {
-            for (int yC = 0; yC < map.Rows; yC++)
+            if (map.Columns > 0 && map.Rows > 0)
             {
-                for (int xC = 0; xC < map.Columns; xC++)
+                for (int yC = 0; yC < map.Rows; yC++)
                 {
-                    ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
-                    ButtonsMatrix[yC][xC].BackgroundImage = null;
+                    for (int xC = 0; xC < map.Columns; xC++)
+                    {
+                        ButtonsMatrix[yC][xC].Text = string.Format("{0} {1}", xC, yC);
+                        ButtonsMatrix[yC][xC].BackgroundImage = null;
 
-                    ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
-                    ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                        ButtonsMatrix[yC][xC].FlatAppearance.BorderSize = 1;
+                        ButtonsMatrix[yC][xC].FlatAppearance.BorderColor = System.Drawing.Color.White;
+                    }
                 }
+
+                foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
+                {
+                    string name = nameEntity.Key;
+                    EntityOnMap EOM = nameEntity.Value;
+
+                    ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
+                    ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(_clientCampaignsPath + EOM.ImagePath);
+                }
+
+                ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
+                ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+
+                DisplaySelectedInfo();
+
+                map.EntityList = EntityList;
+                map.SaveToJSON(GetMapById(_campaign.CurrentMap));
             }
-
-            foreach (KeyValuePair<string, EntityOnMap> nameEntity in EntityList)
-            {
-                string name = nameEntity.Key;
-                EntityOnMap EOM = nameEntity.Value;
-
-                ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                //ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(_clientCampaignsPath + EOM.ImagePath);
-            }
-
-            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
-            ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-
-            DisplaySelectedInfo();
-
-            map.EntityList = EntityList;
-            map.SaveToJSON(GetMapById(_campaign.CurrentMap));
         }
 
         public string GetMapById(int id)

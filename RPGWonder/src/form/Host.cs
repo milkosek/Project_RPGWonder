@@ -449,7 +449,21 @@ namespace RPGWonder
             {
                 if (TileEmpty(selectedTile.x, selectedTile.y))
                 {
-                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", "\\assets\\chest.png");
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Chest", "\\entityAssets\\chest.png");
+
+                    UpdateAndBroadcastMap();
+                }
+            }
+        }
+
+
+        private void spawn_wall_button_Click(object sender, EventArgs e)
+        {
+            if (_currentPLayer == 0)
+            {
+                if (TileEmpty(selectedTile.x, selectedTile.y))
+                {
+                    AddEntityOnMap(selectedTile.x, selectedTile.y, "Wall", "\\entityAssets\\wall.png");
 
                     UpdateAndBroadcastMap();
                 }
@@ -481,7 +495,7 @@ namespace RPGWonder
                 {
                     if (!EntityList.ContainsKey(chara.Name))
                     {
-                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, "\\assets\\knight.png", true);
+                        AddEntityOnMap(selectedTile.x, selectedTile.y, chara.Name, "\\entityAssets\\knight.png", true);
 
                         break;
                     }
@@ -530,5 +544,6 @@ namespace RPGWonder
                 }
             }
         }
+
     }
 }

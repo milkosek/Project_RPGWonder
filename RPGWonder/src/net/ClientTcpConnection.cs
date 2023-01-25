@@ -65,7 +65,14 @@ namespace RPGWonder
 					{
 						if (!Directory.Exists(path))
 						{
-                            Directory.CreateDirectory(path);
+							Directory.CreateDirectory(path);
+						}
+                        if (!Directory.Exists(path + "\\entityAssets"))
+                        {
+                            Directory.CreateDirectory(path + "\\entityAssets");
+                            File.Copy(Properties.Settings.Default.Path + "src\\asset\\chest.png", path + "\\entityAssets\\chest.png", true);
+                            File.Copy(Properties.Settings.Default.Path + "src\\asset\\knight.png", path + "\\entityAssets\\knight.png", true);
+                            File.Copy(Properties.Settings.Default.Path + "src\\asset\\wall.png", path + "\\entityAssets\\wall.png", true);
                         }
 
                         string campaign_tag = receivedString.Split('|')[1];
