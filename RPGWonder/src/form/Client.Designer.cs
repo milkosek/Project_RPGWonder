@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Client));
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.controlsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.charactersListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,12 +53,20 @@
             // controlsLayoutPanel
             // 
             resources.ApplyResources(this.controlsLayoutPanel, "controlsLayoutPanel");
+            this.controlsLayoutPanel.Controls.Add(this.exitButton, 2, 4);
             this.controlsLayoutPanel.Controls.Add(this.charactersListView, 0, 1);
             this.controlsLayoutPanel.Controls.Add(this.turnLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
             this.controlsLayoutPanel.Controls.Add(this.DiceRollMenu, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
+            // 
+            // exitButton
+            // 
+            resources.ApplyResources(this.exitButton, "exitButton");
+            this.exitButton.Name = "exitButton";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // charactersListView
             // 
@@ -142,5 +151,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button exitButton;
     }
 }

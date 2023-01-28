@@ -50,6 +50,11 @@ namespace RPGWonder
                     control.BackColor = Color.FromArgb(64, 64, 64);
                     control.ForeColor = Color.White;
                 }
+                else if (control is ListView)
+                {
+                    control.BackColor = Color.FromArgb(64, 64, 64);
+                    control.ForeColor = Color.White;
+                }
                 else if (control is TabPage)
                 {
                     control.BackColor = Color.FromArgb(64, 64, 64);

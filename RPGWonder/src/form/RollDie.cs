@@ -48,9 +48,17 @@ namespace RPGWonder
         {
             _bonus = int.Parse(bonusTextBox.Text);
             _difficulty = int.Parse(((ComboBoxObject)difficultyComboBox.SelectedItem).Key);
-            //Do whatever you want with the result now, idk.
             KeyValuePair<int, bool> result = rollDie();
-            Debug.WriteLine(result);
+            string interpretation;
+            if (result.Value == true)
+            {
+                interpretation = "Success";
+            }
+            else
+            {
+                interpretation = "Failure";
+            }
+            MessageBox.Show("Result: " + result.Key + "\n" + interpretation);
         }
 
         private KeyValuePair<int, bool> rollDie()

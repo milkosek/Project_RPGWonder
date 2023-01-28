@@ -44,7 +44,6 @@ namespace RPGWonder
         public Client(string character, string ipAddr = "127.0.0.1")
         {
             InitializeComponent();
-            SetMotif();
             Instance = this;
 
             _characterPath = character;
@@ -67,9 +66,9 @@ namespace RPGWonder
             reloadDelegateTurn = new ReloadClient(ReloadTurn);
         }
 
-        private void Client_Load(object sender, System.EventArgs e)
+        private void Client_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             //this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
@@ -89,6 +88,10 @@ namespace RPGWonder
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+
+            SetMotif();
+            DiceRollMenu.BackColor = Color.SteelBlue;
+            exitButton.BackColor = Color.IndianRed;
         }
 
         /// <summary>
@@ -345,6 +348,11 @@ namespace RPGWonder
         {
             DiceDisplay.Instance.Show();
             DiceDisplay.Instance.WindowState = FormWindowState.Normal;
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

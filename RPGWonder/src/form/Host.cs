@@ -51,14 +51,14 @@ namespace RPGWonder
         public Host(string campaign, string ip)
         {
             InitializeComponent();
-            SetMotif();
             Instance = this;
 
             _campaignFilePath = campaign;
             _campaignFolderPath = Path.GetDirectoryName(campaign);
             _campaign = new Campaign();
             _campaign.ReadFromJSON(_campaignFilePath);
-
+            
+            //ip = "127.0.0.1"; Rollback for testing
             _ipAddress = IPAddress.Parse(ip);
 
             mapLoader = new MapHandler(this);
@@ -75,8 +75,8 @@ namespace RPGWonder
             _connection.CreateSession(_campaignFilePath, _ipAddress);
             CheckForIllegalCrossThreadCalls = false;
 
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 
@@ -104,6 +104,18 @@ namespace RPGWonder
             //    () => DiscordChannelConnection.
             //    CreateGuildThenChannelThenInviteAndOpen()));
             //discordThread.Start();
+
+            SetMotif();
+            dice_roll_button.BackColor = Color.SteelBlue;
+            exitButton.BackColor = Color.IndianRed;
+            spawn_chest_button.BackColor = Color.SeaGreen;
+            spawn_npc_button.BackColor = Color.SeaGreen;
+            spawn_player_button.BackColor = Color.SeaGreen;
+            spawn_wall_button.BackColor = Color.SeaGreen;
+            remove_entity_button.BackColor = Color.IndianRed;
+            change_map_button.BackColor = Color.SteelBlue;
+            changeAsset.BackColor = Color.SteelBlue;
+            next_player_button.BackColor = Color.SteelBlue;
         }
         /// <summary>
         /// Method for reloading the game state.
@@ -546,5 +558,9 @@ namespace RPGWonder
             }
         }
 
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

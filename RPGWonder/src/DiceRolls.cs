@@ -8,9 +8,18 @@ namespace RPGWonder
         /// <summary>
         /// <c>DiceDict</c> dictionary representing all dice in a form (number of dice, faces of dice).
         /// </summary>
-        private Dictionary<int, int> DiceDict = new Dictionary<int, int>();
-        private Random Randomizer = new Random();
-        public DiceRolls(){}
+        private Dictionary<int, int> _discDict = new Dictionary<int, int>();
+        private Random _randomizer = new Random();
+
+        public DiceRolls()
+        {
+
+        }
+
+        public int Count()
+        {
+            return _discDict.Count;
+        }
 
         /// <summary>
         /// <c>DiceRolls</c> constructor with a list of dice to add to <c>DiceDict</c>.
@@ -20,7 +29,7 @@ namespace RPGWonder
         {
             for (int iter = 0; iter < dice.Count; iter += 2)
             {
-                DiceDict.Add(dice[iter + 1], dice[iter]);
+                _discDict.Add(dice[iter + 1], dice[iter]);
             }
         }
 
@@ -36,11 +45,11 @@ namespace RPGWonder
 
             int TempRoll;
 
-            foreach (KeyValuePair<int, int> die in DiceDict)
+            foreach (KeyValuePair<int, int> die in _discDict)
             {
                 for (int iter = 0; iter < die.Value; iter++)
                 {
-                    TempRoll = Randomizer.Next(1, die.Key + 1);
+                    TempRoll = _randomizer.Next(1, die.Key + 1);
 
                     if (RollsDict.ContainsKey(die.Key))
                     {
@@ -64,13 +73,13 @@ namespace RPGWonder
         {
             if (d > 0)
             {
-                if (DiceDict.ContainsKey(d))
+                if (_discDict.ContainsKey(d))
                 {
-                    DiceDict[d]++;
+                    _discDict[d]++;
                 }
                 else
                 {
-                    DiceDict.Add(d, 1);
+                    _discDict.Add(d, 1);
                 }
             }
         }
@@ -81,15 +90,15 @@ namespace RPGWonder
         /// <param name="d">Number of faces on a die.</param>
         public void SubDie(int d)
         {
-            if (DiceDict.ContainsKey(d))
+            if (_discDict.ContainsKey(d))
             {
-                if (DiceDict[d] == 1)
+                if (_discDict[d] == 1)
                 {
-                    DiceDict.Remove(d);
+                    _discDict.Remove(d);
                 }
-                else if (DiceDict[d] > 0)
+                else if (_discDict[d] > 0)
                 {
-                    DiceDict[d]--;
+                    _discDict[d]--;
                 }
             }
         }
@@ -105,7 +114,7 @@ namespace RPGWonder
         {
             String dieStr = "";
 
-            foreach (KeyValuePair<int, int> die in DiceDict)
+            foreach (KeyValuePair<int, int> die in _discDict)
             {
                 dieStr += String.Format(" {0}d{1}", die.Value, die.Key);
             }
@@ -127,14 +136,14 @@ namespace RPGWonder
 
             for (int i = 0; i < n; i++)
             {
-                TempSum += Randomizer.Next(1, d + 1);
+                TempSum += _randomizer.Next(1, d + 1);
             }
             return TempSum;
         }
 
         public void Clear()
         {
-            DiceDict.Clear();
+            _discDict.Clear();
         }
     }
 

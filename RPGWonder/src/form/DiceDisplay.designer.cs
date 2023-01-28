@@ -7,6 +7,16 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        protected override void Dispose(bool disposing)
+        {
+            instance = null;
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -15,125 +25,137 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Roll = new System.Windows.Forms.Button();
-            this.AddDie = new System.Windows.Forms.Button();
-            this.SubDie = new System.Windows.Forms.Button();
+            this.rollButton = new System.Windows.Forms.Button();
+            this.addDieButton = new System.Windows.Forms.Button();
+            this.subDieButton = new System.Windows.Forms.Button();
             this.DiceList = new System.Windows.Forms.Label();
-            this.addedDieUpDown = new System.Windows.Forms.NumericUpDown();
-            this.subbedDieUpDown = new System.Windows.Forms.NumericUpDown();
+            this.diceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RollsList = new System.Windows.Forms.ListView();
-            ((System.ComponentModel.ISupportInitialize)(this.addedDieUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.subbedDieUpDown)).BeginInit();
+            this.numberOFFacesLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.diceNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // Roll
             // 
-            this.Roll.Location = new System.Drawing.Point(81, 83);
-            this.Roll.Name = "Roll";
-            this.Roll.Size = new System.Drawing.Size(75, 23);
-            this.Roll.TabIndex = 0;
-            this.Roll.Text = "Roll";
-            this.Roll.UseVisualStyleBackColor = true;
-            this.Roll.Click += new System.EventHandler(this.RollButton_Click);
+            this.rollButton.Enabled = false;
+            this.rollButton.Location = new System.Drawing.Point(10, 195);
+            this.rollButton.Margin = new System.Windows.Forms.Padding(2);
+            this.rollButton.Name = "Roll";
+            this.rollButton.Size = new System.Drawing.Size(410, 33);
+            this.rollButton.TabIndex = 0;
+            this.rollButton.Text = "Roll";
+            this.rollButton.UseVisualStyleBackColor = true;
+            this.rollButton.Click += new System.EventHandler(this.RollButton_Click);
             // 
             // AddDie
             // 
-            this.AddDie.Location = new System.Drawing.Point(81, 131);
-            this.AddDie.Name = "AddDie";
-            this.AddDie.Size = new System.Drawing.Size(75, 28);
-            this.AddDie.TabIndex = 1;
-            this.AddDie.Text = "Add die";
-            this.AddDie.UseVisualStyleBackColor = true;
-            this.AddDie.Click += new System.EventHandler(this.AddDie_Click);
+            this.addDieButton.Location = new System.Drawing.Point(10, 116);
+            this.addDieButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addDieButton.Name = "AddDie";
+            this.addDieButton.Size = new System.Drawing.Size(75, 75);
+            this.addDieButton.TabIndex = 1;
+            this.addDieButton.Text = "Add die";
+            this.addDieButton.UseVisualStyleBackColor = true;
+            this.addDieButton.Click += new System.EventHandler(this.AddDie_Click);
             // 
             // SubDie
             // 
-            this.SubDie.Location = new System.Drawing.Point(81, 181);
-            this.SubDie.Name = "SubDie";
-            this.SubDie.Size = new System.Drawing.Size(75, 33);
-            this.SubDie.TabIndex = 2;
-            this.SubDie.Text = "Sub die";
-            this.SubDie.UseVisualStyleBackColor = true;
-            this.SubDie.Click += new System.EventHandler(this.SubDie_Click);
+            this.subDieButton.Location = new System.Drawing.Point(98, 116);
+            this.subDieButton.Margin = new System.Windows.Forms.Padding(2);
+            this.subDieButton.Name = "SubDie";
+            this.subDieButton.Size = new System.Drawing.Size(75, 75);
+            this.subDieButton.TabIndex = 2;
+            this.subDieButton.Text = "Sub die";
+            this.subDieButton.UseVisualStyleBackColor = true;
+            this.subDieButton.Click += new System.EventHandler(this.SubDie_Click);
             // 
             // DiceList
             // 
             this.DiceList.AutoSize = true;
-            this.DiceList.Location = new System.Drawing.Point(200, 86);
+            this.DiceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DiceList.Location = new System.Drawing.Point(7, 19);
+            this.DiceList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DiceList.Name = "DiceList";
-            this.DiceList.Size = new System.Drawing.Size(44, 17);
+            this.DiceList.Size = new System.Drawing.Size(87, 20);
             this.DiceList.TabIndex = 3;
-            this.DiceList.Text = "Dice: ";
+            this.DiceList.Text = "Dice: None";
             // 
-            // addedDieUpDown
+            // diceNumericUpDown
             // 
-            this.addedDieUpDown.Location = new System.Drawing.Point(203, 135);
-            this.addedDieUpDown.Maximum = new decimal(new int[] {
+            this.diceNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.diceNumericUpDown.Location = new System.Drawing.Point(10, 86);
+            this.diceNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
+            this.diceNumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.addedDieUpDown.Name = "addedDieUpDown";
-            this.addedDieUpDown.Size = new System.Drawing.Size(120, 22);
-            this.addedDieUpDown.TabIndex = 6;
-            this.addedDieUpDown.ValueChanged += new System.EventHandler(this.AddedDieUpDown_ValueChanged);
-            this.addedDieUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddUpDown_KeyDown);
-            // 
-            // subbedDieUpDown
-            // 
-            this.subbedDieUpDown.Location = new System.Drawing.Point(203, 187);
-            this.subbedDieUpDown.Maximum = new decimal(new int[] {
-            1000,
+            this.diceNumericUpDown.Minimum = new decimal(new int[] {
+            2,
             0,
             0,
             0});
-            this.subbedDieUpDown.Name = "subbedDieUpDown";
-            this.subbedDieUpDown.Size = new System.Drawing.Size(120, 22);
-            this.subbedDieUpDown.TabIndex = 7;
-            this.subbedDieUpDown.ValueChanged += new System.EventHandler(this.SubbedDieUpDown_ValueChanged);
-            this.subbedDieUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubUpDown_KeyDown);
+            this.diceNumericUpDown.Name = "diceNumericUpDown";
+            this.diceNumericUpDown.Size = new System.Drawing.Size(163, 26);
+            this.diceNumericUpDown.TabIndex = 6;
+            this.diceNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // RollsList
             // 
+            this.RollsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.RollsList.HideSelection = false;
-            this.RollsList.Location = new System.Drawing.Point(367, 131);
+            this.RollsList.Location = new System.Drawing.Point(186, 58);
+            this.RollsList.Margin = new System.Windows.Forms.Padding(2);
             this.RollsList.Name = "RollsList";
-            this.RollsList.Size = new System.Drawing.Size(260, 293);
+            this.RollsList.Size = new System.Drawing.Size(234, 133);
             this.RollsList.TabIndex = 8;
             this.RollsList.UseCompatibleStateImageBehavior = false;
-            this.RollsList.SelectedIndexChanged += new System.EventHandler(this.RollsList_SelectedIndexChanged);
+            // 
+            // numberOFFacesLabel
+            // 
+            this.numberOFFacesLabel.AutoSize = true;
+            this.numberOFFacesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numberOFFacesLabel.Location = new System.Drawing.Point(11, 58);
+            this.numberOFFacesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.numberOFFacesLabel.Name = "numberOFFacesLabel";
+            this.numberOFFacesLabel.Size = new System.Drawing.Size(116, 17);
+            this.numberOFFacesLabel.TabIndex = 9;
+            this.numberOFFacesLabel.Text = "Number of faces:";
             // 
             // DiceDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(431, 235);
+            this.Controls.Add(this.numberOFFacesLabel);
             this.Controls.Add(this.RollsList);
-            this.Controls.Add(this.subbedDieUpDown);
-            this.Controls.Add(this.addedDieUpDown);
+            this.Controls.Add(this.diceNumericUpDown);
             this.Controls.Add(this.DiceList);
-            this.Controls.Add(this.SubDie);
-            this.Controls.Add(this.AddDie);
-            this.Controls.Add(this.Roll);
+            this.Controls.Add(this.subDieButton);
+            this.Controls.Add(this.addDieButton);
+            this.Controls.Add(this.rollButton);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DiceDisplay";
             this.Text = "DiceDisplay";
             this.Load += new System.EventHandler(this.DiceDisplay_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DiceDisplay_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.addedDieUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.subbedDieUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diceNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button AddDie;
-        private System.Windows.Forms.Button SubDie;
+        private System.Windows.Forms.Button addDieButton;
+        private System.Windows.Forms.Button subDieButton;
         private System.Windows.Forms.Label DiceList;
-        private System.Windows.Forms.Button Roll;
-        private System.Windows.Forms.NumericUpDown addedDieUpDown;
-        private System.Windows.Forms.NumericUpDown subbedDieUpDown;
+        private System.Windows.Forms.Button rollButton;
+        private System.Windows.Forms.NumericUpDown diceNumericUpDown;
         private System.Windows.Forms.ListView RollsList;
+        private System.Windows.Forms.Label numberOFFacesLabel;
     }
 }
