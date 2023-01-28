@@ -55,7 +55,9 @@ namespace RPGWonder
             SetColors();
             _path = path;
             _editing = true;
+            createButton.Visible = false;
             swapToPage2();
+            mapsButton.Enabled = true;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -92,6 +94,10 @@ namespace RPGWonder
             if (_page == "codex")
             {
                 CreateOrEditCodexEntry.Instance(_TAG, this).Show();
+            }
+            if (_page =="maps")
+            {
+                CreateOrEditMap.Instance(_TAG, this).Show();
             }
         }
 
@@ -183,6 +189,9 @@ namespace RPGWonder
             addButton.Enabled = true;
             SaveButton.Enabled = true;
             listBox.Enabled = true;
+            mapsButton.Enabled = true;
+            addAssetButton.Enabled = true;
+            removeAssetButton.Enabled = true;
             Reload();
         }
 
@@ -193,8 +202,10 @@ namespace RPGWonder
             editButton.BackColor = Color.SteelBlue;
             SaveButton.BackColor = Color.SteelBlue;
             deleteButton.BackColor = Color.IndianRed;
-            addAsset.BackColor = Color.SeaGreen;
-            removeAsset.BackColor = Color.IndianRed;
+            addAssetButton.BackColor = Color.SeaGreen;
+            removeAssetButton.BackColor = Color.IndianRed;
+            codexButton.BackColor = Color.SteelBlue;
+            mapsButton.BackColor = Color.SteelBlue;
         }
 
         /// <summary> 
@@ -202,7 +213,6 @@ namespace RPGWonder
         /// </summary>
         public void Reload()
         {
-            Debug.WriteLine(_path + "\\codex");
             Log.Instance.gameLog.Debug("CreateOrEditCampaign: Reloading...");
             if (_page == "codex")
             {
@@ -212,9 +222,37 @@ namespace RPGWonder
                     string[] filePaths = Directory.GetFiles(_path + "\\codex", "*.json");
                     foreach (string filePath in filePaths)
                     {
-                        JObject codexEntry = JObject.Parse(File.ReadAllText(filePath));
-                        ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)codexEntry["Title"]);
-                        listBox.Items.Add(comboBoxObject);
+                        try
+                        {
+                            JObject codexEntry = JObject.Parse(File.ReadAllText(filePath));
+                            ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)codexEntry["Title"]);
+                            listBox.Items.Add(comboBoxObject);
+                        }
+                        catch (Exception exception)
+                        {
+                            Log.Instance.errorLog.Error("Couldn't read " + filePath + " Error: " + exception.Message);
+                        }
+                    }
+                }
+            }
+            if (_page == "maps")
+            {
+                listBox.Items.Clear();
+                if (Directory.Exists(_path + "\\maps"))
+                {
+                    string[] filePaths = Directory.GetFiles(_path + "\\maps", "*.json");
+                    foreach (string filePath in filePaths)
+                    {
+                        try
+                        {
+                            JObject map = JObject.Parse(File.ReadAllText(filePath));
+                            ComboBoxObject comboBoxObject = new ComboBoxObject(filePath, (string)map["Name"]);
+                            listBox.Items.Add(comboBoxObject);
+                        }
+                        catch (Exception exception)
+                        {
+                            Log.Instance.errorLog.Error("Couldn't read " + filePath + " Error: " + exception.Message);
+                        }
                     }
                 }
             }
@@ -235,20 +273,41 @@ namespace RPGWonder
 
             if (result == DialogResult.Yes)
             {
-                Log.Instance.gameLog.Debug("Trying to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
-                try
+                if (_page == "codex")
                 {
-                    string toDelete = ((ComboBoxObject)listBox.SelectedItem).Key;
-                    File.Delete(toDelete);
-                    Reload();
-                    listBox.SelectedItem = null;
-                    editButton.Enabled = false;
-                    deleteButton.Enabled = false;
-                    Log.Instance.gameLog.Debug("Deleted codex entry: " + toDelete);
+                    Log.Instance.gameLog.Debug("Trying to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key);
+                    try
+                    {
+                        string toDelete = ((ComboBoxObject)listBox.SelectedItem).Key;
+                        File.Delete(toDelete);
+                        Reload();
+                        listBox.SelectedItem = null;
+                        editButton.Enabled = false;
+                        deleteButton.Enabled = false;
+                        Log.Instance.gameLog.Debug("Deleted codex entry: " + toDelete);
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Instance.errorLog.Error("Failed to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key + " Error: " + exception.Message);
+                    }
                 }
-                catch (Exception exception)
+                if (_page == "maps")
                 {
-                    Log.Instance.errorLog.Error("Failed to delete codex entry: " + ((ComboBoxObject)listBox.SelectedItem).Key + " Error: " + exception.Message);
+                    Log.Instance.gameLog.Debug("Trying to delete map: " + ((ComboBoxObject)listBox.SelectedItem).Key);
+                    try
+                    {
+                        string toDelete = ((ComboBoxObject)listBox.SelectedItem).Key;
+                        File.Delete(toDelete);
+                        Reload();
+                        listBox.SelectedItem = null;
+                        editButton.Enabled = false;
+                        deleteButton.Enabled = false;
+                        Log.Instance.gameLog.Debug("Deleted map: " + toDelete);
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Instance.errorLog.Error("Failed to delete map: " + ((ComboBoxObject)listBox.SelectedItem).Key + " Error: " + exception.Message);
+                    }
                 }
             }
         }
@@ -260,11 +319,16 @@ namespace RPGWonder
                 CreateOrEditCodexEntry createOrEditCodexEntry = new CreateOrEditCodexEntry(_TAG, this, ((ComboBoxObject)listBox.SelectedItem).Key);
                 createOrEditCodexEntry.Show();
             }
+            if (_page == "maps")
+            {
+                CreateOrEditMap createOrEditMap = new CreateOrEditMap(_TAG, this, ((ComboBoxObject)listBox.SelectedItem).Key);
+                createOrEditMap.Show();
+            }
         }
 
         private void addAsset_Click(object sender, EventArgs e)
         {
-            string assetPath = string.Empty;
+            string assetPath;
             string targetPath = _path + "\\assets\\";
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -293,12 +357,12 @@ namespace RPGWonder
         }
         private void removeAsset_Click(object sender, EventArgs e)
         {
-            string assetPath = string.Empty;
-            string targetPath = _path + "\\assets\\";
+            string assetPath;
+            string targetPath = _path + "\\assets";
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = targetPath;
+                openFileDialog.InitialDirectory = Path.GetFullPath(targetPath);
                 openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = false;
@@ -308,7 +372,7 @@ namespace RPGWonder
                     assetPath = openFileDialog.FileName;
                     try
                     {
-                        if(assetPath.Contains(System.IO.Path.GetFullPath(targetPath)))
+                        if(assetPath.Contains(Path.GetFullPath(targetPath)))
                         {
                             File.Delete(assetPath);
                             Log.Instance.gameLog.Debug("File deleted successfully.");
@@ -324,6 +388,22 @@ namespace RPGWonder
                     }
                 }
             }
+        }
+
+        private void codexButton_Click(object sender, EventArgs e)
+        {
+            _page = "codex";
+            mapsButton.Enabled = true;
+            codexButton.Enabled = false;
+            Reload();
+        }
+
+        private void mapsButton_Click(object sender, EventArgs e)
+        {
+            _page = "maps";
+            mapsButton.Enabled = false;
+            codexButton.Enabled = true;
+            Reload();
         }
     }
 }

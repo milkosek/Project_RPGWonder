@@ -6,33 +6,33 @@ using System.Windows.Forms;
 namespace RPGWonder
 {
     /// <summary>
-    /// Class representing a form for creating or editing a codex entry.
+    /// Class representing a form for creating or editing a map.
     /// </summary>
-    public partial class CreateOrEditCodexEntry : DefaultForm
+    public partial class CreateOrEditMap : DefaultForm
     {
-        private static CreateOrEditCodexEntry instance = null;
+        private static CreateOrEditMap instance = null;
         internal bool _editing = false;
-        internal CodexEntry _codexEntry = new CodexEntry();
+        internal Map _map = new Map();
         internal string _campaign;
         internal string _path;
         internal string _TAG;
         internal CreateOrEditCampaign _parent;
 
         /// <summary>
-        /// Gets the instance of the <see cref="CreateOrEditCodexEntry"/> class with given parameters
+        /// Gets the instance of the <see cref="CreateOrEditMap"/> class with given parameters
         /// <param name="campaign">The campaign the codex entry belongs to.</param>.
         /// <param name="parent">The parent form.</param>.
         /// </summary>
-        public static CreateOrEditCodexEntry Instance(string campaign, CreateOrEditCampaign parent)
+        public static CreateOrEditMap Instance(string campaign, CreateOrEditCampaign parent)
         {
             if (instance == null)
             {
-                instance = new CreateOrEditCodexEntry(campaign, parent);
+                instance = new CreateOrEditMap(campaign, parent);
             }
             return instance;
         }
 
-        private CreateOrEditCodexEntry(string campaign, CreateOrEditCampaign parent)
+        private CreateOrEditMap(string campaign, CreateOrEditCampaign parent)
         {
             InitializeComponent();
             SetMotif();
@@ -48,18 +48,19 @@ namespace RPGWonder
         /// <param name="parent">The parent form.</param>.
         /// <param name="path">The path to the edited codex entry.</param>
         /// </summary>
-        public CreateOrEditCodexEntry(string campaign, CreateOrEditCampaign parent, string path)
+        public CreateOrEditMap(string map, CreateOrEditCampaign parent, string path)
         {
             InitializeComponent();
             SetMotif();
             saveButton.BackColor = Color.SteelBlue;
-            _campaign = campaign;
+            _campaign = map;
             _editing = true;
             _parent = parent;
             _path = path;
-            _codexEntry.ReadFromJSON(path);
-            codexEntryTitleTextBox.Text = _codexEntry.Title;
-            codexEntryTextTextBox.Text = _codexEntry.Text;
+            _map.ReadFromJSON(path);
+            nameTextBox.Text = _map.Name;
+            rowsNumericUpDown.Value = _map.Rows;
+            columnsNumericUpDown.Value = _map.Columns;
             _TAG = Path.GetFileName(path);
             if (_TAG.EndsWith(".json"))
                 _TAG = _TAG.Remove(_TAG.Length - 5);
@@ -67,14 +68,15 @@ namespace RPGWonder
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (codexEntryTitleTextBox.Text == "")
+            if (nameTextBox.Text == "")
             {
-                MessageBox.Show("Entry title cannot be empty!");
+                MessageBox.Show("Map name cannot be empty!");
             }
             else
             {
-                _codexEntry.Title = codexEntryTitleTextBox.Text;
-                _codexEntry.Text = codexEntryTextTextBox.Text;
+                _map.Name = nameTextBox.Text;
+                _map.Rows = (int)rowsNumericUpDown.Value;
+                _map.Columns = (int)columnsNumericUpDown.Value;
                 save();
                 MessageBox.Show("Saved!");
                 _parent.Reload();
@@ -84,15 +86,15 @@ namespace RPGWonder
 
         private void save()
         {
-            Log.Instance.gameLog.Debug("Trying to save: " + _codexEntry.Title);
+            Log.Instance.gameLog.Debug("Trying to save: " + _map.Name);
             if (!_editing)
             {
-                _TAG = _codexEntry.Title;
+                _TAG = _map.Name;
                 string newTAG = _TAG;
                 int counter = 1;
-                while (File.Exists(Common.Instance.CampaignsPath + "\\" + _campaign + "\\codex\\" + newTAG + ".json"))
+                while (File.Exists(Common.Instance.CampaignsPath + "\\" + _campaign + "\\maps\\" + newTAG + ".json"))
                 {
-                    Log.Instance.errorLog.Error("Codex entry with TAG " + newTAG + "already exists!");
+                    Log.Instance.errorLog.Error("Map with TAG " + newTAG + "already exists!");
                     newTAG = $"{_TAG}({counter})";
                     counter++;
                 }
@@ -100,16 +102,16 @@ namespace RPGWonder
             }
             try
             {
-                _codexEntry.SaveToJSON(Common.Instance.CampaignsPath + "\\" + _campaign + "\\codex", _TAG);
-                Log.Instance.gameLog.Debug("Saved codex entry: " + _TAG);
+                _map.SaveToJSON(Common.Instance.CampaignsPath + "\\" + _campaign + "\\maps", _TAG);
+                Log.Instance.gameLog.Debug("Saved map: " + _TAG);
             }
             catch (Exception exception)
             {
-                Log.Instance.errorLog.Error("Failed to save codex entry: " + _TAG + " Error: " + exception.Message);
+                Log.Instance.errorLog.Error("Failed to save map: " + _TAG + " Error: " + exception.Message);
             }
         }
 
-        private void CreateOrEditCodexEntry_Load(object sender, EventArgs e)
+        private void CreateOrEditMap_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedDialog;
         }

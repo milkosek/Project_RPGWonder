@@ -37,17 +37,20 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.addAsset = new System.Windows.Forms.Button();
-            this.removeAsset = new System.Windows.Forms.Button();
+            this.addAssetButton = new System.Windows.Forms.Button();
+            this.removeAssetButton = new System.Windows.Forms.Button();
+            this.codexButton = new System.Windows.Forms.Button();
+            this.mapsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SaveButton
             // 
             this.SaveButton.BackColor = System.Drawing.SystemColors.Control;
             this.SaveButton.Enabled = false;
-            this.SaveButton.Location = new System.Drawing.Point(12, 298);
+            this.SaveButton.Location = new System.Drawing.Point(11, 291);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(772, 44);
+            this.SaveButton.Size = new System.Drawing.Size(579, 36);
             this.SaveButton.TabIndex = 1;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
@@ -56,9 +59,10 @@
             // CampaignNameTextBox
             // 
             this.CampaignNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
-            this.CampaignNameTextBox.Location = new System.Drawing.Point(12, 12);
+            this.CampaignNameTextBox.Location = new System.Drawing.Point(9, 10);
+            this.CampaignNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.CampaignNameTextBox.Name = "CampaignNameTextBox";
-            this.CampaignNameTextBox.Size = new System.Drawing.Size(295, 38);
+            this.CampaignNameTextBox.Size = new System.Drawing.Size(385, 32);
             this.CampaignNameTextBox.TabIndex = 2;
             // 
             // listBox
@@ -66,19 +70,21 @@
             this.listBox.Enabled = false;
             this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.listBox.FormattingEnabled = true;
-            this.listBox.ItemHeight = 29;
-            this.listBox.Location = new System.Drawing.Point(12, 56);
+            this.listBox.ItemHeight = 25;
+            this.listBox.Location = new System.Drawing.Point(9, 83);
+            this.listBox.Margin = new System.Windows.Forms.Padding(2);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(691, 236);
+            this.listBox.Size = new System.Drawing.Size(519, 204);
             this.listBox.TabIndex = 4;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // addButton
             // 
             this.addButton.Enabled = false;
-            this.addButton.Location = new System.Drawing.Point(709, 56);
+            this.addButton.Location = new System.Drawing.Point(532, 96);
+            this.addButton.Margin = new System.Windows.Forms.Padding(2);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 75);
+            this.addButton.Size = new System.Drawing.Size(56, 61);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -87,9 +93,10 @@
             // deleteButton
             // 
             this.deleteButton.Enabled = false;
-            this.deleteButton.Location = new System.Drawing.Point(709, 218);
+            this.deleteButton.Location = new System.Drawing.Point(532, 226);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 75);
+            this.deleteButton.Size = new System.Drawing.Size(56, 61);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -99,9 +106,10 @@
             // 
             this.createButton.BackColor = System.Drawing.SystemColors.Control;
             this.createButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.createButton.Location = new System.Drawing.Point(313, 12);
+            this.createButton.Location = new System.Drawing.Point(398, 11);
+            this.createButton.Margin = new System.Windows.Forms.Padding(2);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(95, 38);
+            this.createButton.Size = new System.Drawing.Size(71, 30);
             this.createButton.TabIndex = 7;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
@@ -110,9 +118,10 @@
             // editButton
             // 
             this.editButton.Enabled = false;
-            this.editButton.Location = new System.Drawing.Point(709, 137);
+            this.editButton.Location = new System.Drawing.Point(532, 161);
+            this.editButton.Margin = new System.Windows.Forms.Padding(2);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(75, 75);
+            this.editButton.Size = new System.Drawing.Size(56, 61);
             this.editButton.TabIndex = 8;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
@@ -120,31 +129,61 @@
             // 
             // addAsset
             // 
-            this.addAsset.Location = new System.Drawing.Point(646, 12);
-            this.addAsset.Name = "addAsset";
-            this.addAsset.Size = new System.Drawing.Size(138, 38);
-            this.addAsset.TabIndex = 9;
-            this.addAsset.Text = "Add Asset";
-            this.addAsset.UseVisualStyleBackColor = true;
-            this.addAsset.Click += new System.EventHandler(this.addAsset_Click);
+            this.addAssetButton.Enabled = false;
+            this.addAssetButton.Location = new System.Drawing.Point(473, 10);
+            this.addAssetButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addAssetButton.Name = "addAsset";
+            this.addAssetButton.Size = new System.Drawing.Size(115, 31);
+            this.addAssetButton.TabIndex = 9;
+            this.addAssetButton.Text = "Add Asset";
+            this.addAssetButton.UseVisualStyleBackColor = true;
+            this.addAssetButton.Click += new System.EventHandler(this.addAsset_Click);
             // 
             // removeAsset
             // 
-            this.removeAsset.Location = new System.Drawing.Point(487, 12);
-            this.removeAsset.Name = "removeAsset";
-            this.removeAsset.Size = new System.Drawing.Size(153, 37);
-            this.removeAsset.TabIndex = 10;
-            this.removeAsset.Text = "Remove Asset";
-            this.removeAsset.UseVisualStyleBackColor = true;
-            this.removeAsset.Click += new System.EventHandler(this.removeAsset_Click);
+            this.removeAssetButton.Enabled = false;
+            this.removeAssetButton.Location = new System.Drawing.Point(473, 45);
+            this.removeAssetButton.Margin = new System.Windows.Forms.Padding(2);
+            this.removeAssetButton.Name = "removeAsset";
+            this.removeAssetButton.Size = new System.Drawing.Size(115, 30);
+            this.removeAssetButton.TabIndex = 10;
+            this.removeAssetButton.Text = "Remove Asset";
+            this.removeAssetButton.UseVisualStyleBackColor = true;
+            this.removeAssetButton.Click += new System.EventHandler(this.removeAsset_Click);
+            // 
+            // codexButton
+            // 
+            this.codexButton.Enabled = false;
+            this.codexButton.Location = new System.Drawing.Point(9, 48);
+            this.codexButton.Margin = new System.Windows.Forms.Padding(2);
+            this.codexButton.Name = "codexButton";
+            this.codexButton.Size = new System.Drawing.Size(104, 31);
+            this.codexButton.TabIndex = 11;
+            this.codexButton.Text = "Codex";
+            this.codexButton.UseVisualStyleBackColor = true;
+            this.codexButton.Click += new System.EventHandler(this.codexButton_Click);
+            // 
+            // mapsButton
+            // 
+            this.mapsButton.Enabled = false;
+            this.mapsButton.Location = new System.Drawing.Point(117, 48);
+            this.mapsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.mapsButton.Name = "mapsButton";
+            this.mapsButton.Size = new System.Drawing.Size(104, 31);
+            this.mapsButton.TabIndex = 12;
+            this.mapsButton.Text = "Maps";
+            this.mapsButton.UseVisualStyleBackColor = true;
+            this.mapsButton.Click += new System.EventHandler(this.mapsButton_Click);
             // 
             // CreateOrEditCampaign
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 351);
-            this.Controls.Add(this.removeAsset);
-            this.Controls.Add(this.addAsset);
+            this.ClientSize = new System.Drawing.Size(592, 333);
+            this.Controls.Add(this.mapsButton);
+            this.Controls.Add(this.codexButton);
+            this.Controls.Add(this.removeAssetButton);
+            this.Controls.Add(this.addAssetButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.deleteButton);
@@ -153,6 +192,7 @@
             this.Controls.Add(this.CampaignNameTextBox);
             this.Controls.Add(this.SaveButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreateOrEditCampaign";
             this.Text = "Campaign";
             this.Load += new System.EventHandler(this.CreateOrEditCampaign_Load);
@@ -169,7 +209,9 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.Button addAsset;
-        private System.Windows.Forms.Button removeAsset;
+        private System.Windows.Forms.Button addAssetButton;
+        private System.Windows.Forms.Button removeAssetButton;
+        private System.Windows.Forms.Button codexButton;
+        private System.Windows.Forms.Button mapsButton;
     }
 }

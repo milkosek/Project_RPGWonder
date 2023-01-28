@@ -122,6 +122,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="src\form\CreateOrEditMap.resx">
+      <DependentUpon>CreateOrEditMap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\form\RollDie.resx">
       <DependentUpon>RollDie.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +146,12 @@
     </Compile>
     <Compile Include="src\form\CreateOrEditCodexEntry.Designer.cs">
       <DependentUpon>CreateOrEditCodexEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\form\CreateOrEditMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\CreateOrEditMap.Designer.cs">
+      <DependentUpon>CreateOrEditMap.cs</DependentUpon>
     </Compile>
     <Compile Include="src\form\DefaultForm.cs">
       <SubType>Form</SubType>
@@ -195,7 +204,6 @@
       <DependentUpon>CreateOrEditCharacter.cs</DependentUpon>
     </Compile>
     <Compile Include="src\dataclass\Asset.cs" />
-    <Compile Include="src\dataclass\AttackOrSpell.cs" />
     <Compile Include="src\dataclass\Campaign.cs" />
     <Compile Include="src\dataclass\Character.cs" />
     <Compile Include="src\form\CreateOrEditCampaign.cs">
