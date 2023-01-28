@@ -131,6 +131,9 @@
     <EmbeddedResource Include="src\form\ShowCharacter.resx">
       <DependentUpon>ShowCharacter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\form\ShowCodex.resx">
+      <DependentUpon>ShowCodex.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="systemPresets\DnD5e\Alignments.json" />
@@ -173,6 +176,12 @@
     </Compile>
     <Compile Include="src\form\Selector.Designer.cs">
       <DependentUpon>Selector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\form\ShowCodex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\form\ShowCodex.Designer.cs">
+      <DependentUpon>ShowCodex.cs</DependentUpon>
     </Compile>
     <Compile Include="src\interface\IDataclass.cs" />
     <Compile Include="src\form\Host.cs">

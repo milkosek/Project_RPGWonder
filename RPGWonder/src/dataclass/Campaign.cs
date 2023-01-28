@@ -9,7 +9,7 @@ namespace RPGWonder
     /// <summary>
     /// A class representing a _campaign
     /// </summary>
-    class Campaign : IDataclass
+    public class Campaign : IDataclass
     {
         public string Name;
         //public List<Character> Characters;
@@ -26,16 +26,16 @@ namespace RPGWonder
             Name = (string)jObject["Name"];
             CurrentMap = (int)jObject["CurrentMap"];
 
-            //string fullPath = Path.GetFullPath(path);
-            //string parentDir = Path.GetDirectoryName(fullPath);
-            //DirectoryInfo dir = new DirectoryInfo(parentDir + "\\codex");
-            //FileInfo[] jsonFiles = dir.GetFiles("*.json");
-            //foreach (FileInfo jsonFile in jsonFiles)
-            //{
-            //    CodexEntry codexEntry = new CodexEntry();
-            //    codexEntry.ReadFromJSON(jsonFile.FullName);
-            //    CodexEntries.Set(jsonFile.Name.Replace(jsonFile.Extension, ""), codexEntry);
-            //}
+            string fullPath = Path.GetFullPath(path);
+            string parentDir = Path.GetDirectoryName(fullPath);
+            DirectoryInfo dir = new DirectoryInfo(parentDir + "\\codex");
+            FileInfo[] jsonFiles = dir.GetFiles("*.json");
+            foreach (FileInfo jsonFile in jsonFiles)
+            {
+                CodexEntry codexEntry = new CodexEntry();
+                codexEntry.ReadFromJSON(jsonFile.FullName);
+                CodexEntries.Set(jsonFile.Name.Replace(jsonFile.Extension, ""), codexEntry);
+            }
         }
 
         public void SaveToJSON(string path, string TAG)

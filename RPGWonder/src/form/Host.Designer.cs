@@ -48,6 +48,7 @@
             this.remove_entity_button = new System.Windows.Forms.Button();
             this.spawn_player_button = new System.Windows.Forms.Button();
             this.mapTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.codexButton = new System.Windows.Forms.Button();
             this.controlsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.controlsLayoutPanel.Controls.Add(this.codexButton, 0, 6);
             this.controlsLayoutPanel.Controls.Add(this.exitButton, 2, 4);
             this.controlsLayoutPanel.Controls.Add(this.changeAsset, 1, 9);
             this.controlsLayoutPanel.Controls.Add(this.next_player_button, 0, 9);
@@ -95,7 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.exitButton.Location = new System.Drawing.Point(351, 505);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(164, 116);
             this.exitButton.TabIndex = 12;
@@ -109,7 +111,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.changeAsset.Location = new System.Drawing.Point(178, 1130);
-            this.changeAsset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.changeAsset.Margin = new System.Windows.Forms.Padding(4);
             this.changeAsset.Name = "changeAsset";
             this.changeAsset.Size = new System.Drawing.Size(164, 120);
             this.changeAsset.TabIndex = 12;
@@ -123,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.next_player_button.Location = new System.Drawing.Point(5, 1130);
-            this.next_player_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.next_player_button.Margin = new System.Windows.Forms.Padding(4);
             this.next_player_button.Name = "next_player_button";
             this.next_player_button.Size = new System.Drawing.Size(164, 120);
             this.next_player_button.TabIndex = 17;
@@ -137,7 +139,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dice_roll_button.Location = new System.Drawing.Point(5, 505);
-            this.dice_roll_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dice_roll_button.Margin = new System.Windows.Forms.Padding(4);
             this.dice_roll_button.Name = "dice_roll_button";
             this.dice_roll_button.Size = new System.Drawing.Size(164, 116);
             this.dice_roll_button.TabIndex = 9;
@@ -152,7 +154,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coords.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.coords.Location = new System.Drawing.Point(5, 5);
-            this.coords.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coords.Margin = new System.Windows.Forms.Padding(4);
             this.coords.Name = "coords";
             this.coords.Size = new System.Drawing.Size(164, 116);
             this.coords.TabIndex = 8;
@@ -192,7 +194,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.charlabel.Location = new System.Drawing.Point(178, 5);
-            this.charlabel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.charlabel.Margin = new System.Windows.Forms.Padding(4);
             this.charlabel.Name = "charlabel";
             this.charlabel.Size = new System.Drawing.Size(164, 116);
             this.charlabel.TabIndex = 13;
@@ -205,7 +207,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentPlayerLabel.Location = new System.Drawing.Point(351, 5);
-            this.currentPlayerLabel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.currentPlayerLabel.Margin = new System.Windows.Forms.Padding(4);
             this.currentPlayerLabel.Name = "currentPlayerLabel";
             this.currentPlayerLabel.Size = new System.Drawing.Size(164, 116);
             this.currentPlayerLabel.TabIndex = 15;
@@ -263,7 +265,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spawn_chest_button.Location = new System.Drawing.Point(178, 880);
-            this.spawn_chest_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spawn_chest_button.Margin = new System.Windows.Forms.Padding(4);
             this.spawn_chest_button.Name = "spawn_chest_button";
             this.spawn_chest_button.Size = new System.Drawing.Size(164, 116);
             this.spawn_chest_button.TabIndex = 0;
@@ -277,7 +279,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.change_map_button.Location = new System.Drawing.Point(351, 1130);
-            this.change_map_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.change_map_button.Margin = new System.Windows.Forms.Padding(4);
             this.change_map_button.Name = "change_map_button";
             this.change_map_button.Size = new System.Drawing.Size(164, 120);
             this.change_map_button.TabIndex = 10;
@@ -291,7 +293,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.remove_entity_button.Location = new System.Drawing.Point(351, 1005);
-            this.remove_entity_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.remove_entity_button.Margin = new System.Windows.Forms.Padding(4);
             this.remove_entity_button.Name = "remove_entity_button";
             this.remove_entity_button.Size = new System.Drawing.Size(164, 116);
             this.remove_entity_button.TabIndex = 3;
@@ -305,7 +307,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spawn_player_button.Location = new System.Drawing.Point(5, 1005);
-            this.spawn_player_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spawn_player_button.Margin = new System.Windows.Forms.Padding(4);
             this.spawn_player_button.Name = "spawn_player_button";
             this.spawn_player_button.Size = new System.Drawing.Size(164, 116);
             this.spawn_player_button.TabIndex = 18;
@@ -328,6 +330,20 @@
             this.mapTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mapTableLayout.Size = new System.Drawing.Size(1920, 1255);
             this.mapTableLayout.TabIndex = 11;
+            // 
+            // codexButton
+            // 
+            this.codexButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.codexButton.Location = new System.Drawing.Point(5, 755);
+            this.codexButton.Margin = new System.Windows.Forms.Padding(4);
+            this.codexButton.Name = "codexButton";
+            this.codexButton.Size = new System.Drawing.Size(164, 116);
+            this.codexButton.TabIndex = 12;
+            this.codexButton.Text = "Codex";
+            this.codexButton.UseVisualStyleBackColor = true;
+            this.codexButton.Click += new System.EventHandler(this.codexButton_Click);
             // 
             // Host
             // 
@@ -368,5 +384,6 @@
         private System.Windows.Forms.Button spawn_player_button;
         private System.Windows.Forms.Button changeAsset;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button codexButton;
     }
 }

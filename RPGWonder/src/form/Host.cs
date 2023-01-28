@@ -562,5 +562,10 @@ namespace RPGWonder
         {
             Close();
         }
+
+        private void codexButton_Click(object sender, EventArgs e)
+        {
+            ShowCodex.Instance(_campaign).Show();
+        }
     }
 }
