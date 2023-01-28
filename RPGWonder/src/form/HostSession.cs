@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -30,7 +31,6 @@ namespace RPGWonder
         private HostSession()
         {
             InitializeComponent();
-            SetMotif();
         }
 
         private void hostSessionButton_Click(object sender, EventArgs e)
@@ -43,6 +43,8 @@ namespace RPGWonder
 
         private void HostSession_Load(object sender, EventArgs e)
         {
+            SetMotif();
+            hostSessionButton.BackColor = Color.SteelBlue;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             string[] subdirectoryPaths = Directory.GetDirectories(Common.Instance.CampaignsPath);
             string path = "..\\..\\userData\\" + Properties.Settings.Default.System + "\\campaigns";

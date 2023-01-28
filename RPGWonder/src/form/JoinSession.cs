@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -29,11 +30,12 @@ namespace RPGWonder
         private JoinSession()
         {
             InitializeComponent();
-            SetMotif();
         }
 
         private void JoinSession_Load(object sender, EventArgs e)
         {
+            SetMotif();
+            JoinGameButton.BackColor = Color.SteelBlue;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             string[] filePaths = Directory.GetFiles(Common.Instance.CharactersPath, "*.json");
             foreach (string filePath in filePaths)

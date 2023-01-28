@@ -1,6 +1,5 @@
-﻿    using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Diagnostics;
 using System.IO;
 
 namespace RPGWonder
@@ -10,7 +9,7 @@ namespace RPGWonder
         /// <summary>
         /// A singleton _instance of the Common class.
         /// </summary>
-        private static Common instance = null;
+        private static Common _instance = null;
         Common(
                 JObject races,
                 JObject classes,
@@ -74,11 +73,11 @@ namespace RPGWonder
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
                     try
                     {
-                        instance = new Common(
+                        _instance = new Common(
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Races.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Classes.json")),
                             JObject.Parse(File.ReadAllText(Properties.Settings.Default.Path + "systemPresets\\" + Properties.Settings.Default.System + "\\Backgrounds.json")),
@@ -98,7 +97,7 @@ namespace RPGWonder
                         Log.Instance.errorLog.Error("Couldn't read commons!");
                     }
                 }
-                return instance;
+                return _instance;
             }
         }
     }

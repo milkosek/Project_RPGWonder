@@ -30,43 +30,40 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JoinSession));
-            this.JoinGameButton = new System.Windows.Forms.Button();
-            this.ipAddrInput = new System.Windows.Forms.TextBox();
-            this.ipAddrLabel = new System.Windows.Forms.Label();
-            this.charactersComboBox = new System.Windows.Forms.ComboBox();
             this.charactersLabel = new System.Windows.Forms.Label();
+            this.charactersComboBox = new System.Windows.Forms.ComboBox();
+            this.ipAddrLabel = new System.Windows.Forms.Label();
+            this.ipAddrInput = new System.Windows.Forms.TextBox();
+            this.JoinGameButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // JoinGameButton
+            // charactersLabel
             // 
-            resources.ApplyResources(this.JoinGameButton, "JoinGameButton");
-            this.JoinGameButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.JoinGameButton.Name = "JoinGameButton";
-            this.JoinGameButton.UseVisualStyleBackColor = false;
-            this.JoinGameButton.Click += new System.EventHandler(this.JoinGameButton_Click);
-            // 
-            // ipAddrInput
-            // 
-            resources.ApplyResources(this.ipAddrInput, "ipAddrInput");
-            this.ipAddrInput.Name = "ipAddrInput";
-            // 
-            // ipAddrLabel
-            // 
-            resources.ApplyResources(this.ipAddrLabel, "ipAddrLabel");
-            this.ipAddrLabel.Name = "ipAddrLabel";
+            resources.ApplyResources(this.charactersLabel, "charactersLabel");
+            this.charactersLabel.Name = "charactersLabel";
             // 
             // charactersComboBox
             // 
             resources.ApplyResources(this.charactersComboBox, "charactersComboBox");
             this.charactersComboBox.FormattingEnabled = true;
             this.charactersComboBox.Name = "charactersComboBox";
-            this.charactersComboBox.SelectedIndexChanged += new System.EventHandler(this.charactersComboBox_SelectedIndexChanged);
-            this.charactersComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.charactersComboBox_KeyPress);
             // 
-            // charactersLabel
+            // ipAddrLabel
             // 
-            resources.ApplyResources(this.charactersLabel, "charactersLabel");
-            this.charactersLabel.Name = "charactersLabel";
+            resources.ApplyResources(this.ipAddrLabel, "ipAddrLabel");
+            this.ipAddrLabel.Name = "ipAddrLabel";
+            // 
+            // ipAddrInput
+            // 
+            resources.ApplyResources(this.ipAddrInput, "ipAddrInput");
+            this.ipAddrInput.Name = "ipAddrInput";
+            // 
+            // JoinGameButton
+            // 
+            this.JoinGameButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.JoinGameButton, "JoinGameButton");
+            this.JoinGameButton.Name = "JoinGameButton";
+            this.JoinGameButton.UseVisualStyleBackColor = false;
             // 
             // JoinSession
             // 
@@ -86,10 +83,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button JoinGameButton;
-        private System.Windows.Forms.TextBox ipAddrInput;
-        private System.Windows.Forms.Label ipAddrLabel;
-        private System.Windows.Forms.ComboBox charactersComboBox;
         private System.Windows.Forms.Label charactersLabel;
+        private System.Windows.Forms.ComboBox charactersComboBox;
+        private System.Windows.Forms.Label ipAddrLabel;
+        private System.Windows.Forms.TextBox ipAddrInput;
+        private System.Windows.Forms.Button JoinGameButton;
     }
 }

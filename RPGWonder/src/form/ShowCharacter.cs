@@ -28,6 +28,7 @@ namespace RPGWonder
 
         private void ShowCharacter_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             characterNameLabel.Text = _character.Name;
             raceTextBox.Text = (string)Common.Instance.Races[_character.Race]["name"];
             classTextBox.Text = (string)Common.Instance.Classes[_character.CharacterClass]["name"];

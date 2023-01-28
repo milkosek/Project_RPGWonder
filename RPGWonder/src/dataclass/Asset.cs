@@ -1,16 +1,13 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
-
-namespace RPGWonder
+﻿namespace RPGWonder
 {
     class Asset
     {
-        private string src;
-        public Asset(string s)
+        private readonly string _src;
+        public Asset(string src)
         {
-            this.src = s;
+            _src = src;
         }
-        
+
+        public string Src => _src;
     }
 }

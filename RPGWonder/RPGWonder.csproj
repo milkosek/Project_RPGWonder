@@ -222,7 +222,6 @@
       <DependentUpon>CreateOrEditCampaign.cs</DependentUpon>
     </Compile>
     <Compile Include="src\DiceRolls.cs" />
-    <Compile Include="src\dataclass\Entity.cs" />
     <Compile Include="src\dataclass\EntityOnMap.cs" />
     <Compile Include="src\form\DiceDisplay.cs">
       <SubType>Form</SubType>

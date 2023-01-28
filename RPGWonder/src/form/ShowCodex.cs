@@ -32,6 +32,7 @@ namespace RPGWonder
 
         private void ShowCodex_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             SetMotif();
             foreach (KeyValuePair<string, CodexEntry> codexEntry in _campaign.CodexEntries)
             {

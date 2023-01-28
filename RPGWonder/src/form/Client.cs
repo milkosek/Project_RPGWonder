@@ -3,10 +3,8 @@ using RPGWonder.src.form;
 using RPGWonder.src.map;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Net;
 using System.Windows.Forms;
 
 namespace RPGWonder
@@ -16,9 +14,7 @@ namespace RPGWonder
         //Same as host
         private ClientTcpConnection _connection;
         public static Client Instance;
-        private IPAddress _ipAddress;
 
-        private string _clientCampaignsPath = Common.Instance.ClientCampaignsPath;
         private Campaign _campaign;
         private MapHandler mapLoader;
         private Map map;
@@ -117,7 +113,7 @@ namespace RPGWonder
         public void LoadCampaign(string campaign_tag)
         {
             //Debug.WriteLine("LOADING CLIENT CAMPAIGN!");
-            _campaign.ReadFromJSON(_clientCampaignsPath + "\\" + campaign_tag);
+            _campaign.ReadFromJSON(Common.Instance.ClientCampaignsPath + "\\" + campaign_tag);
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)
@@ -290,7 +286,7 @@ namespace RPGWonder
                     EntityOnMap EOM = nameEntity.Value;
 
                     ButtonsMatrix[EOM.Y][EOM.X].Text = EOM.Name;
-                    ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(_clientCampaignsPath + EOM.ImagePath);
+                    ButtonsMatrix[EOM.Y][EOM.X].BackgroundImage = new Bitmap(Common.Instance.ClientCampaignsPath + EOM.ImagePath);
                 }
 
                 ButtonsMatrix[selectedTile.y][selectedTile.x].FlatAppearance.BorderSize = 5;
@@ -305,7 +301,7 @@ namespace RPGWonder
 
         public string GetMapById(int id)
         {
-            string path = _clientCampaignsPath + "\\maps";
+            string path = Common.Instance.ClientCampaignsPath + "\\maps";
 
             string[] filePaths = Directory.GetFiles(path, "*.json");
 

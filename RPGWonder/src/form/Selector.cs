@@ -43,6 +43,7 @@ namespace RPGWonder.src.form
 
         public void Selector_Init(Host host, string campaign)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             this.host = host;
 
             selectCampaignComboBox.Items.Clear();

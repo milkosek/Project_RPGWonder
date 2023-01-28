@@ -117,163 +117,184 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;JoinGameButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ipAddrLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;charactersComboBox.Parent" xml:space="preserve">
-    <value>$this</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="charactersLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
-  </data>
-  <data name="charactersComboBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 22.2pt</value>
-  </data>
   <data name="charactersLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 18pt</value>
-  </data>
-  <data name="&gt;&gt;charactersLabel.Name" xml:space="preserve">
-    <value>charactersLabel</value>
-  </data>
-  <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 194</value>
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="charactersLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;charactersComboBox.Name" xml:space="preserve">
-    <value>charactersComboBox</value>
+  <data name="charactersLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="charactersComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="charactersLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 31</value>
   </data>
-  <data name="&gt;&gt;ipAddrLabel.Name" xml:space="preserve">
-    <value>ipAddrLabel</value>
-  </data>
-  <data name="JoinGameButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ipAddrLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ipAddrLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 36</value>
+  <data name="charactersLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="charactersLabel.Text" xml:space="preserve">
     <value>Choose your character:</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>JoinSession</value>
-  </data>
-  <data name="charactersLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 70</value>
-  </data>
-  <data name="&gt;&gt;charactersLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ipAddrInput.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>JoinSession</value>
-  </data>
-  <data name="&gt;&gt;ipAddrLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ipAddrInput.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ipAddrInput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 22.2pt</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="charactersLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 233</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="&gt;&gt;ipAddrInput.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="charactersComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 109</value>
-  </data>
-  <data name="ipAddrLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="JoinGameButton.Text" xml:space="preserve">
-    <value>Join!</value>
-  </data>
-  <data name="charactersComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 50</value>
-  </data>
-  <data name="&gt;&gt;charactersComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ipAddrLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="JoinGameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 77</value>
-  </data>
-  <data name="JoinGameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 339</value>
-  </data>
-  <data name="ipAddrLabel.Text" xml:space="preserve">
-    <value>Enter host IP address:</value>
-  </data>
-  <data name="&gt;&gt;ipAddrInput.Name" xml:space="preserve">
-    <value>ipAddrInput</value>
-  </data>
-  <data name="charactersLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ipAddrInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 49</value>
-  </data>
-  <data name="&gt;&gt;charactersLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;JoinGameButton.Name" xml:space="preserve">
-    <value>JoinGameButton</value>
+  <data name="&gt;&gt;charactersLabel.Name" xml:space="preserve">
+    <value>charactersLabel</value>
   </data>
   <data name="&gt;&gt;charactersLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;JoinGameButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;charactersLabel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;ipAddrInput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;charactersLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="charactersComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="charactersComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 10</value>
+  </data>
+  <data name="charactersComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="charactersComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 39</value>
+  </data>
+  <data name="charactersComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;charactersComboBox.Name" xml:space="preserve">
+    <value>charactersComboBox</value>
   </data>
   <data name="&gt;&gt;charactersComboBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;JoinGameButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;charactersComboBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;charactersComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ipAddrLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="ipAddrLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 18pt</value>
+    <value>Microsoft Sans Serif, 16pt</value>
   </data>
-  <data name="charactersLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 36</value>
+  <data name="ipAddrLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 55</value>
+  </data>
+  <data name="ipAddrLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 31</value>
+  </data>
+  <data name="ipAddrLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="ipAddrLabel.Text" xml:space="preserve">
+    <value>Enter host IP address:</value>
+  </data>
+  <data name="&gt;&gt;ipAddrLabel.Name" xml:space="preserve">
+    <value>ipAddrLabel</value>
+  </data>
+  <data name="&gt;&gt;ipAddrLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ipAddrLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ipAddrLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ipAddrInput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 53</value>
+  </data>
+  <data name="ipAddrInput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="ipAddrInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 38</value>
+  </data>
+  <data name="ipAddrInput.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ipAddrInput.Text" xml:space="preserve">
+    <value>127.0.0.1</value>
+  </data>
+  <data name="&gt;&gt;ipAddrInput.Name" xml:space="preserve">
+    <value>ipAddrInput</value>
+  </data>
+  <data name="&gt;&gt;ipAddrInput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ipAddrInput.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ipAddrInput.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="JoinGameButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16.2pt</value>
+  </data>
+  <data name="JoinGameButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="JoinGameButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 95</value>
+  </data>
+  <data name="JoinGameButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="JoinGameButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>670, 43</value>
+  </data>
+  <data name="JoinGameButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="JoinGameButton.Text" xml:space="preserve">
+    <value>Join!</value>
+  </data>
+  <data name="&gt;&gt;JoinGameButton.Name" xml:space="preserve">
+    <value>JoinGameButton</value>
+  </data>
+  <data name="&gt;&gt;JoinGameButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;JoinGameButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;JoinGameButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>en</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>698, 148</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>JoinSession</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>JoinSession</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>RPGWonder.DefaultForm, RPGWonder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
 </root>

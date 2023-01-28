@@ -1,40 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPGWonder
+﻿namespace RPGWonder
 {
-    class EntityOnMap : Entity
+    class EntityOnMap
     {
-        private long entityID;
-        private long mapID;
-        private int x;
-        private int y;
-        private string name;
-        private string imagePath;
+        private long _entityID;
+        private long _mapID;
+        private int _x;
+        private int _y;
+        private string _name;
+        private string _imagePath;
 
         public EntityOnMap(long entityID, long mapID, int coordinatex, int coordinatey, string imagePath)
         {
-            this.entityID = entityID;
-            this.mapID = mapID;
-            this.x = coordinatex;
-            this.y = coordinatey;
-            this.ImagePath = imagePath;
+            _entityID = entityID;
+            _mapID = mapID;
+            _x = coordinatex;
+            _y = coordinatey;
+            _imagePath = imagePath;
         }
 
-        private void setName(string name)
-        {
-            this.name = name;
-        }
-
-        public long EntityID { get => entityID; set => entityID = value; }
-        public long MapID { get => mapID; set => mapID = value; }
-        public int X { get => x; set => x = value; }
-        public int Y { get => y; set => y = value; }
-        public string Name { get => name; set => name = value; }
-        public string ImagePath { get => imagePath; set => imagePath = value; }
+        public long EntityID { get => _entityID; set => _entityID = value; }
+        public long MapID { get => _mapID; set => _mapID = value; }
+        public int X { get => _x; set => _x = value; }
+        public int Y { get => _y; set => _y = value; }
+        public string Name { get => _name; set => _name = value; }
+        public string ImagePath { get => _imagePath; set => _imagePath = value; }
     }
 }

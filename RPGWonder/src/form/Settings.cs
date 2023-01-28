@@ -28,6 +28,7 @@ namespace RPGWonder
 
         private void Settings_Load(object sender, System.EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             pathTextBox.Text = Properties.Settings.Default.Path;
             systemComboBox.Text = Properties.Settings.Default.System;
             string path = Properties.Settings.Default.Path + "systemPresets";
