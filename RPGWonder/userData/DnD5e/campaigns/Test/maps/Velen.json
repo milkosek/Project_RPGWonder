@@ -1,0 +1,56 @@
+{
+  "Id": 1,
+  "Name": "Velen",
+  "Columns": 12,
+  "Rows": 9,
+  "EntityList": {
+    "Geralt": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 3,
+      "Y": 6,
+      "Name": "Geralt",
+      "ImagePath": "\\entityAssets\\knight.png"
+    },
+    "Chest0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 7,
+      "Y": 7,
+      "Name": "Chest0",
+      "ImagePath": "\\entityAssets\\chest.png"
+    },
+    "Chest1": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 8,
+      "Y": 4,
+      "Name": "Chest1",
+      "ImagePath": "\\entityAssets\\chest.png"
+    },
+    "Wall0": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 5,
+      "Y": 2,
+      "Name": "Wall0",
+      "ImagePath": "\\entityAssets\\wall.png"
+    },
+    "Wall1": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 6,
+      "Y": 2,
+      "Name": "Wall1",
+      "ImagePath": "\\entityAssets\\wall.png"
+    },
+    "Wall2": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 7,
+      "Y": 2,
+      "Name": "Wall2",
+      "ImagePath": "\\entityAssets\\wall.png"
+    }
+  }
+}

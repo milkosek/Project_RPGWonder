@@ -35,6 +35,7 @@ namespace RPGWonder
         public ReloadClient reloadDelegateTurn;
 
         private bool yourTurn = false;
+        private int _listViewSelectedChar;
 
         public bool YourTurn { get => yourTurn; set => yourTurn = value; }
 
@@ -85,6 +86,8 @@ namespace RPGWonder
             {
                 Log.Instance.errorLog.Error("Establishing connection failed with error: " + exception.Message);
             }
+
+            PopulateCharactersList();
 
             SetMotif();
             DiceRollMenu.BackColor = Color.SteelBlue;
@@ -141,6 +144,16 @@ namespace RPGWonder
 
             //    charactersListView.Items.Add(item);
             //}
+
+            //temp solution, just player's character
+
+            ListViewItem item = new ListViewItem(_yourCharacter.Name);
+
+            item.SubItems.Add(_yourCharacter.Level.ToString());
+            item.SubItems.Add(_yourCharacter.CurrentHitPoints.ToString());
+            item.SubItems.Add(_yourCharacter.Initiative.ToString());
+
+            charactersListView.Items.Add(item);
         }
         public void ReloadEntities(int voider)
         {
@@ -329,6 +342,20 @@ namespace RPGWonder
             {
                 return false;
             }
+        }
+
+        private void character_selected(object sender, EventArgs e)
+        {
+            //ShowCharacter showChar = new ShowCharacter(_connection.Clients[_listViewSelectedChar].Character);
+
+            //temporary showing only your char
+            ShowCharacter showChar = new ShowCharacter(_yourCharacter);
+            showChar.Show();
+        }
+
+        private void selected_char_changed(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            _listViewSelectedChar = e.ItemIndex;
         }
 
         private void Client_FormClosed(object sender, FormClosedEventArgs e)

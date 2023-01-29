@@ -84,6 +84,8 @@
             this.controlsLayoutPanel.SetRowSpan(this.charactersListView, 3);
             this.charactersListView.UseCompatibleStateImageBehavior = false;
             this.charactersListView.View = System.Windows.Forms.View.Details;
+            this.charactersListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.selected_char_changed);
+            this.charactersListView.DoubleClick += new System.EventHandler(this.character_selected);
             // 
             // columnHeader1
             // 
