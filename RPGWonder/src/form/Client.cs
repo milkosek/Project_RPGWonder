@@ -66,7 +66,7 @@ namespace RPGWonder
         private void Client_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.Fixed3D;
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 

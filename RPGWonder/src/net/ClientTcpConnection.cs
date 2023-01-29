@@ -84,7 +84,6 @@ namespace RPGWonder
                     }
 					else if (receivedString.StartsWith("MapChange|"))
 					{
-						Debug.WriteLine("shoud be creatig maps folder");
 						if (!Directory.Exists(path + "\\maps"))
 						{
 							Directory.CreateDirectory(path + "\\maps");
