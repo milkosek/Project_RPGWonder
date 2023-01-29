@@ -82,6 +82,7 @@ namespace RPGWonder
             change_map_button.BackColor = Color.SteelBlue;
             changeAsset.BackColor = Color.SteelBlue;
             next_player_button.BackColor = Color.SteelBlue;
+            codexButton.BackColor = Color.SteelBlue;
 
             _connection = new HostTcpConnection();
             _connection.CreateSession(_campaignFilePath, _ipAddress);

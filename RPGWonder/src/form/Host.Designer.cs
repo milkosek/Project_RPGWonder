@@ -59,25 +59,25 @@
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.controlsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.controlsLayoutPanel.Controls.Add(this.codexButton, 0, 6);
             this.controlsLayoutPanel.Controls.Add(this.exitButton, 2, 4);
-            this.controlsLayoutPanel.Controls.Add(this.changeAsset, 1, 9);
-            this.controlsLayoutPanel.Controls.Add(this.next_player_button, 0, 9);
             this.controlsLayoutPanel.Controls.Add(this.dice_roll_button, 0, 4);
             this.controlsLayoutPanel.Controls.Add(this.coords, 0, 0);
-            this.controlsLayoutPanel.Controls.Add(this.spawn_npc_button, 0, 7);
-            this.controlsLayoutPanel.Controls.Add(this.spawn_wall_button, 2, 7);
             this.controlsLayoutPanel.Controls.Add(this.charlabel, 1, 0);
             this.controlsLayoutPanel.Controls.Add(this.currentPlayerLabel, 2, 0);
             this.controlsLayoutPanel.Controls.Add(this.charactersListView, 0, 1);
-            this.controlsLayoutPanel.Controls.Add(this.spawn_chest_button, 1, 7);
-            this.controlsLayoutPanel.Controls.Add(this.change_map_button, 2, 9);
-            this.controlsLayoutPanel.Controls.Add(this.remove_entity_button, 2, 8);
-            this.controlsLayoutPanel.Controls.Add(this.spawn_player_button, 0, 8);
+            this.controlsLayoutPanel.Controls.Add(this.codexButton, 0, 5);
+            this.controlsLayoutPanel.Controls.Add(this.spawn_npc_button, 0, 6);
+            this.controlsLayoutPanel.Controls.Add(this.spawn_chest_button, 1, 6);
+            this.controlsLayoutPanel.Controls.Add(this.spawn_wall_button, 2, 6);
+            this.controlsLayoutPanel.Controls.Add(this.spawn_player_button, 0, 7);
+            this.controlsLayoutPanel.Controls.Add(this.remove_entity_button, 2, 7);
+            this.controlsLayoutPanel.Controls.Add(this.next_player_button, 0, 8);
+            this.controlsLayoutPanel.Controls.Add(this.change_map_button, 2, 8);
+            this.controlsLayoutPanel.Controls.Add(this.changeAsset, 1, 8);
             this.controlsLayoutPanel.Location = new System.Drawing.Point(1500, 30);
             this.controlsLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controlsLayoutPanel.Name = "controlsLayoutPanel";
-            this.controlsLayoutPanel.RowCount = 10;
+            this.controlsLayoutPanel.RowCount = 9;
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.controlsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -96,9 +96,9 @@
             this.codexButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.codexButton.Location = new System.Drawing.Point(4, 610);
+            this.codexButton.Location = new System.Drawing.Point(4, 569);
             this.codexButton.Name = "codexButton";
-            this.codexButton.Size = new System.Drawing.Size(122, 94);
+            this.codexButton.Size = new System.Drawing.Size(122, 106);
             this.codexButton.TabIndex = 12;
             this.codexButton.Text = "Codex";
             this.codexButton.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.Location = new System.Drawing.Point(262, 408);
+            this.exitButton.Location = new System.Drawing.Point(262, 456);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(124, 94);
+            this.exitButton.Size = new System.Drawing.Size(124, 106);
             this.exitButton.TabIndex = 12;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@
             this.changeAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.changeAsset.Location = new System.Drawing.Point(133, 913);
+            this.changeAsset.Location = new System.Drawing.Point(133, 908);
             this.changeAsset.Name = "changeAsset";
-            this.changeAsset.Size = new System.Drawing.Size(122, 103);
+            this.changeAsset.Size = new System.Drawing.Size(122, 108);
             this.changeAsset.TabIndex = 12;
             this.changeAsset.Text = "Change Background";
             this.changeAsset.UseVisualStyleBackColor = true;
@@ -135,9 +135,9 @@
             this.next_player_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.next_player_button.Location = new System.Drawing.Point(4, 913);
+            this.next_player_button.Location = new System.Drawing.Point(4, 908);
             this.next_player_button.Name = "next_player_button";
-            this.next_player_button.Size = new System.Drawing.Size(122, 103);
+            this.next_player_button.Size = new System.Drawing.Size(122, 108);
             this.next_player_button.TabIndex = 17;
             this.next_player_button.Text = "Next Player";
             this.next_player_button.UseVisualStyleBackColor = true;
@@ -148,9 +148,9 @@
             this.dice_roll_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dice_roll_button.Location = new System.Drawing.Point(4, 408);
+            this.dice_roll_button.Location = new System.Drawing.Point(4, 456);
             this.dice_roll_button.Name = "dice_roll_button";
-            this.dice_roll_button.Size = new System.Drawing.Size(122, 94);
+            this.dice_roll_button.Size = new System.Drawing.Size(122, 106);
             this.dice_roll_button.TabIndex = 9;
             this.dice_roll_button.Text = "Dice Menu";
             this.dice_roll_button.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             this.coords.Location = new System.Drawing.Point(4, 4);
             this.coords.Margin = new System.Windows.Forms.Padding(3);
             this.coords.Name = "coords";
-            this.coords.Size = new System.Drawing.Size(122, 94);
+            this.coords.Size = new System.Drawing.Size(122, 106);
             this.coords.TabIndex = 8;
             this.coords.Text = "2137";
             this.coords.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,10 +175,10 @@
             this.spawn_npc_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_npc_button.Location = new System.Drawing.Point(3, 710);
+            this.spawn_npc_button.Location = new System.Drawing.Point(3, 681);
             this.spawn_npc_button.Margin = new System.Windows.Forms.Padding(2);
             this.spawn_npc_button.Name = "spawn_npc_button";
-            this.spawn_npc_button.Size = new System.Drawing.Size(124, 96);
+            this.spawn_npc_button.Size = new System.Drawing.Size(124, 108);
             this.spawn_npc_button.TabIndex = 2;
             this.spawn_npc_button.Text = "Spawn NPC";
             this.spawn_npc_button.UseVisualStyleBackColor = true;
@@ -188,10 +188,10 @@
             this.spawn_wall_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_wall_button.Location = new System.Drawing.Point(261, 710);
+            this.spawn_wall_button.Location = new System.Drawing.Point(261, 681);
             this.spawn_wall_button.Margin = new System.Windows.Forms.Padding(2);
             this.spawn_wall_button.Name = "spawn_wall_button";
-            this.spawn_wall_button.Size = new System.Drawing.Size(126, 96);
+            this.spawn_wall_button.Size = new System.Drawing.Size(126, 108);
             this.spawn_wall_button.TabIndex = 11;
             this.spawn_wall_button.Text = "Spawn Wall";
             this.spawn_wall_button.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
             this.charlabel.Location = new System.Drawing.Point(133, 4);
             this.charlabel.Margin = new System.Windows.Forms.Padding(3);
             this.charlabel.Name = "charlabel";
-            this.charlabel.Size = new System.Drawing.Size(122, 94);
+            this.charlabel.Size = new System.Drawing.Size(122, 106);
             this.charlabel.TabIndex = 13;
             this.charlabel.Text = "Characters";
             this.charlabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -218,7 +218,7 @@
             this.currentPlayerLabel.Location = new System.Drawing.Point(262, 4);
             this.currentPlayerLabel.Margin = new System.Windows.Forms.Padding(3);
             this.currentPlayerLabel.Name = "currentPlayerLabel";
-            this.currentPlayerLabel.Size = new System.Drawing.Size(124, 94);
+            this.currentPlayerLabel.Size = new System.Drawing.Size(124, 106);
             this.currentPlayerLabel.TabIndex = 15;
             this.currentPlayerLabel.Text = "Current player:";
             this.currentPlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,11 +237,11 @@
             this.charactersListView.FullRowSelect = true;
             this.charactersListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.charactersListView.HideSelection = false;
-            this.charactersListView.Location = new System.Drawing.Point(3, 104);
+            this.charactersListView.Location = new System.Drawing.Point(3, 116);
             this.charactersListView.Margin = new System.Windows.Forms.Padding(2);
             this.charactersListView.Name = "charactersListView";
             this.controlsLayoutPanel.SetRowSpan(this.charactersListView, 3);
-            this.charactersListView.Size = new System.Drawing.Size(384, 298);
+            this.charactersListView.Size = new System.Drawing.Size(384, 334);
             this.charactersListView.TabIndex = 16;
             this.charactersListView.UseCompatibleStateImageBehavior = false;
             this.charactersListView.View = System.Windows.Forms.View.Details;
@@ -273,9 +273,9 @@
             this.spawn_chest_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_chest_button.Location = new System.Drawing.Point(133, 711);
+            this.spawn_chest_button.Location = new System.Drawing.Point(133, 682);
             this.spawn_chest_button.Name = "spawn_chest_button";
-            this.spawn_chest_button.Size = new System.Drawing.Size(122, 94);
+            this.spawn_chest_button.Size = new System.Drawing.Size(122, 106);
             this.spawn_chest_button.TabIndex = 0;
             this.spawn_chest_button.Text = "Spawn Chest";
             this.spawn_chest_button.UseVisualStyleBackColor = true;
@@ -286,9 +286,9 @@
             this.change_map_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_map_button.Location = new System.Drawing.Point(262, 913);
+            this.change_map_button.Location = new System.Drawing.Point(262, 908);
             this.change_map_button.Name = "change_map_button";
-            this.change_map_button.Size = new System.Drawing.Size(124, 103);
+            this.change_map_button.Size = new System.Drawing.Size(124, 108);
             this.change_map_button.TabIndex = 10;
             this.change_map_button.Text = "Change Map";
             this.change_map_button.UseVisualStyleBackColor = true;
@@ -299,9 +299,9 @@
             this.remove_entity_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.remove_entity_button.Location = new System.Drawing.Point(262, 812);
+            this.remove_entity_button.Location = new System.Drawing.Point(262, 795);
             this.remove_entity_button.Name = "remove_entity_button";
-            this.remove_entity_button.Size = new System.Drawing.Size(124, 94);
+            this.remove_entity_button.Size = new System.Drawing.Size(124, 106);
             this.remove_entity_button.TabIndex = 3;
             this.remove_entity_button.Text = "Remove Entity";
             this.remove_entity_button.UseVisualStyleBackColor = true;
@@ -312,9 +312,9 @@
             this.spawn_player_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spawn_player_button.Location = new System.Drawing.Point(4, 812);
+            this.spawn_player_button.Location = new System.Drawing.Point(4, 795);
             this.spawn_player_button.Name = "spawn_player_button";
-            this.spawn_player_button.Size = new System.Drawing.Size(122, 94);
+            this.spawn_player_button.Size = new System.Drawing.Size(122, 106);
             this.spawn_player_button.TabIndex = 18;
             this.spawn_player_button.Text = "Spawn Next Player";
             this.spawn_player_button.UseVisualStyleBackColor = true;
