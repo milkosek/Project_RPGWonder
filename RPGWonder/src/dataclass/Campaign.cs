@@ -37,6 +37,14 @@ namespace RPGWonder
             }
         }
 
+        public void ReadFromJSONnoCodex(string path)
+        {
+            string jsonString = File.ReadAllText(path);
+            JObject jObject = JObject.Parse(jsonString);
+            Name = (string)jObject["Name"];
+            CurrentMap = (int)jObject["CurrentMap"];
+        }
+
         public void SaveToJSON(string path, string TAG)
         {           
             var serializer = new JsonSerializer();

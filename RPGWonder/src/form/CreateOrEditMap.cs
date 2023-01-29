@@ -74,6 +74,7 @@ namespace RPGWonder
             }
             else
             {
+                //todo here
                 _map.Name = nameTextBox.Text;
                 _map.Rows = (int)rowsNumericUpDown.Value;
                 _map.Columns = (int)columnsNumericUpDown.Value;

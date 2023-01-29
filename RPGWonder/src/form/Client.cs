@@ -3,6 +3,7 @@ using RPGWonder.src.form;
 using RPGWonder.src.map;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -113,7 +114,7 @@ namespace RPGWonder
         public void LoadCampaign(string campaign_tag)
         {
             //Debug.WriteLine("LOADING CLIENT CAMPAIGN!");
-            _campaign.ReadFromJSON(Common.Instance.ClientCampaignsPath + "\\" + campaign_tag);
+            _campaign.ReadFromJSONnoCodex(Common.Instance.ClientCampaignsPath + "\\" + campaign_tag);
         }
 
         private void DiceRollMenu_Click(object sender, EventArgs e)

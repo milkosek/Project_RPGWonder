@@ -7,14 +7,10 @@
     "Chest0": {
       "EntityID": 0,
       "MapID": 0,
-      "X": 0,
-      "Y": 0,
+      "X": 2,
+      "Y": 1,
       "Name": "Chest0",
-      "ImagePath": "\\entityAssets\\chest.png",
-      "Id": 0,
-      "Type": null,
-      "Description": null,
-      "Src": null
+      "ImagePath": "\\entityAssets\\chest.png"
     }
   }
 }

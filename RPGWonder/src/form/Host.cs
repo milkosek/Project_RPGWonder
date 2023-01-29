@@ -71,6 +71,18 @@ namespace RPGWonder
 
         private void Host_Load(object sender, EventArgs e)
         {
+            SetMotif();
+            dice_roll_button.BackColor = Color.SteelBlue;
+            exitButton.BackColor = Color.IndianRed;
+            spawn_chest_button.BackColor = Color.SeaGreen;
+            spawn_npc_button.BackColor = Color.SeaGreen;
+            spawn_player_button.BackColor = Color.SeaGreen;
+            spawn_wall_button.BackColor = Color.SeaGreen;
+            remove_entity_button.BackColor = Color.IndianRed;
+            change_map_button.BackColor = Color.SteelBlue;
+            changeAsset.BackColor = Color.SteelBlue;
+            next_player_button.BackColor = Color.SteelBlue;
+
             _connection = new HostTcpConnection();
             _connection.CreateSession(_campaignFilePath, _ipAddress);
             CheckForIllegalCrossThreadCalls = false;
@@ -104,18 +116,6 @@ namespace RPGWonder
             //    () => DiscordChannelConnection.
             //    CreateGuildThenChannelThenInviteAndOpen()));
             //discordThread.Start();
-
-            SetMotif();
-            dice_roll_button.BackColor = Color.SteelBlue;
-            exitButton.BackColor = Color.IndianRed;
-            spawn_chest_button.BackColor = Color.SeaGreen;
-            spawn_npc_button.BackColor = Color.SeaGreen;
-            spawn_player_button.BackColor = Color.SeaGreen;
-            spawn_wall_button.BackColor = Color.SeaGreen;
-            remove_entity_button.BackColor = Color.IndianRed;
-            change_map_button.BackColor = Color.SteelBlue;
-            changeAsset.BackColor = Color.SteelBlue;
-            next_player_button.BackColor = Color.SteelBlue;
         }
         /// <summary>
         /// Method for reloading the game state.

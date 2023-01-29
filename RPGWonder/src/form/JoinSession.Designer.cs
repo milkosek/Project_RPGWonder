@@ -47,6 +47,7 @@
             resources.ApplyResources(this.charactersComboBox, "charactersComboBox");
             this.charactersComboBox.FormattingEnabled = true;
             this.charactersComboBox.Name = "charactersComboBox";
+            this.charactersComboBox.SelectedIndexChanged += new System.EventHandler(this.charactersComboBox_SelectedIndexChanged);
             // 
             // ipAddrLabel
             // 
@@ -64,6 +65,7 @@
             resources.ApplyResources(this.JoinGameButton, "JoinGameButton");
             this.JoinGameButton.Name = "JoinGameButton";
             this.JoinGameButton.UseVisualStyleBackColor = false;
+            this.JoinGameButton.Click += new System.EventHandler(this.JoinGameButton_Click);
             // 
             // JoinSession
             // 

@@ -130,10 +130,13 @@
     <value>NoControl</value>
   </data>
   <data name="charactersLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>9, 10</value>
+  </data>
+  <data name="charactersLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="charactersLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 31</value>
+    <value>237, 26</value>
   </data>
   <data name="charactersLabel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -157,13 +160,13 @@
     <value>Microsoft Sans Serif, 16.2pt</value>
   </data>
   <data name="charactersComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>342, 10</value>
+    <value>256, 8</value>
   </data>
   <data name="charactersComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="charactersComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 39</value>
+    <value>256, 34</value>
   </data>
   <data name="charactersComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -190,10 +193,13 @@
     <value>NoControl</value>
   </data>
   <data name="ipAddrLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 55</value>
+    <value>20, 45</value>
+  </data>
+  <data name="ipAddrLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="ipAddrLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 31</value>
+    <value>227, 26</value>
   </data>
   <data name="ipAddrLabel.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -217,13 +223,13 @@
     <value>Microsoft Sans Serif, 16pt</value>
   </data>
   <data name="ipAddrInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>342, 53</value>
+    <value>256, 43</value>
   </data>
   <data name="ipAddrInput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="ipAddrInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 38</value>
+    <value>256, 32</value>
   </data>
   <data name="ipAddrInput.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -250,13 +256,13 @@
     <value>NoControl</value>
   </data>
   <data name="JoinGameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 95</value>
+    <value>9, 77</value>
   </data>
   <data name="JoinGameButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="JoinGameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 43</value>
+    <value>502, 35</value>
   </data>
   <data name="JoinGameButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -280,10 +286,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>698, 148</value>
+    <value>524, 120</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

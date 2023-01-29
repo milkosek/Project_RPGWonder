@@ -138,7 +138,7 @@ namespace RPGWonder
                 Directory.CreateDirectory(Common.Instance.CampaignsPath + "\\" + _TAG + "\\maps");
                 Log.Instance.gameLog.Debug("Created folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\maps");
 
-                defaultMap = new Map() { Id = 0, Columns = 16, Rows = 12, Name = "DefaultMap" };
+                defaultMap = new Map() { Id = 0, Columns = 0, Rows = 0, Name = "DefaultMap" };
                 defaultMap.SaveToJSON(Common.Instance.CampaignsPath + "\\" + _TAG + "\\maps\\" + "DefaultMap.json");
                 Log.Instance.gameLog.Debug("Created default map in folder: " + Common.Instance.CampaignsPath + "\\" + _TAG + "\\maps");
             }

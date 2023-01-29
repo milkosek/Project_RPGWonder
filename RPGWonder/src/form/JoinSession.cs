@@ -61,7 +61,7 @@ namespace RPGWonder
 
         private void JoinGameButton_Click(object sender, EventArgs e)
         {
-            if(_character != null)
+            if (_character != null)
             {
                 _ipAddr = ipAddrInput.Text;
                 Client gameWindow = new Client(_character, _ipAddr);
