@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -20,7 +22,7 @@ namespace RPGWonder
 
         /// <summary>
         /// Gets the instance of the <see cref="CreateOrEditMap"/> class with given parameters
-        /// <param name="campaign">The campaign the codex entry belongs to.</param>.
+        /// <param name="campaign">The campaign the map belongs to.</param>.
         /// <param name="parent">The parent form.</param>.
         /// </summary>
         public static CreateOrEditMap Instance(string campaign, CreateOrEditCampaign parent)
@@ -40,20 +42,23 @@ namespace RPGWonder
             _campaign = campaign;
             _editing = false;
             _parent = parent;
+            _path = Common.Instance.CampaignsPath + "\\" + campaign;
         }
 
         /// <summary>
         /// Public constructor creading an instance of the class for codex entry editing purposes.
-        /// <param name="campaign">The campaign the codex entry belongs to.</param>.
+        /// <param name="campaign">The campaign the map belongs to.</param>.
         /// <param name="parent">The parent form.</param>.
-        /// <param name="path">The path to the edited codex entry.</param>
+        /// <param name="path">The path to the edited map.</param>
         /// </summary>
-        public CreateOrEditMap(string map, CreateOrEditCampaign parent, string path)
+        public CreateOrEditMap(string campaign, CreateOrEditCampaign parent, string path)
         {
+            Debug.WriteLine(campaign);
+            Debug.WriteLine(path);
             InitializeComponent();
             SetMotif();
             saveButton.BackColor = Color.SteelBlue;
-            _campaign = map;
+            _campaign = campaign;
             _editing = true;
             _parent = parent;
             _path = path;
@@ -74,9 +79,26 @@ namespace RPGWonder
             }
             else
             {
-                //todo here
+                long maxID = 0;
+                string[] filePaths = Directory.GetFiles(_path + "\\maps", "*.json");
+                foreach (string filePath in filePaths)
+                {
+                    try
+                    {
+                        JObject map = JObject.Parse(File.ReadAllText(filePath));
+                        if ((long)map["Id"] > maxID)
+                        {
+                            maxID = (long)map["Id"];
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Instance.errorLog.Error("Couldn't read " + filePath + " Error: " + exception.Message);
+                    }
+                }
                 _map.Name = nameTextBox.Text;
                 _map.Rows = (int)rowsNumericUpDown.Value;
+                _map.Id = maxID + 1;
                 _map.Columns = (int)columnsNumericUpDown.Value;
                 save();
                 MessageBox.Show("Saved!");
