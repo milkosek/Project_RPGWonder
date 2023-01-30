@@ -53,7 +53,12 @@ namespace RPGWonder.src.form
         {
             _lastRolls = _roller.Roll();
 
-            DiscordChannelConnection.LogIntoTextChannel(UpdateDisplay());
+            if (Client.Instance == null) {
+                DiscordChannelConnection.LogIntoTextChannel(UpdateDisplay());
+            }
+            else{
+                ClientTcpConnection.SendDiscordMessage(UpdateDisplay());
+            }
         }
 
         /// <summary>

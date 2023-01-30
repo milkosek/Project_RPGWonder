@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using static System.Windows.Forms.LinkLabel;
 
 namespace RPGWonder
 {
@@ -80,7 +81,7 @@ namespace RPGWonder
                     if (recievedString == "Connect")
                     {
                         SendToClient("GetSystem", stream);
-                    } 
+                    }
                     else if (recievedString.Contains("System|"))
                     {
                         string system = recievedString.Split('|')[1];
@@ -97,14 +98,17 @@ namespace RPGWonder
                         string parentDirectory = Path.GetDirectoryName(path + campaign);
 
                         File.WriteAllText(path + "\\" + campaign_name + "\\characters\\" + character_tag, character_json);
-                        
+
                         Character character = new Character();
                         character.ReadFromJSON(path + "\\" + campaign_name + "\\characters\\" + character_tag);
-                        
+
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
 
                         Host.Instance.NewPLayerConnected();
+                    }
+                    else if (recievedString.StartsWith("DiscordMessage|")){
+                        DiscordChannelConnection.LogIntoTextChannel(recievedString.Substring("DiscordMessage|".Length));
                     }
                     else if (recievedString.StartsWith("MapUpdate|"))
                     {
