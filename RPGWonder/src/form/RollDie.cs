@@ -60,8 +60,14 @@ namespace RPGWonder
                 interpretation = "Failure";
             }
             MessageBox.Show("Result: " + result.Key + "\n" + interpretation);
-
-            DiscordChannelConnection.LogIntoTextChannel("Result: " + result.Key + "\n" + interpretation);
+            if (Client.Instance == null)
+            {
+                DiscordChannelConnection.LogIntoTextChannel("Result: " + result.Key + "\n" + interpretation);
+            }
+            else
+            {
+                ClientTcpConnection.SendDiscordMessage("Result: " + result.Key + "\n" + interpretation);
+            }
         }
 
         private KeyValuePair<int, bool> rollDie()
