@@ -11,8 +11,8 @@ namespace RPGWonder.src.net
 {
     internal class DiscordChannelConnection
     {
-        private static string token = "Bot MTA2MTYyMTgxMjUwNjY2NTAyMQ.GVilXh.6M7BsjlSL_R8mcNG-lHItfPo2Lzj4Xi9kn0Tqk";
-        private static string tokenForClientVariable = "MTA2MTYyMTgxMjUwNjY2NTAyMQ.GVilXh.6M7BsjlSL_R8mcNG-lHItfPo2Lzj4Xi9kn0Tqk";
+        private static string token = "Bot MTA2MTYyMTgxMjUwNjY2NTAyMQ.GEqbTm.sIKFdlC-D7Afvi5UnYW0MF5dz_K6DuqiYc14lw";
+        private static string tokenForClientVariable = "MTA2MTYyMTgxMjUwNjY2NTAyMQ.GEqbTm.sIKFdlC-D7Afvi5UnYW0MF5dz_K6DuqiYc14lw";
         private static DiscordSocketClient _client;
         private static string invite_link = "";
         private static Discord.ITextChannel textChannel;
