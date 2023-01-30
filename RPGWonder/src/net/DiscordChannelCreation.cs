@@ -19,6 +19,7 @@ namespace RPGWonder.src.net
         
         public static async void LogIntoTextChannel(string message){
             await textChannel.SendMessageAsync(message);
+            Log.Instance.gameLog.Debug(message);
         }
 
         private static void SetInviteLink(string link) { 

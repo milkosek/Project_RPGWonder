@@ -90,7 +90,7 @@ namespace RPGWonder
                     }
                     else if (recievedString.Contains("Character|"))
                     {
-                        //SendToClient("DiscordLink|" + DiscordChannelConnection.GetInviteLink(), stream);
+                        SendToClient("DiscordLink|" + DiscordChannelConnection.GetInviteLink(), stream);
 
                         string character_tag = recievedString.Split('|')[1];
                         string character_json = recievedString.Split('|')[2];
