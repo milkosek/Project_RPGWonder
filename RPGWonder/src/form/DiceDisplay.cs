@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using RPGWonder.src.net;
 
 namespace RPGWonder.src.form
 {
@@ -51,6 +52,8 @@ namespace RPGWonder.src.form
         private void RollButton_Click(object sender, EventArgs e)
         {
             _lastRolls = _roller.Roll();
+
+            DiscordChannelConnection.LogIntoTextChannel(String.Format("Rolled {0}", _lastRolls));
 
             UpdateDisplay();
         }
