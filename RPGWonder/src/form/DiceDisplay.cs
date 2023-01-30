@@ -83,7 +83,16 @@ namespace RPGWonder.src.form
         {
             RollsList.Items.Clear();
 
-            string DiscordString = Client.Instance.YourCharacter.Name + " rolled:\n";
+            string DiscordString = "";
+
+            if (Client.Instance != null)
+            {
+                DiscordString = Client.Instance.YourCharacter.Name + " rolled:\n";
+            }
+            else
+            {
+                DiscordString = "GM rolled:\n";
+            }
 
             foreach (KeyValuePair<int, List<int>> roll in _lastRolls)
             {
@@ -91,7 +100,7 @@ namespace RPGWonder.src.form
                 TempLVItem.SubItems.Add("d" + roll.Key.ToString());
                 TempLVItem.SubItems.Add(string.Join(", ", roll.Value));
 
-                DiscordString += "d" + roll.Key.ToString() + " " + string.Join(", ", roll.Value) + "\n";
+                DiscordString += "d" + roll.Key.ToString() + ": " + string.Join(", ", roll.Value) + "\n";
 
                 RollsList.Items.Add(TempLVItem);
             }

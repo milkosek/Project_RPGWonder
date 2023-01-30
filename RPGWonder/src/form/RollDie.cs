@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using RPGWonder.src.net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,6 +60,8 @@ namespace RPGWonder
                 interpretation = "Failure";
             }
             MessageBox.Show("Result: " + result.Key + "\n" + interpretation);
+
+            DiscordChannelConnection.LogIntoTextChannel("Result: " + result.Key + "\n" + interpretation);
         }
 
         private KeyValuePair<int, bool> rollDie()
