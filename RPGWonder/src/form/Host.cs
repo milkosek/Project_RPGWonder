@@ -113,10 +113,10 @@ namespace RPGWonder
             }
 
             //ODKOMENTOWAĆ BY UTWORZYĆ KANAŁ I DO NIEGO SIĘ PRZENIEŚĆ
-            //Thread discordThread = new Thread(new ThreadStart(
-            //    () => DiscordChannelConnection.
-            //    CreateGuildThenChannelThenInviteAndOpen()));
-            //discordThread.Start();
+            Thread discordThread = new Thread(new ThreadStart(
+                () => DiscordChannelConnection.
+               CreateGuildThenChannelThenInviteAndOpen()));
+            discordThread.Start();
         }
         /// <summary>
         /// Method for reloading the game state.
