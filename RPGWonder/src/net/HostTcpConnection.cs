@@ -104,7 +104,7 @@ namespace RPGWonder
                         ClientData clientData = new ClientData(stream, character);
                         clients.Add(clientData);
 
-                        Host.Instance.NewPLayerConnected();
+                        Host.Instance.NewPLayerConnected(stream);
                     }
                     else if (recievedString.StartsWith("MapUpdate|"))
                     {
@@ -119,6 +119,7 @@ namespace RPGWonder
                         Host.Instance.Invoke(Host.Instance.reloadDelegate);
 
                         BroadcastMRE(recievedString);
+
                         Host.Instance.nextPLayer();
                     }
 
@@ -147,7 +148,8 @@ namespace RPGWonder
                 if (index != -1)
                 {
                     clients.RemoveAt(index);
-                    Host.Instance.NewPLayerConnected();
+                    //todo broadcast when someone disconnects
+                    //Host.Instance.NewPLayerConnected();
                 }
             }
         }
@@ -164,6 +166,20 @@ namespace RPGWonder
             Thread sendThread = new Thread(new ThreadStart(() =>
             {
                 BroadcastThreaded(data);
+                mre.Set();
+            }));
+
+            sendThread.Start();
+            mre.WaitOne();
+        }
+
+        public static void SendMRE(string data, NetworkStream stream)
+        {
+            ManualResetEvent mre = new ManualResetEvent(false);
+
+            Thread sendThread = new Thread(new ThreadStart(() =>
+            {
+                SendToClientThreaded(data, stream);
                 mre.Set();
             }));
 
@@ -196,6 +212,10 @@ namespace RPGWonder
                     //Debug.WriteLine("Exception: {0}", e);
                     stream.Close();
                 }
+                finally
+                {
+                    stream.Flush();
+                }
             }
         }
         private static void SendToClientThreaded(string data, NetworkStream stream)
@@ -216,12 +236,18 @@ namespace RPGWonder
                 //Debug.WriteLine("Exception: {0}", e);
                 stream.Close();
             }
+            finally 
+            {
+                stream.Flush();
+            }
         }
 
-        public static void BroadcastCampaign(string campaign, string campaign_json)
+        public static void SendCampaign(string campaign, string campaign_json, string map, string map_json, NetworkStream stream)
         {
             //Debug.WriteLine("Broadcasting campaign");
-            Broadcast("Campaign|" + campaign + "|" + campaign_json);
+            SendMRE("Campaign|" + campaign + "|" + campaign_json, stream);
+
+            SendMRE("MapChange|" + map + "|" + map_json, stream);
         }
 
         public static void BroadcastMap(string map, string map_json)
@@ -252,7 +278,6 @@ namespace RPGWonder
             byte[] imageArray = System.IO.File.ReadAllBytes(assetPath);
             string base64ImageRepresentation = System.Convert.ToBase64String(imageArray);
             Broadcast("Asset|" + System.IO.Path.GetFileName(assetPath) + "|" + base64ImageRepresentation);
-
         }
     }
 }

@@ -93,7 +93,7 @@ namespace RPGWonder
 
             EntityList = new Dictionary<string, EntityOnMap> { };
 
-            LoadMap(_campaign.CurrentMap);
+            LoadMap(_campaign.CurrentMap, true);
 
             coords.Text = map.Name;
 
@@ -118,15 +118,8 @@ namespace RPGWonder
                CreateGuildThenChannelThenInviteAndOpen()));
             discordThread.Start();
         }
-        /// <summary>
-        /// Method for reloading the game state.
-        /// </summary>
-        public void Reload()
-        {
-            Debug.WriteLine("RELOADING HOST!");
-        }
 
-        public void NewPLayerConnected()
+        public void NewPLayerConnected(NetworkStream stream)
         {
             Debug.WriteLine("INFORMING NEW CLIENT!");
 
@@ -146,9 +139,12 @@ namespace RPGWonder
 
             PopulateCharactersList();
 
-            HostTcpConnection.BroadcastCampaign(Path.GetFileName(_campaignFilePath), File.ReadAllText(_campaignFilePath));
-
-            HostBroadcastMap(true);
+            HostTcpConnection.SendCampaign(
+                Path.GetFileName(_campaignFilePath), 
+                File.ReadAllText(_campaignFilePath),
+                Path.GetFileName(GetMapById(_campaign.CurrentMap)),
+                File.ReadAllText(GetMapById(_campaign.CurrentMap)),
+                stream);
         }
 
         private void HostBroadcastMap(bool changeMap = false)
@@ -182,7 +178,7 @@ namespace RPGWonder
             UpdateMap();
         }
 
-        public void LoadMap(int mapId)
+        public void LoadMap(int mapId, bool first = false)
         {
             _campaign.CurrentMap = mapId;
 
@@ -200,7 +196,10 @@ namespace RPGWonder
 
             DisplayMap(map);
 
-            UpdateAndBroadcastMap(true);
+            if (!first)
+            {
+                UpdateAndBroadcastMap(true);
+            }
         }
 
         private void DisplayMap(Map map)
