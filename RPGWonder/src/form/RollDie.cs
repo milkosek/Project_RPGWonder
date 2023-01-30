@@ -61,11 +61,11 @@ namespace RPGWonder
             }
             if (Client.Instance == null)
             {
-                DiscordChannelConnection.LogIntoTextChannel(Client.Instance.YourCharacter.Name + " rolled for:" + _ability + "\nResult: " + result.Key + "\n" + interpretation);
+                DiscordChannelConnection.LogIntoTextChannel(Client.Instance.YourCharacter.Name + " rolled for " + Common.Instance.Abilities[_ability]["name"] + "\nResult: " + result.Key + "\n" + interpretation);
             }
             else
             {
-                ClientTcpConnection.SendDiscordMessage(Client.Instance.YourCharacter.Name + " rolled for: " + _ability + ":\nResult: " + result.Key + "\n" + interpretation);
+                ClientTcpConnection.SendDiscordMessage(Client.Instance.YourCharacter.Name + " rolled for " + Common.Instance.Abilities[_ability]["name"] + ":\nResult: " + result.Key + "\n" + interpretation);
             }
             MessageBox.Show("Result: " + result.Key + "\n" + interpretation);
         }
