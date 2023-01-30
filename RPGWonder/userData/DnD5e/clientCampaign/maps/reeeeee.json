@@ -123,6 +123,38 @@
       "Y": 3,
       "Name": "Chest4",
       "ImagePath": "\\entityAssets\\chest.png"
+    },
+    "Chest5": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 8,
+      "Y": 4,
+      "Name": "Chest5",
+      "ImagePath": "\\entityAssets\\chest.png"
+    },
+    "Chest6": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 8,
+      "Y": 5,
+      "Name": "Chest6",
+      "ImagePath": "\\entityAssets\\chest.png"
+    },
+    "Chest7": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 8,
+      "Y": 6,
+      "Name": "Chest7",
+      "ImagePath": "\\entityAssets\\chest.png"
+    },
+    "Chest8": {
+      "EntityID": 0,
+      "MapID": 0,
+      "X": 7,
+      "Y": 6,
+      "Name": "Chest8",
+      "ImagePath": "\\entityAssets\\chest.png"
     }
   }
 }

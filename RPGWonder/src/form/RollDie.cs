@@ -59,15 +59,15 @@ namespace RPGWonder
             {
                 interpretation = "Failure";
             }
-            MessageBox.Show("Result: " + result.Key + "\n" + interpretation);
             if (Client.Instance == null)
             {
-                DiscordChannelConnection.LogIntoTextChannel("Result: " + result.Key + "\n" + interpretation);
+                DiscordChannelConnection.LogIntoTextChannel(Client.Instance.YourCharacter.Name + " rolled for:" + _ability + "\nResult: " + result.Key + "\n" + interpretation);
             }
             else
             {
-                ClientTcpConnection.SendDiscordMessage("Result: " + result.Key + "\n" + interpretation);
+                ClientTcpConnection.SendDiscordMessage(Client.Instance.YourCharacter.Name + " rolled for: " + _ability + ":\nResult: " + result.Key + "\n" + interpretation);
             }
+            MessageBox.Show("Result: " + result.Key + "\n" + interpretation);
         }
 
         private KeyValuePair<int, bool> rollDie()
