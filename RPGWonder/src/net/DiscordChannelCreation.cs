@@ -16,13 +16,14 @@ namespace RPGWonder.src.net
         private static DiscordSocketClient _client;
         private static string invite_link = "";
         private static Discord.ITextChannel textChannel;
-        
-        public static async void LogIntoTextChannel(string message){
+        private static string guild_id;
+
+        public static async void LogIntoTextChannel(string message) {
             await textChannel.SendMessageAsync(message);
             Log.Instance.gameLog.Debug(message);
         }
 
-        private static void SetInviteLink(string link) { 
+        private static void SetInviteLink(string link) {
             invite_link = link;
         }
 
@@ -30,7 +31,7 @@ namespace RPGWonder.src.net
             return invite_link;
         }
 
-        private static void SetTextChannelId(string id){
+        private static void SetTextChannelId(string id) {
             Thread.Sleep(3000);
             var textChannelId = ulong.Parse(id);
             textChannel = _client.GetChannel(textChannelId) as ITextChannel;
@@ -44,7 +45,7 @@ namespace RPGWonder.src.net
         public async static void CreateGuildThenChannelThenInviteAndOpen()
         {
             logBot();
-            string guild_id = GetGuild();
+            guild_id = GetGuild();
             var voice_channel_id = GetVoiceChannelId(guild_id);
             CreateChatChannel(guild_id);
             GetAndOpenInvite(voice_channel_id);
@@ -152,7 +153,7 @@ namespace RPGWonder.src.net
                 foreach (var x in jToken)
                 {
                     if (!x.ToString().Substring(1, 4).Equals("type")) continue;
-                    if (x.ToString().Substring(8).Equals("2")){
+                    if (x.ToString().Substring(8).Equals("2")) {
                         voiceChannelid = jToken["id"].ToString();
                     }
                     else if (x.ToString().Substring(8).Equals("0"))
@@ -163,6 +164,24 @@ namespace RPGWonder.src.net
             }
 
             return voiceChannelid;
+        }
+
+        public static void deleteServer(){
+            HttpWebRequest webRequest1 =
+                (HttpWebRequest)WebRequest.Create("https://discordapp.com/api/guilds/" + guild_id);
+            webRequest1.Method = "DELETE";
+            webRequest1.ContentLength = 0;
+            webRequest1.Headers.Add("Authorization", token);
+            webRequest1.ContentType = "application/json";
+
+            string apiResponse1;
+            using (HttpWebResponse response1 = webRequest1.GetResponse() as HttpWebResponse)
+            {
+                StreamReader reader1 = new StreamReader(response1.GetResponseStream());
+                apiResponse1 = reader1.ReadToEnd();
+            }
+
+            Debug.WriteLine(apiResponse1);
         }
 
         public static void OpenInviteLink(string link) {

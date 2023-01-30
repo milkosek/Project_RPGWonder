@@ -568,5 +568,10 @@ namespace RPGWonder
         {
             ShowCodex.Instance(_campaign).Show();
         }
+
+        private void Host_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DiscordChannelConnection.deleteServer();
+        }
     }
 }
