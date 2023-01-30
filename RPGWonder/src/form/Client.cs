@@ -38,6 +38,7 @@ namespace RPGWonder
         private int _listViewSelectedChar;
 
         public bool YourTurn { get => yourTurn; set => yourTurn = value; }
+        public Character YourCharacter { get => _yourCharacter; set => _yourCharacter = value; }
 
         public Client(string character, string ipAddr = "127.0.0.1")
         {

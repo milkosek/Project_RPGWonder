@@ -53,9 +53,7 @@ namespace RPGWonder.src.form
         {
             _lastRolls = _roller.Roll();
 
-            DiscordChannelConnection.LogIntoTextChannel(String.Format("Rolled {0}", _lastRolls));
-
-            UpdateDisplay();
+            DiscordChannelConnection.LogIntoTextChannel(UpdateDisplay());
         }
 
         /// <summary>
@@ -81,15 +79,19 @@ namespace RPGWonder.src.form
         /// <summary>
         /// Update values in <c>Dice</c> label and <c>RollsList ListView</c>.
         /// </summary>
-        private void UpdateDisplay()
+        private string UpdateDisplay()
         {
             RollsList.Items.Clear();
+
+            string DiscordString = Client.Instance.YourCharacter.Name + " rolled:\n";
 
             foreach (KeyValuePair<int, List<int>> roll in _lastRolls)
             {
                 ListViewItem TempLVItem = new ListViewItem();
                 TempLVItem.SubItems.Add("d" + roll.Key.ToString());
                 TempLVItem.SubItems.Add(string.Join(", ", roll.Value));
+
+                DiscordString += "d" + roll.Key.ToString() + " " + string.Join(", ", roll.Value) + "\n";
 
                 RollsList.Items.Add(TempLVItem);
             }
@@ -103,6 +105,8 @@ namespace RPGWonder.src.form
                 DiceList.Text = "Dice: None";
                 rollButton.Enabled = false;
             }
+
+            return DiscordString;
         }
     }
 }
