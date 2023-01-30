@@ -35,12 +35,15 @@ namespace RPGWonder.src.net
             var textChannelId = ulong.Parse(id);
             textChannel = _client.GetChannel(textChannelId) as ITextChannel;
         }
-        public async static void CreateGuildThenChannelThenInviteAndOpen()
-        {
+
+        public static async void logBot() {
             _client = new DiscordSocketClient();
             await _client.LoginAsync(TokenType.Bot, tokenForClientVariable);
             await _client.StartAsync();
-
+        }
+        public async static void CreateGuildThenChannelThenInviteAndOpen()
+        {
+            logBot();
             string guild_id = GetGuild();
             var voice_channel_id = GetVoiceChannelId(guild_id);
             CreateChatChannel(guild_id);
