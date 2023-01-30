@@ -37,7 +37,7 @@ namespace RPGWonder.src.net
             textChannel = _client.GetChannel(textChannelId) as ITextChannel;
         }
 
-        public static async void logBot() {
+        private static async void logBot() {
             _client = new DiscordSocketClient();
             await _client.LoginAsync(TokenType.Bot, tokenForClientVariable);
             await _client.StartAsync();

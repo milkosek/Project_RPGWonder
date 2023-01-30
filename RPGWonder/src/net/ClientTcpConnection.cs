@@ -124,7 +124,6 @@ namespace RPGWonder
 						Client.Instance.Close();
 					}
 					else if (receivedString.StartsWith("DiscordLink|")){
-                        DiscordChannelConnection.logBot();
                         string link = receivedString.Substring("DiscordLink|".Length);
 
 						Thread openLinkThread = new Thread(new ThreadStart(() => DiscordChannelConnection.OpenInviteLink(link)));
@@ -196,8 +195,11 @@ namespace RPGWonder
 		{
             Send("Character|" + character + "|" + character_json);
         }
+		public static void SendDiscordMessage(string message) {
+            Send("DiscordMessage|"+ message);
+        }
 
-		public static void CloseStream()
+        public static void CloseStream()
         {
 			stream.Close();
 		}
